@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具中心 - HomDGCat</title>
+    <link rel="stylesheet" href="/stylesheets/tools.css">
+</head>
+<body>
+    <div class="tools-sidebar">
+        <div class="tools-sidebar-title">🛠️ 工具中心</div>
+        <div class="tools-sidebar-item active" data-tool="hsr-update">
+            <span class="tools-sidebar-item-icon">🎮</span>
+            <span>HSR 角色更新</span>
+        </div>
+        <div class="tools-sidebar-item" data-tool="hsr-weapon-update">
+            <span class="tools-sidebar-item-icon">⚔️</span>
+            <span>HSR 光锥更新</span>
+        </div>
+        <div class="tools-sidebar-item" data-tool="hsr-monster-update">
+            <span class="tools-sidebar-item-icon">👾</span>
+            <span>HSR 怪物更新</span>
+        </div>
+        <div class="tools-sidebar-item" data-tool="hsr-ar-update">
+            <span class="tools-sidebar-item-icon">🌌</span>
+            <span>HSR 异象仲裁更新</span>
+        </div>
+        <div class="tools-sidebar-item" data-tool="hsr-as-update">
+            <span class="tools-sidebar-item-icon">🔥</span>
+            <span>HSR 末日幻影更新</span>
+        </div>
+          <div class="tools-sidebar-item" data-tool="hsr-fiction-update">
+            <span class="tools-sidebar-item-icon">📖</span>
+            <span>HSR 虚构叙事更新</span>
+        </div>
+        <div class="tools-sidebar-item" data-tool="hsr-chaos-update">
+            <span class="tools-sidebar-item-icon">🌀</span>
+            <span>HSR 混沌回忆更新</span>
+        </div>
+        <!-- 可以在这里添加更多工具 -->
+    </div>
+
+    <div class="tools-content">
+        <div class="tools-container">
+            <!-- HSR 数据更新工具 -->
+            <div id="hsr-update" class="tools-section active">
+                <h2 class="tools-section-title">HSR 数据更新工具</h2>
+
+                <form id="hsrUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRUpdate();">
+                    <div class="form-group">
+                        <label for="hsrCharacterId">角色ID列表</label>
+                        <textarea id="hsrCharacterId" rows="3" placeholder="多个ID用逗号或空格分隔，例如: 1510, 1509, 1508">1510</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrMajorVersion">大版本号</label>
+                        <input type="text" id="hsrMajorVersion" value="4.3" placeholder="例如: 4.3">
+                    </div>
+
+                    <div class="form-group">
+                        <label>小版本号列表</label>
+                        <div id="characterMinorVersionsContainer">
+                            <div class="minor-versions">
+                                <input type="text" class="minorVersion" value=".51" placeholder=".51">
+                                <input type="text" class="minorVersion" value=".52" placeholder=".52">
+                                <button type="button" class="btn-remove" onclick="ToolsApp.removeMinorVersion(this)">×</button>
+                            </div>
+                        </div>
+                        <div class="add-btn-container">
+                            <button type="button" class="btn btn-secondary" onclick="ToolsApp.addCharacterMinorVersion()">+ 添加小版本</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrSubmitBtn">
+                        <span id="hsrBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrResult" class="result">
+                    <h3 id="hsrResultTitle"></h3>
+                    <p id="hsrResultMessage"></p>
+                    <pre id="hsrResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- HSR 光锥数据更新工具 -->
+            <div id="hsr-weapon-update" class="tools-section">
+                <h2 class="tools-section-title">HSR 光锥数据更新工具</h2>
+
+                <form id="hsrWeaponUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRWeaponUpdate();">
+                    <div class="form-group">
+                        <label for="hsrWeaponId">光锥ID列表</label>
+                        <textarea id="hsrWeaponId" rows="3" placeholder="多个ID用逗号或空格分隔，例如: 23060, 23061, 23062">23060</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrWeaponMajorVersion">大版本号</label>
+                        <input type="text" id="hsrWeaponMajorVersion" value="4.3" placeholder="例如: 4.3">
+                    </div>
+
+                    <div class="form-group">
+                        <label>小版本号列表</label>
+                        <div id="weaponMinorVersionsContainer">
+                            <div class="minor-versions">
+                                <input type="text" class="minorVersion" value=".51" placeholder=".51">
+                                <input type="text" class="minorVersion" value=".52" placeholder=".52">
+                                <button type="button" class="btn-remove" onclick="ToolsApp.removeMinorVersion(this)">×</button>
+                            </div>
+                        </div>
+                        <div class="add-btn-container">
+                            <button type="button" class="btn btn-secondary" onclick="ToolsApp.addWeaponMinorVersion()">+ 添加小版本</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrWeaponSubmitBtn">
+                        <span id="hsrWeaponBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrWeaponResult" class="result">
+                    <h3 id="hsrWeaponResultTitle"></h3>
+                    <p id="hsrWeaponResultMessage"></p>
+                    <pre id="hsrWeaponResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- HSR 怪物数据更新工具 -->
+            <div id="hsr-monster-update" class="tools-section">
+                <h2 class="tools-section-title">HSR 怪物数据更新工具</h2>
+
+                <form id="hsrMonsterUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRMonsterUpdate();">
+                    <div class="form-group">
+                        <label for="hsrMonsterId">怪物ID列表</label>
+                        <textarea id="hsrMonsterId" rows="3" placeholder="多个ID用逗号或空格分隔，例如: 8015030, 8015040, 8015050">8015030</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrMonsterVersion">完整版本号</label>
+                        <input type="text" id="hsrMonsterVersion" value="4.3.51" placeholder="例如: 4.3.51">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrMonsterSubmitBtn">
+                        <span id="hsrMonsterBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrMonsterResult" class="result">
+                    <h3 id="hsrMonsterResultTitle"></h3>
+                    <p id="hsrMonsterResultMessage"></p>
+                    <pre id="hsrMonsterResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- HSR AR数据更新工具 -->
+            <div id="hsr-ar-update" class="tools-section">
+                <h2 class="tools-section-title">HSR AR异象仲裁数据更新工具</h2>
+
+                <form id="hsrArUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRArUpdate();">
+                    <div class="form-group">
+                        <label for="hsrArPeakId">Peak ID</label>
+                        <input type="text" id="hsrArPeakId" value="2" placeholder="例如: 2（烈阳幻域）">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrArVersion">完整版本号</label>
+                        <input type="text" id="hsrArVersion" value="4.3.52" placeholder="例如: 4.3.52">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrArSubmitBtn">
+                        <span id="hsrArBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrArResult" class="result">
+                    <h3 id="hsrArResultTitle"></h3>
+                    <p id="hsrArResultMessage"></p>
+                    <pre id="hsrArResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- HSR AS末日幻影数据更新工具 -->
+            <div id="hsr-as-update" class="tools-section">
+                <h2 class="tools-section-title">HSR AS末日幻影数据更新工具</h2>
+
+                <form id="hsrAsUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRAsUpdate();">
+                    <div class="form-group">
+                        <label for="hsrAsBossId">Boss ID</label>
+                        <input type="text" id="hsrAsBossId" value="3018" placeholder="例如: 3018（遗忘冽风）">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrAsVersion">完整版本号</label>
+                        <input type="text" id="hsrAsVersion" value="4.3.52" placeholder="例如: 4.3.52">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrAsSubmitBtn">
+                        <span id="hsrAsBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrAsResult" class="result">
+                    <h3 id="hsrAsResultTitle"></h3>
+                    <p id="hsrAsResultMessage"></p>
+                    <pre id="hsrAsResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- HSR 虚构叙事数据更新工具 -->
+            <div id="hsr-fiction-update" class="tools-section">
+                <h2 class="tools-section-title">HSR 虚构叙事数据更新工具</h2>
+
+                <form id="hsrFictionUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRFictionUpdate();">
+                    <div class="form-group">
+                        <label for="hsrFictionStoryId">Story ID</label>
+                        <input type="text" id="hsrFictionStoryId" value="101" placeholder="例如: 101">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrFictionVersion">完整版本号</label>
+                        <input type="text" id="hsrFictionVersion" value="4.3.52" placeholder="例如: 4.3.52">
+                    </div>
+
+                    <div class="form-group">
+                        <label>怪物参数覆盖（4层×2半波，空格分隔3个怪物参数，留空使用默认值）</label>
+                        <div id="hsrFictionMonsterOverrides" class="monster-overrides-grid">
+                            <div class="monster-floor" data-floor="1">
+                                <div class="monster-floor-label">第1层</div>
+                                <div class="monster-wave"><span class="wave-label">上</span><input type="text" placeholder="1.0 1.0 1.0"></div>
+                                <div class="monster-wave"><span class="wave-label">下</span><input type="text" placeholder="1.0 1.0 1.0"></div>
+                            </div>
+                            <div class="monster-floor" data-floor="2">
+                                <div class="monster-floor-label">第2层</div>
+                                <div class="monster-wave"><span class="wave-label">上</span><input type="text" placeholder="1.0 1.0 1.0"></div>
+                                <div class="monster-wave"><span class="wave-label">下</span><input type="text" placeholder="1.0 1.0 1.0"></div>
+                            </div>
+                            <div class="monster-floor" data-floor="3">
+                                <div class="monster-floor-label">第3层</div>
+                                <div class="monster-wave"><span class="wave-label">上</span><input type="text" placeholder="1.0 1.0 1.0"></div>
+                                <div class="monster-wave"><span class="wave-label">下</span><input type="text" placeholder="1.0 1.0 1.0"></div>
+                            </div>
+                            <div class="monster-floor" data-floor="4">
+                                <div class="monster-floor-label">第4层</div>
+                                <div class="monster-wave"><span class="wave-label">上</span><input type="text" placeholder="1.0 1.0 1.0"></div>
+                                <div class="monster-wave"><span class="wave-label">下</span><input type="text" placeholder="1.0 1.0 1.0"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrFictionSubmitBtn">
+                        <span id="hsrFictionBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrFictionResult" class="result">
+                    <h3 id="hsrFictionResultTitle"></h3>
+                    <p id="hsrFictionResultMessage"></p>
+                    <pre id="hsrFictionResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- HSR 混沌回忆数据更新工具 -->
+            <div id="hsr-chaos-update" class="tools-section">
+                <h2 class="tools-section-title">HSR 混沌回忆数据更新工具</h2>
+
+                <form id="hsrChaosUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRChaosUpdate();">
+                    <div class="form-group">
+                        <label for="hsrChaosMazeId">Maze ID</label>
+                        <input type="text" id="hsrChaosMazeId" value="1033" placeholder="例如: 1033">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrChaosVersion">完整版本号</label>
+                        <input type="text" id="hsrChaosVersion" value="4.3.52" placeholder="例如: 4.3.52">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrChaosHpRatios">楼层HP倍率（12层，逗号分隔，留空使用默认值）</label>
+                        <input type="text" id="hsrChaosHpRatios" value="" placeholder="1.0, 1.0, 1.0, 1.0, 1.0, 1.1, 1.1, 1.0, 1.0, 1.4, 2.0, 5.2">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrChaosSubmitBtn">
+                        <span id="hsrChaosBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrChaosResult" class="result">
+                    <h3 id="hsrChaosResultTitle"></h3>
+                    <p id="hsrChaosResultMessage"></p>
+                    <pre id="hsrChaosResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- 可以在这里添加更多工具的 section -->
+        </div>
+    </div>
+
+    <div class="back-btn" id="backBtn" title="返回首页">🏠</div>
+
+    <script src="/javascripts/tools.js"></script>
+</body>
+</html>

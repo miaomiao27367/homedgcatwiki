@@ -1,0 +1,10 @@
+skill_name->Name
+skill_desc->Desc
+damage_type->Elem
+sp_hit_base->SP
+phase_list->P 列表转为"1 2 3"这种用空格隔开的字符串
+extra->EE //这个只用写入id extra的信息单独写到一个ee.js文件里
+id写为js的组名
+Key和K先空着
+
+json读取child下的第一个skill_list组

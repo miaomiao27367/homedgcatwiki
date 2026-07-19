@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色数据图形化编辑器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #27363E;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #df903b;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background-color: #df903b;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 0 5px 5px 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        button.primary {
+            background-color: #df903b;
+            color: white;
+        }
+        
+        button.secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .skill-item,
+        .trace-item,
+        .constellation-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .skill-item h4,
+        .trace-item h4,
+        .constellation-item h4 {
+            margin-bottom: 10px;
+            color: #df903b;
+        }
+        
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        .export-section {
+            background-color: #e7f3ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .export-section h3 {
+            margin-bottom: 10px;
+        }
+        
+        .export-content {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>角色数据图形化编辑器</h1>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="basic">基础信息</div>
+            <div class="tab" data-tab="skills">技能</div>
+            <div class="tab" data-tab="traces">行迹</div>
+            <div class="tab" data-tab="constellations">星魂</div>
+            <div class="tab" data-tab="export">导出数据</div>
+        </div>
+        
+        <div class="tab-content active" id="basic">
+            <h2>基础信息</h2>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="id">角色ID</label>
+                    <input type="number" id="id" placeholder="例如：1221">
+                </div>
+                <div class="form-group">
+                    <label for="name">角色名称</label>
+                    <input type="text" id="name" placeholder="例如：云璃">
+                </div>
+                <div class="form-group">
+                    <label for="rarity">稀有度</label>
+                    <select id="rarity">
+                        <option value="4">4星</option>
+                        <option value="5">5星</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="element">元素</label>
+                    <select id="element">
+                        <option value="Phys">物理</option>
+                        <option value="Fire">火</option>
+                        <option value="Ice">冰</option>
+                        <option value="Wind">风</option>
+                        <option value="Elec">雷</option>
+                        <option value="Quantum">量子</option>
+                        <option value="Imaginary">虚数</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="path">路径</label>
+                    <select id="path">
+                        <option value="Destruction">毁灭</option>
+                        <option value="Preservation">存护</option>
+                        <option value="Harmony">和谐</option>
+                        <option value="Nihility">虚无</option>
+                        <option value="Hunt">巡猎</option>
+                        <option value="Erudition">智识</option>
+                        <option value="Abundance">丰饶</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="icon">图标路径</label>
+                    <input type="text" id="icon" placeholder="例如：avatarshopicon/Avatar/1415">
+                </div>
+                <div class="form-group">
+                    <label for="pic">图片路径</label>
+                    <input type="text" id="pic" placeholder="例如：avatardrawcard/1415.png">
+                </div>
+                <div class="form-group">
+                    <label for="camp">阵营</label>
+                    <input type="number" id="camp" placeholder="例如：116">
+                </div>
+                <div class="form-group">
+                    <label for="sp">初始能量</label>
+                    <input type="number" id="sp" placeholder="例如：24.0">
+                </div>
+                <div class="form-group">
+                    <label for="desc">角色描述</label>
+                    <textarea id="desc" placeholder="角色背景描述"></textarea>
+                </div>
+            </div>
+            
+            <h3>属性</h3>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="hp">生命值</label>
+                    <input type="number" id="hp" placeholder="例如：1397.088">
+                </div>
+                <div class="form-group">
+                    <label for="atk">攻击力</label>
+                    <input type="number" id="atk" placeholder="例如：446.292">
+                </div>
+                <div class="form-group">
+                    <label for="def">防御力</label>
+                    <input type="number" id="def" placeholder="例如：582.12">
+                </div>
+                <div class="form-group">
+                    <label for="spd">速度</label>
+                    <input type="number" id="spd" placeholder="例如：101.0">
+                </div>
+                <div class="form-group">
+                    <label for="aggro">嘲讽值</label>
+                    <input type="number" id="aggro" placeholder="例如：100.0">
+                </div>
+            </div>
+            
+            <h3>配音</h3>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="cv-cn">中文配音</label>
+                    <input type="text" id="cv-cn" placeholder="例如：宴宁">
+                </div>
+                <div class="form-group">
+                    <label for="cv-en">英文配音</label>
+                    <input type="text" id="cv-en" placeholder="例如：Aiden Dawn">
+                </div>
+                <div class="form-group">
+                    <label for="cv-jp">日文配音</label>
+                    <input type="text" id="cv-jp" placeholder="例如：井上麻里奈">
+                </div>
+                <div class="form-group">
+                    <label for="cv-kr">韩文配音</label>
+                    <input type="text" id="cv-kr" placeholder="例如：조경이">
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="skills">
+            <h2>技能</h2>
+            <div id="skills-container">
+                <div class="skill-item">
+                    <h4>技能 1</h4>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="skill1-id">技能ID</label>
+                            <input type="number" id="skill1-id" placeholder="例如：122101">
+                        </div>
+                        <div class="form-group">
+                            <label for="skill1-name">技能名称</label>
+                            <input type="text" id="skill1-name" placeholder="技能名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="skill1-icon">技能图标</label>
+                            <input type="text" id="skill1-icon" placeholder="例如：SkillIcon_1505_Normal">
+                        </div>
+                        <div class="form-group">
+                            <label for="skill1-type">技能类型</label>
+                            <select id="skill1-type">
+                                <option value="普攻">普攻</option>
+                                <option value="战技">战技</option>
+                                <option value="终结技">终结技</option>
+                                <option value="天赋">天赋</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="skill1-desc">技能描述</label>
+                        <textarea id="skill1-desc" placeholder="文字+占位符<b>#1[p]</b>"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="skill1-bp">战技点</label>
+                        <input type="number" id="skill1-bp" placeholder="例如：1">
+                    </div>
+                    <div class="form-group">
+                        <label for="skill1-spadd">SP增加</label>
+                        <input type="number" id="skill1-spadd" placeholder="例如：20">
+                    </div>
+                    <div class="form-group">
+                        <label for="skill1-attacktype">攻击类型</label>
+                        <input type="text" id="skill1-attacktype" placeholder="例如：Normal">
+                    </div>
+                    <button class="remove-btn">删除技能</button>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addSkill()">添加技能</button>
+        </div>
+        
+        <div class="tab-content" id="traces">
+            <h2>行迹</h2>
+            
+            <h3>基础属性加成</h3>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="critical-chance">暴击率</label>
+                    <input type="number" id="critical-chance" placeholder="例如：0.187">
+                </div>
+                <div class="form-group">
+                    <label for="speed-delta">速度加成</label>
+                    <input type="number" id="speed-delta" placeholder="例如：0">
+                </div>
+                <div class="form-group">
+                    <label for="damage-ratio">伤害加成</label>
+                    <input type="number" id="damage-ratio" placeholder="例如：0.18">
+                </div>
+            </div>
+            
+            <div id="traces-container">
+                <div class="trace-item">
+                    <h4>行迹 1</h4>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="tree1-name">行迹1名称</label>
+                            <input type="text" id="tree1-name" placeholder="行迹1名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="tree1-icon">行迹1图标</label>
+                            <input type="text" id="tree1-icon" placeholder="图标文件名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tree1-desc">行迹1描述</label>
+                        <textarea id="tree1-desc" placeholder="行迹1效果描述"></textarea>
+                    </div>
+                </div>
+                <div class="trace-item">
+                    <h4>行迹 2</h4>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="tree2-name">行迹2名称</label>
+                            <input type="text" id="tree2-name" placeholder="行迹2名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="tree2-icon">行迹2图标</label>
+                            <input type="text" id="tree2-icon" placeholder="图标文件名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tree2-desc">行迹2描述</label>
+                        <textarea id="tree2-desc" placeholder="行迹2效果描述"></textarea>
+                    </div>
+                </div>
+                <div class="trace-item">
+                    <h4>行迹 3</h4>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="tree3-name">行迹3名称</label>
+                            <input type="text" id="tree3-name" placeholder="行迹3名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="tree3-icon">行迹3图标</label>
+                            <input type="text" id="tree3-icon" placeholder="图标文件名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tree3-desc">行迹3描述</label>
+                        <textarea id="tree3-desc" placeholder="行迹3效果描述"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="constellations">
+            <h2>星魂</h2>
+            <div id="constellations-container">
+                <div class="constellation-item">
+                    <h4>星魂 1</h4>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="const1-name">星魂名称</label>
+                            <input type="text" id="const1-name" placeholder="星魂名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="const1-icon">星魂图标</label>
+                            <input type="text" id="const1-icon" placeholder="图标文件名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="const1-desc">星魂描述</label>
+                        <textarea id="const1-desc" placeholder="星魂效果描述"></textarea>
+                    </div>
+                    <button class="remove-btn">删除星魂</button>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addConstellation()">添加星魂</button>
+        </div>
+        
+        <div class="tab-content" id="export">
+            <h2>导出数据</h2>
+            <div class="button-group">
+                <button class="primary" onclick="generateData()">生成数据</button>
+                <button class="secondary" onclick="copyData()">复制数据</button>
+                <button class="secondary" onclick="downloadData()">下载文件</button>
+            </div>
+            <div class="export-section">
+                <h3>生成的数据</h3>
+                <div class="export-content" id="export-content"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 切换标签
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // 移除所有标签的活动状态
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // 添加当前标签的活动状态
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // 添加技能
+        function addSkill() {
+            const container = document.getElementById('skills-container');
+            const skillCount = container.children.length + 1;
+            
+            const skillItem = document.createElement('div');
+            skillItem.className = 'skill-item';
+            skillItem.innerHTML = `
+                <h4>技能 ${skillCount}</h4>
+                <div class="grid">
+                    <div class="form-group">
+                        <label for="skill${skillCount}-id">技能ID</label>
+                        <input type="number" id="skill${skillCount}-id" placeholder="例如：12210${skillCount}">
+                    </div>
+                    <div class="form-group">
+                        <label for="skill${skillCount}-name">技能名称</label>
+                        <input type="text" id="skill${skillCount}-name" placeholder="技能名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="skill${skillCount}-icon">技能图标</label>
+                        <input type="text" id="skill${skillCount}-icon" placeholder="例如：SkillIcon_1505_Normal">
+                    </div>
+                    <div class="form-group">
+                        <label for="skill${skillCount}-type">技能类型</label>
+                        <select id="skill${skillCount}-type">
+                            <option value="普攻">普攻</option>
+                            <option value="战技">战技</option>
+                            <option value="终结技">终结技</option>
+                            <option value="天赋">天赋</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="skill${skillCount}-desc">技能描述</label>
+                    <textarea id="skill${skillCount}-desc" placeholder="文字+占位符<b>#1[p]</b>"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="skill${skillCount}-bp">战技点</label>
+                    <input type="number" id="skill${skillCount}-bp" placeholder="例如：1">
+                </div>
+                <div class="form-group">
+                    <label for="skill${skillCount}-spadd">SP增加</label>
+                    <input type="number" id="skill${skillCount}-spadd" placeholder="例如：20">
+                </div>
+                <div class="form-group">
+                    <label for="skill${skillCount}-attacktype">攻击类型</label>
+                    <input type="text" id="skill${skillCount}-attacktype" placeholder="例如：Normal">
+                </div>
+                <button class="remove-btn" onclick="removeItem(this)">删除技能</button>
+            `;
+            
+            container.appendChild(skillItem);
+        }
+        
+        // 添加行迹
+        function addTrace() {
+            const container = document.getElementById('traces-container');
+            const traceCount = container.children.length + 1;
+            
+            const traceItem = document.createElement('div');
+            traceItem.className = 'trace-item';
+            traceItem.innerHTML = `
+                <h4>行迹 ${traceCount}</h4>
+                <div class="grid">
+                    <div class="form-group">
+                        <label for="trace${traceCount}-name">行迹名称</label>
+                        <input type="text" id="trace${traceCount}-name" placeholder="行迹名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="trace${traceCount}-icon">行迹图标</label>
+                        <input type="text" id="trace${traceCount}-icon" placeholder="图标文件名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="trace${traceCount}-desc">行迹描述</label>
+                    <textarea id="trace${traceCount}-desc" placeholder="行迹效果描述"></textarea>
+                </div>
+                <button class="remove-btn" onclick="removeItem(this)">删除行迹</button>
+            `;
+            
+            container.appendChild(traceItem);
+        }
+        
+        // 添加星魂
+        function addConstellation() {
+            const container = document.getElementById('constellations-container');
+            const constCount = container.children.length + 1;
+            
+            const constItem = document.createElement('div');
+            constItem.className = 'constellation-item';
+            constItem.innerHTML = `
+                <h4>星魂 ${constCount}</h4>
+                <div class="grid">
+                    <div class="form-group">
+                        <label for="const${constCount}-name">星魂名称</label>
+                        <input type="text" id="const${constCount}-name" placeholder="星魂名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="const${constCount}-icon">星魂图标</label>
+                        <input type="text" id="const${constCount}-icon" placeholder="图标文件名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="const${constCount}-desc">星魂描述</label>
+                    <textarea id="const${constCount}-desc" placeholder="星魂效果描述"></textarea>
+                </div>
+                <button class="remove-btn" onclick="removeItem(this)">删除星魂</button>
+            `;
+            
+            container.appendChild(constItem);
+        }
+        
+        // 删除项目
+        function removeItem(button) {
+            const item = button.parentElement;
+            item.remove();
+        }
+        
+        // 生成数据
+        function generateData() {
+            // 基础信息
+            const basicInfo = {
+                _id: document.getElementById('id').value,
+                Ver: "",
+                Name: document.getElementById('name').value,
+                Desc: document.getElementById('desc').value,
+                Rarity: document.getElementById('rarity').value,
+                Element: document.getElementById('element').value,
+                Path: document.getElementById('path').value,
+                SP: document.getElementById('sp').value || 24.0,
+                Skills: [], // 技能id
+                BydSkills: [],
+                Ranks: [], // 星魂id
+                Icon: document.getElementById('icon').value,
+                Pic: document.getElementById('pic').value,
+                Mat: [], // 材料id
+                Stats: {
+                    HP: document.getElementById('hp').value || 1397.088,
+                    ATK: document.getElementById('atk').value || 446.292,
+                    DEF: document.getElementById('def').value || 582.12,
+                    SPD: document.getElementById('spd').value || 101.0,
+                    Aggro: document.getElementById('aggro').value || 100.0
+                },
+                CV: [
+                    document.getElementById('cv-cn').value || "",
+                    document.getElementById('cv-en').value || "",
+                    document.getElementById('cv-jp').value || "",
+                    document.getElementById('cv-kr').value || ""
+                ],
+                Camp: document.getElementById('camp').value || 116,
+                ExtraSkills: [],
+                Servant: {
+                    _id: parseInt(document.getElementById('id').value) + 10000 || 11415,
+                    Name: "",
+                    Icon: "",
+                    Aggro: 100.0
+                },
+                V: [
+                    "v1"
+                ]
+            };
+            
+            // 行迹数据
+            const criticalChance = document.getElementById('critical-chance').value || 0.187;
+            const speedDelta = document.getElementById('speed-delta').value || 0;
+            const damageRatio = document.getElementById('damage-ratio').value || 0.18;
+            
+            const tree1Name = document.getElementById('tree1-name').value || '行迹1';
+            const tree1Desc = document.getElementById('tree1-desc').value || '行迹1描述';
+            const tree1Icon = document.getElementById('tree1-icon').value || `SkillIcon_${basicInfo._id}_SkillTree1`;
+            
+            const tree2Name = document.getElementById('tree2-name').value || '行迹2';
+            const tree2Desc = document.getElementById('tree2-desc').value || '行迹2描述';
+            const tree2Icon = document.getElementById('tree2-icon').value || `SkillIcon_${basicInfo._id}_SkillTree2`;
+            
+            const tree3Name = document.getElementById('tree3-name').value || '行迹3';
+            const tree3Desc = document.getElementById('tree3-desc').value || '行迹3描述';
+            const tree3Icon = document.getElementById('tree3-icon').value || `SkillIcon_${basicInfo._id}_SkillTree3`;
+            
+            // 技能
+            const skills = [];
+            const ranks = [];
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach((item, index) => {
+                const skillId = item.querySelector(`#skill${index + 1}-id`).value;
+                const skillName = item.querySelector(`#skill${index + 1}-name`).value;
+                
+                if (skillId && skillName) {
+                    skills.push(skillId);
+                }
+            });
+            basicInfo.Skills = skills;
+
+            const rankItems = document.querySelectorAll('.rank-item');
+            rankItems.forEach((item, index) => {
+                const rankId = item.querySelector(`#rank${index + 1}-id`).value;
+                const rankName = item.querySelector(`#rank${index + 1}-name`).value;
+
+                if (rankId && rankName) {
+                    ranks.push(rankId);
+                }
+            });
+            basicInfo.Ranks = ranks;
+
+            // 生成数据字符串
+            let dataString = `// 角色基础信息
+var _avatar_ = [
+    {
+        "_id": ${basicInfo._id},
+        "Ver": "${basicInfo.Ver}",
+        "Name": "${basicInfo.Name}",
+        "Desc": "${basicInfo.Desc}",
+        "Rarity": ${basicInfo.Rarity},
+        "Element": "${basicInfo.Element}",
+        "Path": "${basicInfo.Path}",
+        "SP": ${basicInfo.SP},
+        "Skills": [${skills.join(', ')}],
+        "BydSkills": [],
+        "Ranks": [${ranks.join(', ')}],
+        "Icon": "${basicInfo.Icon}",
+        "Pic": "${basicInfo.Pic}",
+        "Mat": [],
+        "Stats": {
+            "HP": ${basicInfo.Stats.HP},
+            "ATK": ${basicInfo.Stats.ATK},
+            "DEF": ${basicInfo.Stats.DEF},
+            "SPD": ${basicInfo.Stats.SPD},
+            "Aggro": ${basicInfo.Stats.Aggro}
+        },
+        "CV": [
+            "${basicInfo.CV[0]}",
+            "${basicInfo.CV[1]}",
+            "${basicInfo.CV[2]}",
+            "${basicInfo.CV[3]}"
+        ],
+        "Camp": ${basicInfo.Camp},
+        "ExtraSkills": [],
+        "Servant": {
+            "_id": ${basicInfo.Servant._id},
+            "Name": "${basicInfo.Servant.Name}",
+            "Icon": "${basicInfo.Servant.Icon}",
+            "Aggro": ${basicInfo.Servant.Aggro}
+        },
+        "V": [
+            "v1"
+        ]
+    }
+];
+
+// 技能数据
+var _avatarskill_ = {
+`;
+            
+            // 添加技能详细数据
+            skillItems.forEach((item, index) => {
+                const skillId = item.querySelector(`#skill${index + 1}-id`).value;
+                const skillName = item.querySelector(`#skill${index + 1}-name`).value;
+                const skillIcon = item.querySelector(`#skill${index + 1}-icon`).value;
+                const skillType = item.querySelector(`#skill${index + 1}-type`).value;
+                const skillDesc = item.querySelector(`#skill${index + 1}-desc`).value;
+                const skillBp = item.querySelector(`#skill${index + 1}-bp`).value || 1;
+                const skillSpAdd = item.querySelector(`#skill${index + 1}-spadd`).value || 20;
+                const skillAttackType = item.querySelector(`#skill${index + 1}-attacktype`).value || "Normal";
+                
+                if (skillId && skillName) {
+                    dataString += `    "${skillId}": {
+        "v1": {
+            "Name": "${skillName}",
+            "MaxLevel": 15,
+            "Type": "${skillType}",
+            "Tag": "SingleAttack",
+            "Desc": "${skillDesc.replace(/"/g, '\"')}",
+            "Params": [[0.5],[0.6],[0.7],[0.8],[0.9],[1],[1.1],[1.2],[1.3],[1.4],[1.45],[1.5],[1.55],[1.6],[1.65]],
+            "BP": ${skillBp},
+            "SPAdd": ${skillSpAdd},
+            "AttackType": "${skillAttackType}",
+            "Stance": [10.0, 0.0, 0.0],
+            "Icon": "${skillIcon}",
+            "EE": []
+        }
+    },
+`;
+                }
+            });
+            
+            dataString += `};
+
+// 技能树数据
+var _avatarskilltree_ = {
+    "${basicInfo._id}": {
+        "v1": {
+            "Add": {
+                "CriticalChanceBase": ${criticalChance},
+                "SpeedDelta": ${speedDelta},
+                "ElationDamageAddedRatioBase": ${damageRatio}
+            },
+            "Tree1": {
+                "Name": "${tree1Name}",
+                "Desc": "${tree1Desc.replace(/"/g, '\"')}",
+                "Icon": "${tree1Icon}"
+            },
+            "Tree2": {
+                "Name": "${tree2Name}",
+                "Desc": "${tree2Desc.replace(/"/g, '\"')}",
+                "Icon": "${tree2Icon}"
+            },
+            "Tree3": {
+                "Name": "${tree3Name}",
+                "Desc": "${tree3Desc.replace(/"/g, '\"')}",
+                "Icon": "${tree3Icon}"
+            }
+        }
+    }
+};
+
+// 星魂数据
+var _avatarrank_ = {
+`;
+            
+            // 添加星魂数据
+            const constItems = document.querySelectorAll('.constellation-item');
+            constItems.forEach((item, index) => {
+                const constName = item.querySelector(`#const${index + 1}-name`).value;
+                const constDesc = item.querySelector(`#const${index + 1}-desc`).value;
+                const constIcon = item.querySelector(`#const${index + 1}-icon`).value;
+                
+                if (constName) {
+                    dataString += `    "${basicInfo._id}0${index + 1}": {
+        "v1": {
+            "Rank": ${index + 1},
+            "Name": "${constName}",
+            "Desc": "${constDesc.replace(/"/g, '\"')}",
+            "Icon": "${constIcon}"
+        }
+    },
+`;
+                }
+            });
+            
+            dataString += `};`;
+            
+            // 显示生成的数据
+            document.getElementById('export-content').textContent = dataString;
+        }
+        
+        // 复制数据
+        function copyData() {
+            const content = document.getElementById('export-content');
+            content.select();
+            document.execCommand('copy');
+            alert('数据已复制到剪贴板');
+        }
+        
+        // 下载数据
+        function downloadData() {
+            const content = document.getElementById('export-content').textContent;
+            const blob = new Blob([content], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `avatar_${document.getElementById('id').value || 'new'}.js`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

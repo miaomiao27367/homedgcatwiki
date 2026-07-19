@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>混沌深渊配置工具【全局Buff可编辑版】</title>
+    <style>
+        *{box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+        body{margin:20px;background:#f5f7fa}
+        .container{max-width:1400px;margin:auto}
+        .section{background:white;padding:15px 20px;margin-bottom:15px;border-radius:8px;box-shadow:0 2px 8px #00000010}
+        h2{color:#2c3e50;margin-top:10px}
+        h3{color:#34495e;font-size:16px;margin:10px 0}
+        .row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+        .col{flex:1;min-width:110px}
+        .col-full{width:100%}
+        label{font-size:14px;color:#555;margin-bottom:4px;display:block}
+        input,textarea{width:100%;padding:6px 8px;border:1px solid #ccc;border-radius:4px}
+        textarea{min-height:80px;resize:vertical}
+        button{padding:8px 14px;background:#3498db;color:white;border:none;border-radius:4px;cursor:pointer;margin-right:6px;margin-top:5px}
+        .btn-red{background:#e74c3c}
+        .btn-green{background:#2ecc71}
+        .btn-orange{background:#f39c12}
+        .btn-copy-mon{background:#9b59b6;color:white;padding:4px 8px;font-size:12px;margin-left:4px}
+        .wave{border:1px solid #ddd;padding:10px;margin-bottom:10px;border-radius:6px}
+        .monster{display:flex;gap:6px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+        .output{background:#f8f9fa;padding:15px;border-radius:6px;white-space:pre-wrap;font-family:Consolas,monospace;margin-top:20px;max-height:700px;overflow-y:scroll}
+        .floor-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px}
+        .floor-btn{padding:6px 10px;background:#ecf0f1;color:#333;border-radius:4px;cursor:pointer}
+        .floor-btn.active{background:#3498db;color:white}
+        .copy-bar{background:#eef7ff;padding:10px;border-radius:6px;margin:10px 0}
+        .calc-tip{color:#27ae60;font-size:13px;margin-top:4px}
+        .mon-copy-tip{color:#9b59b6;font-size:12px;margin-left:8px}
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="section">
+    <h2>混沌深渊基础信息 & 全局Buff配置</h2>
+    <div class="row">
+        <div class="col"><label>混沌ID(_id)</label><input id="chaosId" value="1030" oninput="syncBase('id',this.value)"></div>
+        <div class="col"><label>名称(Name)</label><input id="chaosName" value="网络谜踪" oninput="syncBase('name',this.value)"></div>
+    </div>
+    <h3>全局场地Buff（记忆紊流）</h3>
+    <div class="row">
+        <div class="col"><label>BuffID(_id)</label><input id="buffId" value="3030143" oninput="syncBase('buffId',this.value)"></div>
+        <div class="col"><label>Buff名称(Name)</label><input id="buffName" value="记忆紊流" oninput="syncBase('buffName',this.value)"></div>
+    </div>
+    <div class="row">
+        <div class="col-full">
+            <label>Buff描述(Desc)</label>
+            <textarea id="buffDesc" oninput="syncBase('buffDesc',this.value)">我方目标攻击持有对应属性弱点的精英或首领敌人后，为【记忆紊流】增加&lt;color style='color:#f29e38;'&gt; 1 &lt;/color&gt;段攻击段数，击破精英或首领敌人弱点时额外增加&lt;color style='color:#f29e38;'&gt; 1 &lt;/color&gt;段攻击段数，最多叠加&lt;color style='color:#f29e38;'&gt; 10 &lt;/color&gt;段。&lt;br&gt;每个轮开始时，【记忆紊流】的每段攻击对随机敌方目标造成1次真实伤害。</textarea>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>楼层选择</h2>
+    <div class="floor-nav" id="floorNav"></div>
+    <div class="copy-bar">
+        <label>楼层级复用：</label>
+        <select id="copyFromFloor" style="width:120px;padding:6px"></select>
+        <button class="btn-green" onclick="pasteFromFloor()">✅ 复制整层数据</button>
+        <button class="btn-orange" onclick="clearCurrentFloor()">🗑️ 清空当前层</button>
+        <span class="mon-copy-tip">👉 怪物级复用：点击怪物后「复制怪物」，波次内「粘贴怪物」</span>
+    </div>
+</div>
+
+<div id="floorContent"></div>
+
+<div class="section">
+    <button class="btn-green" onclick="generateFinal()">生成标准_chaos代码</button>
+    <button class="btn-red" onclick="resetAll()">重置所有数据</button>
+    <div class="output" id="output"></div>
+</div>
+
+</div>
+
+<script>
+// 数据结构 100% 匹配范例
+let data = {
+    base: { 
+        id: "1030", 
+        name: "网络谜踪",
+        buffId: "3030143",
+        buffName: "记忆紊流",
+        buffDesc: "我方目标攻击持有对应属性弱点的精英或首领敌人后，为【记忆紊流】增加<color style='color:#f29e38;'> 1 </color>段攻击段数，击破精英或首领敌人弱点时额外增加<color style='color:#f29e38;'> 1 </color>段攻击段数，最多叠加<color style='color:#f29e38;'> 10 </color>段。<br>每个轮开始时，【记忆紊流】的每段攻击对随机敌方目标造成1次真实伤害。"
+    },
+    floors: []
+};
+
+// 怪物缓存（用于单只怪物复用）
+let copiedMonster = null;
+
+// 初始化12层
+const totalFloors = 12;
+for (let i = 0; i < totalFloors; i++) {
+    data.floors.push({
+        elemUpper: ["Ice","Elec"],
+        elemLower: ["Fire","Elec"],
+        hpSingle: 0,
+        hpMulti: 0,
+        upper: [[{ id: "", hp: "", spd: "", stance: "" }]],
+        lower: [[{ id: "", hp: "", spd: "", stance: "" }]],
+        hpManual: false
+    });
+}
+
+let currentFloor = 0;
+
+window.onload = function () {
+    renderFloorNav();
+    renderCopySelect();
+    loadData();
+    switchFloor(0);
+};
+
+// 本地存储记忆
+function saveData() { localStorage.setItem("chaosToolData", JSON.stringify(data)); }
+function loadData() { 
+    let d = localStorage.getItem("chaosToolData"); 
+    if(d) {
+        data = JSON.parse(d);
+        // 兼容旧数据，补充buff相关字段
+        if (!data.base.buffId) data.base.buffId = "3030143";
+        if (!data.base.buffName) data.base.buffName = "记忆紊流";
+        if (!data.base.buffDesc) data.base.buffDesc = "我方目标攻击持有对应属性弱点的精英或首领敌人后，为【记忆紊流】增加<color style='color:#f29e38;'> 1 </color>段攻击段数，击破精英或首领敌人弱点时额外增加<color style='color:#f29e38;'> 1 </color>段攻击段数，最多叠加<color style='color:#f29e38;'> 10 </color>段。<br>每个轮开始时，【记忆紊流】的每段攻击对随机敌方目标造成1次真实伤害。";
+        data.floors.forEach(floor => {
+            if (floor.hpManual === undefined) floor.hpManual = false;
+        });
+    }
+}
+
+// 基础信息同步（含Buff字段）
+function syncBase(key, val) {
+    data.base[key] = val;
+    saveData();
+}
+
+// 楼层导航
+function renderFloorNav() {
+    let html = "";
+    for (let i=0;i<totalFloors;i++) html += `<div class="floor-btn" onclick="switchFloor(${i})" id="f${i}">第${i+1}层</div>`;
+    document.getElementById("floorNav").innerHTML = html;
+}
+function renderCopySelect() {
+    let sel = document.getElementById("copyFromFloor");
+    sel.innerHTML = "";
+    for(let i=0;i<totalFloors;i++) sel.innerHTML += `<option value="${i}">第${i+1}层</option>`;
+}
+
+// 切换楼层
+function switchFloor(idx) {
+    currentFloor = idx;
+    document.querySelectorAll(".floor-btn").forEach((b,i)=>b.classList.toggle("active",i===idx));
+    renderFloor();
+}
+
+// 渲染楼层
+function renderFloor() {
+    let f = data.floors[currentFloor];
+    let html = `
+    <div class="section">
+        <div class="row">
+            <div class="col"><label>上半属性 ElemUpper</label><input value="${f.elemUpper.join(',')}" oninput="sync('elemUpper',this.value.split(','))"></div>
+            <div class="col"><label>下半属性 ElemLower</label><input value="${f.elemLower.join(',')}" oninput="sync('elemLower',this.value.split(','))"></div>
+            <div class="col">
+                <label>单攻血量 HPSingle</label>
+                <input id="hpSingleInput" value="${f.hpSingle}" oninput="manualHp('hpSingle',this.value)">
+                <div class="calc-tip">${f.hpManual ? "⚠️ 手动模式" : "✅ 自动计算（所有怪物HP总和）"}</div>
+            </div>
+            <div class="col">
+                <label>群攻血量 HPMulti</label>
+                <input id="hpMultiInput" value="${f.hpMulti}" oninput="manualHp('hpMulti',this.value)">
+                <div class="calc-tip">✅ 自动 = 单攻血量 × 0.8（四舍五入）</div>
+            </div>
+        </div>
+        <h3>上半区 Upper ${copiedMonster ? '<span class="mon-copy-tip">✅ 已缓存1只怪物，可粘贴</span>' : ''}</h3>
+        <div id="upperWaves"></div>
+        <button onclick="addWave('upper')">➕ 增加波次</button>
+    </div>
+    <div class="section">
+        <h3>下半区 Lower ${copiedMonster ? '<span class="mon-copy-tip">✅ 已缓存1只怪物，可粘贴</span>' : ''}</h3>
+        <div id="lowerWaves"></div>
+        <button onclick="addWave('lower')">➕ 增加波次</button>
+    </div>`;
+    document.getElementById("floorContent").innerHTML = html;
+    renderWaves('upper');
+    renderWaves('lower');
+}
+
+// 同步基础字段
+function sync(key, val) {
+    data.floors[currentFloor][key] = val;
+    saveData();
+}
+
+// 手动修改血量
+function manualHp(key, val) {
+    const floor = data.floors[currentFloor];
+    floor[key] = Number(val) || 0;
+    floor.hpManual = true;
+    saveData();
+    if (key === "hpSingle") {
+        floor.hpMulti = Math.round(floor.hpSingle * 0.8);
+        document.getElementById("hpMultiInput").value = floor.hpMulti;
+    }
+}
+
+// 自动计算总血量
+function calcTotalHp() {
+    const floor = data.floors[currentFloor];
+    if (floor.hpManual) return;
+
+    let total = 0;
+    floor.upper.forEach(wave => {
+        wave.forEach(monster => {
+            total += Number(monster.hp) || 0;
+        });
+    });
+    floor.lower.forEach(wave => {
+        wave.forEach(monster => {
+            total += Number(monster.hp) || 0;
+        });
+    });
+
+    floor.hpSingle = total;
+    floor.hpMulti = Math.round(total * 0.8);
+    saveData();
+
+    if (document.getElementById("hpSingleInput")) {
+        document.getElementById("hpSingleInput").value = floor.hpSingle;
+        document.getElementById("hpMultiInput").value = floor.hpMulti;
+    }
+}
+
+// 复制怪物（坐标定位，无注入问题）
+function copyMonster(side, waveIdx, monIdx) {
+    const monster = data.floors[currentFloor][side][waveIdx][monIdx];
+    copiedMonster = {...monster};
+    alert("✅ 怪物复制成功！可在任意波次点击「粘贴怪物」");
+    renderFloor();
+}
+
+// 粘贴怪物（坐标定位）
+function pasteMonster(side, waveIdx) {
+    if (!copiedMonster) {
+        alert("❌ 未复制任何怪物，请先点击任意怪物的「复制怪物」按钮");
+        return;
+    }
+    data.floors[currentFloor][side][waveIdx].push({...copiedMonster});
+    saveData();
+    renderWaves(side);
+    calcTotalHp();
+}
+
+// 波次怪物渲染
+function renderWaves(side) {
+    let waves = data.floors[currentFloor][side];
+    let html = '';
+    waves.forEach((wave,wIdx)=>{
+        html += `<div class="wave">
+            波次 ${wIdx+1} 
+            <button class="btn-red" onclick="delWave('${side}',${wIdx})">删除波次</button>
+            <button class="btn-copy-mon" onclick="pasteMonster('${side}',${wIdx})">📋 粘贴怪物</button>
+        `;
+        wave.forEach((m,mIdx)=>{
+            html += `
+            <div class="monster">
+                <input placeholder="ID" value="${m.id||''}" oninput="syncMon('${side}',${wIdx},${mIdx},'id',this.value)" style="width:90px">
+                <input placeholder="HP" value="${m.hp||''}" oninput="syncMon('${side}',${wIdx},${mIdx},'hp',this.value)" style="width:110px">
+                <input placeholder="SPD" value="${m.spd||''}" oninput="syncMon('${side}',${wIdx},${mIdx},'spd',this.value)" style="width:80px">
+                <input placeholder="Stance" value="${m.stance||''}" oninput="syncMon('${side}',${wIdx},${mIdx},'stance',this.value)" style="width:80px">
+                <button class="btn-red" onclick="delMon('${side}',${wIdx},${mIdx})">× 删除</button>
+                <button class="btn-copy-mon" onclick="copyMonster('${side}',${wIdx},${mIdx})">📋 复制怪物</button>
+            </div>`;
+        });
+        html += `<button onclick="addMon('${side}',${wIdx})">➕ 添加怪物</button></div>`;
+    });
+    document.getElementById(side+'Waves').innerHTML = html;
+}
+
+// 怪物数据同步
+function syncMon(s,w,m,k,v) {
+    data.floors[currentFloor][s][w][m][k] = v;
+    saveData();
+    if (k === "hp") calcTotalHp();
+}
+
+// 波次/怪物操作
+function addWave(s) {
+    data.floors[currentFloor][s].push([{id:"",hp:"",spd:"",stance:""}]);
+    renderWaves(s); 
+    saveData();
+    calcTotalHp();
+}
+function delWave(s,w) {
+    if(data.floors[currentFloor][s].length>1) {
+        data.floors[currentFloor][s].splice(w,1);
+        renderWaves(s); 
+        saveData();
+        calcTotalHp();
+    }
+}
+function addMon(s,w) {
+    data.floors[currentFloor][s][w].push({id:"",hp:"",spd:"",stance:""});
+    renderWaves(s); 
+    saveData();
+    calcTotalHp();
+}
+function delMon(s,w,m) {
+    data.floors[currentFloor][s][w].splice(m,1);
+    renderWaves(s); 
+    saveData();
+    calcTotalHp();
+}
+
+// 楼层级复用
+function pasteFromFloor() {
+    let from = parseInt(document.getElementById("copyFromFloor").value);
+    if(from === currentFloor) { alert("不能复制自己"); return; }
+    if(!confirm("复制覆盖当前层所有数据？")) return;
+    data.floors[currentFloor] = JSON.parse(JSON.stringify(data.floors[from]));
+    data.floors[currentFloor].hpManual = false;
+    saveData(); 
+    renderFloor();
+    calcTotalHp();
+    alert("✅ 整层复制完成！已自动重新计算总血量");
+}
+
+// 清空楼层
+function clearCurrentFloor() {
+    if(!confirm("清空当前层所有数据？")) return;
+    data.floors[currentFloor] = {
+        elemUpper:["Ice","Elec"], 
+        elemLower:["Fire","Elec"], 
+        hpSingle:0, 
+        hpMulti:0,
+        upper:[[{id:"",hp:"",spd:"",stance:""}]], 
+        lower:[[{id:"",hp:"",spd:"",stance:""}]],
+        hpManual: false
+    };
+    saveData(); 
+    renderFloor();
+    calcTotalHp();
+}
+
+// ==============================================
+// ✅ 核心：生成 100% 匹配你范例的格式（含自定义Buff）
+// ==============================================
+function generateFinal() {
+    // 处理Buff描述的转义，保证JSON格式正确
+    const escapedDesc = data.base.buffDesc.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    
+    let result = {
+        "_id": Number(data.base.id),
+        "Name": data.base.name,
+        "Buff": {
+            "_id": Number(data.base.buffId),
+            "Name": data.base.buffName,
+            "Desc": escapedDesc
+        },
+        "Floors": data.floors.map((floor, idx) => ({
+            "Floor": idx + 1,
+            "ElemUpper": floor.elemUpper,
+            "ElemLower": floor.elemLower,
+            "HPSingle": Number(floor.hpSingle),
+            "HPMulti": Number(floor.hpMulti),
+            "Upper": [
+                {
+                    "_id": 30120000 + 100 + (idx+1)*10 + 1,
+                    "Level": [68,70,73,75,78,80,82,85,88,90,92,95][idx],
+                    "HardLevelGroup": 3,
+                    "EliteGroup": { "ID": 273 },
+                    "Monsters": floor.upper.map(wave => wave.map(m => ({
+                        "ID": Number(m.id) || 0,
+                        "HP": Number(m.hp) || 0,
+                        "SPD": Number(m.spd) || 0,
+                        "Stance": Number(m.stance) || 0
+                    })))
+                }
+            ],
+            "Lower": [
+                {
+                    "_id": 30120000 + 100 + (idx+1)*10 + 2,
+                    "Level": [68,70,73,75,78,80,82,85,88,90,92,95][idx],
+                    "HardLevelGroup": 3,
+                    "EliteGroup": { "ID": 273 },
+                    "Monsters": floor.lower.map(wave => wave.map(m => ({
+                        "ID": Number(m.id) || 0,
+                        "HP": Number(m.hp) || 0,
+                        "SPD": Number(m.spd) || 0,
+                        "Stance": Number(m.stance) || 0
+                    })))
+                }
+            ]
+        }))
+    };
+
+    // 输出：无var声明，纯JSON，格式完全对齐
+    document.getElementById("output").innerText = JSON.stringify(result, null, 4);
+    alert("✅ 生成完成！直接复制使用！");
+}
+
+// 重置所有数据
+function resetAll() {
+    if(!confirm("确定清空所有楼层的配置数据？此操作不可恢复！")) return;
+    localStorage.removeItem("chaosToolData");
+    copiedMonster = null;
+    location.reload();
+}
+</script>
+</body>
+</html>
