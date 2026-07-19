@@ -1178,6 +1178,8 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
                 for cid in ids:
                     cid = str(cid)
+                    if len(cid) >= 8 and cid.startswith('10000'):
+                        cid = cid[5:]
                     icons = set()
 
                     # 1. 从 avatar.js 读取 Icon 和 _name

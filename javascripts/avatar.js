@@ -2409,6 +2409,7 @@ $(function () {
                             span: function (k) {
                                 var custominfo_ = computer_.AvatarCustomPromoteConfig[this_avatar.CustomPromote]
                                 var customcalc_ = this_avatar.ShowStats.Custom
+                                if (!custominfo_) { custominfo_ = { ShowType: "p", Text: { CH: "???", EN: "???" } } }
                                 var customshow_ = avatar_color + "+" + ((custominfo_.ShowType == "p") ? ((customcalc_ * 100).toFixed(1) + "%") : customcalc_.toFixed(1)) + "</b></color>"
                                 return k.data.ShowStats.DEF + '&nbsp;&nbsp;&nbsp;' + custominfo_.Text[lang3] + ' ' + customshow_
                             }

@@ -152,6 +152,138 @@ var __AvatarInfoConfig = [
         }
     },
     {
+        "_name": "Sandrone",
+        "_id": 133,
+        "Name": "桑多涅",
+        "Desc": "愚人众执行官第七席，「木偶」。以数理解析事象之人，茶会上永不缺席的优雅淑女。",
+        "Title": "镜水析谬",
+        "Constellation": "镜中奇械座",
+        "Nation": "ASSOC_TYPE_SNEZHNAYA_STAR",
+        "Belong": "愚人众",
+        "Grade": 5,
+        "Type": "???",
+        "Weapon": "Claymore",
+        "Element": "Ice",
+        "Birthday": "1/13",
+        "Icon": "UI_AvatarIcon_MarionetteNew",
+        "CommonMatt": 112124,
+        "TalentMat": 3,
+        "TalentMatt": 104364,
+        "SpecialityMat": 101239,
+        "AscMat": 113086,
+        "WeekMat": 113082,
+        "CustomPromote": "CR",
+        "Curve": 105,
+        "ShowStats": {
+            "HP": 13226,
+            "ATK": 342,
+            "DEF": 752,
+            "Custom": 0.192
+        },
+        "ShowStats2": {
+            "HP": 14166,
+            "ATK": 419,
+            "DEF": 806,
+            "Custom": 0.192
+        },
+        "Version": "6.7",
+        "Fetter": 133,
+        "_CV": {
+            "_CH": "洪海天",
+            "_EN": "迪宁·麦乐迪",
+            "_JP": "本多真梨子",
+            "_KR": "姜恩爱"
+        }
+    },
+    {
+        "_name": "Prune",
+        "_id": 132,
+        "Name": "布伦妮",
+        "Desc": "小小的「魔女猎人」。从挪德卡莱跋涉而来，只为了讨伐那位在她口中以大欺小、无恶不作的魔女。",
+        "Title": "稚梦归心",
+        "Constellation": "魔塔座",
+        "Nation": "Mondstadt",
+        "Belong": "蒙德城",
+        "Grade": 4,
+        "Type": "???",
+        "Weapon": "Catalyst",
+        "Element": "Wind",
+        "Birthday": "11/20",
+        "Icon": "UI_AvatarIcon_Prune",
+        "CommonMatt": 112037,
+        "TalentMat": 2,
+        "TalentMatt": 104306,
+        "SpecialityMat": 101268,
+        "AscMat": 113079,
+        "WeekMat": 113081,
+        "CustomPromote": "ATK",
+        "Curve": 104,
+        "ShowStats": {
+            "HP": 9679,
+            "ATK": 221,
+            "DEF": 580,
+            "Custom": 0.24
+        },
+        "ShowStats2": {
+            "HP": 10348,
+            "ATK": 277,
+            "DEF": 620,
+            "Custom": 0.24
+        },
+        "Version": "6.6",
+        "Fetter": 132,
+        "_CV": {
+            "_CH": "宴宁",
+            "_EN": "爱丽丝·希莫拉",
+            "_JP": "长月葵",
+            "_KR": "张睿娜"
+        }
+    },
+    {
+        "_name": "Nicole",
+        "_id": 131,
+        "Name": "尼可",
+        "Desc": "无言的「魔女」，弃声的「天使」。",
+        "Title": "喧寂于心",
+        "Constellation": "金匣座",
+        "Nation": "ASSOC_TYPE_HVISION",
+        "Belong": "魔女会",
+        "Grade": 5,
+        "Type": "???",
+        "Weapon": "Catalyst",
+        "Element": "Fire",
+        "Birthday": "9/29",
+        "Icon": "UI_AvatarIcon_Nicole",
+        "CommonMatt": 112127,
+        "TalentMat": 2,
+        "TalentMatt": 104361,
+        "SpecialityMat": 101269,
+        "AscMat": 113084,
+        "WeekMat": 113087,
+        "CustomPromote": "CR",
+        "Curve": 105,
+        "ShowStats": {
+            "HP": 10409,
+            "ATK": 342,
+            "DEF": 563,
+            "Custom": 0.288
+        },
+        "ShowStats2": {
+            "HP": 11149,
+            "ATK": 419,
+            "DEF": 603,
+            "Custom": 0.288
+        },
+        "Version": "6.6",
+        "Fetter": 131,
+        "_CV": {
+            "_CH": "云鹤追",
+            "_EN": "苏菲·沙德",
+            "_JP": "丰口惠美",
+            "_KR": "李所垠"
+        }
+    },
+    {
         "_name": "Linnea",
         "_id": 130,
         "Name": "莉奈娅",
@@ -193,6 +325,50 @@ var __AvatarInfoConfig = [
             "_EN": "萨凡娜·门泽尔",
             "_JP": "白石晴香",
             "_KR": "金润睬"
+        }
+    },
+    {
+        "_name": "Lohen",
+        "_id": 129,
+        "Name": "洛恩",
+        "Desc": "西风骑士团远程小队副队长，行事不拘一格，钟情于非常规战术的骑士。",
+        "Title": "恣锐锋镞",
+        "Constellation": "狡兔座",
+        "Nation": "Mondstadt",
+        "Belong": "西风骑士团",
+        "Grade": 5,
+        "Type": "???",
+        "Weapon": "Pole",
+        "Element": "Ice",
+        "Birthday": "4/3",
+        "Icon": "UI_AvatarIcon_Lohen",
+        "CommonMatt": 112013,
+        "TalentMat": 2,
+        "TalentMatt": 104306,
+        "SpecialityMat": 101272,
+        "AscMat": 113085,
+        "WeekMat": 113073,
+        "CustomPromote": "CD",
+        "Curve": 105,
+        "ShowStats": {
+            "HP": 12858,
+            "ATK": 344,
+            "DEF": 784,
+            "Custom": 0.384
+        },
+        "ShowStats2": {
+            "HP": 13772,
+            "ATK": 422,
+            "DEF": 840,
+            "Custom": 0.384
+        },
+        "Version": "6.5",
+        "Fetter": 129,
+        "_CV": {
+            "_CH": "林婧南",
+            "_EN": "尼克·伍法德",
+            "_JP": "天崎滉平",
+            "_KR": "李相昊"
         }
     },
     {

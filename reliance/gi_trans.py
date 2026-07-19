@@ -59,10 +59,10 @@ CUSTOM_PROMOTE_MAPPING = {
     "fight_prop_critical_hurt": "CD", "fight_prop_critical": "CR",
     "fight_prop_heal_add": "Heal", "fight_prop_elemental_mastery": "EM",
     "fight_prop_charge_efficiency": "ER", "fight_prop_physical_add": "Phys",
-    "fight_prop_fire_add": "Pyro", "fight_prop_water_add": "Hydro",
-    "fight_prop_grass_add": "Dendro", "fight_prop_elec_add": "Elec",
-    "fight_prop_ice_add": "Cryo", "fight_prop_wind_add": "Anemo",
-    "fight_prop_rock_add": "Geo",
+    "fight_prop_fire_add": "Fire", "fight_prop_water_add": "Water",
+    "fight_prop_grass_add": "Grass", "fight_prop_elec_add": "Elec",
+    "fight_prop_ice_add": "Ice", "fight_prop_wind_add": "Wind",
+    "fight_prop_rock_add": "Rock",
 }
 
 # ----------------------------------------------------------
@@ -197,13 +197,13 @@ def extract_character_info(zh_file, en_file, short_id):
     asc_bonus = asc_data[-1] if asc_data else {}
 
     # --- CustomPromote ---
-    custom_promote = "null"
+    custom_promote = "CD"
     custom_stat_value = 0
     base_stat_keys = ['fight_prop_base_hp', 'fight_prop_base_attack', 'fight_prop_base_defense']
     for key, value in asc_bonus.items():
         if key not in base_stat_keys and key.startswith('fight_prop_'):
             custom_stat_value = value
-            custom_promote = CUSTOM_PROMOTE_MAPPING.get(key, "null")
+            custom_promote = CUSTOM_PROMOTE_MAPPING.get(key, "CD")
             break
 
     # --- LV90 / LV100 属性 ---
