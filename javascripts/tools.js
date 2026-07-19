@@ -82,18 +82,12 @@ var ToolsApp = {
                 if (data.character_ids && data.character_ids.length > 0) {
                     document.getElementById('giCharacterId').value = data.character_ids.join(', ');
                 }
-                if (data.major_version) {
-                    document.getElementById('giMajorVersion').value = data.major_version;
-                }
-                if (data.minor_versions && data.minor_versions.length > 0) {
-                    var container = document.getElementById('giMinorVersionsContainer');
-                    container.innerHTML = '';
-                    for (var i = 0; i < data.minor_versions.length; i++) {
-                        var div = document.createElement('div');
-                        div.className = 'minor-versions';
-                        div.innerHTML = '<input type="text" class="minorVersion" value="' + data.minor_versions[i] + '" placeholder=".52">';
-                        container.appendChild(div);
+                if (data.version_map) {
+                    var pairs = [];
+                    for (var key in data.version_map) {
+                        pairs.push(key + ':' + data.version_map[key]);
                     }
+                    document.getElementById('giVersionMap').value = pairs.join(', ');
                 }
             }
         } catch (e) {
@@ -557,34 +551,11 @@ var ToolsApp = {
         }
     },
 
-    // 添加GI小版本输入框
-    addGiMinorVersion: function() {
-        var container = document.getElementById('giMinorVersionsContainer');
-        var newGroup = document.createElement('div');
-        newGroup.className = 'minor-versions';
-        newGroup.innerHTML = ' <input type="text" class="minorVersion" placeholder=".54"> <button type="button" class="btn-remove" onclick="ToolsApp.removeGiMinorVersion(this)">×</button>';
-        container.appendChild(newGroup);
-    },
-
-    // 删除GI一行输入框
-    removeGiMinorVersion: function(btn) {
-        var group = btn.parentElement;
-        var container = group.parentElement;
-        if (container.querySelectorAll('.minor-versions').length > 1) {
-            group.remove();
-        }
-    },
-
     // 发送GI角色更新请求
     sendGIUpdate: async function() {
         var submitBtn = document.getElementById('giSubmitBtn');
         var btnText = document.getElementById('giBtnText');
         var resultDiv = document.getElementById('giResult');
-
-        var minorVersionInputs = document.querySelectorAll('#gi-update .minorVersion');
-        var minorVersions = Array.from(minorVersionInputs)
-            .map(function(input) { return input.value.trim(); })
-            .filter(function(value) { return value; });
 
         var characterIdText = document.getElementById('giCharacterId').value.trim();
         var characterIds = characterIdText
@@ -592,10 +563,21 @@ var ToolsApp = {
             .map(function(id) { return id.trim(); })
             .filter(function(id) { return id; });
 
+        var versionMapText = document.getElementById('giVersionMap').value.trim();
+        var versionMap = {};
+        if (versionMapText) {
+            var pairs = versionMapText.split(',');
+            for (var i = 0; i < pairs.length; i++) {
+                var parts = pairs[i].split(':');
+                if (parts.length === 2) {
+                    versionMap[parts[0].trim()] = parts[1].trim();
+                }
+            }
+        }
+
         var data = {
             character_ids: characterIds,
-            major_version: document.getElementById('giMajorVersion').value.trim(),
-            minor_versions: minorVersions
+            version_map: versionMap
         };
 
         submitBtn.disabled = true;

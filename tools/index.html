@@ -98,22 +98,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="giMajorVersion">大版本号</label>
-                        <input type="text" id="giMajorVersion" value="6.7" placeholder="例如: 6.7">
-                    </div>
-
-                    <div class="form-group">
-                        <label>小版本号列表</label>
-                        <div id="giMinorVersionsContainer">
-                            <div class="minor-versions">
-                                <input type="text" class="minorVersion" value=".52" placeholder=".52">
-                                <input type="text" class="minorVersion" value=".53" placeholder=".53">
-                                <button type="button" class="btn-remove" onclick="ToolsApp.removeGiMinorVersion(this)">×</button>
-                            </div>
-                        </div>
-                        <div class="add-btn-container">
-                            <button type="button" class="btn btn-secondary" onclick="ToolsApp.addGiMinorVersion()">+ 添加小版本</button>
-                        </div>
+                        <label for="giVersionMap">版本映射</label>
+                        <textarea id="giVersionMap" rows="3" placeholder="格式: 键:API版本号, 多个用逗号分隔&#10;例: L:6.7.52, M:6.8.53">L:6.7.52</textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="giSubmitBtn">

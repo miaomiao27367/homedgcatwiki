@@ -30,7 +30,7 @@ ELEMENT_MAPPING = {
 # ----------------------------------------------------------
 WEAPON_MAPPING = {
     "WEAPON_SWORD_ONE_HAND": "Sword", "WEAPON_CLAYMORE": "Claymore",
-    "WEAPON_POLE": "Polearm", "WEAPON_CATALYST": "Catalyst", "WEAPON_BOW": "Bow",
+    "WEAPON_POLE": "Pole", "WEAPON_CATALYST": "Catalyst", "WEAPON_BOW": "Bow",
 }
 
 # ----------------------------------------------------------
@@ -416,7 +416,14 @@ def merge_to_avatar_js(character_id, char_info):
     # 检查是否已存在
     avatar_id = char_info["_id"]
     if f'"_id": {avatar_id},' in content or f'"_id": {avatar_id}\n' in content:
-        return f"角色 {avatar_id} 条目已存在，无需拼接"
+        dup_path = os.path.join(OUTPUT_DIR, f"{avatar_id}_duplicate.js")
+        os.makedirs(OUTPUT_DIR, exist_ok=True)
+        new_entry = generate_avatar_entry_json(char_info)
+        with open(dup_path, 'w', encoding='utf-8') as f:
+            f.write('var __AvatarInfoConfig = [\n')
+            f.write(new_entry)
+            f.write('\n]')
+        return f"角色 {avatar_id} 条目已存在，新数据已输出到 {dup_path} 请人工比对保留哪个"
 
     # 定位标记: "Test": "test value"
     marker = '"Test": "test value"'
@@ -1029,13 +1036,12 @@ if __name__ == "__main__":
     main()
 
 
-def gi_character_update(character_id, major_version, minor_versions):
+def gi_character_update(character_id, versions_dict):
     """
     封装函数，供 server.py 调用。
     参数:
         character_id: 完整角色ID，如 "10000003"
-        major_version: 大版本号，如 "6.7"
-        minor_versions: 小版本列表，如 [".52", ".53"]
+        versions_dict: 版本映射，如 {"L": "6.7.52", "M": "6.8.53"}
     返回:
         (success, message) 元组
     """
@@ -1043,13 +1049,8 @@ def gi_character_update(character_id, major_version, minor_versions):
         short_id = str(int(character_id[5:]))
         print(f"角色ID: {character_id} (短ID: {short_id})")
 
-        versions_dict = {}
-        for i, mv in enumerate(minor_versions):
-            key = chr(ord('A') + i) if i < 26 else f"V{i}"
-            versions_dict[key] = f"{major_version}{mv}"
-
         if not versions_dict:
-            versions_dict["L"] = API_VERSION
+            versions_dict = {"L": API_VERSION}
 
         first_ver_key = list(versions_dict.keys())[0]
         first_api_ver = versions_dict[first_ver_key]

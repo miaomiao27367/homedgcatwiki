@@ -64,6 +64,94 @@ var __AvatarInfoConfig = [
         "Test": "test value"
     },
     {
+        "_name": "Odette",
+        "_id": 150,
+        "Name": "奥黛塔",
+        "Desc": "测试角色",
+        "Title": "翾风回雪",
+        "Constellation": "雪鹄座",
+        "Nation": "ASSOC_TYPE_SNEZHNAYA_STAR",
+        "Belong": "？？？",
+        "Grade": 5,
+        "Type": "???",
+        "Weapon": "Sword",
+        "Element": "Ice",
+        "Birthday": "1/1",
+        "Icon": "UI_AvatarIcon_Odette",
+        "CommonMatt": 112148,
+        "TalentMat": 1,
+        "TalentMatt": 104367,
+        "SpecialityMat": 101275,
+        "AscMat": 113090,
+        "WeekMat": 113088,
+        "CustomPromote": "CD",
+        "Curve": 105,
+        "ShowStats": {
+            "HP": 12981,
+            "ATK": 335,
+            "DEF": 787,
+            "Custom": 0.384
+        },
+        "ShowStats2": {
+            "HP": 13903,
+            "ATK": 410,
+            "DEF": 843,
+            "Custom": 0.384
+        },
+        "Version": "6.8",
+        "Fetter": 150,
+        "_CV": {
+            "_CH": "？？？",
+            "_EN": "？？？",
+            "_JP": "？？？",
+            "_KR": "？？？"
+        }
+    },
+    {
+        "_name": "Alyosha",
+        "_id": 148,
+        "Name": "阿罗夏",
+        "Desc": "测试角色",
+        "Title": "？？？",
+        "Constellation": "迅捷犬座",
+        "Nation": "Snezhnaya",
+        "Belong": "？？？",
+        "Grade": 4,
+        "Type": "???",
+        "Weapon": "Pole",
+        "Element": "Elec",
+        "Birthday": "1/1",
+        "Icon": "UI_AvatarIcon_Alyosha",
+        "CommonMatt": 112151,
+        "TalentMat": 2,
+        "TalentMatt": 104370,
+        "SpecialityMat": 101276,
+        "AscMat": 113091,
+        "WeekMat": 113083,
+        "CustomPromote": "ER",
+        "Curve": 104,
+        "ShowStats": {
+            "HP": 11962,
+            "ATK": 265,
+            "DEF": 703,
+            "Custom": 0.2667
+        },
+        "ShowStats2": {
+            "HP": 12790,
+            "ATK": 333,
+            "DEF": 752,
+            "Custom": 0.2667
+        },
+        "Version": "6.8",
+        "Fetter": 148,
+        "_CV": {
+            "_CH": "？？？",
+            "_EN": "？？？",
+            "_JP": "？？？",
+            "_KR": "？？？"
+        }
+    },
+    {
         "_name": "Linnea",
         "_id": 130,
         "Name": "莉奈娅",

@@ -101,7 +101,7 @@ def load_hsr_weapon_cache():
         return None
 
 
-def save_gi_cache(character_ids, major_version, minor_versions):
+def save_gi_cache(character_ids, version_map):
     """保存用户选择的GI更新参数到缓存文件"""
     log_dir = './logs'
     os.makedirs(log_dir, exist_ok=True)
@@ -110,8 +110,7 @@ def save_gi_cache(character_ids, major_version, minor_versions):
     try:
         cache_data = {
             'character_ids': character_ids,
-            'major_version': major_version,
-            'minor_versions': minor_versions
+            'version_map': version_map
         }
         with open(cache_file, 'w', encoding='utf-8') as f:
             json.dump(cache_data, f, ensure_ascii=False, indent=4)
@@ -972,23 +971,21 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 try:
                     request_data = json.loads(post_data.decode('utf-8'))
                     character_ids = request_data.get('character_ids', [])
-                    major_version = request_data.get('major_version')
-                    minor_versions = request_data.get('minor_versions')
+                    version_map = request_data.get('version_map', {})
                     
-                    print(f"[gi_update] 收到参数: character_ids={character_ids}, major_version={major_version}, minor_versions={minor_versions}")
+                    print(f"[gi_update] 收到参数: character_ids={character_ids}, version_map={version_map}")
                 except:
                     character_ids = ["10000003"]
-                    major_version = "6.7"
-                    minor_versions = [".52", ".53"]
-                    print(f"[gi_update] 使用默认参数: character_ids={character_ids}, major_version={major_version}, minor_versions={minor_versions}")
+                    version_map = {"L": "6.7.52"}
+                    print(f"[gi_update] 使用默认参数: character_ids={character_ids}, version_map={version_map}")
 
                 try:
-                    save_gi_cache(character_ids, major_version, minor_versions)
+                    save_gi_cache(character_ids, version_map)
                     
                     results = []
                     for character_id in character_ids:
                         print(f"[gi_update] 开始处理角色 {character_id}...")
-                        success, msg = gi_character_update(character_id, major_version, minor_versions)
+                        success, msg = gi_character_update(character_id, version_map)
                         results.append(f"角色 {character_id}: {msg}")
                     
                     final_output = "\n".join(results)

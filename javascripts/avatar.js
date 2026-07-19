@@ -995,6 +995,7 @@ $(function () {
                                     {
                                         img: function (p) {
                                             if (!p.data.Weapon) return '/images/GCG_UI/3004.png';
+                                            if (!computer_.AvatarWeaponConfig[p.data.Weapon]) return '/images/GCG_UI/3004.png';
                                             avname = computer_.AvatarWeaponConfig[p.data.Weapon].EN
                                             switch (avname) {
                                                 case 'Sword': 
