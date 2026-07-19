@@ -12,6 +12,8 @@ API_VERSION = "6.7.52"
 
 CACHE_DIR = "tempdata"
 OUTPUT_DIR = os.path.join(CACHE_DIR, "output")
+AVATAR_DIR = "gi/CH/Avatar"
+AVATAR_JS_PATH = "gi/CH/avatar.js"
 
 # 版本列表在运行时由用户输入，不再硬编码
 
@@ -356,6 +358,92 @@ def generate_avatar_js(info, output_file):
         f.write('        }\n')
         f.write('    }\n')
         f.write(']')
+
+
+def generate_avatar_entry_json(info):
+    """生成单个avatar条目的JSON字符串（用于拼接）"""
+    c = info
+    lines = []
+    lines.append('    {')
+    lines.append(f'        "_name": "{escape_js_string(c["_name"])}",')
+    lines.append(f'        "_id": {c["_id"]},')
+    for key in ["Name", "Desc", "Title", "Constellation", "Nation", "Belong"]:
+        lines.append(f'        "{key}": "{escape_js_string(c[key])}",')
+    lines.append(f'        "Grade": {c["Grade"]},')
+    lines.append(f'        "Type": "{c["Type"]}",')
+    lines.append(f'        "Weapon": "{c["Weapon"]}",')
+    lines.append(f'        "Element": "{c["Element"]}",')
+    lines.append(f'        "Birthday": "{c["Birthday"]}",')
+    lines.append(f'        "Icon": "{c["Icon"]}",')
+    for m in ["CommonMatt", "TalentMat", "TalentMatt", "SpecialityMat", "AscMat", "WeekMat"]:
+        val = c[m]
+        lines.append(f'        "{m}": {val if val is not None else "null"},')
+    lines.append(f'        "CustomPromote": "{c["CustomPromote"]}",')
+    lines.append(f'        "Curve": {c["Curve"] if c["Curve"] is not None else "null"},')
+    for stats_key in ["ShowStats", "ShowStats2"]:
+        s = c[stats_key]
+        lines.append(f'        "{stats_key}": {{')
+        lines.append(f'            "HP": {s["HP"]},')
+        lines.append(f'            "ATK": {s["ATK"]},')
+        lines.append(f'            "DEF": {s["DEF"]},')
+        lines.append(f'            "Custom": {s["Custom"]}')
+        lines.append('        },')
+    lines.append(f'        "Version": "{c["Version"]}",')
+    lines.append(f'        "Fetter": {c["Fetter"]},')
+    lines.append('        "_CV": {')
+    for i, lang in enumerate(["_CH", "_EN", "_JP", "_KR"]):
+        suffix = ',' if lang != "_KR" else ''
+        lines.append(f'            "{lang}": "{c["_CV"][lang]}"{suffix}')
+    lines.append('        }')
+    lines.append('    },')
+
+    return '\n'.join(lines)
+
+
+def merge_to_avatar_js(character_id, char_info):
+    """
+    将生成的角色条目自动插入到 gi/CH/avatar.js 的 __AvatarInfoConfig 中。
+    以刻晴条目中的 "Test": "test value" 为定位标记，插入到刻晴后面。
+    """
+    avatar_js = AVATAR_JS_PATH
+    if not os.path.exists(avatar_js):
+        print(f"  [警告] 未找到 {avatar_js}，跳过自动拼接")
+        return ""
+
+    with open(avatar_js, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # 检查是否已存在
+    avatar_id = char_info["_id"]
+    if f'"_id": {avatar_id},' in content or f'"_id": {avatar_id}\n' in content:
+        return f"角色 {avatar_id} 条目已存在，无需拼接"
+
+    # 定位标记: "Test": "test value"
+    marker = '"Test": "test value"'
+    marker_pos = content.find(marker)
+    if marker_pos < 0:
+        return "错误：无法定位 'Test': 'test value' 标记"
+
+    # 从标记位置往后找，找到闭合该条目的 },\n    {
+    after_marker = content[marker_pos:]
+    close_idx = after_marker.find('},\n    {')
+    if close_idx < 0:
+        # 尝试另一种格式
+        close_idx = after_marker.find('}\n    ]')
+        if close_idx < 0:
+            return "错误：无法定位刻晴条目结束位置"
+
+    # 生成新条目
+    new_entry = generate_avatar_entry_json(char_info)
+
+    # 拼接: 在刻晴条目 }, 之后插入
+    insert_pos = marker_pos + close_idx + 2  # 跳过 },
+    new_content = content[:insert_pos] + '\n' + new_entry + content[insert_pos:]
+
+    with open(avatar_js, 'w', encoding='utf-8') as f:
+        f.write(new_content)
+
+    return f"已自动拼接角色 {avatar_id} 到 {avatar_js}（刻晴下方）"
 
 
 # ============================================================
@@ -894,12 +982,15 @@ def main():
         print("错误: 未找到数据文件，请检查角色ID是否正确。")
         return
 
-    # [2] avatar.js
+    # [2] avatar条目 -> 自动拼接
     print("\n[2/5] 提取角色基本信息 -> avatar条目...")
     char_info = extract_character_info(zh_file, en_file, short_id)
     ava_out = os.path.join(OUTPUT_DIR, f"{short_id}.js")
     generate_avatar_js(char_info, ava_out)
     print(f"  生成: {ava_out}")
+    merge_msg = merge_to_avatar_js(character_id, char_info)
+    if merge_msg:
+        print(f"  {merge_msg}")
 
     # [3] 技能（每个版本）+ 材料 + DataConfig + AttackConfig -> _1.js
     print("\n[3/5] 提取技能/材料/攻击配置...")
@@ -915,23 +1006,99 @@ def main():
     materials = extract_materials(zh_file)
     data_config = extract_data_config(zh_file)
     attack_config = extract_attack_config(zh_file)
-    js1_out = os.path.join(OUTPUT_DIR, f"{short_id}_1.js")
+    js1_out = os.path.join(AVATAR_DIR, f"{short_id}_1.js")
     generate_1_js(short_id, versions_data, materials, data_config, attack_config, js1_out)
     print(f"  生成: {js1_out}")
 
     # [4] 故事/语音/服装/料理/名片 -> _2.js
     print("\n[4/5] 提取故事/语音/服装/料理/名片...")
     char2_data = extract_character_2(zh_file)
-    js2_out = os.path.join(OUTPUT_DIR, f"{short_id}_2.js")
+    js2_out = os.path.join(AVATAR_DIR, f"{short_id}_2.js")
     generate_2_js(short_id, char2_data, js2_out)
     print(f"  生成: {js2_out}")
 
     # [5] 完成
     print("\n[5/5] 生成完毕！")
-    print(f"  输出: {OUTPUT_DIR}/{short_id}.js | {short_id}_1.js | {short_id}_2.js")
+    print(f"  输出: {AVATAR_DIR}/{short_id}_1.js | {AVATAR_DIR}/{short_id}_2.js")
+    print(f"  Avatar条目: 已自动拼接至 {AVATAR_JS_PATH}")
     print(f"  版本: {', '.join(versions_dict.keys())} ({len(versions_dict)}个)")
     print("  需要手动填写的字段请查看脚本顶部注释。")
 
 
 if __name__ == "__main__":
     main()
+
+
+def gi_character_update(character_id, major_version, minor_versions):
+    """
+    封装函数，供 server.py 调用。
+    参数:
+        character_id: 完整角色ID，如 "10000003"
+        major_version: 大版本号，如 "6.7"
+        minor_versions: 小版本列表，如 [".52", ".53"]
+    返回:
+        (success, message) 元组
+    """
+    try:
+        short_id = str(int(character_id[5:]))
+        print(f"角色ID: {character_id} (短ID: {short_id})")
+
+        versions_dict = {}
+        for i, mv in enumerate(minor_versions):
+            key = chr(ord('A') + i) if i < 26 else f"V{i}"
+            versions_dict[key] = f"{major_version}{mv}"
+
+        if not versions_dict:
+            versions_dict["L"] = API_VERSION
+
+        first_ver_key = list(versions_dict.keys())[0]
+        first_api_ver = versions_dict[first_ver_key]
+        print(f"版本配置: {versions_dict}")
+
+        # [1] 下载数据
+        print("[1/5] 下载数据...")
+        download_all_data(character_id, versions_dict)
+
+        zh_file = os.path.join(CACHE_DIR, f"{first_api_ver}-{character_id}-zh.json")
+        en_file = os.path.join(CACHE_DIR, f"{first_api_ver}-{character_id}-en.json")
+
+        if not (os.path.exists(zh_file) and os.path.exists(en_file)):
+            return (False, f"未找到数据文件，请检查角色ID {character_id} 是否正确")
+
+        # [2] avatar条目 -> 自动拼接
+        print("[2/5] 提取角色基本信息 -> avatar条目...")
+        char_info = extract_character_info(zh_file, en_file, short_id)
+        ava_out = os.path.join(OUTPUT_DIR, f"{short_id}.js")
+        generate_avatar_js(char_info, ava_out)
+        merge_msg = merge_to_avatar_js(character_id, char_info)
+        if merge_msg:
+            print(f"  {merge_msg}")
+
+        # [3] 技能/材料/攻击配置
+        print("[3/5] 提取技能/材料/攻击配置...")
+        versions_data = {}
+        for ver_key, api_ver in versions_dict.items():
+            print(f"  版本 [{ver_key}] API v{api_ver} ...")
+            zh_file_ver = os.path.join(CACHE_DIR, f"{api_ver}-{character_id}-zh.json")
+            if not os.path.exists(zh_file_ver):
+                print(f"    [警告] 未找到 {zh_file_ver}，跳过")
+                continue
+            versions_data[ver_key] = extract_skills(zh_file_ver, api_ver)
+
+        materials = extract_materials(zh_file)
+        data_config = extract_data_config(zh_file)
+        attack_config = extract_attack_config(zh_file)
+        js1_out = os.path.join(AVATAR_DIR, f"{short_id}_1.js")
+        generate_1_js(short_id, versions_data, materials, data_config, attack_config, js1_out)
+
+        # [4] 故事/语音/服装/料理/名片
+        print("[4/5] 提取故事/语音/服装/料理/名片...")
+        char2_data = extract_character_2(zh_file)
+        js2_out = os.path.join(AVATAR_DIR, f"{short_id}_2.js")
+        generate_2_js(short_id, char2_data, js2_out)
+
+        print(f"[5/5] 生成完毕！{AVATAR_DIR}/{short_id}_1.js | {AVATAR_DIR}/{short_id}_2.js")
+        return (True, f"角色 {character_id} 更新成功")
+
+    except Exception as e:
+        return (False, f"角色 {character_id} 处理失败: {str(e)}")

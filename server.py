@@ -19,6 +19,7 @@ from reliance.hsr_trans_ar import generate_ar_data
 from reliance.hsr_trans_as import generate_as_data
 from reliance.hsr_trans_fiction import generate_fiction_data
 from reliance.hsr_trans_chaos import generate_chaos_data
+from reliance.gi_trans import gi_character_update
 
 data_url2="26.192.21.124:9080"
 data_url1="26.118.195.109:8080"
@@ -94,6 +95,44 @@ def load_hsr_weapon_cache():
         with open(cache_file, 'r', encoding='utf-8') as f:
             cache_data = json.load(f)
         print(f"[缓存] 已读取光锥用户选择: {cache_file}")
+        return cache_data
+    except Exception as e:
+        print(f"[缓存] 读取失败: {e}")
+        return None
+
+
+def save_gi_cache(character_ids, major_version, minor_versions):
+    """保存用户选择的GI更新参数到缓存文件"""
+    log_dir = './logs'
+    os.makedirs(log_dir, exist_ok=True)
+    cache_file = os.path.join(log_dir, 'gi_trans_avatar.txt')
+    
+    try:
+        cache_data = {
+            'character_ids': character_ids,
+            'major_version': major_version,
+            'minor_versions': minor_versions
+        }
+        with open(cache_file, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, ensure_ascii=False, indent=4)
+        print(f"[缓存] 已保存GI用户选择: {cache_file}")
+        return True
+    except Exception as e:
+        print(f"[缓存] 保存失败: {e}")
+        return False
+
+
+def load_gi_cache():
+    """从缓存文件读取用户选择的GI更新参数"""
+    cache_file = './logs/gi_trans_avatar.txt'
+    
+    if not os.path.exists(cache_file):
+        return None
+    
+    try:
+        with open(cache_file, 'r', encoding='utf-8') as f:
+            cache_data = json.load(f)
+        print(f"[缓存] 已读取GI用户选择: {cache_file}")
         return cache_data
     except Exception as e:
         print(f"[缓存] 读取失败: {e}")
@@ -459,6 +498,19 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             # 读取HSR光锥缓存
             if path == '/hsr_weapon_load_cache':
                 cache_data = load_hsr_weapon_cache()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                if cache_data:
+                    self.wfile.write(json.dumps({"status": "success", "data": cache_data}, ensure_ascii=False).encode('utf-8'))
+                else:
+                    self.wfile.write(json.dumps({"status": "empty"}, ensure_ascii=False).encode('utf-8'))
+                print("-" * 50)
+                return
+
+            # 读取GI角色缓存
+            if path == '/gi_load_cache':
+                cache_data = load_gi_cache()
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')
                 self.end_headers()
@@ -908,6 +960,58 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
 
+            print("-" * 50)
+            return
+
+        # 处理 /gi_update
+        if path == '/gi_update':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                
+                try:
+                    request_data = json.loads(post_data.decode('utf-8'))
+                    character_ids = request_data.get('character_ids', [])
+                    major_version = request_data.get('major_version')
+                    minor_versions = request_data.get('minor_versions')
+                    
+                    print(f"[gi_update] 收到参数: character_ids={character_ids}, major_version={major_version}, minor_versions={minor_versions}")
+                except:
+                    character_ids = ["10000003"]
+                    major_version = "6.7"
+                    minor_versions = [".52", ".53"]
+                    print(f"[gi_update] 使用默认参数: character_ids={character_ids}, major_version={major_version}, minor_versions={minor_versions}")
+
+                try:
+                    save_gi_cache(character_ids, major_version, minor_versions)
+                    
+                    results = []
+                    for character_id in character_ids:
+                        print(f"[gi_update] 开始处理角色 {character_id}...")
+                        success, msg = gi_character_update(character_id, major_version, minor_versions)
+                        results.append(f"角色 {character_id}: {msg}")
+                    
+                    final_output = "\n".join(results)
+                    response_data = {"status": "success", "message": f"成功处理 {len(character_ids)} 个角色", "stdout": final_output}
+                    
+                except Exception as e:
+                    error_msg = str(e)
+                    print(f"[gi_update] 执行失败: {error_msg}")
+                    response_data = {"status": "error", "message": "GI数据更新失败", "stderr": f"抛出异常: {error_msg}"}
+                
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+                
+            except Exception as e:
+                print(f"[gi_update] 处理失败: {str(e)}")
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+            
             print("-" * 50)
             return
 

@@ -60,7 +60,8 @@ var __AvatarInfoConfig = [
             "3",
             "4"
         ],
-        "Note": "6.3v4"
+        "Note": "6.3v4",
+        "Test": "test value"
     },
     {
         "_name": "Linnea",

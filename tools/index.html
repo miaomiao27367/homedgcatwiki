@@ -13,6 +13,10 @@
             <span class="tools-sidebar-item-icon">🎮</span>
             <span>HSR 角色更新</span>
         </div>
+        <div class="tools-sidebar-item" data-tool="gi-update">
+            <span class="tools-sidebar-item-icon">✨</span>
+            <span>GI 角色更新</span>
+        </div>
         <div class="tools-sidebar-item" data-tool="hsr-weapon-update">
             <span class="tools-sidebar-item-icon">⚔️</span>
             <span>HSR 光锥更新</span>
@@ -80,6 +84,47 @@
                     <h3 id="hsrResultTitle"></h3>
                     <p id="hsrResultMessage"></p>
                     <pre id="hsrResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- GI 角色数据更新工具 -->
+            <div id="gi-update" class="tools-section">
+                <h2 class="tools-section-title">GI 角色数据更新工具</h2>
+
+                <form id="giUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendGIUpdate();">
+                    <div class="form-group">
+                        <label for="giCharacterId">角色ID列表</label>
+                        <textarea id="giCharacterId" rows="3" placeholder="多个ID用逗号或空格分隔，例如: 10000003, 10000004">10000003</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="giMajorVersion">大版本号</label>
+                        <input type="text" id="giMajorVersion" value="6.7" placeholder="例如: 6.7">
+                    </div>
+
+                    <div class="form-group">
+                        <label>小版本号列表</label>
+                        <div id="giMinorVersionsContainer">
+                            <div class="minor-versions">
+                                <input type="text" class="minorVersion" value=".52" placeholder=".52">
+                                <input type="text" class="minorVersion" value=".53" placeholder=".53">
+                                <button type="button" class="btn-remove" onclick="ToolsApp.removeGiMinorVersion(this)">×</button>
+                            </div>
+                        </div>
+                        <div class="add-btn-container">
+                            <button type="button" class="btn btn-secondary" onclick="ToolsApp.addGiMinorVersion()">+ 添加小版本</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="giSubmitBtn">
+                        <span id="giBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="giResult" class="result">
+                    <h3 id="giResultTitle"></h3>
+                    <p id="giResultMessage"></p>
+                    <pre id="giResultOutput"></pre>
                 </div>
             </div>
 

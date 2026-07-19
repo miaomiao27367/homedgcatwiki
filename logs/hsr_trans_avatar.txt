@@ -1,9 +1,0 @@
-{
-    "character_ids": [
-        "1512"
-    ],
-    "major_version": "4.4",
-    "minor_versions": [
-        ".51"
-    ]
-}

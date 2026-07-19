@@ -8,6 +8,7 @@ var ToolsApp = {
         this.showTool('hsr-update');
         this.loadHSRCache();
         this.loadHSRWeaponCache();
+        this.loadGICache();
     },
 
     // 加载HSR角色缓存
@@ -67,6 +68,36 @@ var ToolsApp = {
             }
         } catch (e) {
             console.log('加载光锥缓存失败:', e);
+        }
+    },
+
+    // 加载GI角色缓存
+    loadGICache: async function() {
+        try {
+            var response = await fetch('/gi_load_cache');
+            var result = await response.json();
+            
+            if (result.status === 'success' && result.data) {
+                var data = result.data;
+                if (data.character_ids && data.character_ids.length > 0) {
+                    document.getElementById('giCharacterId').value = data.character_ids.join(', ');
+                }
+                if (data.major_version) {
+                    document.getElementById('giMajorVersion').value = data.major_version;
+                }
+                if (data.minor_versions && data.minor_versions.length > 0) {
+                    var container = document.getElementById('giMinorVersionsContainer');
+                    container.innerHTML = '';
+                    for (var i = 0; i < data.minor_versions.length; i++) {
+                        var div = document.createElement('div');
+                        div.className = 'minor-versions';
+                        div.innerHTML = '<input type="text" class="minorVersion" value="' + data.minor_versions[i] + '" placeholder=".52">';
+                        container.appendChild(div);
+                    }
+                }
+            }
+        } catch (e) {
+            console.log('加载GI缓存失败:', e);
         }
     },
 
@@ -520,6 +551,83 @@ var ToolsApp = {
             document.getElementById('hsrChaosResultMessage').textContent = '网络错误，请重试';
             document.getElementById('hsrChaosResultOutput').textContent = error.toString();
             document.getElementById('hsrChaosResultOutput').style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            btnText.textContent = '发送更新请求';
+        }
+    },
+
+    // 添加GI小版本输入框
+    addGiMinorVersion: function() {
+        var container = document.getElementById('giMinorVersionsContainer');
+        var newGroup = document.createElement('div');
+        newGroup.className = 'minor-versions';
+        newGroup.innerHTML = ' <input type="text" class="minorVersion" placeholder=".54"> <button type="button" class="btn-remove" onclick="ToolsApp.removeGiMinorVersion(this)">×</button>';
+        container.appendChild(newGroup);
+    },
+
+    // 删除GI一行输入框
+    removeGiMinorVersion: function(btn) {
+        var group = btn.parentElement;
+        var container = group.parentElement;
+        if (container.querySelectorAll('.minor-versions').length > 1) {
+            group.remove();
+        }
+    },
+
+    // 发送GI角色更新请求
+    sendGIUpdate: async function() {
+        var submitBtn = document.getElementById('giSubmitBtn');
+        var btnText = document.getElementById('giBtnText');
+        var resultDiv = document.getElementById('giResult');
+
+        var minorVersionInputs = document.querySelectorAll('#gi-update .minorVersion');
+        var minorVersions = Array.from(minorVersionInputs)
+            .map(function(input) { return input.value.trim(); })
+            .filter(function(value) { return value; });
+
+        var characterIdText = document.getElementById('giCharacterId').value.trim();
+        var characterIds = characterIdText
+            .split(/[\s,]+/)
+            .map(function(id) { return id.trim(); })
+            .filter(function(id) { return id; });
+
+        var data = {
+            character_ids: characterIds,
+            major_version: document.getElementById('giMajorVersion').value.trim(),
+            minor_versions: minorVersions
+        };
+
+        submitBtn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>处理中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/gi_update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            var result = await response.json();
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('giResultTitle').textContent =
+                result.status === 'success' ? '✓ 更新成功' : '✗ 更新失败';
+            document.getElementById('giResultMessage').textContent = result.message;
+
+            var outputText = result.stdout || result.stderr || '';
+            document.getElementById('giResultOutput').textContent = outputText;
+            document.getElementById('giResultOutput').style.display = outputText ? 'block' : 'none';
+
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('giResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('giResultOutput').textContent = error.toString();
+            document.getElementById('giResultOutput').style.display = 'block';
         } finally {
             submitBtn.disabled = false;
             btnText.textContent = '发送更新请求';
