@@ -85,6 +85,23 @@
                     <p id="hsrResultMessage"></p>
                     <pre id="hsrResultOutput"></pre>
                 </div>
+
+                <div class="img-sync-section">
+                    <div class="img-sync-divider"></div>
+                    <h3 class="img-sync-title">🖼️ 角色图片同步</h3>
+                    <div class="form-group">
+                        <label for="hsrAvatarImgId">角色ID（可复用上方ID，多个用逗号分隔）</label>
+                        <input type="text" id="hsrAvatarImgId" placeholder="1510, 1509">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="hsrAvatarImgSyncBtn" onclick="ToolsApp.sendHSRAvatarImgSync()">
+                        <span id="hsrAvatarImgBtnText">同步角色图片</span>
+                    </button>
+                    <div id="hsrAvatarImgResult" class="result" style="display:none;">
+                        <h3 id="hsrAvatarImgResultTitle"></h3>
+                        <p id="hsrAvatarImgResultMessage"></p>
+                        <pre id="hsrAvatarImgResultOutput"></pre>
+                    </div>
+                </div>
             </div>
 
             <!-- GI 角色数据更新工具 -->
@@ -111,6 +128,23 @@
                     <h3 id="giResultTitle"></h3>
                     <p id="giResultMessage"></p>
                     <pre id="giResultOutput"></pre>
+                </div>
+
+                <div class="img-sync-section">
+                    <div class="img-sync-divider"></div>
+                    <h3 class="img-sync-title">🖼️ 角色图片同步</h3>
+                    <div class="form-group">
+                        <label for="giAvatarImgId">角色ID（可复用上方ID，多个用逗号分隔）</label>
+                        <input type="text" id="giAvatarImgId" placeholder="150, 148">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="giAvatarImgSyncBtn" onclick="ToolsApp.sendGIAvatarImgSync()">
+                        <span id="giAvatarImgBtnText">同步角色图片</span>
+                    </button>
+                    <div id="giAvatarImgResult" class="result" style="display:none;">
+                        <h3 id="giAvatarImgResultTitle"></h3>
+                        <p id="giAvatarImgResultMessage"></p>
+                        <pre id="giAvatarImgResultOutput"></pre>
+                    </div>
                 </div>
             </div>
 
@@ -153,6 +187,23 @@
                     <p id="hsrWeaponResultMessage"></p>
                     <pre id="hsrWeaponResultOutput"></pre>
                 </div>
+
+                <div class="img-sync-section">
+                    <div class="img-sync-divider"></div>
+                    <h3 class="img-sync-title">🖼️ 光锥图片同步</h3>
+                    <div class="form-group">
+                        <label for="hsrWeaponImgId">光锥ID（可复用上方ID，多个用逗号分隔）</label>
+                        <input type="text" id="hsrWeaponImgId" placeholder="23060, 23061">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="hsrWeaponImgSyncBtn" onclick="ToolsApp.sendHSRWeaponImgSync()">
+                        <span id="hsrWeaponImgBtnText">同步光锥图片</span>
+                    </button>
+                    <div id="hsrWeaponImgResult" class="result" style="display:none;">
+                        <h3 id="hsrWeaponImgResultTitle"></h3>
+                        <p id="hsrWeaponImgResultMessage"></p>
+                        <pre id="hsrWeaponImgResultOutput"></pre>
+                    </div>
+                </div>
             </div>
 
             <!-- HSR 怪物数据更新工具 -->
@@ -179,6 +230,23 @@
                     <h3 id="hsrMonsterResultTitle"></h3>
                     <p id="hsrMonsterResultMessage"></p>
                     <pre id="hsrMonsterResultOutput"></pre>
+                </div>
+
+                <div class="img-sync-section">
+                    <div class="img-sync-divider"></div>
+                    <h3 class="img-sync-title">🖼️ 怪物图片同步</h3>
+                    <div class="form-group">
+                        <label for="hsrMonsterImgId">怪物ID（可复用上方ID，多个用逗号分隔）</label>
+                        <input type="text" id="hsrMonsterImgId" placeholder="8015030, 8015040">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="hsrMonsterImgSyncBtn" onclick="ToolsApp.sendHSRMonsterImgSync()">
+                        <span id="hsrMonsterImgBtnText">同步怪物图片</span>
+                    </button>
+                    <div id="hsrMonsterImgResult" class="result" style="display:none;">
+                        <h3 id="hsrMonsterImgResultTitle"></h3>
+                        <p id="hsrMonsterImgResultMessage"></p>
+                        <pre id="hsrMonsterImgResultOutput"></pre>
+                    </div>
                 </div>
             </div>
 

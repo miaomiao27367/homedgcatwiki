@@ -348,3 +348,19 @@ input:focus, textarea:focus, select:focus {
     color: #bbb;
     font-size: 10px;
 }
+
+.img-sync-section {
+    margin-top: 24px;
+}
+
+.img-sync-divider {
+    border-top: 2px solid #e0e0e0;
+    margin-bottom: 16px;
+}
+
+.img-sync-title {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 14px;
+    font-weight: bold;
+}

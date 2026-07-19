@@ -342,6 +342,55 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             print(f'[PUT Weapon Image] ✗ 下载失败 {folder_name}/{weapon_id}: {str(e)}')
             return False, str(e)
 
+    def handle_gi_image(self, icon_name):
+        """下载GI图片：从 static.nanoka.cc/assets/gi/{icon_name}.webp 保存到本地"""
+        icon_map = {
+            'UI_AvatarIcon': 'Avatar',
+            'UI_Gacha_AvatarImg': 'Gacha',
+            'UI_NameCardPic': 'Avatar',
+            'UI_NameCardIcon': 'Mat',
+            'UI_Costume': 'Gacha',
+            'UI_ItemIcon': 'Mat',
+            'Skill_A_': 'AvatarSkill',
+            'Skill_S_': 'AvatarSkill',
+            'Skill_E_': 'AvatarSkill',
+            'UI_Talent_S_': 'AvatarSkill',
+            'UI_Talent_U_': 'AvatarSkill',
+        }
+
+        folder = None
+        for prefix, subfolder in icon_map.items():
+            if icon_name.startswith(prefix):
+                folder = subfolder
+                break
+
+        if not folder:
+            print(f"[GI Image] ✗ 无法识别图标类型: {icon_name}")
+            return False, f"无法识别图标类型: {icon_name}"
+
+        local_path = os.path.join(os.getcwd(), f'homdgcat-res/{folder}/{icon_name}.png')
+        local_dir = os.path.dirname(local_path)
+        os.makedirs(local_dir, exist_ok=True)
+
+        if os.path.exists(local_path):
+            print(f'[GI Image] - {icon_name}.png (已存在，跳过)')
+            return True, None
+
+        remote_url = f'https://static.nanoka.cc/assets/gi/{icon_name}.webp'
+
+        try:
+            response = requests.get(remote_url, timeout=30)
+            response.raise_for_status()
+
+            with Image.open(io.BytesIO(response.content)) as img:
+                img.save(local_path, 'PNG')
+
+            print(f'[GI Image] ✓ {icon_name}.png')
+            return True, None
+        except Exception as e:
+            print(f'[GI Image] ✗ {icon_name}: {str(e)}')
+            return False, str(e)
+
     def handle_monster_image(self, path):
         """处理怪物图片更新请求"""
         match = re.search(r'Monster_(\d+)\.png$', path)
@@ -1009,6 +1058,218 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
             
+            print("-" * 50)
+            return
+
+        # 处理 /hsr_sync_avatar_image
+        if path == '/hsr_sync_avatar_image':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                request_data = json.loads(post_data.decode('utf-8'))
+                ids = request_data.get('ids', [])
+                print(f"[hsr_sync_avatar_image] 角色ID: {ids}")
+
+                results = []
+                avatar_paths = [
+                    "/images/avatarshopicon/avatar/{id}.png",
+                    "/images/avataricon/avatar/{id}.png",
+                    "/images/avatardrawcard/{id}.png",
+                    "/images/skillicons/avatar/{id}",
+                ]
+                for aid in ids:
+                    for tmpl in avatar_paths:
+                        img_path = tmpl.replace('{id}', str(aid))
+                        success, err = self.handle_avatar_image(img_path)
+                        results.append(f"{'✓' if success else '✗'} {img_path}" + (f" ({err})" if err else ""))
+
+                final_output = "\n".join(results)
+                success_count = sum(1 for r in results if r.startswith('✓'))
+                fail_count = len(results) - success_count
+                response_data = {"status": "success", "message": f"角色图片: 成功 {success_count}, 失败 {fail_count}", "stdout": final_output}
+            except Exception as e:
+                print(f"[hsr_sync_avatar_image] 失败: {str(e)}")
+                response_data = {"status": "error", "message": "角色图片同步失败", "stderr": str(e)}
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+            print("-" * 50)
+            return
+
+        # 处理 /hsr_sync_weapon_image
+        if path == '/hsr_sync_weapon_image':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                request_data = json.loads(post_data.decode('utf-8'))
+                ids = request_data.get('ids', [])
+                print(f"[hsr_sync_weapon_image] 武器ID: {ids}")
+
+                results = []
+                weapon_paths = [
+                    "/images/lightconemediumicon/{id}.png",
+                    "/images/lightconemaxfigures/{id}.png",
+                ]
+                for wid in ids:
+                    for tmpl in weapon_paths:
+                        img_path = tmpl.replace('{id}', str(wid))
+                        success, err = self.handle_weapon_image(img_path)
+                        results.append(f"{'✓' if success else '✗'} {img_path}" + (f" ({err})" if err else ""))
+
+                final_output = "\n".join(results)
+                success_count = sum(1 for r in results if r.startswith('✓'))
+                fail_count = len(results) - success_count
+                response_data = {"status": "success", "message": f"武器图片: 成功 {success_count}, 失败 {fail_count}", "stdout": final_output}
+            except Exception as e:
+                print(f"[hsr_sync_weapon_image] 失败: {str(e)}")
+                response_data = {"status": "error", "message": "武器图片同步失败", "stderr": str(e)}
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+            print("-" * 50)
+            return
+
+        # 处理 /hsr_sync_monster_image
+        if path == '/hsr_sync_monster_image':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                request_data = json.loads(post_data.decode('utf-8'))
+                ids = request_data.get('ids', [])
+                print(f"[hsr_sync_monster_image] 怪物ID: {ids}")
+
+                results = []
+                monster_path = "/images/monsterfigure/Monster_{id}.png"
+                for mid in ids:
+                    img_path = monster_path.replace('{id}', str(mid))
+                    success, err = self.handle_monster_image(img_path)
+                    results.append(f"{'✓' if success else '✗'} {img_path}" + (f" ({err})" if err else ""))
+
+                final_output = "\n".join(results)
+                success_count = sum(1 for r in results if r.startswith('✓'))
+                fail_count = len(results) - success_count
+                response_data = {"status": "success", "message": f"怪物图片: 成功 {success_count}, 失败 {fail_count}", "stdout": final_output}
+            except Exception as e:
+                print(f"[hsr_sync_monster_image] 失败: {str(e)}")
+                response_data = {"status": "error", "message": "怪物图片同步失败", "stderr": str(e)}
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+            print("-" * 50)
+            return
+
+        # 处理 /gi_sync_avatar_image
+        if path == '/gi_sync_avatar_image':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                request_data = json.loads(post_data.decode('utf-8'))
+                ids = request_data.get('ids', [])
+                print(f"[gi_sync_avatar_image] 角色ID: {ids}")
+
+                all_icons = []
+                avatar_js_path = os.path.join(os.getcwd(), 'gi/CH/avatar.js')
+
+                for cid in ids:
+                    cid = str(cid)
+                    icons = set()
+
+                    # 1. 从 avatar.js 读取 Icon 和 _name
+                    avatar_name = None
+                    try:
+                        with open(avatar_js_path, 'r', encoding='utf-8') as f:
+                            content = f.read()
+                        pattern = rf'"Icon":\s*"([^"]+)"'
+                        # 找到对应 _id 的条目
+                        block_pattern = rf'"_id":\s*{cid}\s*[,}}]'
+                        block_match = re.search(block_pattern, content)
+                        if block_match:
+                            # 从该位置向前后搜索 Icon 和 _name
+                            pos = block_match.start()
+                            icon_match = re.search(r'"Icon":\s*"([^"]+)"', content[pos:pos+2000])
+                            if icon_match:
+                                icons.add(icon_match.group(1))  # UI_AvatarIcon_Odette
+                            name_match = re.search(r'"_name":\s*"([^"]+)"', content[pos:pos+2000])
+                            if name_match:
+                                avatar_name = name_match.group(1)
+                    except Exception as e:
+                        print(f"[gi_sync] 读取 avatar.js 失败: {e}")
+
+                    # 2. 从 _1.js 读取技能/天赋/命之座图标
+                    skills_file = f'gi/CH/Avatar/{cid}_1.js'
+                    if os.path.exists(skills_file):
+                        try:
+                            with open(skills_file, 'r', encoding='utf-8') as f:
+                                skills_content = f.read()
+                            skill_icons = re.findall(r'"Icon":\s*"([^"]+)"', skills_content)
+                            icons.update(skill_icons)
+                        except Exception as e:
+                            print(f"[gi_sync] 读取 {skills_file} 失败: {e}")
+
+                    # 3. 从 _2.js 读取 Namecard.Pic, Costumes[].Icon, Dish.Icon
+                    data2_file = f'gi/CH/Avatar/{cid}_2.js'
+                    if os.path.exists(data2_file):
+                        try:
+                            with open(data2_file, 'r', encoding='utf-8') as f:
+                                data2_content = f.read()
+                            # Namecard Pic
+                            pic_match = re.search(r'"Pic":\s*"([^"]+)"', data2_content)
+                            if pic_match:
+                                pic = pic_match.group(1)
+                                icons.add(pic)
+                                # 生成 NameCardIcon (Pic → Icon)
+                                namecard_icon = pic.replace('NameCardPic', 'NameCardIcon').replace('_P', '')
+                                icons.add(namecard_icon)
+                            # Costumes Icon
+                            costume_icons = re.findall(r'"Icon":\s*"([^"]+)"', data2_content)
+                            for ci in costume_icons:
+                                if ci:
+                                    icons.add(ci)
+                        except Exception as e:
+                            print(f"[gi_sync] 读取 {data2_file} 失败: {e}")
+
+                    # 4. 派生图标：Gacha_AvatarImg, AvatarIcon_Circle
+                    if avatar_name:
+                        icons.add(f'UI_Gacha_AvatarImg_{avatar_name}')
+                        icons.add(f'UI_AvatarIcon_{avatar_name}_Circle')
+
+                    all_icons.append({'id': cid, 'icons': sorted(icons)})
+
+                # 5. 下载所有图标
+                results = []
+                total_success = 0
+                total_fail = 0
+                for char_icons in all_icons:
+                    results.append(f"--- 角色 {char_icons['id']} ({len(char_icons['icons'])} 个图标) ---")
+                    for icon_name in char_icons['icons']:
+                        success, err = self.handle_gi_image(icon_name)
+                        if success:
+                            total_success += 1
+                            results.append(f"  ✓ {icon_name}")
+                        else:
+                            total_fail += 1
+                            results.append(f"  ✗ {icon_name} ({err})")
+
+                final_output = "\n".join(results)
+                response_data = {
+                    "status": "success",
+                    "message": f"GI角色图片: 成功 {total_success}, 失败 {total_fail}",
+                    "stdout": final_output
+                }
+            except Exception as e:
+                print(f"[gi_sync_avatar_image] 失败: {str(e)}")
+                response_data = {"status": "error", "message": "GI角色图片同步失败", "stderr": str(e)}
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
             print("-" * 50)
             return
 

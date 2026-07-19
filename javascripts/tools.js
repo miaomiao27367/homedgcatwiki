@@ -614,6 +614,186 @@ var ToolsApp = {
             submitBtn.disabled = false;
             btnText.textContent = '发送更新请求';
         }
+    },
+
+    // 发送GI角色图片同步请求
+    sendGIAvatarImgSync: async function() {
+        var btn = document.getElementById('giAvatarImgSyncBtn');
+        var btnText = document.getElementById('giAvatarImgBtnText');
+        var resultDiv = document.getElementById('giAvatarImgResult');
+
+        var idText = document.getElementById('giAvatarImgId').value.trim();
+        var ids = idText
+            ? idText.split(/[\s,]+/).map(function(id) { return id.trim(); }).filter(function(id) { return id; })
+            : [];
+
+        var data = { ids: ids };
+
+        btn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>同步中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/gi_sync_avatar_image', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            var result = await response.json();
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('giAvatarImgResultTitle').textContent =
+                result.status === 'success' ? '✓ 同步完成' : '✗ 同步失败';
+            document.getElementById('giAvatarImgResultMessage').textContent = result.message;
+            var out = result.stdout || result.stderr || '';
+            document.getElementById('giAvatarImgResultOutput').textContent = out;
+            document.getElementById('giAvatarImgResultOutput').style.display = out ? 'block' : 'none';
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giAvatarImgResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('giAvatarImgResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('giAvatarImgResultOutput').textContent = error.toString();
+            document.getElementById('giAvatarImgResultOutput').style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = '同步角色图片';
+        }
+    },
+
+    // 发送HSR角色图片同步请求
+    sendHSRAvatarImgSync: async function() {
+        var btn = document.getElementById('hsrAvatarImgSyncBtn');
+        var btnText = document.getElementById('hsrAvatarImgBtnText');
+        var resultDiv = document.getElementById('hsrAvatarImgResult');
+
+        var idText = document.getElementById('hsrAvatarImgId').value.trim();
+        var ids = idText
+            ? idText.split(/[\s,]+/).map(function(id) { return id.trim(); }).filter(function(id) { return id; })
+            : [];
+
+        var data = { ids: ids };
+
+        btn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>同步中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/hsr_sync_avatar_image', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            var result = await response.json();
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('hsrAvatarImgResultTitle').textContent =
+                result.status === 'success' ? '✓ 同步完成' : '✗ 同步失败';
+            document.getElementById('hsrAvatarImgResultMessage').textContent = result.message;
+            var out = result.stdout || result.stderr || '';
+            document.getElementById('hsrAvatarImgResultOutput').textContent = out;
+            document.getElementById('hsrAvatarImgResultOutput').style.display = out ? 'block' : 'none';
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('hsrAvatarImgResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('hsrAvatarImgResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('hsrAvatarImgResultOutput').textContent = error.toString();
+            document.getElementById('hsrAvatarImgResultOutput').style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = '同步角色图片';
+        }
+    },
+
+    // 发送HSR武器图片同步请求
+    sendHSRWeaponImgSync: async function() {
+        var btn = document.getElementById('hsrWeaponImgSyncBtn');
+        var btnText = document.getElementById('hsrWeaponImgBtnText');
+        var resultDiv = document.getElementById('hsrWeaponImgResult');
+
+        var idText = document.getElementById('hsrWeaponImgId').value.trim();
+        var ids = idText
+            ? idText.split(/[\s,]+/).map(function(id) { return id.trim(); }).filter(function(id) { return id; })
+            : [];
+
+        var data = { ids: ids };
+
+        btn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>同步中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/hsr_sync_weapon_image', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            var result = await response.json();
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('hsrWeaponImgResultTitle').textContent =
+                result.status === 'success' ? '✓ 同步完成' : '✗ 同步失败';
+            document.getElementById('hsrWeaponImgResultMessage').textContent = result.message;
+            var out = result.stdout || result.stderr || '';
+            document.getElementById('hsrWeaponImgResultOutput').textContent = out;
+            document.getElementById('hsrWeaponImgResultOutput').style.display = out ? 'block' : 'none';
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('hsrWeaponImgResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('hsrWeaponImgResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('hsrWeaponImgResultOutput').textContent = error.toString();
+            document.getElementById('hsrWeaponImgResultOutput').style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = '同步光锥图片';
+        }
+    },
+
+    // 发送HSR怪物图片同步请求
+    sendHSRMonsterImgSync: async function() {
+        var btn = document.getElementById('hsrMonsterImgSyncBtn');
+        var btnText = document.getElementById('hsrMonsterImgBtnText');
+        var resultDiv = document.getElementById('hsrMonsterImgResult');
+
+        var idText = document.getElementById('hsrMonsterImgId').value.trim();
+        var ids = idText
+            ? idText.split(/[\s,]+/).map(function(id) { return id.trim(); }).filter(function(id) { return id; })
+            : [];
+
+        var data = { ids: ids };
+
+        btn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>同步中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/hsr_sync_monster_image', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            var result = await response.json();
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('hsrMonsterImgResultTitle').textContent =
+                result.status === 'success' ? '✓ 同步完成' : '✗ 同步失败';
+            document.getElementById('hsrMonsterImgResultMessage').textContent = result.message;
+            var out = result.stdout || result.stderr || '';
+            document.getElementById('hsrMonsterImgResultOutput').textContent = out;
+            document.getElementById('hsrMonsterImgResultOutput').style.display = out ? 'block' : 'none';
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('hsrMonsterImgResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('hsrMonsterImgResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('hsrMonsterImgResultOutput').textContent = error.toString();
+            document.getElementById('hsrMonsterImgResultOutput').style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = '同步怪物图片';
+        }
     }
 
 };
