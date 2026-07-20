@@ -1,6 +1,2418 @@
-// Auto Generated
-
 var _fiction = [
+    {
+        "_id": 2026,
+        "Name": "立界开篇",
+        "BST": 1,
+        "Buffs": [
+            {
+                "_id": 3031365,
+                "Name": "狂欢",
+                "Desc": "「战意汹涌」期间，敌方目标受到的欢愉伤害提高<color style='color:#f29e38;'>30%</color>，阿哈时刻的速度额外提高<color style='color:#f29e38;'>20</color>点。",
+                "SimpleDesc": ""
+            },
+            {
+                "_id": 3031366,
+                "Name": "狂想",
+                "Desc": "我方目标施放普攻或战技后，获得<color style='color:#f29e38;'>1</color>个笑点；「战意汹涌」期间，我方目标造成的伤害提高<color style='color:#f29e38;'>50%</color>。",
+                "SimpleDesc": ""
+            },
+            {
+                "_id": 3031367,
+                "Name": "谜狂",
+                "Desc": "我方忆灵施放攻击后，获得<color style='color:#f29e38;'>2</color>个笑点；「战意汹涌」期间，我方忆灵造成的伤害提高<color style='color:#f29e38;'>50%</color>。",
+                "SimpleDesc": ""
+            }
+        ],
+        "Blessing": [
+            {
+                "_id": 3031227,
+                "Name": "获得笑点",
+                "Desc": "每次获得笑点时，使我方额外积累<color style='color:#f29e38;'>2</color>点「战意值」。"
+            },
+            {
+                "_id": 3031224,
+                "Name": "战熄潮平",
+                "Desc": "关卡拥有特殊的欢愉技，进入阿哈时刻时对随机敌方目标造成<color style='color:#f29e38;'>15</color>次虚数属性欢愉伤害。敌方目标被任意目标消灭时，获得<color style='color:#f29e38;'>1</color>笑点。"
+            },
+            {
+                "_id": 3031225,
+                "Name": "战意汹涌",
+                "Desc": "进入「战意汹涌」时，使阿哈立即获得一个固定计入<color style='color:#f29e38;'>20</color>笑点的额外回合，本回合不消耗笑点且造成的欢愉技伤害为原伤害的<color style='color:#f29e38;'>50%</color>。「战意汹涌」期间敌方目标受到的伤害提高<color style='color:#f29e38;'>50%</color>，并使阿哈时刻的速度提升<color style='color:#f29e38;'>40</color>点。"
+            }
+        ],
+        "Floors": [
+            {
+                "Floor": 1,
+                "TotalHP": 5012383,
+                "ElemUpper": [
+                    "Phys",
+                    "Ice",
+                    "Quantum"
+                ],
+                "ElemLower": [
+                    "Phys",
+                    "Fire",
+                    "Ice"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30324011,
+                        "Level": 55,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 4012020,
+                                        "Num": 12,
+                                        "HP": 13577,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4022010,
+                                        "Num": 11,
+                                        "HP": 15665,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 31331,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 2022040,
+                                        "Num": 20,
+                                        "HP": 13368,
+                                        "SPD": 118,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 2022110,
+                                        "Num": 20,
+                                        "HP": 16710,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 401301201,
+                                        "Num": 1,
+                                        "HP": 689275,
+                                        "SPD": 132,
+                                        "Stance": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 4032030,
+                                        "Num": 20,
+                                        "HP": 61547,
+                                        "SPD": 100,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 4032050,
+                                        "Num": 20,
+                                        "HP": 54307,
+                                        "SPD": 155,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 800302023,
+                                        "Num": 1,
+                                        "HP": 1493430,
+                                        "SPD": 120,
+                                        "Stance": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30324012,
+                        "Level": 55,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 4062010,
+                                        "Num": 12,
+                                        "HP": 13054,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 5012100,
+                                        "Num": 11,
+                                        "HP": 15665,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 31331,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 1022010,
+                                        "Num": 20,
+                                        "HP": 12532,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 8032020,
+                                        "Num": 20,
+                                        "HP": 18381,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 300302007,
+                                        "Num": 1,
+                                        "HP": 689275,
+                                        "SPD": 144,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 8032010,
+                                        "Num": 20,
+                                        "HP": 28963,
+                                        "SPD": 118,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 5012030,
+                                        "Num": 20,
+                                        "HP": 45255,
+                                        "SPD": 132,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 406301001,
+                                        "Num": 1,
+                                        "HP": 1493430,
+                                        "SPD": 120,
+                                        "Stance": 16
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 2,
+                "TotalHP": 9426085,
+                "ElemUpper": [
+                    "Phys",
+                    "Ice",
+                    "Elec"
+                ],
+                "ElemLower": [
+                    "Phys",
+                    "Wind",
+                    "Quantum"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30324021,
+                        "Level": 65,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 1012010,
+                                        "Num": 12,
+                                        "HP": 14424,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 2012010,
+                                        "Num": 11,
+                                        "HP": 15454,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 61817,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 4052010,
+                                        "Num": 20,
+                                        "HP": 53575,
+                                        "SPD": 144,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 4032040,
+                                        "Num": 20,
+                                        "HP": 65938,
+                                        "SPD": 155,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 403302002,
+                                        "Num": 1,
+                                        "HP": 1359978,
+                                        "SPD": 132,
+                                        "Stance": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 8012010,
+                                        "Num": 20,
+                                        "HP": 35717,
+                                        "SPD": 100,
+                                        "Stance": 5
+                                    },
+                                    {
+                                        "ID": 3002030,
+                                        "Num": 20,
+                                        "HP": 80362,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 202303016,
+                                        "Num": 1,
+                                        "HP": 2946619,
+                                        "SPD": 120,
+                                        "Stance": 14
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30324022,
+                        "Level": 65,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 1002040,
+                                        "Num": 12,
+                                        "HP": 13394,
+                                        "SPD": 83,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 8002010,
+                                        "Num": 11,
+                                        "HP": 19575,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 61817,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 2032020,
+                                        "Num": 20,
+                                        "HP": 32969,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4022010,
+                                        "Num": 20,
+                                        "HP": 49454,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 800301020,
+                                        "Num": 1,
+                                        "HP": 1359978,
+                                        "SPD": 100,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 2002010,
+                                        "Num": 20,
+                                        "HP": 57147,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 8012020,
+                                        "Num": 20,
+                                        "HP": 35717,
+                                        "SPD": 100,
+                                        "Stance": 5
+                                    },
+                                    {
+                                        "ID": 800303020,
+                                        "Num": 1,
+                                        "HP": 2946619,
+                                        "SPD": 120,
+                                        "Stance": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 3,
+                "TotalHP": 15720317,
+                "ElemUpper": [
+                    "Ice",
+                    "Elec",
+                    "Imaginary"
+                ],
+                "ElemLower": [
+                    "Phys",
+                    "Wind",
+                    "Imaginary"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30324031,
+                        "Level": 75,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 1012030,
+                                        "Num": 12,
+                                        "HP": 23729,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 4012010,
+                                        "Num": 11,
+                                        "HP": 44068,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 101695,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 4032010,
+                                        "Num": 20,
+                                        "HP": 81356,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 5012040,
+                                        "Num": 20,
+                                        "HP": 67796,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 301301008,
+                                        "Num": 1,
+                                        "HP": 2237284,
+                                        "SPD": 110,
+                                        "Stance": 12
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 2012010,
+                                        "Num": 20,
+                                        "HP": 88135,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 5012020,
+                                        "Num": 20,
+                                        "HP": 132203,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 101302032,
+                                        "Num": 1,
+                                        "HP": 4847449,
+                                        "SPD": 144,
+                                        "Stance": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30324032,
+                        "Level": 75,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 2032020,
+                                        "Num": 12,
+                                        "HP": 33898,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 2002030,
+                                        "Num": 11,
+                                        "HP": 25424,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 101695,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 8012020,
+                                        "Num": 20,
+                                        "HP": 27119,
+                                        "SPD": 100,
+                                        "Stance": 5
+                                    },
+                                    {
+                                        "ID": 2022050,
+                                        "Num": 20,
+                                        "HP": 54237,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 403301002,
+                                        "Num": 1,
+                                        "HP": 2237284,
+                                        "SPD": 120,
+                                        "Stance": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 2002010,
+                                        "Num": 20,
+                                        "HP": 94011,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 1002040,
+                                        "Num": 20,
+                                        "HP": 76384,
+                                        "SPD": 83,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 801301025,
+                                        "Num": 1,
+                                        "HP": 4847449,
+                                        "SPD": 100,
+                                        "Stance": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 4,
+                "TotalHP": 106880728,
+                "ElemUpper": [
+                    "Quantum",
+                    "Imaginary"
+                ],
+                "ElemLower": [
+                    "Phys",
+                    "Imaginary"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30324041,
+                        "Level": 85,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012010,
+                                        "Num": 12,
+                                        "HP": 218856,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4012010,
+                                        "Num": 11,
+                                        "HP": 227611,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 525255,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 10.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 4022010,
+                                        "Num": 20,
+                                        "HP": 525255,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8022010,
+                                        "Num": 20,
+                                        "HP": 393942,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 402301002,
+                                        "Num": 1,
+                                        "HP": 14444524,
+                                        "SPD": 120,
+                                        "Stance": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 46.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 8022020,
+                                        "Num": 20,
+                                        "HP": 2536984,
+                                        "SPD": 144,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 5012010,
+                                        "Num": 20,
+                                        "HP": 2013479,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8024013,
+                                        "Num": 1,
+                                        "HP": 66444812,
+                                        "SPD": 144,
+                                        "Stance": 16
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30324042,
+                        "Level": 85,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012100,
+                                        "Num": 12,
+                                        "HP": 262628,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4062020,
+                                        "Num": 11,
+                                        "HP": 262628,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 525255,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 10.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 2012010,
+                                        "Num": 20,
+                                        "HP": 262628,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 1002030,
+                                        "Num": 20,
+                                        "HP": 367679,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 201302012,
+                                        "Num": 1,
+                                        "HP": 14444524,
+                                        "SPD": 120,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 40.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 5022010,
+                                        "Num": 20,
+                                        "HP": 2521226,
+                                        "SPD": 150,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 5012100,
+                                        "Num": 20,
+                                        "HP": 2101022,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 5024014,
+                                        "Num": 1,
+                                        "HP": 57778097,
+                                        "SPD": 100,
+                                        "Stance": 5
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": 2025,
+        "Name": "构事生意",
+        "BST": 1,
+        "Buffs": [
+            {
+                "_id": 3031362,
+                "Name": "暴言",
+                "Desc": "造成的追加攻击伤害的全属性抗性穿透提高<color style='color:#f29e38;'>#1[i]%</color>，「战意汹涌」期间，我方目标施放追加攻击攻击敌方目标后，额外对每个被攻击的敌方目标相邻的目标造成攻击者<color style='color:#f29e38;'>#2[i]%</color>攻击力+<color style='color:#f29e38;'>#3[i]%</color>生命上限的附加伤害，该伤害被视为追加攻击伤害。",
+                "SimpleDesc": ""
+            },
+            {
+                "_id": 3031363,
+                "Name": "高论",
+                "Desc": "「战意汹涌」期间，我方目标施放终结技时造成的暴击伤害提高<color style='color:#f29e38;'>#1[i]%</color>，「战意汹涌」结束时，我方全体恢复<color style='color:#f29e38;'>#2[i]%</color>能量。",
+                "SimpleDesc": ""
+            },
+            {
+                "_id": 3031364,
+                "Name": "快嘴",
+                "Desc": "我方全体速度提高<color style='color:#f29e38;'>#1[i]%</color>。「战意汹涌」期间敌方目标受到的伤害额外提高<color style='color:#f29e38;'>#2[i]%</color>。",
+                "SimpleDesc": ""
+            }
+        ],
+        "Blessing": [
+            {
+                "_id": 3031226,
+                "Name": "追加攻击",
+                "Desc": "我方目标施放追加攻击攻击敌方目标后，每击中1个敌方目标，使我方额外积累<color style='color:#f29e38;'>#1[i]</color>点「战意值」。"
+            },
+            {
+                "_id": 3031224,
+                "Name": "战熄潮平",
+                "Desc": "我方目标施放追加攻击或终结技后，对每个被攻击的敌方目标造成攻击者<color style='color:#f29e38;'>#1[i]%</color>攻击力+<color style='color:#f29e38;'>#2[i]%</color>生命上限的附加伤害。"
+            },
+            {
+                "_id": 3031225,
+                "Name": "战意汹涌",
+                "Desc": "进入「战意汹涌」时，我方全体恢复<color style='color:#f29e38;'>#1[i]%</color>能量。「战意汹涌」期间敌方目标受到的伤害提高<color style='color:#f29e38;'>#2[i]%</color>，「战熄潮平」造成的附加伤害提高<color style='color:#f29e38;'>#3[i]%</color>，且该伤害被视为追加攻击伤害。"
+            }
+        ],
+        "Floors": [
+            {
+                "Floor": 1,
+                "ElemUpper": [
+                    "Wind",
+                    "Quantum"
+                ],
+                "ElemLower": [
+                    "Ice",
+                    "Imaginary"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30323011,
+                        "Level": 55,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 4022010,
+                                        "Num": 12,
+                                        "HP": 15665,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8002010,
+                                        "Num": 11,
+                                        "HP": 9921,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 31331,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 4032010,
+                                        "Num": 20,
+                                        "HP": 25065,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 1002040,
+                                        "Num": 20,
+                                        "HP": 10861,
+                                        "SPD": 83,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 800301020,
+                                        "Num": 1,
+                                        "HP": 689275,
+                                        "SPD": 100,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 1012021,
+                                        "Num": 20,
+                                        "HP": 13577,
+                                        "SPD": 83,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 8012020,
+                                        "Num": 20,
+                                        "HP": 18102,
+                                        "SPD": 100,
+                                        "Stance": 5
+                                    },
+                                    {
+                                        "ID": 403301002,
+                                        "Num": 1,
+                                        "HP": 1493430,
+                                        "SPD": 120,
+                                        "Stance": 16
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30323012,
+                        "Level": 55,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 4062020,
+                                        "Num": 12,
+                                        "HP": 15665,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 1022020,
+                                        "Num": 11,
+                                        "HP": 7833,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 31331,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012020,
+                                        "Num": 20,
+                                        "HP": 18798,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8032010,
+                                        "Num": 20,
+                                        "HP": 13368,
+                                        "SPD": 118,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 101302032,
+                                        "Num": 1,
+                                        "HP": 689275,
+                                        "SPD": 144,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 4012040,
+                                        "Num": 20,
+                                        "HP": 47066,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 3002010,
+                                        "Num": 20,
+                                        "HP": 49781,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 803301011,
+                                        "Num": 1,
+                                        "HP": 1493430,
+                                        "SPD": 120,
+                                        "Stance": 12
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 2,
+                "ElemUpper": [
+                    "Phys",
+                    "Elec"
+                ],
+                "ElemLower": [
+                    "Fire",
+                    "Wind"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30323021,
+                        "Level": 65,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 1012010,
+                                        "Num": 12,
+                                        "HP": 14424,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 2012010,
+                                        "Num": 11,
+                                        "HP": 15454,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 61817,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 8002010,
+                                        "Num": 20,
+                                        "HP": 31321,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 4052010,
+                                        "Num": 20,
+                                        "HP": 53575,
+                                        "SPD": 144,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 201302012,
+                                        "Num": 1,
+                                        "HP": 1359978,
+                                        "SPD": 120,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 8012010,
+                                        "Num": 20,
+                                        "HP": 35717,
+                                        "SPD": 100,
+                                        "Stance": 5
+                                    },
+                                    {
+                                        "ID": 3002030,
+                                        "Num": 20,
+                                        "HP": 80362,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 403302002,
+                                        "Num": 1,
+                                        "HP": 2946619,
+                                        "SPD": 132,
+                                        "Stance": 16
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30323022,
+                        "Level": 65,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 2002010,
+                                        "Num": 12,
+                                        "HP": 16485,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 2002030,
+                                        "Num": 11,
+                                        "HP": 15454,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 61817,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 3002020,
+                                        "Num": 20,
+                                        "HP": 37090,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 2022050,
+                                        "Num": 20,
+                                        "HP": 32969,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 800304018,
+                                        "Num": 1,
+                                        "HP": 1359978,
+                                        "SPD": 172,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 4032040,
+                                        "Num": 20,
+                                        "HP": 142866,
+                                        "SPD": 155,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 202205004,
+                                        "Num": 20,
+                                        "HP": 71433,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 202302014,
+                                        "Num": 1,
+                                        "HP": 2946619,
+                                        "SPD": 144,
+                                        "Stance": 12
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 3,
+                "ElemUpper": [
+                    "Phys",
+                    "Ice"
+                ],
+                "ElemLower": [
+                    "Elec",
+                    "Imaginary"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30323031,
+                        "Level": 75,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 8022030,
+                                        "Num": 12,
+                                        "HP": 38136,
+                                        "SPD": 118,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4012040,
+                                        "Num": 11,
+                                        "HP": 44068,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 101695,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 2002030,
+                                        "Num": 20,
+                                        "HP": 40678,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 4062020,
+                                        "Num": 20,
+                                        "HP": 81356,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 202303016,
+                                        "Num": 1,
+                                        "HP": 2237284,
+                                        "SPD": 120,
+                                        "Stance": 14
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012100,
+                                        "Num": 20,
+                                        "HP": 176271,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 1002050,
+                                        "Num": 20,
+                                        "HP": 64633,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 100301035,
+                                        "Num": 1,
+                                        "HP": 4847449,
+                                        "SPD": 120,
+                                        "Stance": 8
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30323032,
+                        "Level": 75,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 4012010,
+                                        "Num": 12,
+                                        "HP": 44068,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 1012030,
+                                        "Num": 11,
+                                        "HP": 23729,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 101695,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 4032010,
+                                        "Num": 20,
+                                        "HP": 81356,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 2012010,
+                                        "Num": 20,
+                                        "HP": 40678,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 300303006,
+                                        "Num": 1,
+                                        "HP": 2237284,
+                                        "SPD": 100,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 8002010,
+                                        "Num": 20,
+                                        "HP": 111638,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 5012010,
+                                        "Num": 20,
+                                        "HP": 146892,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 203301008,
+                                        "Num": 1,
+                                        "HP": 4847449,
+                                        "SPD": 120,
+                                        "Stance": 12
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 4,
+                "ElemUpper": [
+                    "Phys",
+                    "Imaginary"
+                ],
+                "ElemLower": [
+                    "Fire",
+                    "Elec"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30323041,
+                        "Level": 85,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012010,
+                                        "Num": 12,
+                                        "HP": 218856,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 5012020,
+                                        "Num": 11,
+                                        "HP": 196971,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 525255,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 10.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 1002030,
+                                        "Num": 20,
+                                        "HP": 367679,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8022010,
+                                        "Num": 20,
+                                        "HP": 393942,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 402301002,
+                                        "Num": 1,
+                                        "HP": 14444524,
+                                        "SPD": 120,
+                                        "Stance": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 38.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 4012040,
+                                        "Num": 20,
+                                        "HP": 1820885,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 1022010,
+                                        "Num": 20,
+                                        "HP": 1050511,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 100402014,
+                                        "Num": 1,
+                                        "HP": 57778097,
+                                        "SPD": 120,
+                                        "Stance": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30323042,
+                        "Level": 85,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 3012020,
+                                        "Num": 12,
+                                        "HP": 122560,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 4032040,
+                                        "Num": 11,
+                                        "HP": 350170,
+                                        "SPD": 155,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 525255,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 10.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 4052020,
+                                        "Num": 20,
+                                        "HP": 569027,
+                                        "SPD": 120,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 5012030,
+                                        "Num": 20,
+                                        "HP": 437713,
+                                        "SPD": 132,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 405301002,
+                                        "Num": 1,
+                                        "HP": 14444524,
+                                        "SPD": 144,
+                                        "Stance": 18
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 35.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012120,
+                                        "Num": 20,
+                                        "HP": 1890920,
+                                        "SPD": 160,
+                                        "Stance": 6
+                                    },
+                                    {
+                                        "ID": 4032040,
+                                        "Num": 20,
+                                        "HP": 2521226,
+                                        "SPD": 155,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 5014023,
+                                        "Num": 1,
+                                        "HP": 52000287,
+                                        "SPD": 120,
+                                        "Stance": 24
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": 2024,
+        "Name": "借虚成真",
+        "BST": 1,
+        "Buffs": [
+            {
+                "_id": 3031365,
+                "Name": "触技",
+                "Desc": "我方目标造成的终结技和追加攻击伤害提高<color style='color:#f29e38;'>40%</color>，「战意汹涌」期间，敌方目标每次陷入【沮丧】效果时改为叠加<color style='color:#f29e38;'>2</color>层该效果，【沮丧】效果的叠加上限提高到<color style='color:#f29e38;'>50</color>层。",
+                "SimpleDesc": ""
+            },
+            {
+                "_id": 3031366,
+                "Name": "笑韵",
+                "Desc": "我方角色施放欢愉技攻击敌方目标后，使受到攻击的敌方目标陷入【享乐】效果，使该目标受到的伤害提高<color style='color:#f29e38;'>15%</color>，持续<color style='color:#f29e38;'>2</color>回合，每个角色施加的该效果独立存在。进入「战意汹涌」时，我方获得<color style='color:#f29e38;'>40</color>个笑点。",
+                "SimpleDesc": ""
+            },
+            {
+                "_id": 3031367,
+                "Name": "变奏",
+                "Desc": "我方目标施放普攻、战技或终结技攻击敌方目标后，有<color style='color:#f29e38;'>100%</color>的基础概率使受到攻击的敌方目标的防御力降低<color style='color:#f29e38;'>3%</color>，持续<color style='color:#f29e38;'>2</color>回合，该效果最多叠加<color style='color:#f29e38;'>10</color>次。",
+                "SimpleDesc": ""
+            }
+        ],
+        "Blessing": [
+            {
+                "_id": 3031227,
+                "Name": "施加负面效果",
+                "Desc": "我方目标为敌方目标施加负面效果时，使我方额外累积<color style='color:#f29e38;'>1</color>点「战意值」，该效果每个敌方目标最多触发<color style='color:#f29e38;'>10</color>次。"
+            },
+            {
+                "_id": 3031224,
+                "Name": "战熄潮平",
+                "Desc": "敌方目标的效果抵抗降低<color style='color:#f29e38;'>30%</color>，陷入大于等于<color style='color:#f29e38;'>4</color>个负面效果的敌方目标受到的伤害提高<color style='color:#f29e38;'>20%</color>。"
+            },
+            {
+                "_id": 3031225,
+                "Name": "战意汹涌",
+                "Desc": "进入「战意汹涌」时，敌方目标每陷入1个负面效果，对其造成1次固定数值的伤害。「战意汹涌」期间敌方目标受到的伤害提高<color style='color:#f29e38;'>50%</color>，每次陷入负面效果后，使该目标陷入1层【沮丧】效果，全属性抗性降低<color style='color:#f29e38;'>1%</color>，持续<color style='color:#f29e38;'>2</color>回合，该效果最多加<color style='color:#f29e38;'>20</color>层。"
+            }
+        ],
+        "Floors": [
+            {
+                "Floor": 1,
+                "TotalHP": 4807966,
+                "ElemUpper": [
+                    "Fire",
+                    "Quantum"
+                ],
+                "ElemLower": [
+                    "Ice",
+                    "Imaginary"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30322011,
+                        "Level": 55,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 2032010,
+                                        "Num": 12,
+                                        "HP": 10444,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8012030,
+                                        "Num": 11,
+                                        "HP": 5222,
+                                        "SPD": 100,
+                                        "Stance": 5
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 31331,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 2022010,
+                                        "Num": 20,
+                                        "HP": 10026,
+                                        "SPD": 83,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 1022010,
+                                        "Num": 20,
+                                        "HP": 12532,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 402302002,
+                                        "Num": 1,
+                                        "HP": 689275,
+                                        "SPD": 100,
+                                        "Stance": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 4032040,
+                                        "Num": 20,
+                                        "HP": 72409,
+                                        "SPD": 155,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4022010,
+                                        "Num": 20,
+                                        "HP": 54307,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 800301020,
+                                        "Num": 1,
+                                        "HP": 1493430,
+                                        "SPD": 100,
+                                        "Stance": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30322012,
+                        "Level": 55,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 1002020,
+                                        "Num": 12,
+                                        "HP": 7833,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 5012020,
+                                        "Num": 11,
+                                        "HP": 11749,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 31331,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 4062020,
+                                        "Num": 20,
+                                        "HP": 25065,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4012020,
+                                        "Num": 20,
+                                        "HP": 21723,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 101302032,
+                                        "Num": 1,
+                                        "HP": 689275,
+                                        "SPD": 144,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 4012040,
+                                        "Num": 20,
+                                        "HP": 47066,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 3002010,
+                                        "Num": 20,
+                                        "HP": 49781,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 803301011,
+                                        "Num": 1,
+                                        "HP": 1493430,
+                                        "SPD": 120,
+                                        "Stance": 12
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 2,
+                "TotalHP": 9847996,
+                "ElemUpper": [
+                    "Elec",
+                    "Wind"
+                ],
+                "ElemLower": [
+                    "Phys",
+                    "Fire"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30322021,
+                        "Level": 65,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012040,
+                                        "Num": 12,
+                                        "HP": 25757,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 2032020,
+                                        "Num": 11,
+                                        "HP": 20606,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 61817,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 1012021,
+                                        "Num": 20,
+                                        "HP": 12363,
+                                        "SPD": 83,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 4052010,
+                                        "Num": 20,
+                                        "HP": 53575,
+                                        "SPD": 144,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 203301008,
+                                        "Num": 1,
+                                        "HP": 1359978,
+                                        "SPD": 120,
+                                        "Stance": 12
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 3002030,
+                                        "Num": 20,
+                                        "HP": 80362,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 1012030,
+                                        "Num": 20,
+                                        "HP": 50003,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 403302002,
+                                        "Num": 1,
+                                        "HP": 2946619,
+                                        "SPD": 132,
+                                        "Stance": 16
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30322022,
+                        "Level": 65,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012100,
+                                        "Num": 12,
+                                        "HP": 30909,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8022020,
+                                        "Num": 11,
+                                        "HP": 32454,
+                                        "SPD": 144,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 61817,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 4062010,
+                                        "Num": 20,
+                                        "HP": 41211,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 5012030,
+                                        "Num": 20,
+                                        "HP": 41211,
+                                        "SPD": 132,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501301002,
+                                        "Num": 1,
+                                        "HP": 1359978,
+                                        "SPD": 132,
+                                        "Stance": 12
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 8032020,
+                                        "Num": 20,
+                                        "HP": 78577,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 5012090,
+                                        "Num": 20,
+                                        "HP": 160725,
+                                        "SPD": 80,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 406301001,
+                                        "Num": 1,
+                                        "HP": 2946619,
+                                        "SPD": 120,
+                                        "Stance": 16
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 3,
+                "TotalHP": 11307613,
+                "ElemUpper": [
+                    "Phys",
+                    "Quantum"
+                ],
+                "ElemLower": [
+                    "Fire",
+                    "Imaginary"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30322031,
+                        "Level": 75,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 2022110,
+                                        "Num": 12,
+                                        "HP": 33898,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4012030,
+                                        "Num": 11,
+                                        "HP": 44068,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 101695,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 4032050,
+                                        "Num": 20,
+                                        "HP": 81356,
+                                        "SPD": 155,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8002010,
+                                        "Num": 20,
+                                        "HP": 51525,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 403301002,
+                                        "Num": 1,
+                                        "HP": 2237284,
+                                        "SPD": 120,
+                                        "Stance": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 4032030,
+                                        "Num": 20,
+                                        "HP": 199774,
+                                        "SPD": 100,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 4032010,
+                                        "Num": 20,
+                                        "HP": 176271,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 800302023,
+                                        "Num": 1,
+                                        "HP": 4847449,
+                                        "SPD": 120,
+                                        "Stance": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30322032,
+                        "Level": 75,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 1.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 8022020,
+                                        "Num": 12,
+                                        "HP": 53390,
+                                        "SPD": 144,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 4012010,
+                                        "Num": 11,
+                                        "HP": 44068,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 101695,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 2.4,
+                                "Monsters": [
+                                    {
+                                        "ID": 2032010,
+                                        "Num": 20,
+                                        "HP": 54237,
+                                        "SPD": 120,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 3002020,
+                                        "Num": 20,
+                                        "HP": 61017,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 300303006,
+                                        "Num": 1,
+                                        "HP": 2237284,
+                                        "SPD": 100,
+                                        "Stance": 10
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 5.2,
+                                "Monsters": [
+                                    {
+                                        "ID": 2002010,
+                                        "Num": 20,
+                                        "HP": 94011,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 2022050,
+                                        "Num": 20,
+                                        "HP": 117514,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 501304001,
+                                        "Num": 1,
+                                        "HP": 4847449,
+                                        "SPD": 100,
+                                        "Stance": 5
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Floor": 4,
+                "TotalHP": 130573249,
+                "ElemUpper": [
+                    "Ice",
+                    "Wind"
+                ],
+                "ElemLower": [
+                    "Fire",
+                    "Elec"
+                ],
+                "Upper": [
+                    {
+                        "_id": 30322041,
+                        "Level": 85,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 3.8,
+                                "Monsters": [
+                                    {
+                                        "ID": 1002030,
+                                        "Num": 12,
+                                        "HP": 139718,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 1002040,
+                                        "Num": 11,
+                                        "HP": 86492,
+                                        "SPD": 83,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 399194,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 7.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 1022020,
+                                        "Num": 20,
+                                        "HP": 196971,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 2002030,
+                                        "Num": 20,
+                                        "HP": 196971,
+                                        "SPD": 120,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 202302014,
+                                        "Num": 1,
+                                        "HP": 10833393,
+                                        "SPD": 144,
+                                        "Stance": 12
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 29.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012060,
+                                        "Num": 20,
+                                        "HP": 1269367,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 2022060,
+                                        "Num": 20,
+                                        "HP": 1117043,
+                                        "SPD": 83,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4044012,
+                                        "Num": 1,
+                                        "HP": 60929630,
+                                        "SPD": 160,
+                                        "Stance": 20
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Lower": [
+                    {
+                        "_id": 30322042,
+                        "Level": 85,
+                        "Waves": [
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 3.8,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012050,
+                                        "Num": 12,
+                                        "HP": 166331,
+                                        "SPD": 144,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 8032010,
+                                        "Num": 11,
+                                        "HP": 106452,
+                                        "SPD": 118,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 501211002,
+                                        "Num": 2,
+                                        "HP": 399194,
+                                        "SPD": 100,
+                                        "Stance": 3
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 7.5,
+                                "Monsters": [
+                                    {
+                                        "ID": 5012030,
+                                        "Num": 20,
+                                        "HP": 328285,
+                                        "SPD": 132,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 4052020,
+                                        "Num": 20,
+                                        "HP": 426770,
+                                        "SPD": 120,
+                                        "Stance": 4
+                                    },
+                                    {
+                                        "ID": 300301012,
+                                        "Num": 1,
+                                        "HP": 10833393,
+                                        "SPD": 100,
+                                        "Stance": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "KeepNum": 5,
+                                "HPAdd": 29.0,
+                                "Monsters": [
+                                    {
+                                        "ID": 3012020,
+                                        "Num": 20,
+                                        "HP": 710846,
+                                        "SPD": 100,
+                                        "Stance": 2
+                                    },
+                                    {
+                                        "ID": 4032040,
+                                        "Num": 20,
+                                        "HP": 2030988,
+                                        "SPD": 155,
+                                        "Stance": 3
+                                    },
+                                    {
+                                        "ID": 100401012,
+                                        "Num": 1,
+                                        "HP": 41889120,
+                                        "SPD": 120,
+                                        "Stance": 12
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     {
         "_id": 2023,
         "Name": "造象立说",
@@ -5448,9 +7860,24 @@ var _fiction = [
 
 var _fictionschedule = [
     {
+        "_id": 2026,
+        "Name": "立界开篇",
+        "Time": "2026/09/14 - 2026/10/26"
+    },
+    {
+        "_id": 2025,
+        "Name": "构事生意",
+        "Time": "2026/08/03 - 2026/09/14"
+    },
+    {
+        "_id": 2024,
+        "Name": "借虚成真",
+        "Time": "2026/06/22 - 2026/08/03"
+    },
+    {
         "_id": 2023,
         "Name": "造象立说",
-        "Time": "2026/05/10 - 2026/06/21"
+        "Time": "2026/05/10 - 2026/06/22"
     },
     {
         "_id": 2022,
@@ -5589,7 +8016,10 @@ var _fictionhp = {
             "史诗集群",
             "无字小说",
             "虚境成章",
-            "造象立说"
+            "造象立说",
+            "借虚成真",
+            "构事生意",
+            "立界开篇"
         ],
         "HP": [
             1101866,
@@ -5614,7 +8044,10 @@ var _fictionhp = {
             2632997,
             4887859,
             4877014,
-            4913707
+            4913707,
+            5213543,
+            4932930,
+            5012383
         ],
         "Index": {
             "2001": 0,
@@ -5639,7 +8072,10 @@ var _fictionhp = {
             "2020": 19,
             "2021": 20,
             "2022": 21,
-            "2023": 22
+            "2023": 22,
+            "2024": 23,
+            "2025": 24,
+            "2026": 25
         }
     },
     "2": {
@@ -5666,7 +8102,10 @@ var _fictionhp = {
             "史诗集群",
             "无字小说",
             "虚境成章",
-            "造象立说"
+            "造象立说",
+            "借虚成真",
+            "构事生意",
+            "立界开篇"
         ],
         "HP": [
             2268004,
@@ -5691,7 +8130,10 @@ var _fictionhp = {
             5768230,
             9606904,
             9643993,
-            9472444
+            9472444,
+            10305051,
+            9616815,
+            9426085
         ],
         "Index": {
             "2001": 0,
@@ -5716,7 +8158,10 @@ var _fictionhp = {
             "2020": 19,
             "2021": 20,
             "2022": 21,
-            "2023": 22
+            "2023": 22,
+            "2024": 23,
+            "2025": 24,
+            "2026": 25
         }
     },
     "3": {
@@ -5743,7 +8188,10 @@ var _fictionhp = {
             "史诗集群",
             "无字小说",
             "虚境成章",
-            "造象立说"
+            "造象立说",
+            "借虚成真",
+            "构事生意",
+            "立界开篇"
         ],
         "HP": [
             4237281,
@@ -5768,7 +8216,10 @@ var _fictionhp = {
             15620877,
             15865226,
             17284728,
-            15949133
+            15949133,
+            16990767,
+            15926255,
+            15720317
         ],
         "Index": {
             "2001": 0,
@@ -5793,7 +8244,10 @@ var _fictionhp = {
             "2020": 19,
             "2021": 20,
             "2022": 21,
-            "2023": 22
+            "2023": 22,
+            "2024": 23,
+            "2025": 24,
+            "2026": 25
         }
     },
     "4": {
@@ -5820,7 +8274,10 @@ var _fictionhp = {
             "史诗集群",
             "无字小说",
             "虚境成章",
-            "造象立说"
+            "造象立说",
+            "借虚成真",
+            "构事生意",
+            "立界开篇"
         ],
         "HP": [
             6106970,
@@ -5845,7 +8302,10 @@ var _fictionhp = {
             72472993,
             68068375,
             81605789,
-            104187037
+            104187037,
+            211233224,
+            244561557,
+            262320443
         ],
         "Index": {
             "2001": 0,
@@ -5870,7 +8330,10 @@ var _fictionhp = {
             "2020": 19,
             "2021": 20,
             "2022": 21,
-            "2023": 22
+            "2023": 22,
+            "2024": 23,
+            "2025": 24,
+            "2026": 25
         }
     }
 }
@@ -5898,7 +8361,10 @@ var _fictiondict = {
     "2020": -20,
     "2021": -21,
     "2022": -22,
-    "2023": -23
+    "2023": -23,
+    "2024": -24,
+    "2025": -25,
+    "2026": -26
 }
 
 var _monster = {
@@ -7669,6 +10135,25 @@ var _monster = {
         "4": "正阳狮鹫",
         "5": 6.34615
     },
+    "300301012": {
+        "1": "mostericon/Monster_3003010.png",
+        "2": [
+            "Fire",
+            "Elec",
+            "Wind"
+        ],
+        "3": 1,
+        "4": "惊梦剧团的十七分熟"
+    },
+    "4052020": {
+        "1": "mostericon/Monster_4052020.png",
+        "2": [
+            "Fire",
+            "Elec"
+        ],
+        "3": 1,
+        "4": "泡影稚子"
+    },
     "800301020": {
         "1": "mostericon/Monster_8003010.png",
         "2": [
@@ -7921,6 +10406,15 @@ var _monster = {
         "4": "波涛夫人",
         "5": 5.5
     },
+    "4062020": {
+        "1": "mostericon/Monster_4062020.png",
+        "2": [
+            "Ice",
+            "Imaginary"
+        ],
+        "3": 1,
+        "4": "金血忆灵 · 犬形"
+    },
     "5012010": {
         "1": "monsterfigure/Monster_5012010.png",
         "2": [
@@ -8092,6 +10586,16 @@ var _monster = {
         "3": 1,
         "4": "破晓战队•灰烬"
     },
+    "5014023": {
+        "1": "monsterfigure/Monster_5014020.png",
+        "2": [
+            "Fire",
+            "Imaginary",
+            "Elec"
+        ],
+        "3": 1,
+        "4": "合金机铠•帕姆王"
+    },
     "5023010": {
         "1": "monsterfigure/Monster_5023010.png",
         "2": [
@@ -8162,7 +10666,56 @@ var _monster = {
         ],
         "3": 1,
         "4": "金血忆灵 · 裁定忘却之形"
-    }
+    },
+    "5012120": {
+        "1": "mostericon/Monster_5012120.png",
+        "2": [
+            "Fire",
+            "Elec",
+            "Imaginary"
+        ],
+        "3": 1,
+        "4": "「合金保姆」"
+    },
+    "8022030": {
+        "1": "mostericon/Monster_8022030.png",
+        "2": [
+            "Phys",
+            "Ice"
+        ],
+        "3": 1,
+        "4": "蚀蛰虫"
+    },
+    "2022050": {
+        "1": "mostericon/Monster_2022050.png",
+        "2": [
+            "Fire",
+            "Wind",
+            "Imaginary"
+        ],
+        "3": 1,
+        "4": "丰饶灵兽 · 奎木"
+    },
+    "5022010": {
+        "1": "mostericon/Monster_5022010.png",
+        "2": [
+            "Fire",
+            "Ice",
+            "Imaginary"
+        ],
+        "3": 1,
+        "4": "邪愿莲华"
+    },
+    "5024014": {
+        "1": "mostericon/Monster_5024010.png",
+        "2": [
+            "Phys",
+            "Elec",
+            "Imaginary"
+        ],
+        "3": 1,
+        "4": "极乐颠倒·邪愿莲华主"
+    },
 }
 
 var _affix = {

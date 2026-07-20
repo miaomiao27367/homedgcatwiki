@@ -1,71 +1,60 @@
-﻿// Auto Generated
+// Auto Generated
 
 var _maze = {
-    "4007":     {
+    "4009":     {
         "BuffA": [
             {
-                "_id": 3033038,
-                "Name": "失能",
-                "Desc": "进入战斗时，固定降低我方目标<color style='color:#f29e38;'> 50% </color>的能量，并使我方目标在自身回合外的能量恢复效率降低<color style='color:#f29e38;'> 50% </color>，持续<color style='color:#f29e38;'> 2 </color>回合。"
-            },
-            {
-                "_id": 3033063,
-                "Name": "破势",
-                "Desc": "敌方目标每次受到我方攻击后，使自身受到的伤害降低<color style='color:#f29e38;'> 2% </color>，受到的暴击伤害降低<color style='color:#f29e38;'> 4% </color>，最多叠加<color style='color:#f29e38;'> 10 </color>层，该效果在敌方目标受到追加攻击后或阿哈时刻结束时改为降低<color style='color:#f29e38;'> 5 </color>层。"
+                "_id": 3033071,
+                "Name": "鳞甲",
+                "Desc": "敌方目标初始拥有<color style='color:#f29e38;'> 20 </color>层该效果，每层使敌方目标受到的伤害降低<color style='color:#f29e38;'> 2% </color>，敌方目标每次受到攻击后降低1层。该效果的层数在首领敌人阶段转换时重置。"
             }
         ],
         "ElemA": [
             "Fire",
-            "Elec"
+            "Quantum"
         ],
         "TrialA": {
-            "_id": 30507011,
+            "_id": 30509011,
             "Level": 95,
             "HardLevelGroup": 3,
             "EliteGroup": {
-                "ID": 356,
+                "ID": 368,
                 "ATK": 1.1,
-                "HP": 5.5
+                "HP": 6.8
             },
             "Monsters": [
                 [
                     {
-                        "ID": 5012090,
-                        "HP": 864166,
-                        "SPD": 106,
-                        "Stance": 3,
+                        "ID": 8033020,
+                        "HP": 3086555,
+                        "SPD": 190,
+                        "Stance": 16,
                         "HPCount": 1,
                         "StanceCount": 1
                     },
                     {
-                        "ID": 5023020,
-                        "HP": 3072589,
+                        "ID": 800304016,
+                        "HP": 3561410,
+                        "SPD": 227,
+                        "Stance": 10,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 8033020,
+                        "HP": 3268117,
+                        "SPD": 190,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 100401014,
+                        "HP": 8547382,
                         "SPD": 158,
-                        "Stance": 18,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    },
-                    {
-                        "ID": 5012040,
-                        "HP": 480092,
-                        "SPD": 190,
-                        "Stance": 3,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    },
-                    {
-                        "ID": 5012090,
-                        "HP": 864166,
-                        "SPD": 106,
-                        "Stance": 3,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    },
-                    {
-                        "ID": 5012040,
-                        "HP": 480092,
-                        "SPD": 190,
-                        "Stance": 3,
+                        "Stance": 12,
                         "HPCount": 1,
                         "StanceCount": 1
                     }
@@ -74,17 +63,67 @@ var _maze = {
         },
         "BuffB": [
             {
-                "_id": 3033057,
-                "Name": "沉毅+",
-                "Desc": "我方全体目标造成的伤害降低<color style='color:#f29e38;'> 20% </color>，受到的伤害降低<color style='color:#f29e38;'> 10% </color>。"
+                "_id": 3033063,
+                "Name": "破势",
+                "Desc": "敌方目标每次受到我方攻击后，使自身受到的伤害降低<color style='color:#f29e38;'> 2% </color>，受到的暴击伤害降低<color style='color:#f29e38;'> 4% </color>，最多叠加<color style='color:#f29e38;'> 10 </color>层，该效果在敌方目标受到追加攻击后或阿哈时刻结束时改为降低<color style='color:#f29e38;'> 5 </color>层。"
             }
         ],
         "ElemB": [
-            "Fire",
             "Imaginary"
         ],
         "TrialB": {
-            "_id": 30507012,
+            "_id": 30509012,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 368,
+                "ATK": 1.1,
+                "HP": 6.8
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 5023010,
+                        "HP": 1424564,
+                        "SPD": 190,
+                        "Stance": 14,
+                        "HPCount": 4.4675,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 5013010,
+                        "HP": 4273691,
+                        "SPD": 174,
+                        "Stance": 12,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 5014010,
+                        "HP": 10684229,
+                        "SPD": 158,
+                        "Stance": 32,
+                        "HPCount": 2,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "BuffC": [
+            {
+                "_id": 3033002,
+                "Name": "淬火",
+                "Desc": "敌方目标生命值每降低1%，我方对其造成的暴击伤害降低<color style='color:#f29e38;'> 3% </color>。"
+            }
+        ],
+        "ElemC": [
+            "Phys",
+            "Fire"
+        ],
+        "TrialC": {
+            "_id": 30509013,
             "Level": 95,
             "HardLevelGroup": 3,
             "EliteGroup": {
@@ -95,23 +134,79 @@ var _maze = {
             "Monsters": [
                 [
                     {
-                        "ID": 5012010,
-                        "HP": 628484,
-                        "SPD": 190,
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
                         "Stance": 3,
                         "HPCount": 1,
                         "StanceCount": 1
                     },
                     {
-                        "ID": 5013030,
-                        "HP": 4022298,
+                        "ID": 4053010,
+                        "HP": 3770904,
                         "SPD": 190,
-                        "Stance": 12,
+                        "Stance": 18,
                         "HPCount": 1,
                         "StanceCount": 1
                     },
                     {
-                        "ID": 5013040,
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 4053010,
+                        "HP": 3770904,
+                        "SPD": 190,
+                        "Stance": 18,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 5013060,
                         "HP": 3770904,
                         "SPD": 158,
                         "Stance": 16,
@@ -119,72 +214,51 @@ var _maze = {
                         "StanceCount": 1
                     },
                     {
-                        "ID": 5012010,
-                        "HP": 628484,
-                        "SPD": 190,
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
                         "Stance": 3,
                         "HPCount": 1,
                         "StanceCount": 1
-                    }
-                ],
-                [
+                    },
                     {
-                        "ID": 5014020,
-                        "HP": 9427261,
-                        "SPD": 158,
-                        "Stance": 24,
-                        "HPCount": 2,
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
                         "StanceCount": 1
-                    }
-                ]
-            ]
-        },
-        "BuffC": [
-            {
-                "_id": 3033058,
-                "Name": "血嗜",
-                "Desc": "我方目标回合开始时损失<color style='color:#f29e38;'> 500 </color>点生命值，该效果可致命。"
-            }
-        ],
-        "ElemC": [
-            "Ice",
-            "Quantum"
-        ],
-        "TrialC": {
-            "_id": 30507013,
-            "Level": 95,
-            "HardLevelGroup": 3,
-            "EliteGroup": {
-                "ID": 370,
-                "ATK": 1.1,
-                "HP": 8.6
-            },
-            "Monsters": [
-                [
+                    },
                     {
-                        "ID": 5013050,
-                        "HP": 4504136,
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 5013060,
+                        "HP": 3770904,
                         "SPD": 158,
                         "Stance": 16,
                         "HPCount": 1,
                         "StanceCount": 1
                     },
                     {
-                        "ID": 4013010,
-                        "HP": 5404963,
-                        "SPD": 174,
-                        "Stance": 16,
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
                         "HPCount": 1,
                         "StanceCount": 1
-                    }
-                ],
-                [
+                    },
                     {
-                        "ID": 4014020,
-                        "HP": 18016543,
-                        "SPD": 79,
-                        "Stance": 0,
-                        "HPCount": 2,
+                        "ID": 8032020,
+                        "HP": 553066,
+                        "SPD": 132,
+                        "Stance": 3,
+                        "HPCount": 1,
                         "StanceCount": 1
                     }
                 ]
@@ -192,19 +266,19 @@ var _maze = {
         },
         "FinalBuffs": [
             {
-                "_id": 3033060,
-                "Name": "捧腹大笑",
-                "Desc": "我方全体目标欢愉度提高<color style='color:#f29e38;'> 50% </color>，阿哈时刻开始时，我方额外获得<color style='color:#f29e38;'> 10 </color>个笑点。"
+                "_id": 3033073,
+                "Name": "美妙奇笑",
+                "Desc": "我方全体目标欢愉度提高<color style='color:#f29e38;'> 40% </color>，造成的欢愉伤害的全属性抗性穿透提高<color style='color:#f29e38;'> 20% </color>，施放欢愉技时该效果翻倍。"
             },
             {
-                "_id": 3033061,
-                "Name": "烈火轰雷",
-                "Desc": "为【碎星王虫•斯喀拉卡巴兹（拟造）】及其召唤物添加火属性弱点和雷属性弱点，并使以上目标的火属性和雷属性抗性降低<color style='color:#f29e38;'> 60% </color>。"
+                "_id": 3033074,
+                "Name": "终结之吻",
+                "Desc": "我方任意目标回合开始时，我方全体目标固定恢复<color style='color:#f29e38;'> 25% </color>能量，该效果全场只触发1次。我方全体目标造成的战技和终结技伤害提高<color style='color:#f29e38;'> 40% </color>。"
             },
             {
-                "_id": 3033062,
-                "Name": "破坚摧刚",
-                "Desc": "我方全体目标造成的伤害提高<color style='color:#f29e38;'> 30% </color>；我方目标每次消灭敌方目标后，使自身造成的伤害额外提高<color style='color:#f29e38;'> 3% </color>，该效果可叠加。"
+                "_id": 3033075,
+                "Name": "夤夜歌声",
+                "Desc": "我方全体目标速度提高<color style='color:#f29e38;'> 10% </color>，【昔涟的声援♪】速度提高<color style='color:#f29e38;'> 25% </color>。"
             }
         ],
         "FinalTagsHard": [
@@ -214,54 +288,28 @@ var _maze = {
                 "Desc": "我方目标回合开始时损失<color style='color:#f29e38;'> 1000 </color>点生命值，该效果可致命。"
             },
             {
-                "_id": 3033064,
-                "Name": "破势+",
-                "Desc": "敌方目标每次受到我方攻击后，使自身受到的伤害降低<color style='color:#f29e38;'> 3% </color>，受到的暴击伤害降低<color style='color:#f29e38;'> 6% </color>，最多叠加<color style='color:#f29e38;'> 10 </color>层，该效果在敌方目标受到追加攻击后或阿哈时刻结束时改为降低<color style='color:#f29e38;'> 5 </color>层。"
+                "_id": 3033072,
+                "Name": "鳞甲+",
+                "Desc": "敌方目标初始拥有<color style='color:#f29e38;'> 20 </color>层该效果，每层使敌方目标受到的伤害降低<color style='color:#f29e38;'> 3% </color>，敌方目标每次受到攻击后降低1层。该效果的层数在首领敌人阶段转换时重置。"
             }
         ],
         "FinalHard": {
-            "_id": 30507022,
+            "_id": 30509022,
             "Level": 120,
             "HardLevelGroup": 3,
             "EliteGroup": {
-                "ID": 369,
-                "ATK": 1.1,
-                "HP": 6.2
+                "ID": 1,
+                "ATK": 1,
+                "HP": 1
             },
             "Monsters": [
                 [
                     {
-                        "ID": 5013040,
-                        "HP": 16768365,
-                        "SPD": 180,
-                        "Stance": 16,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    },
-                    {
-                        "ID": 4053020,
-                        "HP": 16768365,
-                        "SPD": 248,
-                        "Stance": 16,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    },
-                    {
-                        "ID": 5012100,
-                        "HP": 3353673,
-                        "SPD": 150,
-                        "Stance": 3,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    }
-                ],
-                [
-                    {
-                        "ID": 802501003,
-                        "HP": 53099832,
-                        "SPD": 195,
-                        "Stance": 18,
-                        "HPCount": 2,
+                        "ID": 403501001,
+                        "HP": 45076246,
+                        "SPD": 240,
+                        "Stance": 20,
+                        "HPCount": 3.5,
                         "StanceCount": 1
                     }
                 ]
@@ -274,63 +322,37 @@ var _maze = {
                 "Desc": "我方目标回合开始时损失<color style='color:#f29e38;'> 500 </color>点生命值，该效果可致命。"
             },
             {
-                "_id": 3033063,
-                "Name": "破势",
-                "Desc": "敌方目标每次受到我方攻击后，使自身受到的伤害降低<color style='color:#f29e38;'> 2% </color>，受到的暴击伤害降低<color style='color:#f29e38;'> 4% </color>，最多叠加<color style='color:#f29e38;'> 10 </color>层，该效果在敌方目标受到追加攻击后或阿哈时刻结束时改为降低<color style='color:#f29e38;'> 5 </color>层。"
+                "_id": 3033071,
+                "Name": "鳞甲",
+                "Desc": "敌方目标初始拥有<color style='color:#f29e38;'> 20 </color>层该效果，每层使敌方目标受到的伤害降低<color style='color:#f29e38;'> 2% </color>，敌方目标每次受到攻击后降低1层。该效果的层数在首领敌人阶段转换时重置。"
             }
         ],
         "FinalEasy": {
-            "_id": 30507021,
+            "_id": 30509021,
             "Level": 100,
             "HardLevelGroup": 3,
             "EliteGroup": {
-                "ID": 368,
-                "ATK": 1.1,
-                "HP": 6.8
+                "ID": 1,
+                "ATK": 1,
+                "HP": 1
             },
             "Monsters": [
                 [
                     {
-                        "ID": 5013040,
-                        "HP": 4597778,
-                        "SPD": 158,
-                        "Stance": 16,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    },
-                    {
-                        "ID": 4053020,
-                        "HP": 4597778,
-                        "SPD": 218,
-                        "Stance": 16,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    },
-                    {
-                        "ID": 5012100,
-                        "HP": 919556,
-                        "SPD": 132,
-                        "Stance": 3,
-                        "HPCount": 1,
-                        "StanceCount": 1
-                    }
-                ],
-                [
-                    {
-                        "ID": 802501003,
-                        "HP": 14559631,
-                        "SPD": 173,
-                        "Stance": 18,
-                        "HPCount": 2,
+                        "ID": 403501001,
+                        "HP": 11269061,
+                        "SPD": 211,
+                        "Stance": 20,
+                        "HPCount": 3.5,
                         "StanceCount": 1
                     }
                 ]
             ]
         },
         "ElemFinal": [
-            "Phys",
             "Ice",
-            "Imaginary"
+            "Elec",
+            "Quantum"
         ],
         "TargetsTrial": [
             "不超过4轮战斗胜利",
@@ -345,7 +367,719 @@ var _maze = {
         "RewardLine": 1
     },
 
-
+    "4008":     {
+        "BuffA": [
+            {
+                "_id": 3033023,
+                "Name": "挑衅",
+                "Desc": "敌方目标受到<color style='color:#f29e38;'> 6 </color>次攻击后立即行动，该计数在敌方目标回合开始时清空。"
+            }
+        ],
+        "ElemA": [
+            "Fire",
+            "Ice"
+        ],
+        "TrialA": {
+            "_id": 30508011,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 369,
+                "ATK": 1.1,
+                "HP": 6.2
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 2023020,
+                        "HP": 2849128,
+                        "SPD": 190,
+                        "Stance": 12,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 803301014,
+                        "HP": 3798837,
+                        "SPD": 158,
+                        "Stance": 12,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 302401012,
+                        "HP": 5342114,
+                        "SPD": 190,
+                        "Stance": 16,
+                        "HPCount": 2,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "BuffB": [
+            {
+                "_id": 3033063,
+                "Name": "破势",
+                "Desc": "敌方目标每次受到我方攻击后，使自身受到的伤害降低<color style='color:#f29e38;'> 2% </color>，受到的暴击伤害降低<color style='color:#f29e38;'> 4% </color>，最多叠加<color style='color:#f29e38;'> 10 </color>层，该效果在敌方目标受到追加攻击后或阿哈时刻结束时改为降低<color style='color:#f29e38;'> 5 </color>层。"
+            },
+            {
+                "_id": 3033038,
+                "Name": "失能",
+                "Desc": "进入战斗时，固定降低我方目标<color style='color:#f29e38;'> 50% </color>的能量，并使我方目标在自身回合外的能量恢复效率降低<color style='color:#f29e38;'> 50% </color>，持续<color style='color:#f29e38;'> 2 </color>回合。"
+            }
+        ],
+        "ElemB": [
+            "Fire",
+            "Elec"
+        ],
+        "TrialB": {
+            "_id": 30508012,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 361,
+                "ATK": 1.1,
+                "HP": 6
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 5023010,
+                        "HP": 1256968,
+                        "SPD": 190,
+                        "Stance": 14,
+                        "HPCount": 4.4675,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 5023020,
+                        "HP": 3351915,
+                        "SPD": 158,
+                        "Stance": 18,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 101401016,
+                        "HP": 9909098,
+                        "SPD": 158,
+                        "Stance": 12,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 5023020,
+                        "HP": 4804411,
+                        "SPD": 158,
+                        "Stance": 18,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "BuffC": [
+            {
+                "_id": 3033058,
+                "Name": "血嗜",
+                "Desc": "我方目标回合开始时损失<color style='color:#f29e38;'> 500 </color>点生命值，该效果可致命。"
+            }
+        ],
+        "ElemC": [
+            "Phys",
+            "Imaginary"
+        ],
+        "TrialC": {
+            "_id": 30508013,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 352,
+                "ATK": 1.1,
+                "HP": 4.7
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 5013040,
+                        "HP": 2618684,
+                        "SPD": 158,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 402301001,
+                        "HP": 3142420,
+                        "SPD": 158,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 5024010,
+                        "HP": 6703830,
+                        "SPD": 190,
+                        "Stance": 24,
+                        "HPCount": 2,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "FinalBuffs": [
+            {
+                "_id": 3033066,
+                "Name": "领航誓言",
+                "Desc": "我方编队中第一位角色造成的战技和终结技伤害的全属性抗性穿透提高<color style='color:#f29e38;'> 50% </color>。"
+            },
+            {
+                "_id": 3033068,
+                "Name": "落井下石",
+                "Desc": "敌方目标受到来自我方的追加攻击后，受到的伤害提高<color style='color:#f29e38;'> 15% </color>，持续<color style='color:#f29e38;'> 2 </color>回合，该效果最多叠加<color style='color:#f29e38;'> 3 </color>层。"
+            },
+            {
+                "_id": 3033067,
+                "Name": "狂欢不息",
+                "Desc": "我方全体目标的全属性抗性穿透提高<color style='color:#f29e38;'> 20% </color>，造成的欢愉伤害的全属性抗性穿透额外提高<color style='color:#f29e38;'> 20% </color>。"
+            }
+        ],
+        "FinalTagsHard": [
+            {
+                "_id": 3033070,
+                "Name": "激怒+",
+                "Desc": "我方目标每次施放终结技后使敌方全体目标叠加1层该效果，每层使敌方目标的速度提高<color style='color:#f29e38;'> 50% </color>，最多叠加<color style='color:#f29e38;'> 4 </color>层。该效果的层数在敌方目标回合开始时清空。"
+            },
+            {
+                "_id": 3033052,
+                "Name": "均衡+",
+                "Desc": "战斗开始时，速度最高的<color style='color:#f29e38;'> 2 </color>名我方角色速度降低<color style='color:#f29e38;'> 20% </color>，速度最低的<color style='color:#f29e38;'> 1 </color>名我方角色速度提高<color style='color:#f29e38;'> 15% </color>。"
+            }
+        ],
+        "FinalHard": {
+            "_id": 30508022,
+            "Level": 120,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 373,
+                "ATK": 1.05,
+                "HP": 8
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 402302001,
+                        "HP": 23079033,
+                        "SPD": 150,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 4033030,
+                        "HP": 21636600,
+                        "SPD": 216,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 402302001,
+                        "HP": 23079033,
+                        "SPD": 150,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 501403002,
+                        "HP": 63467353,
+                        "SPD": 195,
+                        "Stance": 36,
+                        "HPCount": 2,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 402302001,
+                        "HP": 23079033,
+                        "SPD": 150,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "FinalTagsEasy": [
+            {
+                "_id": 3033069,
+                "Name": "激怒",
+                "Desc": "我方目标每次施放终结技后使敌方全体目标叠加1层该效果，每层使敌方目标的速度提高<color style='color:#f29e38;'> 30% </color>，最多叠加<color style='color:#f29e38;'> 4 </color>层。该效果的层数在敌方目标回合开始时清空。"
+            },
+            {
+                "_id": 3033051,
+                "Name": "均衡",
+                "Desc": "战斗开始时，速度最高的<color style='color:#f29e38;'> 1 </color>名我方角色速度降低<color style='color:#f29e38;'> 20% </color>，速度最低的<color style='color:#f29e38;'> 1 </color>名我方角色速度提高<color style='color:#f29e38;'> 15% </color>。"
+            }
+        ],
+        "FinalEasy": {
+            "_id": 30508021,
+            "Level": 100,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 372,
+                "ATK": 1.1,
+                "HP": 8.4
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 402302001,
+                        "HP": 6058246,
+                        "SPD": 132,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 4033030,
+                        "HP": 5679608,
+                        "SPD": 190,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 402302001,
+                        "HP": 6058246,
+                        "SPD": 132,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 501403002,
+                        "HP": 16660180,
+                        "SPD": 173,
+                        "Stance": 36,
+                        "HPCount": 2,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 402302001,
+                        "HP": 6058246,
+                        "SPD": 132,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "ElemFinal": [
+            "Fire",
+            "Quantum"
+        ],
+        "TargetsTrial": [
+            "不超过4轮战斗胜利",
+            "不超过2轮战斗胜利",
+            "没有角色无法战斗"
+        ],
+        "TargetsFinal": [
+            "不超过6轮战斗胜利",
+            "不超过4轮战斗胜利",
+            "不超过2轮战斗胜利"
+        ],
+        "RewardLine": 1
+    },
+    "4007": {
+        "BuffA": [
+            {
+                "_id": 3033038,
+                "Name": "失能",
+                "Desc": "进入战斗时，固定降低我方目标<color style='color:#f29e38;'> 50% </color>的能量，并使我方目标在自身回合外的能量恢复效率降低<color style='color:#f29e38;'> 50% </color>，持续<color style='color:#f29e38;'> 2 </color>回合。"
+            },
+            {
+                "Name": "破势",
+                "_id": 3033059,
+                "Desc": "敌方目标每次受到我方攻击后，使自身受到的伤害降低2%，受到的暴击伤害降低4%，最多叠加10层，该效果在敌方目标受到追加攻击后或阿哈时刻结束时改为降低5层。"
+            }
+        ],
+        "ElemA": ["Fire","Elec"],
+        "TrialA": {
+            "_id": 0,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 0,
+                "ATK": 1.1,
+                "HP": 3.2
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": "5012090",
+                        "HP": 864166,
+                        "SPD": 106,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012090",
+                        "HP": 864166,
+                        "SPD": 106,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012090",
+                        "HP": 864166,
+                        "SPD": 106,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012090",
+                        "HP": 864166,
+                        "SPD": 106,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012090",
+                        "HP": 864166,
+                        "SPD": 106,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012090",
+                        "HP": 864166,
+                        "SPD": 106,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012090",
+                        "HP": 864166,
+                        "SPD": 106,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012090",
+                        "HP": 864166,
+                        "SPD": 106,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5023020",
+                        "HP": 3072589,
+                        "SPD": 158,
+                        "Stance": 18
+                    },
+                    {
+                        "ID": "5023020",
+                        "HP": 3072589,
+                        "SPD": 158,
+                        "Stance": 18
+                    },
+                    {
+                        "ID": "5023020",
+                        "HP": 3072589,
+                        "SPD": 158,
+                        "Stance": 18
+                    },
+                    {
+                        "ID": "5023020",
+                        "HP": 3072589,
+                        "SPD": 158,
+                        "Stance": 18
+                    },
+                    {
+                        "ID": "5012040",
+                        "HP": 480092,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012040",
+                        "HP": 480092,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012040",
+                        "HP": 480092,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012040",
+                        "HP": 480092,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012040",
+                        "HP": 480092,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012040",
+                        "HP": 480092,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012040",
+                        "HP": 480092,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012040",
+                        "HP": 480092,
+                        "SPD": 190,
+                        "Stance": 3
+                    }
+                ]
+            ]
+        },
+        "BuffB": [
+            {
+                "Name": "沉毅+",
+                "_id": 3033054,
+                "Desc": "我方全体目标造成的伤害降低20%，受到的伤害降低10%。"
+            }
+        ],
+        "ElemB": ["Fire","Imaginary"],
+        "TrialB": {
+            "_id": 0,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 0,
+                "ATK": 1.1,
+                "HP": 5.5
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": "5012010",
+                        "HP": 628484,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5012010",
+                        "HP": 628484,
+                        "SPD": 190,
+                        "Stance": 3
+                    },
+                    {
+                        "ID": "5013030",
+                        "HP": 4022298,
+                        "SPD": 190,
+                        "Stance": 12
+                    },
+                    {
+                        "ID": "5013040",
+                        "HP": 3770904,
+                        "SPD": 158,
+                        "Stance": 16
+                    }
+                ],
+                [
+                    {
+                        "ID": "5014020",
+                        "HP": 9427261,
+                        "SPD": 158,
+                        "Stance": 24,
+                        "HPCount": 2
+                    }
+                ]
+            ]
+        },
+        "BuffC": [
+            {
+                "Name": "血嗜",
+                "_id": 3033062,
+                "Desc": "我方目标回合开始时损失500点生命值，该效果可致命。"
+            }
+        ],
+        "ElemC": ["Ice","Quantum"],
+        "TrialC": {
+            "_id": 0,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 0,
+                "ATK": 1.1,
+                "HP": 4
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": "5013050",
+                        "HP": 4504136,
+                        "SPD": 158,
+                        "Stance": 16
+                    },
+                    {
+                        "ID": "4013010",
+                        "HP": 5404963,
+                        "SPD": 174,
+                        "Stance": 16
+                    }
+                ],
+                [
+                    {
+                        "ID": "4014020",
+                        "HP": 18016543,
+                        "SPD": 79,
+                        "Stance": 0,
+                        "HPCount": 2
+                    }
+                ]
+            ]
+        },
+        "FinalBuffs": [
+            {
+                "Name": "捧腹大笑",
+                "_id": 3033065,
+                "Desc": "我方全体目标欢愉度提高50%，阿哈时刻开始时，我方额外获得10个笑点。"
+            },
+            {
+                "_id": 3033066,
+                "Name": "烈火轰雷",
+                "Desc": "为【碎星王虫•斯喀拉卡巴兹（拟造）】及其召唤物添加火属性弱点和雷属性弱点，并使以上目标的火属性和雷属性抗性降低60%。"
+            },
+            {
+                "_id": 3033067,
+                "Name": "破坚摧刚",
+                "Desc": "我方全体目标造成的伤害提高30%；我方目标每次消灭敌方目标后，使自身造成的伤害额外提高3%，该效果可叠加。"
+            }
+        ],
+        "FinalTagsEasy": [
+            {
+                "_id": 3033062,
+                "Name": "血嗜",
+                "Desc": "我方目标回合开始时损失500点生命值，该效果可致命。"
+            },
+            {
+                "Name": "破势",
+                "_id": 3033059,
+                "Desc": "敌方目标每次受到我方攻击后，使自身受到的伤害降低2%，受到的暴击伤害降低4%，最多叠加10层，该效果在敌方目标受到追加攻击后或阿哈时刻结束时改为降低5层。"
+            }
+        ],
+        "FinalTagsHard": [
+            {
+                "Name": "血嗜+",
+                "_id": 3033063,
+                "Desc": "我方目标回合开始时损失1000点生命值，该效果可致命。"
+            }
+        ],
+        "ElemFinal": ["Phys","Ice","Imaginary"],
+        "FinalEasy": {
+            "_id": 0,
+            "Level": 100,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 0,
+                "ATK": 1.1,
+                "HP": 8
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": "5013040",
+                        "HP": 4597778,
+                        "SPD": 158,
+                        "Stance": 16
+                    },
+                    {
+                        "ID": "4053020",
+                        "HP": 4597778,
+                        "SPD": 218,
+                        "Stance": 16
+                    },
+                    {
+                        "ID": "5012100",
+                        "HP": 919556,
+                        "SPD": 132,
+                        "Stance": 3
+                    }
+                ],
+                [
+                    {
+                        "ID": "802501003",
+                        "HP": 14559631,
+                        "SPD": 173,
+                        "Stance": 18,
+                        "HPCount": 2
+                    }
+                ]
+            ]
+        },
+        "FinalHard": {
+            "_id": 0,
+            "Level": 120,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 0,
+                "ATK": 1.2,
+                "HP": 5
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": "5013040",
+                        "HP": 16768365,
+                        "SPD": 180,
+                        "Stance": 16
+                    },
+                    {
+                        "ID": "4053020",
+                        "HP": 16768365,
+                        "SPD": 248,
+                        "Stance": 16
+                    },
+                    {
+                        "ID": "5012100",
+                        "HP": 3353673,
+                        "SPD": 150,
+                        "Stance": 3
+                    }
+                ],
+                [
+                    {
+                        "ID": "802501003",
+                        "HP": 53099832,
+                        "SPD": 195,
+                        "Stance": 18,
+                        "HPCount": 2
+                    }
+                ]
+            ]
+        },
+        "TargetsTrial": [
+            "不超过4轮战斗胜利",
+            "不超过2轮战斗胜利",
+            "没有角色无法战斗"
+        ],
+        "TargetsFinal": [
+            "不超过6轮战斗胜利",
+            "不超过4轮战斗胜利",
+            "不超过2轮战斗胜利"
+        ],
+        "RewardLine": 1
+    },
     "4006": {
         "BuffA": [
             {
@@ -426,7 +1160,8 @@ var _maze = {
                         "ID": "5023010",
                         "HP": 1508362,
                         "SPD": 190,
-                        "Stance": 14
+                        "Stance": 14,
+                        "HPCount": 4.4675
                     }
                 ]
             ]
@@ -471,7 +1206,7 @@ var _maze = {
                         "HP": 9645484,
                         "SPD": 158,
                         "Stance": 32,
-                        "Num": 1
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -516,7 +1251,7 @@ var _maze = {
                         "HP": 7375959,
                         "SPD": 174,
                         "Stance": 24,
-                        "Num": 1
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -609,7 +1344,7 @@ var _maze = {
                         "HP": 12332862,
                         "SPD": 190,
                         "Stance": 24,
-                        "Num": 1
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -628,13 +1363,13 @@ var _maze = {
                     {
                         "ID": "5012100",
                         "HP": 2920941,
-                        "SPD": 120,
+                        "SPD": 150,
                         "Stance": 3
                     },
                     {
                         "ID": "5012100",
                         "HP": 2920941,
-                        "SPD": 120,
+                        "SPD": 150,
                         "Stance": 3
                     },
                     {
@@ -658,8 +1393,9 @@ var _maze = {
                     {
                         "ID": "5024010",
                         "HP": 46735056,
-                        "SPD": 180,
-                        "Stance": 24
+                        "SPD": 216,
+                        "Stance": 24,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -840,7 +1576,7 @@ var _maze = {
                         "HP": 6808577,
                         "SPD": 190,
                         "Stance": 18,
-                        "Num": 1
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -942,8 +1678,7 @@ var _maze = {
                         "ID": "4044010",
                         "HP": 23044415,
                         "SPD": 211,
-                        "Stance": 20,
-                        "Num": 1
+                        "Stance": 20
                     }
                 ]
             ]
@@ -1049,7 +1784,7 @@ var _maze = {
                         "HP": 9466013,
                         "SPD": 158,
                         "Stance": 24,
-                        "Num": 1
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1103,7 +1838,7 @@ var _maze = {
                         "HP": 43949344,
                         "SPD": 180,
                         "Stance": 24,
-                        "Num": 4
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1211,7 +1946,8 @@ var _maze = {
                         "ID": 4034010,
                         "HP": 6241196,
                         "SPD": 174,
-                        "Stance": 24
+                        "Stance": 24,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1346,7 +2082,8 @@ var _maze = {
                         "ID": 5014010,
                         "HP": 10728148,
                         "SPD": 158,
-                        "Stance": 32
+                        "Stance": 32,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1392,7 +2129,8 @@ var _maze = {
                         "ID": 5014010,
                         "HP": 55533955,
                         "SPD": 180,
-                        "Stance": 32
+                        "Stance": 32,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1499,7 +2237,8 @@ var _maze = {
                         "ID": 802401107,
                         "HP": 3072589,
                         "SPD": 190,
-                        "Stance": 16
+                        "Stance": 16,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1549,7 +2288,8 @@ var _maze = {
                         "ID": 4064010,
                         "HP": 2828178,
                         "SPD": 198,
-                        "Stance": 12
+                        "Stance": 12,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1623,7 +2363,8 @@ var _maze = {
                         "ID": 3025016,
                         "HP": 10818300,
                         "SPD": 190,
-                        "Stance": 7
+                        "Stance": 7,
+                        "HPCount": 2.8
                     }
                 ]
             ]
@@ -1643,7 +2384,8 @@ var _maze = {
                         "ID": 3025016,
                         "HP": 50846010,
                         "SPD": 216,
-                        "Stance": 7
+                        "Stance": 7,
+                        "HPCount": 2.8
                     }
                 ]
             ]
@@ -1794,7 +2536,8 @@ var _maze = {
                         "ID": 2034010,
                         "HP": 3360644,
                         "SPD": 264,
-                        "Stance": 24
+                        "Stance": 24,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1839,7 +2582,8 @@ var _maze = {
                         "ID": 3004020,
                         "HP": 3491578,
                         "SPD": 106,
-                        "Stance": 0
+                        "Stance": 0,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -1904,7 +2648,8 @@ var _maze = {
                         "ID": 401501101,
                         "HP": 12677695,
                         "SPD": 190,
-                        "Stance": 32
+                        "Stance": 32,
+                        "HPCount": 4.6
                     }
                 ]
             ]
@@ -1923,7 +2668,8 @@ var _maze = {
                         "ID": 401501101,
                         "HP": 56345313,
                         "SPD": 216,
-                        "Stance": 32
+                        "Stance": 32,
+                        "HPCount": 4.6
                     }
                 ]
             ]
@@ -1993,7 +2739,8 @@ var _maze = {
                         "ID": 3004012,
                         "HP": 4189894,
                         "SPD": 0,
-                        "Stance": 0
+                        "Stance": 0,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -2057,7 +2804,8 @@ var _maze = {
                         "ID": 3014020,
                         "HP": 1843553,
                         "SPD": 190,
-                        "Stance": 24
+                        "Stance": 24,
+                        "HPCount": 2
                     }
                 ]
             ]
@@ -2278,9 +3026,19 @@ var _maze = {
 
 var _schedule = [
     {
+        "_id": 4009,
+        "Name": "军团再临",
+        "Time": "2026/08/26 - 2026/10/06"
+    },
+    {
+        "_id": 4008,
+        "Name": "4.4异相仲裁",
+        "Time": "2026/07/15 - 2026/08/26"
+    },
+    {
         "_id": 4007,
         "Name": "嗡鸣如笑",
-        "Time": ""
+        "Time": "2026/06/01 - 2026/07/15"
     },
     {
         "_id": 4006,
@@ -2313,6 +3071,846 @@ var _schedule = [
         "Time": "2025/09/24 - 2025/11/05"
     }
 ]
+
+var _dict = {
+    "4009": 0,
+    "4008": 1,
+    "4007": 2,
+    "4006": 3,
+    "4005": 4,
+    "4004": 5,
+    "4003": 6,
+    "4002": 7,
+    "4001": 8
+}
+
+var _monster = {
+    "3014020": {
+        "1": "忆域迷因「何物朝向死亡」",
+        "2": "monsterfigure/Monster_3014020.png",
+        "3": [
+            "Fire",
+            "Wind",
+            "Imaginary"
+        ],
+        "4": 2
+    },
+    "4033030": {
+        "1": "黑日狮鹫",
+        "2": "monsterfigure/Monster_4033030.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Quantum"
+        ]
+    },
+    "4064010": {
+        "1": "金血忆灵 · 裁定忘却之形",
+        "2": "monsterfigure/Monster_4064010.png",
+        "3": [
+            "Phys",
+            "Ice",
+            "Imaginary"
+        ],
+        "4": 2,
+        "5": 4
+    },
+    "4032010": {
+        "1": "黑潮蚀刃",
+        "2": "monsterfigure/Monster_4032010.png",
+        "3": [
+            "Elec",
+            "Quantum",
+            "Imaginary"
+        ]
+    },
+    "3003020": {
+        "1": "惊梦剧团的甜猿泰山",
+        "2": "monsterfigure/Monster_3003020.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Imaginary"
+        ]
+    },
+    "3013010": {
+        "1": "忆域迷因「狂怒褪去之壳」",
+        "2": "monsterfigure/Monster_3013010.png",
+        "3": [
+            "Elec",
+            "Quantum",
+            "Imaginary"
+        ]
+    },
+    "4053010": {
+        "1": "波涛夫人",
+        "2": "monsterfigure/Monster_4053010.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Elec"
+        ]
+    },
+    "803301014": {
+        "1": "资深员工 · 组长",
+        "2": "monsterfigure/Monster_8033010.png",
+        "3": [
+            "Fire",
+            "Ice",
+            "Imaginary"
+        ]
+    },
+    "1013020": {
+        "1": "自动机兵 · 齿狼",
+        "2": "monsterfigure/Monster_1013020.png",
+        "3": [
+            "Ice",
+            "Elec",
+            "Imaginary"
+        ]
+    },
+    "4053020": {
+        "1": "飓风大母",
+        "2": "monsterfigure/Monster_4053020.png",
+        "3": [
+            "Fire",
+            "Ice",
+            "Elec"
+        ]
+    },
+    "4063010": {
+        "1": "金血忆灵 · 翼蛇形",
+        "2": "monsterfigure/Monster_4063010.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Ice"
+        ]
+    },
+    "4052010": {
+        "1": "浪花侍女",
+        "2": "monsterfigure/Monster_4052010.png",
+        "3": [
+            "Phys",
+            "Elec",
+            "Wind"
+        ]
+    },
+    "401501101": {
+        "1": "至高，至阳，天空的化身",
+        "2": "monsterfigure/Monster_4015010.png",
+        "3": [
+            "Phys",
+            "Ice",
+            "Quantum"
+        ],
+        "4": 4.6,
+        "6": 50
+    },
+    "3002030": {
+        "1": "惊梦剧团的气泡锂犬",
+        "2": "monsterfigure/Monster_3002030.png",
+        "3": [
+            "Phys",
+            "Elec",
+            "Wind"
+        ]
+    },
+    "4032050": {
+        "1": "黑潮朽弓",
+        "2": "monsterfigure/Monster_4032050.png",
+        "3": [
+            "Phys",
+            "Ice",
+            "Quantum"
+        ]
+    },
+    "3012020": {
+        "1": "忆域迷因「我心支离破碎」",
+        "2": "monsterfigure/Monster_3012020.png",
+        "3": [
+            "Fire",
+            "Ice",
+            "Elec"
+        ]
+    },
+    "802401107": {
+        "1": "虫群 · 真蛰虫",
+        "2": "monsterfigure/Monster_8024010.png",
+        "3": [
+            "Ice",
+            "Quantum",
+            "Imaginary"
+        ],
+        "4": 2
+    },
+    "2034010": {
+        "1": "步离战首 · 呼雷",
+        "2": "monsterfigure/Monster_2034010.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Wind"
+        ],
+        "4": 2
+    },
+    "2013020": {
+        "1": "金人勾魂使",
+        "2": "monsterfigure/Monster_2013020.png",
+        "3": [
+            "Phys",
+            "Elec",
+            "Imaginary"
+        ]
+    },
+    "4023010": {
+        "1": "正阳狮鹫",
+        "2": "monsterfigure/Monster_4023010.png",
+        "3": [
+            "Phys",
+            "Quantum",
+            "Imaginary"
+        ],
+        "6": 50
+    },
+    "4044010": {
+        "1": "第一位天才，隐德来希，赞达尔",
+        "2": "monsterfigure/Monster_4044010.png",
+        "3": [
+            "Phys",
+            "Ice",
+            "Wind"
+        ]
+    },
+    "4023020": {
+        "1": "月夜天马",
+        "2": "monsterfigure/Monster_4023020.png",
+        "3": [
+            "Fire",
+            "Quantum",
+            "Imaginary"
+        ]
+    },
+    "4012010": {
+        "1": "天谴斗士",
+        "2": "monsterfigure/Monster_4012010.png",
+        "3": [
+            "Elec",
+            "Quantum",
+            "Imaginary"
+        ]
+    },
+    "4012030": {
+        "1": "天谴猎手",
+        "2": "monsterfigure/Monster_4012030.png",
+        "3": [
+            "Elec",
+            "Quantum",
+            "Ice"
+        ]
+    },
+    "4032030": {
+        "1": "黑潮蚀斧",
+        "2": "monsterfigure/Monster_4032030.png",
+        "3": [
+            "Elec",
+            "Quantum",
+            "Phys"
+        ]
+    },
+    "4052020": {
+        "1": "泡影稚子",
+        "2": "monsterfigure/Monster_4052020.png",
+        "3": [
+            "Elec",
+            "Fire"
+        ]
+    },
+    "2023020": {
+        "1": "丰饶灵兽 · 长右",
+        "2": "monsterfigure/Monster_2023020.png",
+        "3": [
+            "Fire",
+            "Ice",
+            "Wind"
+        ]
+    },
+    "3004012": {
+        "1": "昔在、今在、永在的剧目",
+        "2": "monsterfigure/Monster_3004010.png",
+        "3": [],
+        "4": 2,
+        "5": 0
+    },
+    "2033010": {
+        "1": "咆哮灵柩",
+        "2": "monsterfigure/Monster_2033010.png",
+        "3": [
+            "Elec",
+            "Wind",
+            "Imaginary"
+        ]
+    },
+    "4013010": {
+        "1": "天谴先锋",
+        "2": "monsterfigure/Monster_4013010.png",
+        "3": [
+            "Ice",
+            "Elec",
+            "Quantum"
+        ]
+    },
+    "4033010": {
+        "1": "黑潮蚀魔",
+        "2": "monsterfigure/Monster_4033010.png",
+        "3": [
+            "Phys",
+            "Wind",
+            "Quantum"
+        ]
+    },
+    "4033020": {
+        "1": "黑潮斗将",
+        "2": "monsterfigure/Monster_4033020.png",
+        "3": [
+            "Phys",
+            "Wind",
+            "Elec"
+        ]
+    },
+    "3004020": {
+        "1": "奇想林中的蕉研组",
+        "2": "monsterfigure/Monster_3004020.png",
+        "3": [
+            "Fire",
+            "Ice",
+            "Elec",
+            "Imaginary"
+        ],
+        "4": 2,
+        "5": 0
+    },
+    "4014020": {
+        "1": "颁赐者，千军首，天谴之矛",
+        "2": "monsterfigure/Monster_4014020.png",
+        "3": [
+        ],
+        "4": 2,
+        "5": 0
+    },
+    "4014030": {
+        "1": "冥魂渡者，死龙残躯，玻吕刻斯",
+        "2": "monsterfigure/Monster_4014030.png",
+        "3": [
+            "Wind",
+            "Quantum",
+            "Imaginary"
+        ],
+        "4": 2,
+        "5": 0
+    },
+    "2023030": {
+        "1": "承露天人",
+        "2": "monsterfigure/Monster_2023030.png",
+        "3": [
+            "Phys",
+            "Ice",
+            "Elec"
+        ]
+    },
+    "3025016": {
+        "1": "「齐响诗班」神主日",
+        "2": "monsterfigure/Monster_3025010.png",
+        "3": [
+            "Fire",
+            "Elec",
+            "Imaginary"
+        ],
+        "4": 2.8,
+        "5": 3
+    },
+    "3003010": {
+        "1": "惊梦剧团的十七分熟",
+        "2": "monsterfigure/Monster_3003010.png",
+        "3": [
+            "Fire",
+            "Elec",
+            "Wind"
+        ],
+        "4": 1
+    },
+    "8003020": {
+        "1": "外宇宙之炎",
+        "2": "monsterfigure/Monster_8003020.png",
+        "3": [
+            "Phys",
+            "Ice",
+            "Quantum"
+        ]
+    },
+    "3024020": {
+        "1": "「星核猎手」萨姆",
+        "2": "monsterfigure/Monster_3024020.png",
+        "3": [
+            "Elec",
+            "Quantum",
+            "Imaginary"
+        ]
+    },
+    "4034010": {
+        "1": "至黑之剑，盗火行者",
+        "2": "monsterfigure/Monster_4034010.png",
+        "3": [
+            "Ice",
+            "Elec",
+            "Quantum"
+        ],
+        "4": 2
+    },
+    "802501003": {
+        "1": "碎星王虫•斯喀拉卡巴兹（拟造）",
+        "2": "monsterfigure/Monster_8025010.png",
+        "3": [
+            "Ice",
+            "Phys",
+            "Imaginary"
+        ],
+        "4": 2.4
+    },
+    "3024030": {
+        "1": "示死祸源：深魇蝗灾",
+        "2": "monsterfigure/Monster_3024030.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Wind"
+        ],
+        "4": 1
+    },
+    "5012010": {
+        "1": "全自动魔仙棒",
+        "2": "monsterfigure/Monster_5012010.png",
+        "3": [
+            "Phys",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "5012020": {
+        "1": "治安忠犬",
+        "2": "monsterfigure/Monster_5012020.png",
+        "3": [
+            "Ice",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "5012030": {
+        "1": "攻击性阅读物",
+        "2": "monsterfigure/Monster_5012030.png",
+        "3": [
+            "Phys",
+            "Fire"
+        ],
+        "4": 1
+    },
+    "5012031": {
+        "1": "攻击性阅读物",
+        "2": "monsterfigure/Monster_5012031.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Elec"
+        ],
+        "4": 1
+    },
+    "5012040": {
+        "1": "助手涂鸦•拖稿",
+        "2": "monsterfigure/Monster_5012040.png",
+        "3": [
+            "Wind",
+            "Elec"
+        ],
+        "4": 1
+    },
+    "5012041": {
+        "1": "助手涂鸦•拖稿",
+        "2": "monsterfigure/Monster_5012040.png",
+        "3": [
+            "Wind",
+            "Elec"
+        ],
+        "4": 1
+    },
+    "5012050": {
+        "1": "助手涂鸦•赶稿",
+        "2": "monsterfigure/Monster_5012050.png",
+        "3": [
+            "Ice",
+            "Elec"
+        ],
+        "4": 1
+    },
+    "5012051": {
+        "1": "助手涂鸦•赶稿",
+        "2": "monsterfigure/Monster_5012050.png",
+        "3": [
+            "Ice",
+            "Elec"
+        ],
+        "4": 1
+    },
+    "5012060": {
+        "1": "助手涂鸦•催稿",
+        "2": "monsterfigure/Monster_5012060.png",
+        "3": [
+            "Ice",
+            "Wind"
+        ],
+        "4": 1
+    },
+    "5012061": {
+        "1": "助手涂鸦•催稿",
+        "2": "monsterfigure/Monster_5012060.png",
+        "3": [
+            "Ice",
+            "Wind"
+        ],
+        "4": 1
+    },
+    "5012070": {
+        "1": "1号输出端",
+        "2": "monsterfigure/Monster_5012070.png",
+        "3": [
+            "Imaginary",
+            "Wind",
+            "Quantum"
+        ],
+        "4": 1
+    },
+    "5012071": {
+        "1": "1号输出端",
+        "2": "monsterfigure/Monster_5012070.png",
+        "3": [
+            "Imaginary",
+            "Wind",
+            "Quantum"
+        ],
+        "4": 1
+    },
+    "5012080": {
+        "1": "1号输出端",
+        "2": "monsterfigure/Monster_5012080.png",
+        "3": [
+            "Imaginary",
+            "Wind",
+            "Quantum"
+        ],
+        "4": 1
+    },
+    "5012081": {
+        "1": "1号输出端",
+        "2": "monsterfigure/Monster_5012080.png",
+        "3": [
+            "Imaginary",
+            "Wind",
+            "Quantum"
+        ],
+        "4": 1
+    },
+    "5012090": {
+        "1": "SD民用机铠",
+        "2": "monsterfigure/Monster_5012090.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Elec"
+        ],
+        "4": 1
+    },
+    "5012100": {
+        "1": "魔法少女急袭剧团",
+        "2": "monsterfigure/Monster_5012100.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Ice"
+        ],
+        "4": 1
+    },
+    "5012110": {
+        "1": "狸猫记者",
+        "2": "monsterfigure/Monster_5012110.png",
+        "3": [
+            "Elec",
+            "Quantum",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "5013010": {
+        "1": "摇滚狂徒",
+        "2": "monsterfigure/Monster_5013010.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Wind"
+        ],
+        "4": 1
+    },
+    "5013011": {
+        "1": "共愿帮二当家，恶水",
+        "2": "monsterfigure/Monster_5013011.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Wind"
+        ],
+        "4": 1
+    },
+    "5013012": {
+        "1": "摇滚狂徒（错误）",
+        "2": "monsterfigure/Monster_5013010.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Wind"
+        ],
+        "4": 1
+    },
+    "5023020": {
+        "1": "吞神子嗣",
+        "2": "monsterfigure/Monster_5023020.png",
+        "3": [
+            "Elec",
+            "Fire",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "5013030": {
+        "1": "画板孔雀",
+        "2": "monsterfigure/Monster_5013030.png",
+        "3": [],
+        "4": 1
+    },
+    "5013031": {
+        "1": "画板孔雀（错误）",
+        "2": "monsterfigure/Monster_5013030.png",
+        "3": [],
+        "4": 1
+    },
+    "5013040": {
+        "1": "破晓战队•苍翼",
+        "2": "monsterfigure/Monster_5013040.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "5013041": {
+        "1": "破晓战队•苍翼",
+        "2": "monsterfigure/Monster_5013040.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "5013050": {
+        "1": "破晓战队•赤焰",
+        "2": "monsterfigure/Monster_5013050.png",
+        "3": [
+            "Phys",
+            "Quantum",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "5013051": {
+        "1": "破晓战队•赤焰",
+        "2": "monsterfigure/Monster_5013050.png",
+        "3": [
+            "Phys",
+            "Quantum",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "5013060": {
+        "1": "破晓战队•曙光",
+        "2": "monsterfigure/Monster_5013060.png",
+        "3": [
+            "Phys",
+            "Quantum",
+            "Fire"
+        ],
+        "4": 1
+    },
+    "5013061": {
+        "1": "破晓战队•曙光",
+        "2": "monsterfigure/Monster_5013060.png",
+        "3": [
+            "Phys",
+            "Quantum",
+            "Fire"
+        ],
+        "4": 1
+    },
+    "5013070": {
+        "1": "破晓战队•灰烬",
+        "2": "monsterfigure/Monster_5013070.png",
+        "3": [
+            "Imaginary",
+            "Quantum",
+            "Fire"
+        ],
+        "4": 1
+    },
+    "5013071": {
+        "1": "破晓战队•灰烬",
+        "2": "monsterfigure/Monster_5013070.png",
+        "3": [
+            "Imaginary",
+            "Quantum",
+            "Fire"
+        ],
+        "4": 1
+    },
+    "5014010": {
+        "1": "火花大会@Official",
+        "2": "monsterfigure/Monster_5014010.png",
+        "3": [
+            "Imaginary",
+            "Quantum",
+            "Fire"
+        ],
+        "4": 2
+    },
+    "5014011": {
+        "1": "直播小助手",
+        "2": "monsterfigure/Monster_5014011.png",
+        "3": [
+            "Imaginary",
+            "Quantum",
+            "Fire"
+        ],
+        "4": 1
+    },
+    "5014012": {
+        "1": "火花大会@Official",
+        "2": "monsterfigure/Monster_5014010.png",
+        "3": [
+            "Imaginary",
+            "Quantum",
+            "Fire"
+        ],
+        "4": 2
+    },
+    "5014014": {
+        "1": "火花大会@Official（完整）",
+        "2": "monsterfigure/Monster_5014010.png",
+        "3": [
+            "Imaginary",
+            "Quantum",
+            "Fire"
+        ],
+        "4": 3
+    },
+    "5014020": {
+        "1": "合金机铠•帕姆王",
+        "2": "monsterfigure/Monster_5014020.png",
+        "3": [
+            "Imaginary",
+            "Elec",
+            "Fire"
+        ],
+        "4": 2
+    },
+    "5014021": {
+        "1": "合金机铠•帕姆王",
+        "2": "monsterfigure/Monster_5014021.png",
+        "3": [
+            "Imaginary",
+            "Elec",
+            "Fire"
+        ],
+        "4": 2
+    },
+    "5023010": {
+        "1": "乐变化天人",
+        "2": "monsterfigure/Monster_5023010.png",
+        "3": [
+            "Imaginary",
+            "Elec",
+            "Fire"
+        ],
+        "4": 4.4675
+    },
+    "5024010": {
+        "1": "极乐颠倒•邪愿莲华主",
+        "2": "monsterfigure/Monster_5024010.png",
+        "3": [
+            "Phys",
+            "Elec",
+            "Imaginary"
+        ],
+        "4": 2
+    },
+    "101401016": {
+        "1": "史瓦罗",
+        "2": "monsterfigure/Monster_1014010.png",
+        "3": [
+            "Fire",
+            "Elec",
+            "Wind"
+        ],
+        "4": 1
+    },
+    "302401012": {
+        "1": "银枝",
+        "2": "monsterfigure/Monster_3024010.png",
+        "3": [
+            "Phys",
+            "Fire",
+            "Ice"
+        ],
+        "4": 2
+    },
+    "402301001": {
+        "1": "正阳狮鹫",
+        "2": "monsterfigure/Monster_4023010.png",
+        "3": [
+            "Phys",
+            "Quantum",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "402302001": {
+        "1": "月夜天马",
+        "2": "monsterfigure/Monster_4023020.png",
+        "3": [
+            "Fire",
+            "Quantum",
+            "Imaginary"
+        ],
+        "4": 1
+    },
+    "501403002": {
+        "1": "「始作画者，无量塔绘世」",
+        "2": "monsterfigure/Monster_5014030.png",
+        "3": [
+            "Fire",
+            "Elec",
+            "Quantum"
+        ],
+        "4": 2
+    }
+}
 
 var _bossguide = {
     "4064010": {
@@ -2437,13 +4035,16 @@ var _rewardline = {
 
 var _arbitrationhp = {
     "Index": {
-        "4006": 0,
-        "4005": 1,
-        "4004": 2,
-        "4003": 3,
-        "4002": 4,
-        "4001": 5
+        "4009": 0,
+        "4008": 1,
+        "4007": 2,
+        "4006": 3,
+        "4005": 4,
+        "4004": 5,
+        "4003": 6,
+        "4002": 7,
+        "4001": 8
     },
-    "TrialA": [77008544, 88624298, 63007327, 75563044, 97791944, 111199410],
-    "FinalHard": [207711361, 259188439, 142368828, 146407690, 126574120, 142936247]
+    "TrialA": [77008544, 88624298, 63007327, 75563044, 97791944, 111199410, 141949517, 117356591, 111631973],
+    "FinalHard": [207711361, 259188439, 142368828, 146407690, 126574120, 142936247, 164329999, 217808405, 157766861]
 }

@@ -93,7 +93,7 @@ var _monster = {
             "ATK": 18.0,
             "DEF": 1.0,
             "SPD": 100.0,
-            "Stance": 6.0
+            "Stance": 2.0
         },
         "Weak": [
             "Fire",
@@ -13394,9 +13394,9 @@ var _monster = {
         "Icon": "mostericon/Monster_4064010.png",
         "Figure": "monsterfigure/Monster_4064010.png",
         "Su": [
-            4062010,
-            4062020,
-            4063010
+            406201009,
+            406202002,
+            406301006
         ]
     },
     "4022010": {
@@ -13422,6 +13422,7 @@ var _monster = {
             "Elec": 0.2
         },
         "StatusRESBase": 0.2,
+        "HPCount": 2,
         "Skills": [
             402201001,
             402201002
@@ -16501,10 +16502,40 @@ var _monster = {
             406201001,
             406201002
         ],
-        "Camp": 18,
+        "Camp": 0,
         "Icon": "mostericon/Monster_4062010.png",
-        "Figure": "monsterfigure/Monster_4062010.png",
-        "New": true
+        "Figure": "monsterfigure/Monster_4062010.png"
+    },
+    "406201009": {
+        "_id": 406201009,
+        "Name": "金血忆灵 · 雉形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。<br>它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+        "Stats": {
+            "HP": 40.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 100.0,
+            "Stance": 3.0
+        },
+        "Weak": [
+            "Phys",
+            "Fire"
+        ],
+        "RESBase": {
+            "Ice": 0.2,
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2,
+            "Imaginary": 0.2
+        },
+        "StatusRESBase": 0.1,
+        "Skills": [
+            406201001,
+            406201002
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_4062010.png",
+        "Figure": "monsterfigure/Monster_4062010.png"
     },
     "4062020": {
         "_id": 4062020,
@@ -16535,6 +16566,166 @@ var _monster = {
             406202003
         ],
         "Camp": 18,
+        "Icon": "mostericon/Monster_4062020.png",
+        "Figure": "monsterfigure/Monster_4062020.png"
+    },
+    "406202001": {
+        "_id": 406202001,
+        "Name": "金血忆灵 · 犬形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具犬形。<br>它咄咄逼人，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+        "Stats": {
+            "HP": 3.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 3.0
+        },
+        "Weak": [
+            "Ice",
+            "Imaginary"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Fire": 0.2,
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.1,
+        "Skills": [
+            406202001,
+            406202002,
+            406202003
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_4062020.png",
+        "Figure": "monsterfigure/Monster_4062020.png"
+    },
+    "406202002": {
+        "_id": 406202002,
+        "Name": "金血忆灵 · 犬形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具犬形。<br>它咄咄逼人，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+        "Stats": {
+            "HP": 30.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 3.0
+        },
+        "Weak": [
+            "Ice",
+            "Imaginary"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Fire": 0.2,
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.1,
+        "Skills": [
+            406202001,
+            406202002,
+            406202003
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_4062020.png",
+        "Figure": "monsterfigure/Monster_4062020.png"
+    },
+    "406202003": {
+        "_id": 406202003,
+        "Name": "金血忆灵 · 犬形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具犬形。<br>它咄咄逼人，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+        "Stats": {
+            "HP": 30.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 3.0
+        },
+        "Weak": [
+            "Ice",
+            "Imaginary"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Fire": 0.2,
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.1,
+        "Skills": [
+            406202001,
+            406202002,
+            406202003
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_4062020.png",
+        "Figure": "monsterfigure/Monster_4062020.png"
+    },
+    "406202004": {
+        "_id": 406202004,
+        "Name": "金血忆灵 · 犬形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具犬形。<br>它咄咄逼人，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+        "Stats": {
+            "HP": 50.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 3.0
+        },
+        "Weak": [
+            "Ice",
+            "Imaginary"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Fire": 0.2,
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.1,
+        "Skills": [
+            406202001,
+            406202002,
+            406202003
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_4062020.png",
+        "Figure": "monsterfigure/Monster_4062020.png"
+    },
+    "406202005": {
+        "_id": 406202005,
+        "Name": "金血忆灵 · 犬形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具犬形。<br>它咄咄逼人，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+        "Stats": {
+            "HP": 50.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 3.0
+        },
+        "Weak": [
+            "Ice",
+            "Imaginary"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Fire": 0.2,
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.1,
+        "Skills": [
+            406202001,
+            406202002,
+            406202003
+        ],
+        "Camp": 0,
         "Icon": "mostericon/Monster_4062020.png",
         "Figure": "monsterfigure/Monster_4062020.png"
     },
@@ -16608,6 +16799,111 @@ var _monster = {
         "Icon": "mostericon/Monster_4063010.png",
         "Figure": "monsterfigure/Monster_4063010.png",
         "New": true
+    },
+    "406301005": {
+        "_id": 406301005,
+        "Name": "金血忆灵 · 翼蛇形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。略有翼蛇雏形，足以装神弄鬼。<br>它那扭曲的理智在黑潮中彻底疯狂，那强烈的自我防御冲动，无形中染上了一层幻想色彩。",
+        "Stats": {
+            "HP": 75.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 16.0
+        },
+        "Weak": [
+            "Phys",
+            "Fire",
+            "Ice"
+        ],
+        "RESBase": {
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2,
+            "Imaginary": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "Skills": [
+            406301001,
+            406301002,
+            406301003,
+            406301004,
+            406301005,
+            406301006
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_4063010.png",
+        "Figure": "monsterfigure/Monster_4063010.png"
+    },
+    "406301006": {
+        "_id": 406301006,
+        "Name": "金血忆灵 · 翼蛇形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。略有翼蛇雏形，足以装神弄鬼。<br>它那扭曲的理智在黑潮中彻底疯狂，那强烈的自我防御冲动，无形中染上了一层幻想色彩。",
+        "Stats": {
+            "HP": 75.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 16.0
+        },
+        "Weak": [
+            "Phys",
+            "Fire",
+            "Ice"
+        ],
+        "RESBase": {
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2,
+            "Imaginary": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "Skills": [
+            406301001,
+            406301002,
+            406301003,
+            406301004,
+            406301005,
+            406301006
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_4063010.png",
+        "Figure": "monsterfigure/Monster_4063010.png"
+    },
+    "406301000": {
+        "_id": 406301000,
+        "Name": "金血忆灵 · 翼蛇形",
+        "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。略有翼蛇雏形，足以装神弄鬼。<br>它那扭曲的理智在黑潮中彻底疯狂，那强烈的自我防御冲动，无形中染上了一层幻想色彩。",
+        "Stats": {
+            "HP": 337.5,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 16.0
+        },
+        "Weak": [
+            "Phys",
+            "Fire",
+            "Ice"
+        ],
+        "RESBase": {
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2,
+            "Imaginary": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "Skills": [
+            406301001,
+            406301002,
+            406301003,
+            406301004,
+            406301005,
+            406301006
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_4063010.png",
+        "Figure": "monsterfigure/Monster_4063010.png"
     },
     "4064010": {
         "_id": 4064010,
@@ -17758,6 +18054,38 @@ var _monster = {
             501211002
         ],
         "Camp": 19,
+        "Icon": "mostericon/Monster_5012110.png",
+        "Figure": "monsterfigure/Monster_5012110.png"
+    },
+    "501211002": {
+        "_id": 501211002,
+        "Name": "狸猫记者",
+        "Desc": "《狸狸周刊》的狸猫记者。八卦新闻的一手制造者，喜欢变身的小坏蛋，偶尔也会逃班摸鱼——（自以为）在你看不见的角落里。",
+        "Stats": {
+            "HP": 6.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 100.0,
+            "Stance": 3.0
+        },
+        "Weak": [
+            "Elec",
+            "Quantum",
+            "Imaginary"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Fire": 0.2,
+            "Ice": 0.2,
+            "Wind": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "HPCount": 1,
+        "Skills": [
+            501211001,
+            501211002
+        ],
+        "Camp": 0,
         "Icon": "mostericon/Monster_5012110.png",
         "Figure": "monsterfigure/Monster_5012110.png"
     },
@@ -19002,6 +19330,43 @@ var _monster = {
             5012120
         ],
     },
+    "5014023": {
+        "_id": 5014023,
+        "Name": "合金机铠•帕姆王",
+        "Desc": "谁能驾驭星穹列车的洪荒之力？！失控的帕姆变成了「合金机铠•帕姆王」。 帕姆王是一台对干净整洁极为执着的强大机铠，按照它的标准，这里不干净了，必须进行全！面！打！扫！帕！",
+        "Stats": {
+            "HP": 82.5,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 24.0
+        },
+        "Weak": [
+            "Fire",
+            "Imaginary",
+            "Elec"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Ice": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "HPCount": 2,
+        "Skills": [
+            501402001,
+            501402002,
+            501402003,
+            501402004,
+            501402005,
+            501402006,
+            501402008
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_5014020.png",
+        "Figure": "monsterfigure/Monster_5014020.png"
+    },
     "5014030": {
         "_id": 5014030,
         "Name": "「始作画者，无量塔绘世」",
@@ -19039,7 +19404,87 @@ var _monster = {
         "Icon": "mostericon/Monster_5014030.png",
         "Figure": "monsterfigure/Monster_5014030.png",
         "Su": [
-            5023020
+            5023021
+        ],
+    },
+    "501403001": {
+        "_id": 501403001,
+        "Name": "「始作画者，无量塔绘世」",
+        "Desc": "...",
+        "Stats": {
+            "HP": 15.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 36.0
+        },
+        "Weak": [
+            "Fire",
+            "Elec",
+            "Quantum"
+        ],
+        "RESBase": {
+            "Imaginary": 0.4,
+            "Ice": 0.4,
+            "Wind": 0.4,
+            "Quantum": 0.4
+        },
+        "StatusRESBase": 0.4,
+        "HPCount": 2,
+        "Skills": [
+            501403001,
+            501403002,
+            501403003,
+            501403004,
+            501403005,
+            501403006,
+            501403007
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_5014030.png",
+        "Figure": "monsterfigure/Monster_5014030.png",
+        "Su": [
+            5023021
+        ],
+    },
+    "501403002": {
+        "_id": 501403002,
+        "Name": "「始作画者，无量塔绘世」",
+        "Desc": "...",
+        "Stats": {
+            "HP": 44.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 36.0
+        },
+        "Weak": [
+            "Fire",
+            "Elec",
+            "Quantum"
+        ],
+        "RESBase": {
+            "Imaginary": 0.4,
+            "Ice": 0.4,
+            "Wind": 0.4,
+            "Quantum": 0.4
+        },
+        "StatusRESBase": 0.4,
+        "HPCount": 2,
+        "Skills": [
+            501403001,
+            501403002,
+            501403003,
+            501403004,
+            501403005,
+            501403006,
+            501403007
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_5014030.png",
+        "Figure": "monsterfigure/Monster_5014030.png",
+        "Su": [
+            5023021
         ],
     },
     "5022010": {
@@ -19246,6 +19691,41 @@ var _monster = {
             502302005
         ],
         "Camp": 19,
+        "Icon": "mostericon/Monster_5023020.png",
+        "Figure": "monsterfigure/Monster_5023020.png"
+    },
+    "5023021": {
+        "_id": 5023021,
+        "Name": "吞神子嗣",
+        "Desc": "归寂分裂「贪饕」力量所生成的怪物军团，如今「幻造种」的原型。他自哈托彼亚沉睡的核心中感应到「贪饕」永不停歇的吞噬渴望，其力量的脉动与「毁灭」命途十分合拍。这份躁动令他感到有趣，因此他开始自己的黑暗创造——抹去人类的头颅，留下发笑和吞噬的嘴，永不满足地向外界咆哮、索要、吞吃。",
+        "Stats": {
+            "HP": 5.914,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 120.0,
+            "Stance": 18.0
+        },
+        "Weak": [
+            "Fire",
+            "Imaginary",
+            "Elec"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Ice": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.3,
+        "HPCount": 1,
+        "Skills": [
+            502302001,
+            502302002,
+            502302003,
+            502302004,
+            502302005
+        ],
+        "Camp": 0,
         "Icon": "mostericon/Monster_5023020.png",
         "Figure": "monsterfigure/Monster_5023020.png"
     },
@@ -21236,9 +21716,13 @@ var _monster = {
             "SPD": 167.0,
             "Stance": 3.0
         },
-        "Weak": [],
-        "RESBase": {},
-        "StatusRESBase": 0.0,
+        "Weak": ["Phys","Fire","Imaginary"],
+        "RESBase": {
+            "Ice": 0.2,
+            "Elec": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2},
+        "StatusRESBase": 0.2,
         "Skills": [
             801204001,
             801204002,
@@ -22418,7 +22902,7 @@ var _monster = {
     },
     "8015030": {
         "_id": 8015030,
-        "Name": "二相乐园BOSS",
+        "Name": "万色归空主，归寂",
         "Desc": "...",
         "Stats": {
             "HP": 160.0,
@@ -22463,7 +22947,7 @@ var _monster = {
     },
     "8015040": {
         "_id": 8015040,
-        "Name": "二相乐园BOSS•「二」",
+        "Name": "万色归空主，归寂•「二」",
         "Desc": "...",
         "Stats": {
             "HP": 160.0,
@@ -22508,7 +22992,7 @@ var _monster = {
     },
     "8015050": {
         "_id": 8015050,
-        "Name": "二相乐园BOSS•「三」",
+        "Name": "万色归空主，归寂•「三」",
         "Desc": "...",
         "Stats": {
             "HP": 160.0,
@@ -23636,6 +24120,409 @@ var _monster = {
         ]
     }
 ,
+"8032040": {
+    "_id": 8032040,
+    "Name": "千星戍卫",
+    "Desc": "千星城随处可见的量产型安保机器人，负责维持和平稳定。\\n冷酷无情的正义机器，执法有温度、出拳有力度。",
+    "Stats": {
+      "HP": 1.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 110,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Wind",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      803204001,
+      803204002,
+      803204003,
+      803204004
+    ],
+    "Camp": 9,
+    "Icon": "mostericon/Monster_8032040.png",
+    "Figure": "monsterfigure/Monster_8032040.png"
+  }
+,
+"8033020": {
+    "_id": 8033020,
+    "Name": "「灯塔」",
+    "Desc": "千星城的超级英雄，武装着博识学会最先进的科技成果，不遗余力地惩奸除恶，维护城市的和平。五年来，他数次拯救千星城的人民于大小灾难中。\\n有人指出，这些壮举绝不可能靠一人完成，而所谓「灯塔」也不过是由娱乐工业复合体包装打造出的虚假偶像。但人们已经全心期盼着有人能在他们陷入危机时扛起一切——只是他们并不知晓，「灯塔」的铠甲之下藏着某些更为幽暗的秘密……",
+    "Stats": {
+      "HP": 13.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 144,
+      "Stance": 16.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      803302001,
+      803302003,
+      803302004,
+      803302005,
+      803302002
+    ],
+    "Camp": 9,
+    "Icon": "mostericon/Monster_8033020.png",
+    "Figure": "monsterfigure/Monster_8033020.png",
+        "Su": [
+            8032040
+        ]
+  }
+,
+"5024014": {
+    "_id": 5024014,
+    "Name": "极乐颠倒•邪愿莲华主",
+    "Desc": "满愿电视台的台长，与被带入二相乐园的倏忽血肉合二为一。\\n在<unbreak>15</unbreak>年前的上一场幻月游戏中，名为「告死魔」的连环杀手造成了巨大的死伤。他的作为使得许多居民失去父母、兄弟、同学。\\n肉体上的伤痕可以治愈，但心灵上的伤痕永远无法被填补。人们组成了「受害互助协会」，试图医治这道伤痛。\\n满愿改进了一种「幸福手术」，接种后，所有人将永远忘却痛苦，保持快乐。手术的源头，就是倏忽血肉的残片。\\n十五年过去后，「受害者互助会」演变成了庞大的「幸福微笑研究会」，而这项简单的小手术借由整容、医疗等行为，在二相乐园感染了无数人，让倏忽的细胞沉睡在人群中。\\n作为幸福微笑研究会的首领，满愿仇恨着产生告死魔的幻月游戏，因而化作了「极乐颠倒•邪愿莲华主」，向这个世界发起复仇。",
+    "Stats": {
+      "HP": 82.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 144,
+      "Stance": 60.0
+    },
+    "Weak": [
+      "Phys",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Fire": 0.4,
+      "Ice": 0.4,
+      "Wind": 0.4,
+      "Quantum": 0.4
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "Skills": [
+      502401401,
+      502401403,
+      502401404,
+      502401405,
+      502401406,
+      502401407,
+      502401408
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_5024010.png",
+    "Figure": "monsterfigure/Monster_5024010.png"
+  }
+,
+"2024016": {
+    "_id": 2024016,
+    "Name": "弗有垂暮的不老仙",
+    "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
+    "Stats": {
+      "HP": 262.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.4
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      202401605,
+      202401606,
+      202401607,
+      202401608,
+      202401609,
+      202401601,
+      202401602,
+      202401603,
+      202401604,
+      202401610,
+      202401611,
+      202401612,
+      202401613,
+      202401614,
+      202401615,
+      202401616,
+      202401617,
+      202401618
+    ],
+    "Camp": 0,
+    "StanceCount": 4,
+    "Icon": "mostericon/Monster_2024010.png",
+    "Figure": "monsterfigure/Monster_2024010.png",
+    "Su": [
+            202206018,
+            202201020,
+            2022072,
+            2022102,
+            2023012,
+            2023032
+        ]
+  },
+  "202401601": {
+    "_id": 202401601,
+    "Name": "弗有垂暮的不老仙",
+    "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
+    "Stats": {
+      "HP": 262.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.4
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      202401605,
+      202401606,
+      202401607,
+      202401608,
+      202401609,
+      202401601,
+      202401602,
+      202401603,
+      202401604,
+      202401610,
+      202401611,
+      202401612,
+      202401613,
+      202401614,
+      202401615,
+      202401616,
+      202401617,
+      202401618
+    ],
+    "Camp": 0,
+    "StanceCount": 4,
+    "Icon": "mostericon/Monster_2024010.png",
+    "Figure": "monsterfigure/Monster_2024010.png",
+    "Su": [
+            202206018,
+            202201020,
+            202207201,
+            202210201,
+            202301201,
+            202303201
+        ]
+  },
+  "202401602": {
+    "_id": 202401602,
+    "Name": "弗有垂暮的不老仙",
+    "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
+    "Stats": {
+      "HP": 262.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.4
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      202401605,
+      202401606,
+      202401607,
+      202401608,
+      202401609,
+      202401601,
+      202401602,
+      202401603,
+      202401604,
+      202401610,
+      202401611,
+      202401612,
+      202401613,
+      202401614,
+      202401615,
+      202401616,
+      202401617,
+      202401618
+    ],
+    "Camp": 0,
+    "StanceCount": 4,
+    "Icon": "mostericon/Monster_2024010.png",
+    "Figure": "monsterfigure/Monster_2024010.png",
+    "Su": [
+            202206018,
+            202201020,
+            202207202,
+            202210202,
+            202301202,
+            202303202
+        ]
+  },
+  "202401603": {
+    "_id": 202401603,
+    "Name": "弗有垂暮的不老仙",
+    "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
+    "Stats": {
+      "HP": 262.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.4
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      202401605,
+      202401606,
+      202401607,
+      202401608,
+      202401609,
+      202401601,
+      202401602,
+      202401603,
+      202401604,
+      202401610,
+      202401611,
+      202401612,
+      202401613,
+      202401614,
+      202401615,
+      202401616,
+      202401617,
+      202401618
+    ],
+    "Camp": 0,
+    "StanceCount": 4,
+    "Icon": "mostericon/Monster_2024010.png",
+    "Figure": "monsterfigure/Monster_2024010.png",
+    "Su": [
+            202206018,
+            202201020,
+            202207203,
+            202210203,
+            202301203,
+            202303203
+        ]
+  },
+  "202401604": {
+    "_id": 202401604,
+    "Name": "弗有垂暮的不老仙",
+    "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
+    "Stats": {
+      "HP": 262.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.4
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      202401605,
+      202401606,
+      202401607,
+      202401608,
+      202401609,
+      202401601,
+      202401602,
+      202401603,
+      202401604,
+      202401610,
+      202401611,
+      202401612,
+      202401613,
+      202401614,
+      202401615,
+      202401616,
+      202401617,
+      202401618
+    ],
+    "Camp": 0,
+    "StanceCount": 4,
+    "Icon": "mostericon/Monster_2024010.png",
+    "Figure": "monsterfigure/Monster_2024010.png",
+    "Su": [
+            202206018,
+            202201020,
+            202207204,
+            202210204,
+            202301204,
+            202303204
+        ]
+  }
+,
 "2023012": {
     "_id": 2023012,
     "Name": "仙人童子",
@@ -23645,7 +24532,7 @@ var _monster = {
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
-      "Stance": 72.0
+      "Stance": 24.0
     },
     "Weak": [
       "Phys",
@@ -23680,7 +24567,7 @@ var _monster = {
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
-      "Stance": 72.0
+      "Stance": 24.0
     },
     "Weak": [
       "Phys",
@@ -23715,7 +24602,7 @@ var _monster = {
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
-      "Stance": 72.0
+      "Stance": 24.0
     },
     "Weak": [
       "Phys",
@@ -23750,7 +24637,7 @@ var _monster = {
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
-      "Stance": 72.0
+      "Stance": 24.0
     },
     "Weak": [
       "Phys",
@@ -23775,17 +24662,18 @@ var _monster = {
     "Camp": 0,
     "Icon": "mostericon/Monster_2023010.png",
     "Figure": "monsterfigure/Monster_2023010.png"
-  },
+  }
+,
   "202301204": {
     "_id": 202301204,
     "Name": "仙人童子",
     "Desc": "渴求复兴古老的丰饶之秘，并引领仙舟人再度踏上解脱登仙大道的修炼者。\\n如今，他们的愿望得遂。受赐于古老神迹的力量，以其为甲胄、为武器，并触及了长生不死的秘密。",
     "Stats": {
-      "HP": 50.000015000000005,
+      "HP": 50.0,
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
-      "Stance": 72.0
+      "Stance": 24.0
     },
     "Weak": [
       "Phys",
@@ -23810,6 +24698,1758 @@ var _monster = {
     "Camp": 0,
     "Icon": "mostericon/Monster_2023010.png",
     "Figure": "monsterfigure/Monster_2023010.png"
+  }
+,
+"2023032": {
+    "_id": 2023032,
+    "Name": "仙人天女",
+    "Desc": "「药王秘传」信徒渴求的形态，摆脱人性重负，以仙道重塑的真体。\\n太古时代，求道者们自建木中参悟玄旨，自诩「仙人」。他们自在无拘，将血肉众生如泥塑形。在无数次变化间，他们忘却了自己的本来面目。",
+    "Stats": {
+      "HP": 40.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      202303201,
+      202303202,
+      202303203,
+      202303204,
+      202303205
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2023030.png",
+    "Figure": "monsterfigure/Monster_2023030.png"
+  },
+  "202303201": {
+    "_id": 202303201,
+    "Name": "仙人天女",
+    "Desc": "「药王秘传」信徒渴求的形态，摆脱人性重负，以仙道重塑的真体。\\n太古时代，求道者们自建木中参悟玄旨，自诩「仙人」。他们自在无拘，将血肉众生如泥塑形。在无数次变化间，他们忘却了自己的本来面目。",
+    "Stats": {
+      "HP": 40.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      202303201,
+      202303202,
+      202303203,
+      202303204,
+      202303205
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2023030.png",
+    "Figure": "monsterfigure/Monster_2023030.png"
+  },
+  "202303202": {
+    "_id": 202303202,
+    "Name": "仙人天女",
+    "Desc": "「药王秘传」信徒渴求的形态，摆脱人性重负，以仙道重塑的真体。\\n太古时代，求道者们自建木中参悟玄旨，自诩「仙人」。他们自在无拘，将血肉众生如泥塑形。在无数次变化间，他们忘却了自己的本来面目。",
+    "Stats": {
+      "HP": 40.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      202303201,
+      202303202,
+      202303203,
+      202303204,
+      202303205
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2023030.png",
+    "Figure": "monsterfigure/Monster_2023030.png"
+  },
+  "202303203": {
+    "_id": 202303203,
+    "Name": "仙人天女",
+    "Desc": "「药王秘传」信徒渴求的形态，摆脱人性重负，以仙道重塑的真体。\\n太古时代，求道者们自建木中参悟玄旨，自诩「仙人」。他们自在无拘，将血肉众生如泥塑形。在无数次变化间，他们忘却了自己的本来面目。",
+    "Stats": {
+      "HP": 40.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      202303201,
+      202303202,
+      202303203,
+      202303204,
+      202303205
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2023030.png",
+    "Figure": "monsterfigure/Monster_2023030.png"
+  }
+,
+  "202303204": {
+    "_id": 202303204,
+    "Name": "仙人天女",
+    "Desc": "「药王秘传」信徒渴求的形态，摆脱人性重负，以仙道重塑的真体。\\n太古时代，求道者们自建木中参悟玄旨，自诩「仙人」。他们自在无拘，将血肉众生如泥塑形。在无数次变化间，他们忘却了自己的本来面目。",
+    "Stats": {
+      "HP": 60.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 20.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.4,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      202303201,
+      202303202,
+      202303203,
+      202303204,
+      202303205
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2023030.png",
+    "Figure": "monsterfigure/Monster_2023030.png"
+  }
+,
+"202201003": {
+    "_id": 202201003,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201004": {
+    "_id": 202201004,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201005": {
+    "_id": 202201005,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201006": {
+    "_id": 202201006,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201008": {
+    "_id": 202201008,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201009": {
+    "_id": 202201009,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201011": {
+    "_id": 202201011,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201012": {
+    "_id": 202201012,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201013": {
+    "_id": 202201013,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  },
+  "202201015": {
+    "_id": 202201015,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 1.2,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  }
+,
+  "202201020": {
+    "_id": 202201020,
+    "Name": "魔阴身士卒",
+    "Desc": "不知何故陷入狂乱的仙舟士兵，躯壳已不见人形，只余无穷的增生变异。相传无量寿中，仙舟人会堕入名为「魔阴身」的状态。",
+    "Stats": {
+      "HP": 7.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.4
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202201001,
+      202201002,
+      202201003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022010.png",
+    "Figure": "monsterfigure/Monster_2022010.png"
+  }
+,
+"202206001": {
+    "_id": 202206001,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.1999999999999997,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206002": {
+    "_id": 202206002,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.1999999999999997,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206003": {
+    "_id": 202206003,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.1999999999999997,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206004": {
+    "_id": 202206004,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.1999999999999997,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206005": {
+    "_id": 202206005,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.1999999999999997,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206006": {
+    "_id": 202206006,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.1999999999999997,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206007": {
+    "_id": 202206007,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.1999999999999997,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206010": {
+    "_id": 202206010,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.1999999999999997,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  }
+,
+  "202206018": {
+    "_id": 202206018,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 10.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  }
+,
+"2022072": {
+    "_id": 2022072,
+    "Name": "肃风之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 3.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202207201,
+      202207202,
+      202207203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022070.png",
+    "Figure": "monsterfigure/Monster_2022070.png"
+  },
+"202207204": {
+    "_id": 202207204,
+    "Name": "肃风之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 5.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202207201,
+      202207202,
+      202207203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022070.png",
+    "Figure": "monsterfigure/Monster_2022070.png"
+  }
+,
+"2022102": {
+    "_id": 2022102,
+    "Name": "嘉实之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 6.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202210201,
+      202210202,
+      202210203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022100.png",
+    "Figure": "monsterfigure/Monster_2022100.png"
+  },
+  "202210201": {
+    "_id": 202210201,
+    "Name": "嘉实之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 6.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202210201,
+      202210202,
+      202210203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022100.png",
+    "Figure": "monsterfigure/Monster_2022100.png"
+  },
+  "202210202": {
+    "_id": 202210202,
+    "Name": "嘉实之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 6.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202210201,
+      202210202,
+      202210203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022100.png",
+    "Figure": "monsterfigure/Monster_2022100.png"
+  },
+  "202210203": {
+    "_id": 202210203,
+    "Name": "嘉实之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 6.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202210201,
+      202210202,
+      202210203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022100.png",
+    "Figure": "monsterfigure/Monster_2022100.png"
+  },
+  "202210204": {
+    "_id": 202210204,
+    "Name": "嘉实之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 9.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 6.0
+    },
+    "Weak": [
+      "Fire",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202210201,
+      202210202,
+      202210203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022100.png",
+    "Figure": "monsterfigure/Monster_2022100.png"
+  },
+"202207201": {
+    "_id": 202207201,
+    "Name": "肃风之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 3.9999995,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202207201,
+      202207202,
+      202207203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022070.png",
+    "Figure": "monsterfigure/Monster_2022070.png"
+  },
+  "202207202": {
+    "_id": 202207202,
+    "Name": "肃风之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 3.9999995,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202207201,
+      202207202,
+      202207203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022070.png",
+    "Figure": "monsterfigure/Monster_2022070.png"
+  },
+  "202207203": {
+    "_id": 202207203,
+    "Name": "肃风之杪",
+    "Desc": "随玄鹿足迹而生的建木枝梢。",
+    "Stats": {
+      "HP": 3.9999995,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Ice",
+      "Quantum",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0,
+    "DebuffRES": {},
+    "Skills": [
+      202207201,
+      202207202,
+      202207203
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022070.png",
+    "Figure": "monsterfigure/Monster_2022070.png"
+  }
+,
+"406301002": {
+    "_id": 406301002,
+    "Name": "金血忆灵•翼蛇形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。略有翼蛇雏形，足以装神弄鬼。\\n它那扭曲的理智在黑潮中彻底疯狂，那强烈的自我防御冲动，无形中染上了一层幻想色彩。",
+    "Stats": {
+      "HP": 10.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 48.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Ice"
+    ],
+    "RESBase": {
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      406301001,
+      406301002,
+      406301003,
+      406301004,
+      406301005,
+      406301006
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4063010.png",
+    "Figure": "monsterfigure/Monster_4063010.png"
+  },
+  "406301003": {
+    "_id": 406301003,
+    "Name": "金血忆灵•翼蛇形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。略有翼蛇雏形，足以装神弄鬼。\\n它那扭曲的理智在黑潮中彻底疯狂，那强烈的自我防御冲动，无形中染上了一层幻想色彩。",
+    "Stats": {
+      "HP": 50.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 48.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Ice"
+    ],
+    "RESBase": {
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      406301001,
+      406301002,
+      406301003,
+      406301004,
+      406301005,
+      406301006
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4063010.png",
+    "Figure": "monsterfigure/Monster_4063010.png"
+  },
+  "406301004": {
+    "_id": 406301004,
+    "Name": "金血忆灵•翼蛇形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。略有翼蛇雏形，足以装神弄鬼。\\n它那扭曲的理智在黑潮中彻底疯狂，那强烈的自我防御冲动，无形中染上了一层幻想色彩。",
+    "Stats": {
+      "HP": 50.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 48.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Ice"
+    ],
+    "RESBase": {
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      406301001,
+      406301002,
+      406301003,
+      406301004,
+      406301005,
+      406301006
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4063010.png",
+    "Figure": "monsterfigure/Monster_4063010.png"
+  }
+,
+"406201002": {
+    "_id": 406201002,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 10.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  },
+  "406201003": {
+    "_id": 406201003,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 10.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  },
+  "406201004": {
+    "_id": 406201004,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 12.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  },
+  "406201005": {
+    "_id": 406201005,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 15.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  },
+  "406201006": {
+    "_id": 406201006,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 2.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  },
+  "406201007": {
+    "_id": 406201007,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 20.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  },
+  "406201008": {
+    "_id": 406201008,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 20.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  },
+  "406201010": {
+    "_id": 406201010,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 40.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  },
+  "406201011": {
+    "_id": 406201011,
+    "Name": "金血忆灵•雉形",
+    "Desc": "流光忆庭的模因生命遭遇「毁灭」金血糅合而成的扭曲怪物。初具雉形。\\n它既喧嚣吵闹又总是抱团行动，可见即便人性已经蒸发，遵循着「毁灭」的本能便是如此模样。",
+    "Stats": {
+      "HP": 1.9355,
+      "ATK": 40.008888,
+      "DEF": 1.0,
+      "SPD": 100,
+      "Stance": 9.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      406201001,
+      406201002
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_4062010.png",
+    "Figure": "monsterfigure/Monster_4062010.png"
+  }
+,
+"406401201": {
+    "_id": 406401201,
+    "Name": "迷惘之渊的裁定者",
+    "Desc": "那众多金血忆灵的残躯中一丝尚存的疯狂，被长夜月抽取提炼，融合成了更为扭曲怪异的怪物。\\n它将遵守造物主的指示，裁定何物应被记起，何物应被忘却，它会吞噬掉徒劳无功的冗余记忆，使它们在岁月中沉默。\\n「新的生命若要萌芽，它的种子须是死的。」",
+    "Stats": {
+      "HP": 300.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 144,
+      "Stance": 12.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      406401201,
+      406401202,
+      406401203,
+      406401204,
+      406401205,
+      406401206,
+      406401207,
+      406401208,
+      406401209,
+      406401211,
+      406401213,
+      406401214,
+      406401215,
+      406401216,
+      406401217,
+      406401210
+    ],
+    "Camp": 0,
+    "StanceCount": 8,
+    "Icon": "mostericon/Monster_4064010.png",
+    "Figure": "monsterfigure/Monster_4064010.png"
+  },
+  "406401202": {
+    "_id": 406401202,
+    "Name": "迷惘之渊的裁定者",
+    "Desc": "那众多金血忆灵的残躯中一丝尚存的疯狂，被长夜月抽取提炼，融合成了更为扭曲怪异的怪物。\\n它将遵守造物主的指示，裁定何物应被记起，何物应被忘却，它会吞噬掉徒劳无功的冗余记忆，使它们在岁月中沉默。\\n「新的生命若要萌芽，它的种子须是死的。」",
+    "Stats": {
+      "HP": 300.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 144,
+      "Stance": 12.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      406401201,
+      406401202,
+      406401203,
+      406401204,
+      406401205,
+      406401206,
+      406401207,
+      406401208,
+      406401209,
+      406401211,
+      406401213,
+      406401214,
+      406401215,
+      406401216,
+      406401217,
+      406401210
+    ],
+    "Camp": 0,
+    "StanceCount": 8,
+    "Icon": "mostericon/Monster_4064010.png",
+    "Figure": "monsterfigure/Monster_4064010.png"
+  },
+  "406401203": {
+    "_id": 406401203,
+    "Name": "迷惘之渊的裁定者",
+    "Desc": "那众多金血忆灵的残躯中一丝尚存的疯狂，被长夜月抽取提炼，融合成了更为扭曲怪异的怪物。\\n它将遵守造物主的指示，裁定何物应被记起，何物应被忘却，它会吞噬掉徒劳无功的冗余记忆，使它们在岁月中沉默。\\n「新的生命若要萌芽，它的种子须是死的。」",
+    "Stats": {
+      "HP": 330.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 144,
+      "Stance": 12.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      406401201,
+      406401202,
+      406401203,
+      406401204,
+      406401205,
+      406401206,
+      406401207,
+      406401208,
+      406401209,
+      406401211,
+      406401213,
+      406401214,
+      406401215,
+      406401216,
+      406401217,
+      406401210
+    ],
+    "Camp": 0,
+    "StanceCount": 8,
+    "Icon": "mostericon/Monster_4064010.png",
+    "Figure": "monsterfigure/Monster_4064010.png"
+  },
+  "406401204": {
+    "_id": 406401204,
+    "Name": "迷惘之渊的裁定者",
+    "Desc": "那众多金血忆灵的残躯中一丝尚存的疯狂，被长夜月抽取提炼，融合成了更为扭曲怪异的怪物。\\n它将遵守造物主的指示，裁定何物应被记起，何物应被忘却，它会吞噬掉徒劳无功的冗余记忆，使它们在岁月中沉默。\\n「新的生命若要萌芽，它的种子须是死的。」",
+    "Stats": {
+      "HP": 330.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 144,
+      "Stance": 12.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.3,
+    "DebuffRES": {},
+    "HPCount": 2,
+    "Skills": [
+      406401201,
+      406401202,
+      406401203,
+      406401204,
+      406401205,
+      406401206,
+      406401207,
+      406401208,
+      406401209,
+      406401211,
+      406401213,
+      406401214,
+      406401215,
+      406401216,
+      406401217,
+      406401210
+    ],
+    "Camp": 0,
+    "StanceCount": 8,
+    "Icon": "mostericon/Monster_4064010.png",
+    "Figure": "monsterfigure/Monster_4064010.png",
+    "Su": [
+            406201010,
+            406202005,
+            406301006,
+            406301000
+        ]
   }
 }
 
@@ -23951,6 +26591,7 @@ var _monsterlist = [
     403303101,
     405301101,
     406201001,
+    406201009,
     406301001,
     802201005,
     801505011,
@@ -25588,7 +28229,15 @@ var _monsterlist = [
     4053020,
     4062010,
     4062020,
+    406202001,
+    406202002,
+    406202003,
+    406202004,
+    406202005,
     4063010,
+    406301001,
+    406301005,
+    406301006,
     4064010,
     8001010,
     800101001,
@@ -26043,6 +28692,7 @@ var _monsterlist = [
     8012213,
     8012214,
     8012215,
+    8012040,
     8013010,
     801301001,
     801301002,
@@ -26215,11 +28865,64 @@ var _monsterlist = [
     803401202,
     803401203,
     803401204,
+    8032040,
+    8033020,
+    5024014,
+    2024016,
+    202401601,
+    202401602,
+    202401603,
+    202401604,
     2023012,
     202301201,
     202301202,
     202301203,
-    202301204
+    2023032,
+    202303201,
+    202303202,
+    202303203,
+    202201003,
+    202201004,
+    202201005,
+    202201006,
+    202201008,
+    202201009,
+    202201011,
+    202201012,
+    202201013,
+    202201015,
+    202206001,
+    202206002,
+    202206003,
+    202206004,
+    202206005,
+    202206006,
+    202206007,
+    202206010,
+    2022072,
+    2022102,
+    202210201,
+    202210202,
+    202210203,
+    202207201,
+    202207202,
+    202207203,
+    406301002,
+    406301003,
+    406301004,
+    406201002,
+    406201003,
+    406201004,
+    406201005,
+    406201006,
+    406201007,
+    406201008,
+    406201010,
+    406201011,
+    406401201,
+    406401202,
+    406401203,
+    406401204
 ]
 
 var _status = {

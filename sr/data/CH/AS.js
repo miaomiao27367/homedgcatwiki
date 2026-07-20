@@ -36,7 +36,7 @@ var _chaos = [
                                     "HP": 514851,
                                     "SPD": 120,
                                     "Stance": 20,
-                                    "HPCount": 1
+                                    "HPCount": 2
                                 }
                             ]
                         ]
@@ -96,7 +96,7 @@ var _chaos = [
                                     "HP": 1855099,
                                     "SPD": 132,
                                     "Stance": 20,
-                                    "HPCount": 1
+                                    "HPCount": 2
                                 }
                             ]
                         ]
@@ -156,7 +156,7 @@ var _chaos = [
                                     "HP": 5058647,
                                     "SPD": 144,
                                     "Stance": 20,
-                                    "HPCount": 1
+                                    "HPCount": 2
                                 }
                             ]
                         ]
@@ -216,7 +216,7 @@ var _chaos = [
                                     "HP": 11548808,
                                     "SPD": 158,
                                     "Stance": 20,
-                                    "HPCount": 1
+                                    "HPCount": 2
                                 }
                             ]
                         ]
@@ -252,40 +252,40 @@ var _chaos = [
             "Desc": "拥有<color style='color:#f29e38;'>【坚防守备】</color>的敌方目标被<color style='color:#f29e38;'>弱点击破</color>时，使我方全体目标解除控制状态并激活终结技。\\n敌方全体目标受到的战技伤害提高<color style='color:#f29e38;'> 25% </color>，欢愉伤害提高<color style='color:#f29e38;'> 15% </color>。"
         },
         "UB": [
-        {
-          "_id": 0,
-          "Name": "膏腴之地",
-          "Desc": "我方全体造成的战技和终结技伤害提高<color style='color:#f29e38;'> 30% </color>，编队中的第1位角色造成的战技和终结技伤害额外提高<color style='color:#f29e38;'> 30% </color>。"
-        },
-        {
-          "_id": 0,
-          "Name": "才藻富赡",
-          "Desc": "敌方全体的风属性抗性和雷属性抗性降低<color style='color:#f29e38;'> 40% </color>。"
-        },
-        {
-          "_id": 0,
-          "Name": "喜上眉梢",
-          "Desc": "敌方全体受到的欢愉伤害提高<color style='color:#f29e38;'> 30% </color>。我方队伍中存在欢愉命途的角色时，我方全体的弱点击破效率提高<color style='color:#f29e38;'> 50% </color>。"
-        }
-      ],
-      "LB": [
-        {
-          "_id": 0,
-          "Name": "攻心扼吭",
-          "Desc": "我方全体目标造成的击破伤害提高<color style='color:#f29e38;'> 10% </color>，当场上有敌方目标进入弱点击破状态后额外提高<color style='color:#f29e38;'> 5% </color>，最多叠加<color style='color:#f29e38;'> 4 </color>次。"
-        },
-        {
-          "_id": 0,
-          "Name": "前尘影事",
-          "Desc": "当前在场的我方忆灵数量大于等于3时，我方全体目标造成的伤害提高<color style='color:#f29e38;'> 60% </color>。"
-        },
-        {
-          "_id": 0,
-          "Name": "附骨之疽",
-          "Desc": "我方目标对敌方造成持续伤害后，回复<color style='color:#f29e38;'> 1 </color>点能量。我方全体造成的持续伤害无视敌方目标<color style='color:#f29e38;'> 40% </color>的全属性抗性。"
-        }
-      ],
-      "UC": [
+            {
+                "_id": 0,
+                "Name": "膏腴之地",
+                "Desc": "我方全体造成的战技和终结技伤害提高<color style='color:#f29e38;'> 30% </color>，编队中的第1位角色造成的战技和终结技伤害额外提高<color style='color:#f29e38;'> 30% </color>。"
+            },
+            {
+                "_id": 0,
+                "Name": "才藻富赡",
+                "Desc": "敌方全体的风属性抗性和雷属性抗性降低<color style='color:#f29e38;'> 40% </color>。"
+            },
+            {
+                "_id": 0,
+                "Name": "喜上眉梢",
+                "Desc": "敌方全体受到的欢愉伤害提高<color style='color:#f29e38;'> 30% </color>。我方队伍中存在欢愉命途的角色时，我方全体的弱点击破效率提高<color style='color:#f29e38;'> 50% </color>。"
+            }
+        ],
+        "LB": [
+            {
+                "_id": 0,
+                "Name": "攻心扼吭",
+                "Desc": "我方全体目标造成的击破伤害提高<color style='color:#f29e38;'> 10% </color>，当场上有敌方目标进入弱点击破状态后额外提高<color style='color:#f29e38;'> 5% </color>，最多叠加<color style='color:#f29e38;'> 4 </color>次。"
+            },
+            {
+                "_id": 0,
+                "Name": "前尘影事",
+                "Desc": "当前在场的我方忆灵数量大于等于3时，我方全体目标造成的伤害提高<color style='color:#f29e38;'> 60% </color>。"
+            },
+            {
+                "_id": 0,
+                "Name": "附骨之疽",
+                "Desc": "我方目标对敌方造成持续伤害后，回复<color style='color:#f29e38;'> 1 </color>点能量。我方全体造成的持续伤害无视敌方目标<color style='color:#f29e38;'> 40% </color>的全属性抗性。"
+            }
+        ],
+        "UC": [
         {
           "_id": 0,
           "Name": "坚防守备",
@@ -929,7 +929,7 @@ var _chaos = [
                         "Level": 90,
                         "EliteGroup": {
                             "ID": 910,
-                            "HP": 1.10
+                            "HP": 1.00
                         },
                         "Monsters": [
                             [
@@ -7301,7 +7301,7 @@ var _monster = {
             "Imaginary": 0.4
         },
         "5": 8.1,
-        "11": 9
+        "11": 2
     },
     "403401302": {
         "1": "monsterfigure/Monster_4034010.png",
@@ -7319,7 +7319,7 @@ var _monster = {
             "Imaginary": 0.4
         },
         "5": 8.1,
-        "11": 9
+        "11": 2
     },
     "403401303": {
         "1": "monsterfigure/Monster_4034010.png",
@@ -7337,7 +7337,7 @@ var _monster = {
             "Imaginary": 0.4
         },
         "5": 8.1,
-        "11": 9
+        "11": 2
     },
     "403401304": {
         "1": "monsterfigure/Monster_4034010.png",
@@ -7355,7 +7355,7 @@ var _monster = {
             "Imaginary": 0.4
         },
         "5": 8.1,
-        "11": 9
+        "11": 2
     },
     "203501201": {
         "1": "monsterfigure/Monster_2033020.png",

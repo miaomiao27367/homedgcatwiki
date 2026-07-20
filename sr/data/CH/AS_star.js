@@ -54,33 +54,31 @@ var _AS_star = {
         ]
     },
     "3020": {
-      "ElemStar": [
-        "Phys",
-        "Fire",
-        "Ice",
-        "Quantum"
-      ],
-      "Star": [
-        {
-          "_id": 420524,
-          "Level": 90,
-          "EliteGroup": {
-            "ID": 159,
-            "HP": 2.8
-          },
-          "Monsters": [
-            [
-              {
-                "ID": 501401404,
-                "HP": 24197501,
-                "SPD": 158,
-                "Stance": 44,
-                "HPCount": 2.0
-              }
-            ]
-          ]
-        }
-      ],
+        "ElemStar": ["Fire",
+            "Phys",
+            "Quantum",
+            "Imaginary"],
+        "Star": [
+            {
+                "_id": 420524,
+                "Level": 90,
+                "EliteGroup": {
+                    "ID": 900,
+                    "HP": 5.0
+                },
+                "Monsters": [
+                    [
+                        {
+                            "ID": 501401404,
+                            "HP": 24197501,
+                            "HPCount": 2,
+                            "SPD": 76,
+                            "Stance": 13
+                        }
+                    ]
+                ]
+            }
+        ],
       "SB": [
         {
           "_id": 0,
