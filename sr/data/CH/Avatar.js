@@ -7124,7 +7124,7 @@ var _weapon = [
         "Name": "向着地平线的终点",
         "Desc": "",
         "Rarity": 4,
-        "Path": "Nihility",
+        "Path": "Hunt",
         "Skill": 22008,
         "Pic": "22008.png",
         "Mat": [
@@ -7143,7 +7143,7 @@ var _weapon = [
         "Name": "向浪花掷下盛夏",
         "Desc": "",
         "Rarity": 5,
-        "Path": "Nihility",
+        "Path": "Elation",
         "Skill": 23064,
         "Pic": "23064.png",
         "Mat": [
@@ -7162,7 +7162,7 @@ var _weapon = [
         "Name": "你将起身歌唱",
         "Desc": "",
         "Rarity": 5,
-        "Path": "Nihility",
+        "Path": "Remembrance",
         "Skill": 23063,
         "Pic": "23063.png",
         "Mat": [

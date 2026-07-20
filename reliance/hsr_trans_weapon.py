@@ -384,10 +384,12 @@ def generate_avatar_weapon_data(weapon_id: str, weapon_data: Dict[str, Any], maj
         "Warlock": "Nihility",
         "Guardian": "Preservation",
         "Mage": "Erudition",
-        "Hunt": "Hunt",
+        "Rogue": "Hunt",
         "Shaman": "Harmony",
         "Warrior": "Destruction",
-        "Priest": "Abundance"
+        "Priest": "Abundance",
+        "Memory": "Remembrance",
+        "Elation": "Elation"
     }
     path = path_map.get(base_type, "Nihility")
     

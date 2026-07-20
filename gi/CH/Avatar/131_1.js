@@ -711,7 +711,7 @@ var _AvatarSkillPConfig_ = {
                 "HyperLinks": [
                     {
                         "Name": "圣祝之引",
-                        "Desc": "<color style='color:#D780FF;'>虚己之赐</color>升变后的效果，能额外提升{PARAM#P1312101|3S1}点攻击力。<br>解锁突破天赋「分有」并满足其中的任意「观测」条件后，<color style='color:#D780FF;'>虚己之赐</color>将会在剩余持续时间内升变为<color style='color:#D780FF;'>圣祝之引</color>：<br>·受观测的其他角色持续处于场上超过{PARAM#P1312101|2S1}秒；<br>·受观测的其他角色为魔导角色。<br><br>此外，解锁突破天赋「慕善」后，队伍中附近的当前场上角色的元素伤害命中敌人后，尼可自己拥有的<color style='color:#D780FF;'>虚己之赐</color>也会升变为<color style='color:#D780FF;'>圣祝之引</color>，持续{PARAM#P1312201|1S1}秒。<br><br>除尼可外，其他角色拥有的<color style='color:#D780FF;'>圣祝之引</color>将在退场时还原为<color style='color:#D780FF;'>虚己之赐</color>。"
+                        "Desc": "<color style='color:#D780FF;'>虚己之赐</color>升变后的效果，能额外提升300点攻击力。<br>解锁突破天赋「分有」并满足其中的任意「观测」条件后，<color style='color:#D780FF;'>虚己之赐</color>将会在剩余持续时间内升变为<color style='color:#D780FF;'>圣祝之引</color>：<br>·受观测的其他角色持续处于场上超过3秒；<br>·受观测的其他角色为魔导角色。<br><br>此外，解锁突破天赋「慕善」后，队伍中附近的当前场上角色的元素伤害命中敌人后，尼可自己拥有的<color style='color:#D780FF;'>虚己之赐</color>也会升变为<color style='color:#D780FF;'>圣祝之引</color>，持续{PARAM#P1312201|1S1}秒。<br><br>除尼可外，其他角色拥有的<color style='color:#D780FF;'>圣祝之引</color>将在退场时还原为<color style='color:#D780FF;'>虚己之赐</color>。"
                     },
                     {
                         "Name": "虚己之赐",

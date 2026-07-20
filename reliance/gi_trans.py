@@ -147,6 +147,22 @@ def remove_link_tags(text):
     return text
 
 
+def resolve_param_refs(text, skill_param_map):
+    if not text or not skill_param_map:
+        return text
+    def replacer(m):
+        skill_id = m.group(1)
+        idx_str = m.group(2)
+        idx = int(idx_str) - 1
+        if skill_id in skill_param_map and idx >= 0 and idx < len(skill_param_map[skill_id]):
+            val = skill_param_map[skill_id][idx]
+            if isinstance(val, float) and val == int(val):
+                return str(int(val))
+            return str(val)
+        return m.group(0)
+    return re.sub(r'\{PARAM#P(\d+)\|(\d+)S1\}', replacer, text)
+
+
 def format_param_value(value, format_spec):
     if 'P' in format_spec:
         return f"{value * 100:.4f}%"
@@ -532,7 +548,20 @@ def extract_skills(zh_file, api_version):
         })
 
     # --- HyperLinks ---
-    hyperlinks = extract_hyperlinks(all_desc, api_version)
+    skill_param_map = {}
+    for s in skills:
+        sid = str(s.get('id', ''))
+        if sid:
+            skill_param_map[sid] = s.get('param_list', [])
+    for p in passives:
+        pid = str(p.get('id', ''))
+        if pid:
+            skill_param_map[pid] = p.get('param_list', [])
+    for c in constellations:
+        cid = str(c.get('id', ''))
+        if cid:
+            skill_param_map[cid] = c.get('param_list', [])
+    hyperlinks = extract_hyperlinks(all_desc, api_version, skill_param_map)
 
     return {
         "BattleSkills": battle_skills,
@@ -542,7 +571,7 @@ def extract_skills(zh_file, api_version):
     }
 
 
-def extract_hyperlinks(desc_list, api_version):
+def extract_hyperlinks(desc_list, api_version, skill_param_map=None):
     hyperlink_file = os.path.join(CACHE_DIR, f"{api_version}-hyperlink.json")
     if not os.path.exists(hyperlink_file):
         print(f"  [警告] 未找到 {hyperlink_file}")
@@ -561,9 +590,11 @@ def extract_hyperlinks(desc_list, api_version):
     for lid in link_ids:
         if lid in hl_data:
             term = hl_data[lid]
+            desc = term.get('desc', '')
+            desc = resolve_param_refs(desc, skill_param_map)
             hyperlinks.append({
                 "Name": term.get('name', ''),
-                "Desc": process_color_tags(term.get('desc', '')),
+                "Desc": process_color_tags(desc),
             })
     return hyperlinks
 
