@@ -222,7 +222,7 @@ var _AvatarSkillPConfig_ = {
                 "BattleSkills": [
                     {
                         "Name": "托喻",
-                        "Desc": "<color style='color:#D780FF;'>普通攻击</color><br>以原初的言语降下敕命，进行至多三段的攻击，造成<color style='color:#9999FF;'>火元素伤害</color>。<br><br><color style='color:#D780FF;'>重击</color><br>消耗一定体力，短暂咏唱后，对前方区域造成<color style='color:#9999FF;'>火元素范围伤害</color>。<br><br><color style='color:#D780FF;'>下落攻击</color><br>从空中下坠冲击地面，攻击下落路径上的敌人，并在落地时造成<color style='color:#9999FF;'>火元素范围伤害</color>。",
+                        "Desc": "<color style='color:#FFD780;'>普通攻击</color><br>以原初的言语降下敕命，进行至多三段的攻击，造成<color style='color:#FF9999;'>火元素伤害</color>。<br><br><color style='color:#FFD780;'>重击</color><br>消耗一定体力，短暂咏唱后，对前方区域造成<color style='color:#FF9999;'>火元素范围伤害</color>。<br><br><color style='color:#FFD780;'>下落攻击</color><br>从空中下坠冲击地面，攻击下落路径上的敌人，并在落地时造成<color style='color:#FF9999;'>火元素范围伤害</color>。",
                         "Num": 1,
                         "Lock": 5.0,
                         "Icon": "Skill_A_Catalyst_MD",
@@ -371,7 +371,7 @@ var _AvatarSkillPConfig_ = {
                     },
                     {
                         "Name": "圣言默示·未现之光",
-                        "Desc": "重现旧日代行高天神权的片影，为队伍中附近的所有角色赋予<color style='color:#D780FF;'>虚己之赐</color>效果，提升这些角色的攻击力，造成<color style='color:#9999FF;'>火元素范围伤害</color>，并展开炽光护盾。<br>炽光护盾的伤害吸收量受益于尼可的攻击力，对<color style='color:#9999FF;'>火元素伤害</color>有250%的吸收效果。",
+                        "Desc": "重现旧日代行高天神权的片影，为队伍中附近的所有角色赋予<color style='color:#FFD780;'>虚己之赐</color>效果，提升这些角色的攻击力，造成<color style='color:#FF9999;'>火元素范围伤害</color>，并展开炽光护盾。<br>炽光护盾的伤害吸收量受益于尼可的攻击力，对<color style='color:#FF9999;'>火元素伤害</color>有250%的吸收效果。",
                         "Num": 2,
                         "Lock": 5.0,
                         "Icon": "Skill_S_Nicole_01",
@@ -520,7 +520,7 @@ var _AvatarSkillPConfig_ = {
                     },
                     {
                         "Name": "圣言默示·天路历程",
-                        "Desc": "以天光的金缕，纺出「锚定」的命途，造成<color style='color:#9999FF;'>火元素范围伤害</color>，并切换至「默观颂祷」模式。<br>尼可处于该模式下时，队伍中附近的当前场上角色的攻击命中敌人时，将会召唤出「奥迹造影」，对敌人发起协同攻击，依据该角色的元素类型，造成对应的元素范围伤害。该伤害受益于该角色的攻击力，并视为由该角色造成的伤害。<br>该效果每3秒至多触发一次，尼可每次切换至「默观颂祷」模式后，至多触发4次。<br><br>此外，魔导角色的「奥迹造影」在外观上似乎会有所不同…",
+                        "Desc": "以天光的金缕，纺出「锚定」的命途，造成<color style='color:#FF9999;'>火元素范围伤害</color>，并切换至「默观颂祷」模式。<br>尼可处于该模式下时，队伍中附近的当前场上角色的攻击命中敌人时，将会召唤出「奥迹造影」，对敌人发起协同攻击，依据该角色的元素类型，造成对应的元素范围伤害。该伤害受益于该角色的攻击力，并视为由该角色造成的伤害。<br>该效果每3秒至多触发一次，尼可每次切换至「默观颂祷」模式后，至多触发4次。<br><br>此外，魔导角色的「奥迹造影」在外观上似乎会有所不同…",
                         "Num": 3,
                         "Lock": 5.0,
                         "Icon": "Skill_E_Nicole_01",
@@ -651,12 +651,12 @@ var _AvatarSkillPConfig_ = {
                 "PassiveSkills": [
                     {
                         "Name": "分有",
-                        "Desc": "施放元素战技<color style='color:#D780FF;'>{LINK#S11312}圣言默示·未现之光</color>后的20秒内，尼可将持续「观测」队伍中自己的当前场上其他角色。受观测的角色持续处于场上3秒后，其拥有的<color style='color:#D780FF;'>虚己之赐</color>效果将会升变为<color style='color:#D780FF;'>圣祝之引</color>，使其额外提升300点攻击力；若受观测的角色为魔导角色，则<color style='color:#D780FF;'>虚己之赐</color>效果将会直接升变为<color style='color:#D780FF;'>圣祝之引</color>。<br>除尼可外，其他角色拥有的<color style='color:#D780FF;'>圣祝之引</color>将在退场时还原为<color style='color:#D780FF;'>虚己之赐</color>。",
+                        "Desc": "施放元素战技<color style='color:#FFD780;'>圣言默示·未现之光</color>后的20秒内，尼可将持续「观测」队伍中自己的当前场上其他角色。受观测的角色持续处于场上3秒后，其拥有的<color style='color:#FFD780;'>虚己之赐</color>效果将会升变为<color style='color:#FFD780;'>圣祝之引</color>，使其额外提升300点攻击力；若受观测的角色为魔导角色，则<color style='color:#FFD780;'>虚己之赐</color>效果将会直接升变为<color style='color:#FFD780;'>圣祝之引</color>。<br>除尼可外，其他角色拥有的<color style='color:#FFD780;'>圣祝之引</color>将在退场时还原为<color style='color:#FFD780;'>虚己之赐</color>。",
                         "Icon": "UI_Talent_S_Nicole_05"
                     },
                     {
                         "Name": "慕善",
-                        "Desc": "队伍中附近的当前场上角色的元素伤害命中敌人后，尼可自己拥有的<color style='color:#D780FF;'>虚己之赐</color>将会升变为<color style='color:#D780FF;'>圣祝之引</color>，持续8秒。",
+                        "Desc": "队伍中附近的当前场上角色的元素伤害命中敌人后，尼可自己拥有的<color style='color:#FFD780;'>虚己之赐</color>将会升变为<color style='color:#FFD780;'>圣祝之引</color>，持续8秒。",
                         "Icon": "UI_Talent_S_Nicole_06"
                     },
                     {
@@ -666,7 +666,7 @@ var _AvatarSkillPConfig_ = {
                     },
                     {
                         "Name": "魔女的前夜礼·光自暗来",
-                        "Desc": "完成<color style='color:#D780FF;'>魔女的课业·导引之职…？</color>后，尼可将成为<color style='color:#D780FF;'>魔导</color>角色。队伍中编入至少2名魔导角色时，将获得<color style='color:#D780FF;'>魔导·秘仪</color>效果，使魔导角色获得强化。<br><br><color style='color:#D780FF;'>魔导·秘仪</color><br>魔导角色的<color style='color:#D780FF;'>{LINK#S11315}奥迹造影</color>造成的伤害提升，提升值相当于尼可攻击力的300%。",
+                        "Desc": "完成<color style='color:#FFD780;'>魔女的课业·导引之职…？</color>后，尼可将成为<color style='color:#FFD780;'>魔导</color>角色。队伍中编入至少2名魔导角色时，将获得<color style='color:#FFD780;'>魔导·秘仪</color>效果，使魔导角色获得强化。<br><br><color style='color:#FFD780;'>魔导·秘仪</color><br>魔导角色的<color style='color:#FFD780;'>奥迹造影</color>造成的伤害提升，提升值相当于尼可攻击力的300%。",
                         "Icon": "UI_Talent_S_Nicole_07"
                     },
                 ],
@@ -680,42 +680,42 @@ var _AvatarSkillPConfig_ = {
                     {
                         "Level": 2,
                         "Name": "「我要教导你，指引你应走的路」",
-                        "Desc": "元素战技<color style='color:#D780FF;'>{LINK#S11312}圣言默示·未现之光</color>的效果获得强化：<color style='color:#D780FF;'>虚己之赐</color>还会额外提升300点攻击力（不计入该效果的攻击力加成上限），<color style='color:#D780FF;'>圣祝之引</color>还会依据角色的元素类型，使附近敌人的对应元素抗性降低25%，同元素类型的元素抗性降低效果不能叠加。<br>此外，尼可施放元素战技<color style='color:#D780FF;'>圣言默示·未现之光</color>时，也会为附近的当前场上角色赋予炽光护盾。",
+                        "Desc": "元素战技<color style='color:#FFD780;'>圣言默示·未现之光</color>的效果获得强化：<color style='color:#FFD780;'>虚己之赐</color>还会额外提升300点攻击力（不计入该效果的攻击力加成上限），<color style='color:#FFD780;'>圣祝之引</color>还会依据角色的元素类型，使附近敌人的对应元素抗性降低25%，同元素类型的元素抗性降低效果不能叠加。<br>此外，尼可施放元素战技<color style='color:#FFD780;'>圣言默示·未现之光</color>时，也会为附近的当前场上角色赋予炽光护盾。",
                         "Icon": "UI_Talent_S_Nicole_02"
                     },
                     {
                         "Level": 3,
                         "Name": "「为你身边的灯，为你前方的光」",
-                        "Desc": "元素战技<color style='color:#D780FF;'>{LINK#S11312}圣言默示·未现之光</color>的技能等级提高3级。<br>至多提升至15级。",
+                        "Desc": "元素战技<color style='color:#FFD780;'>圣言默示·未现之光</color>的技能等级提高3级。<br>至多提升至15级。",
                         "Icon": "UI_Talent_U_Nicole_01"
                     },
                     {
                         "Level": 4,
                         "Name": "「向左或向右，无论你行往何方」",
-                        "Desc": "队伍中附近的角色拥有的<color style='color:#D780FF;'>虚己之赐</color>升变为<color style='color:#D780FF;'>圣祝之引</color>时，尼可还会为其赋予「先导之佑」效果，持续20秒，每名角色每16秒至多获得一次该效果。<br>拥有「先导之佑」的角色的普通攻击、重击、下落攻击、元素战技与元素爆发造成的伤害提升，提升值相当于尼可攻击力的70%。该效果将在生效8次或持续时间结束时解除。<br>同时命中多名敌人时，会依据命中敌人的数量消耗生效次数；队伍中具有「先导之佑」的角色，其生效次数单独计算。",
+                        "Desc": "队伍中附近的角色拥有的<color style='color:#FFD780;'>虚己之赐</color>升变为<color style='color:#FFD780;'>圣祝之引</color>时，尼可还会为其赋予「先导之佑」效果，持续20秒，每名角色每16秒至多获得一次该效果。<br>拥有「先导之佑」的角色的普通攻击、重击、下落攻击、元素战技与元素爆发造成的伤害提升，提升值相当于尼可攻击力的70%。该效果将在生效8次或持续时间结束时解除。<br>同时命中多名敌人时，会依据命中敌人的数量消耗生效次数；队伍中具有「先导之佑」的角色，其生效次数单独计算。",
                         "Icon": "UI_Talent_S_Nicole_03"
                     },
                     {
                         "Level": 5,
                         "Name": "「我就要有话对你说，在你身旁」",
-                        "Desc": "元素爆发<color style='color:#D780FF;'>{LINK#S11315}圣言默示·天路历程</color>的技能等级提高3级。<br>至多提升至15级。",
+                        "Desc": "元素爆发<color style='color:#FFD780;'>圣言默示·天路历程</color>的技能等级提高3级。<br>至多提升至15级。",
                         "Icon": "UI_Talent_U_Nicole_02"
                     },
                     {
                         "Level": 6,
                         "Name": "「这便是正确的道路，莫要彷徨」",
-                        "Desc": "尼可拥有的<color style='color:#D780FF;'>虚己之赐</color>升变为<color style='color:#D780FF;'>圣祝之引</color>时，队伍中附近的所有角色拥有的<color style='color:#D780FF;'>虚己之赐</color>将会一同升变为<color style='color:#D780FF;'>圣祝之引</color>。所有升变后的<color style='color:#D780FF;'>圣祝之引</color>不再会还原为<color style='color:#D780FF;'>虚己之赐</color>。<br>此外，拥有<color style='color:#D780FF;'>圣祝之引</color>的角色造成的伤害将无视敌人40%的防御力。",
+                        "Desc": "尼可拥有的<color style='color:#FFD780;'>虚己之赐</color>升变为<color style='color:#FFD780;'>圣祝之引</color>时，队伍中附近的所有角色拥有的<color style='color:#FFD780;'>虚己之赐</color>将会一同升变为<color style='color:#FFD780;'>圣祝之引</color>。所有升变后的<color style='color:#FFD780;'>圣祝之引</color>不再会还原为<color style='color:#FFD780;'>虚己之赐</color>。<br>此外，拥有<color style='color:#FFD780;'>圣祝之引</color>的角色造成的伤害将无视敌人40%的防御力。",
                         "Icon": "UI_Talent_S_Nicole_04"
                     },
                 ],
                 "HyperLinks": [
                     {
-                        "Name": "圣祝之引",
-                        "Desc": "<color style='color:#D780FF;'>虚己之赐</color>升变后的效果，能额外提升300点攻击力。<br>解锁突破天赋「分有」并满足其中的任意「观测」条件后，<color style='color:#D780FF;'>虚己之赐</color>将会在剩余持续时间内升变为<color style='color:#D780FF;'>圣祝之引</color>：<br>·受观测的其他角色持续处于场上超过3秒；<br>·受观测的其他角色为魔导角色。<br><br>此外，解锁突破天赋「慕善」后，队伍中附近的当前场上角色的元素伤害命中敌人后，尼可自己拥有的<color style='color:#D780FF;'>虚己之赐</color>也会升变为<color style='color:#D780FF;'>圣祝之引</color>，持续{PARAM#P1312201|1S1}秒。<br><br>除尼可外，其他角色拥有的<color style='color:#D780FF;'>圣祝之引</color>将在退场时还原为<color style='color:#D780FF;'>虚己之赐</color>。"
+                        "Name": "虚己之赐",
+                        "Desc": "施放元素战技<color style='color:#FFD780;'>圣言默示·未现之光</color>后，尼可会为队伍中附近的所有角色赋予该效果：基于尼可的攻击力，提升攻击力。<br>满足特定条件后，<color style='color:#FFD780;'>虚己之赐</color>效果将会升变为<color style='color:#FFD780;'>圣祝之引</color>，进一步提升攻击力。"
                     },
                     {
-                        "Name": "虚己之赐",
-                        "Desc": "施放元素战技<color style='color:#D780FF;'>圣言默示·未现之光</color>后，尼可会为队伍中附近的所有角色赋予该效果：基于尼可的攻击力，提升攻击力。<br>满足特定条件后，<color style='color:#D780FF;'>虚己之赐</color>效果将会升变为<color style='color:#D780FF;'>圣祝之引</color>，进一步提升攻击力。"
+                        "Name": "圣祝之引",
+                        "Desc": "<color style='color:#FFD780;'>虚己之赐</color>升变后的效果，能额外提升300点攻击力。<br>解锁突破天赋「分有」并满足其中的任意「观测」条件后，<color style='color:#FFD780;'>虚己之赐</color>将会在剩余持续时间内升变为<color style='color:#FFD780;'>圣祝之引</color>：<br>·受观测的其他角色持续处于场上超过3秒；<br>·受观测的其他角色为魔导角色。<br><br>此外，解锁突破天赋「慕善」后，队伍中附近的当前场上角色的元素伤害命中敌人后，尼可自己拥有的<color style='color:#FFD780;'>虚己之赐</color>也会升变为<color style='color:#FFD780;'>圣祝之引</color>，持续8秒。<br><br>除尼可外，其他角色拥有的<color style='color:#FFD780;'>圣祝之引</color>将在退场时还原为<color style='color:#FFD780;'>虚己之赐</color>。"
                     },
                 ]
             },

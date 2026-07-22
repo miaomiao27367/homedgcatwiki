@@ -64,34 +64,51 @@ for (const weaponId of (_diff_weapon || [])) {
     }
 }
 
-// GI部分保持手动维护（因为GI数据结构不同）
-NEW_GI = [
-    {
-        "Name": {
-            "CH": "法尔伽",
-            "EN": "Varka",
-            "JP": "ファルガ",
-            "KR": "바르가"
-        },
-        "Rarity": 5,
-        "Link": "/gi/char#_Varka",
-        "Icon": "/homdgcat-res/Avatar/UI_AvatarIcon_Varka.png",
-        "Elem": "Wind",
-        "Type": "Skill_A_04"
-    },
-    {
-        "Name": {
-            "CH": "狼的武功歌",
-            "EN": "Wolf's Martial Song",
-            "JP": "狼の武功歌",
-            "KR": "늑대의 무공가"
-        },
-        "Rarity": 5,
-        "Link": "/gi/char#_12515",
-        "Icon": "/homdgcat-res/Weapon/UI_EquipIcon_Claymore_EnsisAquilonis.png",
-        "Type": "Skill_A_04"
+// GI部分从 _changelog_ 自动生成
+NEW_GI = [];
+
+// 添加角色
+if (typeof _changelog_ !== 'undefined' && _changelog_.NA) {
+    for (const avatarId of _changelog_.NA) {
+        const avatar = __AvatarInfoConfig.find(a => a._id == avatarId);
+        if (avatar) {
+            NEW_GI.push({
+                "Name": {
+                    "CH": avatar.Name,
+                    "EN": avatar.Name,
+                    "JP": avatar.Name,
+                    "KR": avatar.Name
+                },
+                "Rarity": avatar.Grade,
+                "Link": `/gi/char#_${avatar._name}`,
+                "Icon": `/homdgcat-res/Avatar/${avatar.Icon}.png`,
+                "Elem": avatar.Element,
+                "Type": "Skill_A_04"
+            });
+        }
     }
-];//GI
+}
+
+// 添加武器
+if (typeof _changelog_ !== 'undefined' && _changelog_.NW) {
+    for (const weaponId of _changelog_.NW) {
+        const weapon = _WeaponConfig.find(w => w._id == weaponId);
+        if (weapon) {
+            NEW_GI.push({
+                "Name": {
+                    "CH": weapon.Name,
+                    "EN": weapon.Name,
+                    "JP": weapon.Name,
+                    "KR": weapon.Name
+                },
+                "Rarity": weapon.Rank,
+                "Link": `/gi/char#_${weapon._id}`,
+                "Icon": `/homdgcat-res/Weapon/${weapon.Icons}_Awaken.png`,
+                "Type": "Skill_A_04"
+            });
+        }
+    }
+}
 
 var gi_ch = []
 var sr_ch = []

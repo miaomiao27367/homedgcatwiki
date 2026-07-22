@@ -20,6 +20,7 @@ from reliance.hsr_trans_as import generate_as_data
 from reliance.hsr_trans_fiction import generate_fiction_data
 from reliance.hsr_trans_chaos import generate_chaos_data
 from reliance.gi_trans import gi_character_update
+from reliance.gi_weapon_trans import gi_weapon_update, gi_weapon_img_sync
 
 data_url2="26.192.21.124:9080"
 data_url1="26.118.195.109:8080"
@@ -132,6 +133,43 @@ def load_gi_cache():
         with open(cache_file, 'r', encoding='utf-8') as f:
             cache_data = json.load(f)
         print(f"[缓存] 已读取GI用户选择: {cache_file}")
+        return cache_data
+    except Exception as e:
+        print(f"[缓存] 读取失败: {e}")
+        return None
+
+
+def save_gi_weapon_cache(weapon_ids, version_map):
+    """保存用户选择的GI武器更新参数到缓存文件"""
+    log_dir = './logs'
+    os.makedirs(log_dir, exist_ok=True)
+    cache_file = os.path.join(log_dir, 'gi_trans_weapon.txt')
+    
+    try:
+        cache_data = {
+            'weapon_ids': weapon_ids,
+            'version_map': version_map
+        }
+        with open(cache_file, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, ensure_ascii=False, indent=4)
+        print(f"[缓存] 已保存GI武器用户选择: {cache_file}")
+        return True
+    except Exception as e:
+        print(f"[缓存] 保存失败: {e}")
+        return False
+
+
+def load_gi_weapon_cache():
+    """从缓存文件读取用户选择的GI武器更新参数"""
+    cache_file = './logs/gi_trans_weapon.txt'
+    
+    if not os.path.exists(cache_file):
+        return None
+    
+    try:
+        with open(cache_file, 'r', encoding='utf-8') as f:
+            cache_data = json.load(f)
+        print(f"[缓存] 已读取GI武器用户选择: {cache_file}")
         return cache_data
     except Exception as e:
         print(f"[缓存] 读取失败: {e}")
@@ -567,6 +605,18 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 else:
                     self.wfile.write(json.dumps({"status": "empty"}, ensure_ascii=False).encode('utf-8'))
                 print("-" * 50)
+                return
+
+            # 读取GI武器缓存
+            if path == '/gi_weapon_load_cache':
+                cached_data = load_gi_weapon_cache()
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                if cached_data:
+                    self.wfile.write(json.dumps({"status": "success", "weapon_ids": cached_data.get('weapon_ids', []), "version_map": cached_data.get('version_map', {})}, ensure_ascii=False).encode('utf-8'))
+                else:
+                    self.wfile.write(json.dumps({"status": "empty", "weapon_ids": [], "version_map": {}}, ensure_ascii=False).encode('utf-8'))
                 return
 
             # 确保路径以 / 结尾时指向目录;此功能仅用于映射根目录index
@@ -1059,6 +1109,84 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
             
             print("-" * 50)
+            return
+
+        # 处理 /gi_weapon_update
+        if path == '/gi_weapon_update':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+
+                try:
+                    request_data = json.loads(post_data.decode('utf-8'))
+                    weapon_ids = request_data.get('weapon_ids', [])
+                    version_map = request_data.get('version_map', {})
+                except:
+                    # 尝试从缓存加载
+                    cached_data = load_gi_weapon_cache()
+                    if cached_data:
+                        weapon_ids = cached_data.get('weapon_ids', ["14522"])
+                        version_map = cached_data.get('version_map', {"L": "6.7.52"})
+                    else:
+                        weapon_ids = ["14522"]
+                        version_map = {"L": "6.7.52"}
+
+                try:
+                    results = []
+                    for wid in weapon_ids:
+                        success, msg = gi_weapon_update(str(wid), version_map)
+                        results.append(f"武器 {wid}: {msg}")
+
+                    final_output = "\n".join(results)
+                    response_data = {"status": "success", "message": f"成功处理 {len(weapon_ids)} 个武器", "stdout": final_output}
+
+                    # 保存用户选择到缓存
+                    save_gi_weapon_cache(weapon_ids, version_map)
+
+                except Exception as e:
+                    error_msg = str(e)
+                    response_data = {"status": "error", "message": "GI武器数据更新失败", "stderr": f"抛出异常: {error_msg}"}
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+
+            except Exception as e:
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+
+            print("-" * 50)
+            return
+
+        # 处理 /gi_weapon_img_sync
+        if path == '/gi_weapon_img_sync':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                request_data = json.loads(post_data.decode('utf-8'))
+                weapon_ids = request_data.get('weapon_ids', [])
+
+                results = []
+                for wid in weapon_ids:
+                    success, msg = gi_weapon_img_sync(str(wid))
+                    results.append(f"{'✓' if success else '✗'} 武器 {wid}: {msg}")
+
+                final_output = "\n".join(results)
+                success_count = sum(1 for r in results if r.startswith('✓'))
+                fail_count = len(results) - success_count
+                response_data = {"status": "success", "message": f"武器图片: 成功 {success_count}, 失败 {fail_count}", "stdout": final_output}
+
+            except Exception as e:
+                response_data = {"status": "error", "message": "武器图片同步失败", "stderr": str(e)}
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
             return
 
         # 处理 /hsr_sync_avatar_image

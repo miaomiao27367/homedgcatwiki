@@ -222,7 +222,7 @@ var _AvatarSkillPConfig_ = {
                 "BattleSkills": [
                     {
                         "Name": "西风枪术·破誓",
-                        "Desc": "<color style='color:#D780FF;'>普通攻击</color><br>进行至多五段的连续攻击。<br><br><color style='color:#D780FF;'>重击</color><br>消耗一定体力，进行向前的突刺攻击。<br><br><color style='color:#D780FF;'>下落攻击</color><br>从空中下坠冲击地面，攻击下落路径上的敌人，并在落地时造成范围伤害。",
+                        "Desc": "<color style='color:#FFD780;'>普通攻击</color><br>进行至多五段的连续攻击。<br><br><color style='color:#FFD780;'>重击</color><br>消耗一定体力，进行向前的突刺攻击。<br><br><color style='color:#FFD780;'>下落攻击</color><br>从空中下坠冲击地面，攻击下落路径上的敌人，并在落地时造成范围伤害。",
                         "Num": 1,
                         "Lock": 5.0,
                         "Icon": "Skill_A_03",
@@ -411,7 +411,7 @@ var _AvatarSkillPConfig_ = {
                     },
                     {
                         "Name": "奇兵诡出",
-                        "Desc": "寻觅敌人的破绽，切换至<color style='color:#D780FF;'>奇谋</color>状态。在这种状态下：<br>·洛恩可以主动积攒<color style='color:#D780FF;'>欢悦</color>，从而施放特殊的元素战技<color style='color:#D780FF;'>镂骨彻心</color>；<br>·队伍中附近的其他角色可以为洛恩积攒<color style='color:#D780FF;'>争胜</color>，来提高<color style='color:#D780FF;'>镂骨彻心</color>的伤害。<br>在<color style='color:#D780FF;'>奇谋</color>状态下至多施放3次<color style='color:#D780FF;'>镂骨彻心</color>，之后无法获得<color style='color:#D780FF;'>欢悦</color>。<br><br><i>「骑士道？哈，那倒确实是绝佳的诱饵。当敌人还幻想着堂堂正正一决胜负时，绝不会想到等待他们的是怎样的『惊喜』。」</i>",
+                        "Desc": "寻觅敌人的破绽，切换至<color style='color:#FFD780;'>奇谋</color>状态。在这种状态下：<br>·洛恩可以主动积攒<color style='color:#FFD780;'>欢悦</color>，从而施放特殊的元素战技<color style='color:#FFD780;'>镂骨彻心</color>；<br>·队伍中附近的其他角色可以为洛恩积攒<color style='color:#FFD780;'>争胜</color>，来提高<color style='color:#FFD780;'>镂骨彻心</color>的伤害。<br>在<color style='color:#FFD780;'>奇谋</color>状态下至多施放3次<color style='color:#FFD780;'>镂骨彻心</color>，之后无法获得<color style='color:#FFD780;'>欢悦</color>。<br><br><i>「骑士道？哈，那倒确实是绝佳的诱饵。当敌人还幻想着堂堂正正一决胜负时，绝不会想到等待他们的是怎样的『惊喜』。」</i>",
                         "Num": 2,
                         "Lock": 5.0,
                         "Icon": "Skill_S_Lohen_01",
@@ -680,7 +680,7 @@ var _AvatarSkillPConfig_ = {
                     },
                     {
                         "Name": "裁罚遂成",
-                        "Desc": "向前方快速连续斩击，消耗所有<color style='color:#D780FF;'>争胜</color>，造成<color style='color:#FFFFFF;'>冰元素伤害</color>，并依据消耗的<color style='color:#D780FF;'>争胜</color>，提升本次伤害。施放时，若洛恩处于<color style='color:#D780FF;'>奇谋</color>状态下，则本次<color style='color:#D780FF;'>奇谋</color>状态的持续时间还会延长1.65秒。<br><br><i>「这么快就全说了？我都还没尽兴呢。」</i>",
+                        "Desc": "向前方快速连续斩击，消耗所有<color style='color:#FFD780;'>争胜</color>，造成<color style='color:#99FFFF;'>冰元素伤害</color>，并依据消耗的<color style='color:#FFD780;'>争胜</color>，提升本次伤害。施放时，若洛恩处于<color style='color:#FFD780;'>奇谋</color>状态下，则本次<color style='color:#FFD780;'>奇谋</color>状态的持续时间还会延长1.65秒。<br><br><i>「这么快就全说了？我都还没尽兴呢。」</i>",
                         "Num": 3,
                         "Lock": 5.0,
                         "Icon": "Skill_E_Lohen_01",
@@ -771,22 +771,22 @@ var _AvatarSkillPConfig_ = {
                 "PassiveSkills": [
                     {
                         "Name": "禁问的训诫",
-                        "Desc": "在<color style='color:#D780FF;'>奇谋</color>状态下，队伍中附近的其他角色通过造成伤害为洛恩积攒<color style='color:#D780FF;'>争胜</color>时，若本次伤害不低于洛恩基础攻击力的3000%，则还会为洛恩额外积攒60点<color style='color:#D780FF;'>争胜</color>。",
+                        "Desc": "在<color style='color:#FFD780;'>奇谋</color>状态下，队伍中附近的其他角色通过造成伤害为洛恩积攒<color style='color:#FFD780;'>争胜</color>时，若本次伤害不低于洛恩基础攻击力的3000%，则还会为洛恩额外积攒60点<color style='color:#FFD780;'>争胜</color>。",
                         "Icon": "UI_Talent_S_Lohen_05"
                     },
                     {
                         "Name": "戏言的杰作",
-                        "Desc": "在<color style='color:#D780FF;'>奇谋</color>状态下，队伍中附近的其他角色对敌人触发<color style='color:#FFFFFF;'>冰元素相关反应</color>后的8秒内，该角色的攻击力提升15%，洛恩的攻击力提升15%。",
+                        "Desc": "在<color style='color:#FFD780;'>奇谋</color>状态下，队伍中附近的其他角色对敌人触发<color style='color:#99FFFF;'>冰元素相关反应</color>后的8秒内，该角色的攻击力提升15%，洛恩的攻击力提升15%。",
                         "Icon": "UI_Talent_S_Lohen_06"
                     },
                     {
                         "Name": "兴尽且去来",
-                        "Desc": "施放元素战技<color style='color:#D780FF;'>奇兵诡出</color>后，洛恩还会获得9秒的「乘兴」效果：持续期间，元素战技<color style='color:#D780FF;'>奇兵诡出</color>的技能等级提高1级。<br>施放元素战技时，如果队伍中其他角色的普通攻击、元素战技或元素爆发中，任一技能等级不低于洛恩的元素战技的技能等级，则本次「乘兴」效果的持续时间额外延长6秒。<br>每18秒至多获得一次「乘兴」效果。",
+                        "Desc": "施放元素战技<color style='color:#FFD780;'>奇兵诡出</color>后，洛恩还会获得9秒的「乘兴」效果：持续期间，元素战技<color style='color:#FFD780;'>奇兵诡出</color>的技能等级提高1级。<br>施放元素战技时，如果队伍中其他角色的普通攻击、元素战技或元素爆发中，任一技能等级不低于洛恩的元素战技的技能等级，则本次「乘兴」效果的持续时间额外延长6秒。<br>每18秒至多获得一次「乘兴」效果。",
                         "Icon": "UI_Talent_S_Lohen_08"
                     },
                     {
                         "Name": "魔女的前夜礼·不愈之刺",
-                        "Desc": "完成<color style='color:#D780FF;'>魔女的课业·诸敌之题</color>后，洛恩将成为<color style='color:#D780FF;'>魔导</color>角色。队伍中编入至少2名魔导角色时，将获得<color style='color:#D780FF;'>魔导·秘仪</color>效果，使魔导角色获得强化。<br><br><color style='color:#D780FF;'>魔导·秘仪</color><br>特殊元素战技<color style='color:#D780FF;'>镂骨彻心</color>命中敌人或施放元素爆发<color style='color:#D780FF;'>裁罚遂成</color>时，若<color style='color:#D780FF;'>争胜</color>至少为上限的50%，则洛恩的普通攻击与重击造成的伤害提升40%，持续6秒。",
+                        "Desc": "完成<color style='color:#FFD780;'>魔女的课业·诸敌之题</color>后，洛恩将成为<color style='color:#FFD780;'>魔导</color>角色。队伍中编入至少2名魔导角色时，将获得<color style='color:#FFD780;'>魔导·秘仪</color>效果，使魔导角色获得强化。<br><br><color style='color:#FFD780;'>魔导·秘仪</color><br>特殊元素战技<color style='color:#FFD780;'>镂骨彻心</color>命中敌人或施放元素爆发<color style='color:#FFD780;'>裁罚遂成</color>时，若<color style='color:#FFD780;'>争胜</color>至少为上限的50%，则洛恩的普通攻击与重击造成的伤害提升40%，持续6秒。",
                         "Icon": "UI_Talent_S_Lohen_07"
                     },
                 ],
@@ -794,56 +794,56 @@ var _AvatarSkillPConfig_ = {
                     {
                         "Level": 1,
                         "Name": "往昔微风，载满悲歌",
-                        "Desc": "洛恩的<color style='color:#D780FF;'>争胜</color>上限提升至原来的300%。<br>此外，处于<color style='color:#D780FF;'>奇谋</color>状态下时，队伍中附近的其他角色通过造成伤害为洛恩积攒的<color style='color:#D780FF;'>争胜</color>提升至原来的500%。",
+                        "Desc": "洛恩的<color style='color:#FFD780;'>争胜</color>上限提升至原来的300%。<br>此外，处于<color style='color:#FFD780;'>奇谋</color>状态下时，队伍中附近的其他角色通过造成伤害为洛恩积攒的<color style='color:#FFD780;'>争胜</color>提升至原来的500%。",
                         "Icon": "UI_Talent_S_Lohen_01"
                     },
                     {
                         "Level": 2,
                         "Name": "凡飞翔者，皆为靶标",
-                        "Desc": "处于<color style='color:#D780FF;'>奇谋</color>状态下时，特殊元素战技<color style='color:#D780FF;'>镂骨彻心</color>命中敌人或施放元素爆发<color style='color:#D780FF;'>裁罚遂成</color>后的4秒内，洛恩将获得「破邪之刃」效果：在奇谋状态下，洛恩的下一次普通攻击或重击命中敌人时，将会额外追加进行一次攻击，造成相当于洛恩攻击力500%的<color style='color:#FFFFFF;'>冰元素范围伤害</color>，并使队伍中附近的其他角色的元素精通提升200点，持续8秒，每4秒至多获得一次「破邪之刃」效果。",
+                        "Desc": "处于<color style='color:#FFD780;'>奇谋</color>状态下时，特殊元素战技<color style='color:#FFD780;'>镂骨彻心</color>命中敌人或施放元素爆发<color style='color:#FFD780;'>裁罚遂成</color>后的4秒内，洛恩将获得「破邪之刃」效果：在奇谋状态下，洛恩的下一次普通攻击或重击命中敌人时，将会额外追加进行一次攻击，造成相当于洛恩攻击力500%的<color style='color:#99FFFF;'>冰元素范围伤害</color>，并使队伍中附近的其他角色的元素精通提升200点，持续8秒，每4秒至多获得一次「破邪之刃」效果。",
                         "Icon": "UI_Talent_S_Lohen_02"
                     },
                     {
                         "Level": 3,
                         "Name": "唯有锋刃，能愈此伤",
-                        "Desc": "元素战技<color style='color:#D780FF;'>{LINK#S11292}奇兵诡出</color>的技能等级提高3级。<br>至多提升至15级。",
+                        "Desc": "元素战技<color style='color:#FFD780;'>奇兵诡出</color>的技能等级提高3级。<br>至多提升至15级。",
                         "Icon": "UI_Talent_U_Lohen_01"
                     },
                     {
                         "Level": 4,
                         "Name": "爱若流光，逝如欢歌",
-                        "Desc": "洛恩在<color style='color:#D780FF;'>奇谋</color>状态下施放元素爆发<color style='color:#D780FF;'>裁罚遂成</color>时，还会将洛恩的<color style='color:#D780FF;'>争胜</color>积攒至上限，从而使本次元素爆发获得最高的伤害提升效果。<br><br>此外，洛恩切换至<color style='color:#D780FF;'>奇谋</color>状态时，若元素能量：<br>·未充满：为洛恩恢复15点元素能量；<br>·已充满：接下来的15秒内，施放元素爆发<color style='color:#D780FF;'>裁罚遂成</color>后，为洛恩恢复15点元素能量。",
+                        "Desc": "洛恩在<color style='color:#FFD780;'>奇谋</color>状态下施放元素爆发<color style='color:#FFD780;'>裁罚遂成</color>时，还会将洛恩的<color style='color:#FFD780;'>争胜</color>积攒至上限，从而使本次元素爆发获得最高的伤害提升效果。<br><br>此外，洛恩切换至<color style='color:#FFD780;'>奇谋</color>状态时，若元素能量：<br>·未充满：为洛恩恢复15点元素能量；<br>·已充满：接下来的15秒内，施放元素爆发<color style='color:#FFD780;'>裁罚遂成</color>后，为洛恩恢复15点元素能量。",
                         "Icon": "UI_Talent_S_Lohen_03"
                     },
                     {
                         "Level": 5,
                         "Name": "无可窥探，无可质疑",
-                        "Desc": "元素爆发<color style='color:#D780FF;'>{LINK#S11295}裁罚遂成</color>的技能等级提高3级。<br>至多提升至15级。",
+                        "Desc": "元素爆发<color style='color:#FFD780;'>裁罚遂成</color>的技能等级提高3级。<br>至多提升至15级。",
                         "Icon": "UI_Talent_U_Lohen_02"
                     },
                     {
                         "Level": 6,
                         "Name": "身沦魂销，唯余欢悦",
-                        "Desc": "施放特殊元素战技<color style='color:#D780FF;'>镂骨彻心</color>命中敌人或在<color style='color:#D780FF;'>奇谋</color>状态下施放元素爆发<color style='color:#D780FF;'>裁罚遂成</color>不会消耗<color style='color:#D780FF;'>争胜</color>，并会使洛恩的<color style='color:#D780FF;'>欢悦</color>恢复至上限，且在下一次施放特殊元素战技<color style='color:#D780FF;'>镂骨彻心</color>命中敌人时，使本次<color style='color:#D780FF;'>奇谋</color>状态的持续时间延长1.25秒，该效果每7秒至多触发一次。<br>此外，上述所有伤害的暴击伤害都将提升175%，且本次<color style='color:#D780FF;'>奇谋</color>期间，洛恩施放<color style='color:#D780FF;'>镂骨彻心</color>的最大次数增加2次。",
+                        "Desc": "施放特殊元素战技<color style='color:#FFD780;'>镂骨彻心</color>命中敌人或在<color style='color:#FFD780;'>奇谋</color>状态下施放元素爆发<color style='color:#FFD780;'>裁罚遂成</color>不会消耗<color style='color:#FFD780;'>争胜</color>，并会使洛恩的<color style='color:#FFD780;'>欢悦</color>恢复至上限，且在下一次施放特殊元素战技<color style='color:#FFD780;'>镂骨彻心</color>命中敌人时，使本次<color style='color:#FFD780;'>奇谋</color>状态的持续时间延长1.25秒，该效果每7秒至多触发一次。<br>此外，上述所有伤害的暴击伤害都将提升175%，且本次<color style='color:#FFD780;'>奇谋</color>期间，洛恩施放<color style='color:#FFD780;'>镂骨彻心</color>的最大次数增加2次。",
                         "Icon": "UI_Talent_S_Lohen_04"
                     },
                 ],
                 "HyperLinks": [
                     {
-                        "Name": "争胜",
-                        "Desc": "在奇谋状态下，队伍中附近的其他角色造成伤害时，会为洛恩提供的特殊资源，上限为100点。<br>奇谋状态持续期间，队伍中附近的其他角色造成伤害时，若本次伤害不低于洛恩基础攻击力的{PARAM#P1293201|15S100}%，将会为洛恩积攒{PARAM#P1293201|16S1}点<color style='color:#D780FF;'>争胜</color>，否则会为洛恩积攒1点<color style='color:#D780FF;'>争胜</color>。<br>同一个角色每0.1秒至多为洛恩积攒一次<color style='color:#D780FF;'>争胜</color>。"
-                    },
-                    {
                         "Name": "镂骨彻心",
-                        "Desc": "洛恩的<color style='color:#D780FF;'>欢悦</color>积攒至上限后，可以施放的特殊元素战技。<br>命中敌人后消耗所有<color style='color:#D780FF;'>欢悦</color>与<color style='color:#D780FF;'>争胜</color>，造成<color style='color:#FFFFFF;'>冰元素伤害</color>，并依据消耗的<color style='color:#D780FF;'>争胜</color>，提升本次伤害。"
+                        "Desc": "洛恩的<color style='color:#FFD780;'>欢悦</color>积攒至上限后，可以施放的特殊元素战技。<br>命中敌人后消耗所有<color style='color:#FFD780;'>欢悦</color>与<color style='color:#FFD780;'>争胜</color>，造成<color style='color:#99FFFF;'>冰元素伤害</color>，并依据消耗的<color style='color:#FFD780;'>争胜</color>，提升本次伤害。"
                     },
                     {
                         "Name": "奇谋",
-                        "Desc": "施放元素战技<color style='color:#D780FF;'>奇兵诡出</color>后，洛恩将会切换至该状态。奇谋状态具有如下特性：<br>·洛恩的普通攻击、重击与下落攻击将转为造成无法被附魔覆盖的<color style='color:#FFFFFF;'>冰元素伤害</color>；<br>·洛恩的普通攻击或重击命中敌人时，会为洛恩积攒特殊的<color style='color:#D780FF;'>欢悦</color>，用于施放特殊元素战技<color style='color:#D780FF;'>镂骨彻心</color>；在<color style='color:#D780FF;'>奇谋</color>状态下至多施放3次<color style='color:#D780FF;'>镂骨彻心</color>，之后无法获得<color style='color:#D780FF;'>欢悦</color>。<br>·队伍中附近的其他角色造成伤害时，会为洛恩积攒特殊的<color style='color:#D780FF;'>争胜</color>，用于提升特殊元素战技<color style='color:#D780FF;'>镂骨彻心</color>造成的伤害；<br>·洛恩退场时，奇谋状态将会解除；奇谋状态解除时，<color style='color:#D780FF;'>欢悦</color>与<color style='color:#D780FF;'>争胜</color>也会清除。"
+                        "Desc": "施放元素战技<color style='color:#FFD780;'>奇兵诡出</color>后，洛恩将会切换至该状态。奇谋状态具有如下特性：<br>·洛恩的普通攻击、重击与下落攻击将转为造成无法被附魔覆盖的<color style='color:#99FFFF;'>冰元素伤害</color>；<br>·洛恩的普通攻击或重击命中敌人时，会为洛恩积攒特殊的<color style='color:#FFD780;'>欢悦</color>，用于施放特殊元素战技<color style='color:#FFD780;'>镂骨彻心</color>；在<color style='color:#FFD780;'>奇谋</color>状态下至多施放3次<color style='color:#FFD780;'>镂骨彻心</color>，之后无法获得<color style='color:#FFD780;'>欢悦</color>。<br>·队伍中附近的其他角色造成伤害时，会为洛恩积攒特殊的<color style='color:#FFD780;'>争胜</color>，用于提升特殊元素战技<color style='color:#FFD780;'>镂骨彻心</color>造成的伤害；<br>·洛恩退场时，奇谋状态将会解除；奇谋状态解除时，<color style='color:#FFD780;'>欢悦</color>与<color style='color:#FFD780;'>争胜</color>也会清除。"
                     },
                     {
                         "Name": "欢悦",
-                        "Desc": "在奇谋状态下，洛恩的普通攻击或重击命中敌人时，会获得{PARAM#P1293201|13S1}点<color style='color:#D780FF;'>欢悦</color>，上限为100点。<br>每0.1秒至多获得一次<color style='color:#D780FF;'>欢悦</color>。<color style='color:#D780FF;'>欢悦</color>积攒至上限后，洛恩的元素战技<color style='color:#D780FF;'>奇兵诡出</color>将会被替换为特殊的元素战技<color style='color:#D780FF;'>镂骨彻心</color>。"
+                        "Desc": "在奇谋状态下，洛恩的普通攻击或重击命中敌人时，会获得17点<color style='color:#FFD780;'>欢悦</color>，上限为100点。<br>每0.1秒至多获得一次<color style='color:#FFD780;'>欢悦</color>。<color style='color:#FFD780;'>欢悦</color>积攒至上限后，洛恩的元素战技<color style='color:#FFD780;'>奇兵诡出</color>将会被替换为特殊的元素战技<color style='color:#FFD780;'>镂骨彻心</color>。"
+                    },
+                    {
+                        "Name": "争胜",
+                        "Desc": "在奇谋状态下，队伍中附近的其他角色造成伤害时，会为洛恩提供的特殊资源，上限为100点。<br>奇谋状态持续期间，队伍中附近的其他角色造成伤害时，若本次伤害不低于洛恩基础攻击力的{PARAM#P1293201|15S100}%，将会为洛恩积攒20点<color style='color:#FFD780;'>争胜</color>，否则会为洛恩积攒1点<color style='color:#FFD780;'>争胜</color>。<br>同一个角色每0.1秒至多为洛恩积攒一次<color style='color:#FFD780;'>争胜</color>。"
                     },
                 ]
             },

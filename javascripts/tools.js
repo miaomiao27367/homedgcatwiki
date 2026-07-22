@@ -9,6 +9,7 @@ var ToolsApp = {
         this.loadHSRCache();
         this.loadHSRWeaponCache();
         this.loadGICache();
+        this.loadGIWeaponCache();
     },
 
     // 加载HSR角色缓存
@@ -658,6 +659,141 @@ var ToolsApp = {
         } finally {
             btn.disabled = false;
             btnText.textContent = '同步角色图片';
+        }
+    },
+
+    // 加载GI武器缓存
+    loadGIWeaponCache: async function() {
+        try {
+            var response = await fetch('/gi_weapon_load_cache');
+            var result = await response.json();
+
+            if (result.status === 'success') {
+                if (result.weapon_ids && result.weapon_ids.length > 0) {
+                    document.getElementById('giWeaponId').value = result.weapon_ids.join(', ');
+                }
+                if (result.version_map && Object.keys(result.version_map).length > 0) {
+                    var versionStr = Object.entries(result.version_map)
+                        .map(function([k, v]) { return k + ':' + v; })
+                        .join(', ');
+                    document.getElementById('giWeaponVersionMap').value = versionStr;
+                }
+            }
+        } catch (error) {
+            console.log('加载GI武器缓存失败:', error);
+        }
+    },
+
+    // 发送GI武器更新请求
+    sendGIWeaponUpdate: async function() {
+        var submitBtn = document.getElementById('giWeaponSubmitBtn');
+        var btnText = document.getElementById('giWeaponBtnText');
+        var resultDiv = document.getElementById('giWeaponResult');
+
+        var weaponIdText = document.getElementById('giWeaponId').value.trim();
+        var weaponIds = weaponIdText
+            .split(/[\s,]+/)
+            .map(function(id) { return id.trim(); })
+            .filter(function(id) { return id; });
+
+        var versionMapText = document.getElementById('giWeaponVersionMap').value.trim();
+        var versionMap = {};
+        if (versionMapText) {
+            var pairs = versionMapText.split(',');
+            for (var i = 0; i < pairs.length; i++) {
+                var parts = pairs[i].split(':');
+                if (parts.length === 2) {
+                    versionMap[parts[0].trim()] = parts[1].trim();
+                }
+            }
+        }
+
+        var data = {
+            weapon_ids: weaponIds,
+            version_map: versionMap
+        };
+
+        submitBtn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>处理中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/gi_weapon_update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            var result = await response.json();
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('giWeaponResultTitle').textContent =
+                result.status === 'success' ? '✓ 更新成功' : '✗ 更新失败';
+            document.getElementById('giWeaponResultMessage').textContent = result.message;
+
+            var outputText = result.stdout || result.stderr || '';
+            document.getElementById('giWeaponResultOutput').textContent = outputText;
+            document.getElementById('giWeaponResultOutput').style.display = outputText ? 'block' : 'none';
+
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giWeaponResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('giWeaponResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('giWeaponResultOutput').textContent = error.toString();
+            document.getElementById('giWeaponResultOutput').style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            btnText.textContent = '发送更新请求';
+        }
+    },
+
+    // 发送GI武器图片同步请求
+    sendGIWeaponImgSync: async function() {
+        var btn = document.getElementById('giWeaponImgSyncBtn');
+        var btnText = document.getElementById('giWeaponImgBtnText');
+        var resultDiv = document.getElementById('giWeaponImgResult');
+
+        var idText = document.getElementById('giWeaponImgId').value.trim();
+        var ids = idText
+            ? idText.split(/[\s,]+/).map(function(id) { return id.trim(); }).filter(function(id) { return id; })
+            : [];
+
+        var data = { weapon_ids: ids };
+
+        btn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>同步中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/gi_weapon_img_sync', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            var result = await response.json();
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('giWeaponImgResultTitle').textContent =
+                result.status === 'success' ? '✓ 同步成功' : '✗ 同步失败';
+            document.getElementById('giWeaponImgResultMessage').textContent = result.message;
+
+            var out = result.stdout || result.stderr || '';
+            document.getElementById('giWeaponImgResultOutput').textContent = out;
+            document.getElementById('giWeaponImgResultOutput').style.display = out ? 'block' : 'none';
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giWeaponImgResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('giWeaponImgResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('giWeaponImgResultOutput').textContent = error.toString();
+            document.getElementById('giWeaponImgResultOutput').style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = '同步武器图片';
         }
     },
 

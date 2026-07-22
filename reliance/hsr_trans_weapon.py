@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 自动下载并转换光锥数据脚本
@@ -6,6 +6,7 @@
 """
 
 import os
+import re
 import json
 import requests
 from typing import Dict, Any, Optional
@@ -463,11 +464,40 @@ def merge_weapon_to_avatar_js(weapon_id: str) -> str:
         return "错误：无法定位 _weapon 数组起始位置"
     js_content = js_content.replace(pattern, f'var _weapon = [\n{new_json},\n    {{', 1)
 
+    # 同步更新 _search_weapon 映射表
+    weapon_name = weapon_entry.get('Name', '')
+    search_pattern = r'var _search_weapon = \{([^}]*)\}'
+    search_match = re.search(search_pattern, js_content, re.DOTALL)
+    if search_match:
+        old_entries = search_match.group(1)
+        new_entries_lines = []
+        for line in old_entries.strip().split('\n'):
+            line = line.strip()
+            if not line:
+                continue
+            m = re.match(r'"(.*)":\s*(-?\d+),?', line)
+            if m:
+                key = m.group(1)
+                value = int(m.group(2))
+                new_value = value - 1
+                new_entries_lines.append(f'    "{key}": {new_value},')
+        if new_entries_lines:
+            min_offset = min(
+                int(re.search(r':\s*(-?\d+)', l).group(1))
+                for l in new_entries_lines
+            )
+            new_offset = min_offset - 1
+        else:
+            new_offset = -1
+        new_entries_lines.insert(0, f'    "{weapon_name}": {new_offset},')
+        new_entries_lines.insert(0, f'    "{weapon_id_str}": {new_offset},')
+        new_search_block = 'var _search_weapon = {\n' + '\n'.join(new_entries_lines) + '\n}'
+        js_content = js_content.replace(search_match.group(0), new_search_block)
+
     with open(avatar_js, 'w', encoding='utf-8') as f:
         f.write(js_content)
 
     return f"已自动拼接光锥 {weapon_id_str} 到 Avatar.js（开头）"
-
 
 def generate_weapon_data(weapon_id: str, major_version: str = None, minor_versions: list = None) -> str:
     """

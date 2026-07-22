@@ -277,7 +277,12 @@ $(function () {
     let script_computer = document.createElement('script')
     script_computer.src = '/gi/' + lang3 + '/avatar.js'
     document.head.append(script_computer)
-    script_computer.onload = begin
+    script_computer.onload = function() {
+        let script_changelog = document.createElement('script')
+        script_changelog.src = '/gi/' + lang3 + '/changelog.js'
+        document.head.append(script_changelog)
+        script_changelog.onload = begin
+    }
 
     loaded_a_1 = []
     loaded_a_2 = []
@@ -311,14 +316,14 @@ $(function () {
 
         begun = 1
 
-        this_ver_ = __AvatarInfoConfig[0].Note
+        this_ver_ = _changelog_.Note
         pop_ver = " " + this_ver_
 
-        _VS = __AvatarInfoConfig[0].VS
+        _VS = _changelog_.VS
         console.log(_VS)
 
-        _NA = __AvatarInfoConfig[0].NA
-        _NW = __AvatarInfoConfig[0].NW
+        _NA = _changelog_.NA
+        _NW = _changelog_.NW
 
         $('container').render({
             template: [
@@ -5240,12 +5245,12 @@ $(function () {
             ret1 = "-"
         } else {
             promote_config = computer_.AvatarCustomPromoteConfig[wpn_.Custom]
-            if (promote_config.ShowType === "p") {
+            if (promote_config && promote_config.ShowType === "p") {
                 promote_value = (promote_value * 100).toFixed(1).toString() + "%"
             } else {
                 promote_value = promote_value.toFixed(1).toString()
             }
-            ret1 = "<b>+" + promote_value + " " + promote_config.Text[lang3] + "</b>"
+            ret1 = "<b>+" + promote_value + " " + (promote_config ? promote_config.Text[lang3] : wpn_.Custom) + "</b>"
         }
         return ret0 + " / " + ret1
     }
@@ -5841,6 +5846,15 @@ $(function () {
                             },
                             class: (global_var_weapon_type == 5) ? 'active' : ''
                         },
+                        {
+                            schedule: {
+                                img: '/homdgcat-res/AvatarSkill/Skill_A_01.png'
+                            },
+                            a: {
+                                'data-id': 6
+                            },
+                            class: (global_var_weapon_type == 6) ? 'active' : ''
+                        },
                     ],
                     class: 'weapon-type select_parts select_parts_size_3'
                 },
@@ -5853,78 +5867,80 @@ $(function () {
                 }
             ]
         });
-        _WeaponConfig.forEach(function (wpn) {
-            $('.avatar-area-weapon-reserved').render({
-                div: [
-                    {
-                        img: function (k) {
-                            rlname = k.data.Icons
-                            return imgpre + `homdgcat-res/Weapon/${rlname}_Awaken.png`
-                        },
-                        class: 'avatar-head',
-                        event: {
-                            error: function (d) {
-                                $(d.sender).hide()
-                            }
-                        },
-                        a: {
-                            loading: lazy
-                        }
-                    },
-                    {
-                        p: `[[Name]]`,
-                        style: {
-                            'font-weight': 'bold'
-                        },
-                        class: 'avatar-name av'
-                    },
-                    {
-                        p: [
-                            {
-                                img: imgpre + 'homdgcat-res/AvatarSkill/_ATK.png',
-                                class: 'weapon-atk',
-                                a: {
-                                    loading: lazy
+        if (typeof _WeaponConfig !== 'undefined' && _WeaponConfig !== null && Array.isArray(_WeaponConfig)) {
+            _WeaponConfig.forEach(function (wpn) {
+                $('.avatar-area-weapon-reserved').render({
+                    div: [
+                        {
+                            img: function (k) {
+                                rlname = k.data.Icons
+                                return imgpre + `homdgcat-res/Weapon/${rlname}_Awaken.png`
+                            },
+                            class: 'avatar-head',
+                            event: {
+                                error: function (d) {
+                                    $(d.sender).hide()
                                 }
                             },
-                            function (k) {
-                                return k.data.Stat.toFixed(0)
+                            a: {
+                                loading: lazy
                             }
-                        ],
-                        class: 'avatar-title2'
-                    },
-                    {
-                        p: function (p) {
-                            promote_value = p.data.CustomStat
-                            if (!p.data.Custom) {
-                                return "-"
-                            }
-                            promote_config = computer_.AvatarCustomPromoteConfig[p.data.Custom]
-                            if (promote_config.ShowType === "p") {
-                                promote_value = (promote_value * 100).toFixed(1).toString() + "%"
-                            } else {
-                                promote_value = promote_value.toFixed(1).toString()
-                            }
-                            return "+" + promote_value + " " + promote_config.Text[lang]
                         },
-                        class: 'avatar-title2'
+                        {
+                            p: `[[Name]]`,
+                            style: {
+                                'font-weight': 'bold'
+                            },
+                            class: 'avatar-name av'
+                        },
+                        {
+                            p: [
+                                {
+                                    img: imgpre + 'homdgcat-res/AvatarSkill/_ATK.png',
+                                    class: 'weapon-atk',
+                                    a: {
+                                        loading: lazy
+                                    }
+                                },
+                                function (k) {
+                                    return k.data.Stat.toFixed(0)
+                                }
+                            ],
+                            class: 'avatar-title2'
+                        },
+                        {
+                            p: function (p) {
+                                promote_value = p.data.CustomStat
+                                if (!p.data.Custom) {
+                                    return "-"
+                                }
+                                promote_config = computer_.AvatarCustomPromoteConfig[p.data.Custom]
+                                if (promote_config && promote_config.ShowType === "p") {
+                                    promote_value = (promote_value * 100).toFixed(1).toString() + "%"
+                                } else {
+                                    promote_value = promote_value.toFixed(1).toString()
+                                }
+                                return "+" + promote_value + " " + (promote_config ? promote_config.Text[lang] : p.data.Custom)
+                            },
+                            class: 'avatar-title2'
+                        },
+                    ],
+                    data: wpn,
+                    class: 'avatar-card hover-shadow',
+                    click: function () {
+                        cur_coordinate = $('.scroller').scrollTop()
+                        if (click_cd) return
+                        click_cd = 1
+                        setTimeout(function () { click_cd = 0 }, 1500)
+                        renderWeaponInfo(wpn)
                     },
-                ],
-                data: wpn,
-                class: 'avatar-card hover-shadow',
-                click: function () {
-                    cur_coordinate = $('.scroller').scrollTop()
-                    if (click_cd) return
-                    click_cd = 1
-                    setTimeout(function () { click_cd = 0 }, 1500)
-                    renderWeaponInfo(wpn)
-                },
-                a: {
-                    'data-type': wpn.Type,
-                    'data-rarity': wpn.Rank,
-                }
+                    a: {
+                        'data-type': wpn.Type,
+                        'data-rarity': wpn.Rank,
+                    }
+                })
             })
-        })
+        }
         update_weapon()
     }
 
@@ -6138,12 +6154,12 @@ $(function () {
                                         ret1 = "-"
                                     } else {
                                         promote_config = computer_.AvatarCustomPromoteConfig[wpn.Custom]
-                                        if (promote_config.ShowType === "p") {
+                                        if (promote_config && promote_config.ShowType === "p") {
                                             promote_value = (promote_value * 100).toFixed(1).toString() + "%"
                                         } else {
                                             promote_value = promote_value.toFixed(1).toString()
                                         }
-                                        ret1 = "<b>+" + promote_value + " " + promote_config.Text[lang3] + "</b>"
+                                        ret1 = "<b>+" + promote_value + " " + (promote_config ? promote_config.Text[lang3] : wpn.Custom) + "</b>"
                                     }
                                     return ret0 + " / " + ret1
                                 },

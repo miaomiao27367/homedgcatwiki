@@ -222,7 +222,7 @@ var _AvatarSkillPConfig_ = {
                 "BattleSkills": [
                     {
                         "Name": "事象数式·自明演绎",
-                        "Desc": "<color style='color:#D780FF;'>普通攻击</color><br>以数式编织出操纵兵刃的丝线，进行至多三段的连续挥砍。<br><br><color style='color:#D780FF;'>重击</color><br>召唤出全功能通用型自动机关<color style='color:#D780FF;'>「法洁欧」</color>，并使其切换至<color style='color:#D780FF;'>解算</color>模式：对前方的敌人进行扫射攻击，并周期性发射冷凝射线，造成<color style='color:#FFFFFF;'>冰元素范围伤害</color>。<br><color style='color:#D780FF;'>辉映·星烁</color>：冷凝射线转为造成视为对应星烁反应伤害的<color style='color:#FFFFFF;'>冰元素范围伤害</color>。<br>在<color style='color:#D780FF;'>解算</color>模式下，法洁欧的<color style='color:#D780FF;'>解算功率</color>将会持续提升；发射冷凝射线时，还会使解算功率进一步提升。<br>解算功率达到100点上限时，法洁欧将切换至<color style='color:#D780FF;'>功率过载</color>模式，以更长的间隔对敌人进行射击，造成<color style='color:#FFFFFF;'>冰元素伤害</color>，且无法切换至解算模式。<br>不处于<color style='color:#D780FF;'>解算</color>模式下时，法洁欧的<color style='color:#D780FF;'>解算功率</color>将会缓慢降低；桑多涅处于队伍后台时，还会专注于维修法洁欧，使其解算功率降低速度加快至原本的300%。<br><color style='color:#D780FF;'>解算功率</color>降低至50点以下时，法洁欧将退出<color style='color:#D780FF;'>功率过载</color>模式。<br><br><color style='color:#D780FF;'>下落攻击</color><br>从空中下坠冲击地面，攻击下落路径上的敌人，并在落地时造成范围伤害。",
+                        "Desc": "<color style='color:#FFD780;'>普通攻击</color><br>以数式编织出操纵兵刃的丝线，进行至多三段的连续挥砍。<br><br><color style='color:#FFD780;'>重击</color><br>召唤出全功能通用型自动机关<color style='color:#FFD780;'>「法洁欧」</color>，并使其切换至<color style='color:#FFD780;'>解算</color>模式：对前方的敌人进行扫射攻击，并周期性发射冷凝射线，造成<color style='color:#99FFFF;'>冰元素范围伤害</color>。<br><color style='color:#FFD780;'>辉映·星烁</color>：冷凝射线转为造成视为对应星烁反应伤害的<color style='color:#99FFFF;'>冰元素范围伤害</color>。<br>在<color style='color:#FFD780;'>解算</color>模式下，法洁欧的<color style='color:#FFD780;'>解算功率</color>将会持续提升；发射冷凝射线时，还会使解算功率进一步提升。<br>解算功率达到100点上限时，法洁欧将切换至<color style='color:#FFD780;'>功率过载</color>模式，以更长的间隔对敌人进行射击，造成<color style='color:#99FFFF;'>冰元素伤害</color>，且无法切换至解算模式。<br>不处于<color style='color:#FFD780;'>解算</color>模式下时，法洁欧的<color style='color:#FFD780;'>解算功率</color>将会缓慢降低；桑多涅处于队伍后台时，还会专注于维修法洁欧，使其解算功率降低速度加快至原本的300%。<br><color style='color:#FFD780;'>解算功率</color>降低至50点以下时，法洁欧将退出<color style='color:#FFD780;'>功率过载</color>模式。<br><br><color style='color:#FFD780;'>下落攻击</color><br>从空中下坠冲击地面，攻击下落路径上的敌人，并在落地时造成范围伤害。",
                         "Num": 1,
                         "Lock": 5.0,
                         "Icon": "Skill_A_04",
@@ -431,7 +431,7 @@ var _AvatarSkillPConfig_ = {
                     },
                     {
                         "Name": "事象数式·游衍解析",
-                        "Desc": "秉持淑女完美的法度，搭乘<color style='color:#D780FF;'>茶会用战术突击悬浮机关</color>，并持续向前浮行6秒。期间，桑多涅可以控制浮行的方向，并且点按冲刺时，将会消耗10点体力，进入优雅的高速悬浮模式，每秒消耗15点体力，以更快的速度进行浮行。<br><br>开始浮行时，若附近存在敌人，桑多涅还会召唤出一台棱晶谐振炮，向没有冷静下来的敌人发射两枚棱晶弹，造成<color style='color:#FFFFFF;'>冰元素伤害</color>。<br><color style='color:#D780FF;'>辉映·星烁</color>：第二枚棱晶弹将转为造成视为对应星烁反应伤害的<color style='color:#FFFFFF;'>冰元素伤害</color>。<br><br>搭乘茶会用战术突击悬浮机关时，桑多涅还会优雅地悄悄维修法洁欧，使其<color style='color:#D780FF;'>解算功率</color>快速降低。",
+                        "Desc": "秉持淑女完美的法度，搭乘<color style='color:#FFD780;'>茶会用战术突击悬浮机关</color>，并持续向前浮行6秒。期间，桑多涅可以控制浮行的方向，并且点按冲刺时，将会消耗10点体力，进入优雅的高速悬浮模式，每秒消耗15点体力，以更快的速度进行浮行。<br><br>开始浮行时，若附近存在敌人，桑多涅还会召唤出一台棱晶谐振炮，向没有冷静下来的敌人发射两枚棱晶弹，造成<color style='color:#99FFFF;'>冰元素伤害</color>。<br><color style='color:#FFD780;'>辉映·星烁</color>：第二枚棱晶弹将转为造成视为对应星烁反应伤害的<color style='color:#99FFFF;'>冰元素伤害</color>。<br><br>搭乘茶会用战术突击悬浮机关时，桑多涅还会优雅地悄悄维修法洁欧，使其<color style='color:#FFD780;'>解算功率</color>快速降低。",
                         "Num": 2,
                         "Lock": 5.0,
                         "Icon": "Skill_S_MarionetteNew_01",
@@ -520,7 +520,7 @@ var _AvatarSkillPConfig_ = {
                     },
                     {
                         "Name": "事象数式·万理证毕",
-                        "Desc": "秉持淑女优雅的礼仪，召唤出大量棱晶谐振炮对前方进行广域轰炸，并在随后发射负温聚能光束轰击敌人，造成<color style='color:#FFFFFF;'>冰元素范围伤害</color>。<br><color style='color:#D780FF;'>辉映·星烁</color>：负温聚能光束将转为造成视为对应星烁反应伤害的<color style='color:#FFFFFF;'>冰元素范围伤害</color>。",
+                        "Desc": "秉持淑女优雅的礼仪，召唤出大量棱晶谐振炮对前方进行广域轰炸，并在随后发射负温聚能光束轰击敌人，造成<color style='color:#99FFFF;'>冰元素范围伤害</color>。<br><color style='color:#FFD780;'>辉映·星烁</color>：负温聚能光束将转为造成视为对应星烁反应伤害的<color style='color:#99FFFF;'>冰元素范围伤害</color>。",
                         "Num": 3,
                         "Lock": 5.0,
                         "Icon": "Skill_E_MarionetteNew_01",
@@ -651,7 +651,7 @@ var _AvatarSkillPConfig_ = {
                 "PassiveSkills": [
                     {
                         "Name": "悠久的演算机关",
-                        "Desc": "<color style='color:#D780FF;'>辉映·星烁</color>：施放元素战技{LINK#S11332}<color style='color:#D780FF;'>事象数式·游衍解析</color>时，若法洁欧的<color style='color:#D780FF;'>解算功率</color>超过50点，则会在降低解算功率的同时，使向附近敌人发射的第二枚棱晶弹造成原本400%的伤害。<br>此外，法洁欧的<color style='color:#D780FF;'>解算功率</color>每降低10点，都会获得一层持续60秒的<color style='color:#D780FF;'>改进战术</color>效果，该效果至多叠加10层。桑多涅处于<color style='color:#D780FF;'>辉映·星烁</color>状态下施放元素爆发{LINK#S11335}<color style='color:#D780FF;'>事象数式·万理证毕</color>时，将会清除全部的改进战术层数，使负温聚能光束造成原本100%+清除层数*10%的伤害。",
+                        "Desc": "<color style='color:#FFD780;'>辉映·星烁</color>：施放元素战技<color style='color:#FFD780;'>事象数式·游衍解析</color>时，若法洁欧的<color style='color:#FFD780;'>解算功率</color>超过50点，则会在降低解算功率的同时，使向附近敌人发射的第二枚棱晶弹造成原本400%的伤害。<br>此外，法洁欧的<color style='color:#FFD780;'>解算功率</color>每降低10点，都会获得一层持续60秒的<color style='color:#FFD780;'>改进战术</color>效果，该效果至多叠加10层。桑多涅处于<color style='color:#FFD780;'>辉映·星烁</color>状态下施放元素爆发<color style='color:#FFD780;'>事象数式·万理证毕</color>时，将会清除全部的改进战术层数，使负温聚能光束造成原本100%+清除层数*10%的伤害。",
                         "Icon": "UI_Talent_S_MarionetteNew_05"
                     },
                     {
@@ -661,7 +661,7 @@ var _AvatarSkillPConfig_ = {
                     },
                     {
                         "Name": "星耀祝礼·唯理为光",
-                        "Desc": "处于<color style='color:#D780FF;'>极星辉域</color>中时/队伍中的角色在附近触发星扩散反应后的8秒内，桑多涅将分别进入<color style='color:#D780FF;'>辉映·星超导</color>/<color style='color:#D780FF;'>辉映·星扩散</color>状态。<br>队伍中的角色触发超导/冰扩散反应时，将转为触发星超导/星扩散反应，且基于桑多涅的攻击力，提升队伍中角色造成的上述反应的基础伤害：每100点攻击力都将提升0.7%星超导和星扩散反应的基础伤害，至多通过这种方式提升14%伤害。",
+                        "Desc": "处于<color style='color:#FFD780;'>极星辉域</color>中时/队伍中的角色在附近触发星扩散反应后的8秒内，桑多涅将分别进入<color style='color:#FFD780;'>辉映·星超导</color>/<color style='color:#FFD780;'>辉映·星扩散</color>状态。<br>队伍中的角色触发超导/冰扩散反应时，将转为触发星超导/星扩散反应，且基于桑多涅的攻击力，提升队伍中角色造成的上述反应的基础伤害：每100点攻击力都将提升0.7%星超导和星扩散反应的基础伤害，至多通过这种方式提升14%伤害。",
                         "Icon": "UI_Talent_S_MarionetteNew_07"
                     },
                     {
@@ -674,60 +674,60 @@ var _AvatarSkillPConfig_ = {
                     {
                         "Level": 1,
                         "Name": "鎏金未凋，夕暮已远",
-                        "Desc": "处于<color style='color:#D780FF;'>解算</color>模式下时，法洁欧的<color style='color:#D780FF;'>解算功率</color>提升速度降低50%，且队伍中的所有角色造成的星烁反应伤害提升30%。",
+                        "Desc": "处于<color style='color:#FFD780;'>解算</color>模式下时，法洁欧的<color style='color:#FFD780;'>解算功率</color>提升速度降低50%，且队伍中的所有角色造成的星烁反应伤害提升30%。",
                         "Icon": "UI_Talent_S_MarionetteNew_01"
                     },
                     {
                         "Level": 2,
                         "Name": "回望镜中，时岁翩然",
-                        "Desc": "<color style='color:#D780FF;'>辉映·星烁</color>：重击发射的冷凝射线的暴击伤害提升40%，且每次发射冷凝射线时，都会使本次<color style='color:#D780FF;'>解算</color>模式期间，发射的所有冷凝射线的暴击伤害进一步提升20%，该效果至多叠加3层。",
+                        "Desc": "<color style='color:#FFD780;'>辉映·星烁</color>：重击发射的冷凝射线的暴击伤害提升40%，且每次发射冷凝射线时，都会使本次<color style='color:#FFD780;'>解算</color>模式期间，发射的所有冷凝射线的暴击伤害进一步提升20%，该效果至多叠加3层。",
                         "Icon": "UI_Talent_S_MarionetteNew_02"
                     },
                     {
                         "Level": 3,
                         "Name": "不叹日落，不羡月升",
-                        "Desc": "普通攻击{LINK#S11331}<color style='color:#D780FF;'>事象数式·自明演绎</color>的技能等级提高3级。<br>至多提升至15级。",
+                        "Desc": "普通攻击<color style='color:#FFD780;'>事象数式·自明演绎</color>的技能等级提高3级。<br>至多提升至15级。",
                         "Icon": "UI_Talent_U_MarionetteNew_01"
                     },
                     {
                         "Level": 4,
                         "Name": "世事皆数，昼来夜往",
-                        "Desc": "桑多涅的星超导/星扩散反应伤害命中敌人时，还会额外召唤一台棱晶谐振炮进行协同攻击，对敌人造成一次相当于桑多涅攻击力125%/187.5%的<color style='color:#FFFFFF;'>冰元素伤害</color>，该伤害视为对应星烁反应造成的伤害。该效果每4秒至多触发一次。",
+                        "Desc": "桑多涅的星超导/星扩散反应伤害命中敌人时，还会额外召唤一台棱晶谐振炮进行协同攻击，对敌人造成一次相当于桑多涅攻击力125%/187.5%的<color style='color:#99FFFF;'>冰元素伤害</color>，该伤害视为对应星烁反应造成的伤害。该效果每4秒至多触发一次。",
                         "Icon": "UI_Talent_S_MarionetteNew_03"
                     },
                     {
                         "Level": 5,
                         "Name": "万象皆灰，唯理明畅",
-                        "Desc": "元素爆发{LINK#S11335}<color style='color:#D780FF;'>事象数式·万理证毕</color>的技能等级提高3级。<br>至多提升至15级。",
+                        "Desc": "元素爆发<color style='color:#FFD780;'>事象数式·万理证毕</color>的技能等级提高3级。<br>至多提升至15级。",
                         "Icon": "UI_Talent_U_MarionetteNew_02"
                     },
                     {
                         "Level": 6,
                         "Name": "水仙梦醒，且望晨光",
-                        "Desc": "<color style='color:#D780FF;'>解算</color>模式下，法洁欧第三次发射冷凝射线时，将转为持续发射威力更强的<color style='color:#D780FF;'>集束型冷凝射线</color>，在原本后续发射的冷凝射线基础上，至多额外造成4段相当于桑多涅攻击力100%的<color style='color:#FFFFFF;'>冰元素范围伤害</color>。<br><color style='color:#D780FF;'>辉映·星烁</color>：<color style='color:#D780FF;'>集束型冷凝射线</color>转为至多额外造成4段视为对应星烁反应伤害的<color style='color:#FFFFFF;'>冰元素范围伤害</color>，该伤害相当于桑多涅攻击力的：<br><color style='color:#D780FF;'>辉映·星超导</color>：80%；<br><color style='color:#D780FF;'>辉映·星扩散</color>：120%。<br>此外，桑多涅造成的所有星烁反应伤害<color style='color:#D780FF;'>擢升</color>20%。",
+                        "Desc": "<color style='color:#FFD780;'>解算</color>模式下，法洁欧第三次发射冷凝射线时，将转为持续发射威力更强的<color style='color:#FFD780;'>集束型冷凝射线</color>，在原本后续发射的冷凝射线基础上，至多额外造成4段相当于桑多涅攻击力100%的<color style='color:#99FFFF;'>冰元素范围伤害</color>。<br><color style='color:#FFD780;'>辉映·星烁</color>：<color style='color:#FFD780;'>集束型冷凝射线</color>转为至多额外造成4段视为对应星烁反应伤害的<color style='color:#99FFFF;'>冰元素范围伤害</color>，该伤害相当于桑多涅攻击力的：<br><color style='color:#FFD780;'>辉映·星超导</color>：80%；<br><color style='color:#FFD780;'>辉映·星扩散</color>：120%。<br>此外，桑多涅造成的所有星烁反应伤害<color style='color:#FFD780;'>擢升</color>20%。",
                         "Icon": "UI_Talent_S_MarionetteNew_04"
                     },
                 ],
                 "HyperLinks": [
                     {
-                        "Name": "极星辉域",
-                        "Desc": "触发星超导反应时，附近的区域会短暂变化为<color style='color:#D780FF;'>极星辉域</color>；处于极星辉域中时，特定角色将会进入<color style='color:#D780FF;'>辉映·星超导</color>状态，使其不同技能分别获得对应的强化效果。"
-                    },
-                    {
                         "Name": "擢升",
                         "Desc": "特殊的伤害提升效果，与其他的伤害提升效果分别独立计算。"
                     },
                     {
-                        "Name": "解算",
-                        "Desc": "进行重击时，法洁欧将会切换至该模式。<br>处于该模式下时，法洁欧会对前方的敌人进行扫射攻击，并周期性发射冷凝射线，造成<color style='color:#FFFFFF;'>冰元素范围伤害</color>。<br><color style='color:#D780FF;'>辉映·星超导</color>：冷凝射线转为造成视为星超导反应伤害的<color style='color:#FFFFFF;'>冰元素范围伤害</color>。"
-                    },
-                    {
                         "Name": "解算功率",
-                        "Desc": "处于<color style='color:#D780FF;'>解算</color>模式下时，法洁欧的<color style='color:#D780FF;'>解算功率</color>会不断上升；解算功率达到上限时，将无法维持或重新进入解算模式。"
+                        "Desc": "处于<color style='color:#FFD780;'>解算</color>模式下时，法洁欧的<color style='color:#FFD780;'>解算功率</color>会不断上升；解算功率达到上限时，将无法维持或重新进入解算模式。"
                     },
                     {
                         "Name": "辉映·星烁",
-                        "Desc": "<color style='color:#D780FF;'>辉映·星超导</color>与<color style='color:#D780FF;'>辉映·星扩散</color>统称为<color style='color:#D780FF;'>辉映·星烁</color>状态。<br>角色同时只能受到一种辉映状态影响，且优先被<color style='color:#D780FF;'>辉映·星超导</color>影响。"
+                        "Desc": "<color style='color:#FFD780;'>辉映·星超导</color>与<color style='color:#FFD780;'>辉映·星扩散</color>统称为<color style='color:#FFD780;'>辉映·星烁</color>状态。<br>角色同时只能受到一种辉映状态影响，且优先被<color style='color:#FFD780;'>辉映·星超导</color>影响。"
+                    },
+                    {
+                        "Name": "极星辉域",
+                        "Desc": "触发星超导反应时，附近的区域会短暂变化为<color style='color:#FFD780;'>极星辉域</color>；处于极星辉域中时，特定角色将会进入<color style='color:#FFD780;'>辉映·星超导</color>状态，使其不同技能分别获得对应的强化效果。"
+                    },
+                    {
+                        "Name": "解算",
+                        "Desc": "进行重击时，法洁欧将会切换至该模式。<br>处于该模式下时，法洁欧会对前方的敌人进行扫射攻击，并周期性发射冷凝射线，造成<color style='color:#99FFFF;'>冰元素范围伤害</color>。<br><color style='color:#FFD780;'>辉映·星超导</color>：冷凝射线转为造成视为星超导反应伤害的<color style='color:#99FFFF;'>冰元素范围伤害</color>。"
                     },
                 ]
             },

@@ -44,23 +44,6 @@ var __AvatarInfoConfig = [
             "_JP": "凯莉 · 米尔斯&匿名",
             "_KR": "李甫熙"
         },
-        "NA": [
-            126,
-            125,
-            127
-        ],
-        "NW": [
-            14522,
-            11519
-        ],
-        "NR": [],
-        "VS": [
-            "1",
-            "2",
-            "3",
-            "4"
-        ],
-        "Note": "6.3v4",
         "Test": "test value"
     },
     {
@@ -5861,6 +5844,468 @@ var _relic_changelog = {
 }
 
 var _WeaponConfig = [
+    {
+        "_id": "380003",
+        "Name": "炎夏轻霜！",
+        "Desc": "霜精们送给好朋友的小小礼物！虽然看上去很美味，好像还是莓莓果酱味的，咬一口下去，沁人心脾的凉意与美妙的甜蜜一定会在舌尖携手起舞，但其实并不能真的食用…虽然看上去真的很美味。",
+        "Type": 1,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Sword_Icecream",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1380003,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "224008",
+        "Name": "影域特化榴晶",
+        "Desc": "能够对影域造物造成大幅度破坏的战术抛掷物。",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "Sword_Template",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224008,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "224007",
+        "Name": "榴晶·冰",
+        "Desc": "能够造成冰元素范围伤害的战术抛掷物。",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Grenade_Ice",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224007,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "224006",
+        "Name": "榴晶·雷",
+        "Desc": "能够造成雷元素范围伤害的战术抛掷物。",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Grenade_Electric",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224006,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "224005",
+        "Name": "榴晶·水",
+        "Desc": "能够造成水元素范围伤害的战术抛掷物。",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Grenade_Water",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224005,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "224004",
+        "Name": "榴晶·火",
+        "Desc": "能够造成火元素范围伤害的战术抛掷物。",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Grenade_Fire",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224004,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "224003",
+        "Name": "瓦尔萨格的日轮",
+        "Desc": "可以按火、水、冰的顺序循环切换榴弹炮当前榴弹元素类型的榴弹炮。",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_GrenadeLauncher_Ignis",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224003,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "224002",
+        "Name": "阿夏梅兹的千光",
+        "Desc": "可将普通射击切换成发射闪电链的模式，锁定追踪目标的突击步枪。",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_AssaultRifle_Fulmen",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224002,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "224001",
+        "Name": "莎塔娜娅的苍银",
+        "Desc": "可通过普通射击积攒凝冰之荣，切换至贯破模式，进行蓄力重击的突击步枪。",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_AssaultRifle_Glacia",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224001,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "3"
+    },
+    {
+        "_id": "15436",
+        "Name": "霜雪誓约",
+        "Desc": "为维系秩序所制的长弓，光泽冰冷，恰如最公允无私的法度。",
+        "Type": 5,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Bow_GlintstoneBow",
+        "Stat": 509.605949,
+        "Custom": "DEF",
+        "CustomStat": 0.517284,
+        "AscMatID": 114088,
+        "MatIDs": [
+            112157,
+            112151
+        ],
+        "EquipAffixName": "法度的制衡",
+        "EquipAffixID": 115436,
+        "Extra": [],
+        "Story": 195436,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "15435",
+        "Name": "悬黎千钧",
+        "Desc": "",
+        "Type": 5,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Bow_ShatteredMirror",
+        "Stat": 509.605949,
+        "Custom": "CR",
+        "CustomStat": 0.27564,
+        "AscMatID": 114024,
+        "MatIDs": [
+            112043,
+            112034
+        ],
+        "EquipAffixName": "缀夜为烛",
+        "EquipAffixID": 115435,
+        "Extra": [],
+        "Story": 195435,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "14436",
+        "Name": "寸心余响",
+        "Desc": "用以凝定声音的法器，似乎还封存了一段关乎忠诚的誓言，以及一颗被人遗忘的心。",
+        "Type": 3,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Catalyst_GlintstoneCatalyst",
+        "Stat": 564.783724,
+        "Custom": "ATK",
+        "CustomStat": 0.27564,
+        "AscMatID": 114088,
+        "MatIDs": [
+            112154,
+            112148
+        ],
+        "EquipAffixName": "誓言的回音",
+        "EquipAffixID": 114436,
+        "Extra": [],
+        "Story": 194436,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "14435",
+        "Name": "群王局戏",
+        "Desc": "由诸多华贵珠宝嵌缀打造的金匣，其中装藏着沙海诸王最喜欢的游戏。",
+        "Type": 3,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Catalyst_SandMemoria",
+        "Stat": 509.605949,
+        "Custom": "CR",
+        "CustomStat": 0.27564,
+        "AscMatID": 114040,
+        "MatIDs": [
+            112073,
+            112067
+        ],
+        "EquipAffixName": "被遗忘的昼夜",
+        "EquipAffixID": 114435,
+        "Extra": [],
+        "Story": 194435,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "13436",
+        "Name": "戍望谣歌",
+        "Desc": "曾为众人守望的长枪，如今在孩子们的扮演游戏里担任重要角色。",
+        "Type": 4,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Pole_GlintstonePolearm",
+        "Stat": 564.783724,
+        "Custom": "EM",
+        "CustomStat": 110.256,
+        "AscMatID": 114096,
+        "MatIDs": [
+            112157,
+            112148
+        ],
+        "EquipAffixName": "旧日和弦",
+        "EquipAffixID": 113436,
+        "Extra": [],
+        "Story": 193436,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "13435",
+        "Name": "寒息",
+        "Desc": "萦绕着寒意的坚冰长枪，据说在遥远的过去曾被统御至冬的白沙皇持有。",
+        "Type": 4,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Pole_FaesCrystalle",
+        "Stat": 509.605949,
+        "Custom": "ER",
+        "CustomStat": 0.4594,
+        "AscMatID": 114092,
+        "MatIDs": [
+            112154,
+            112151
+        ],
+        "EquipAffixName": "万顷一掷",
+        "EquipAffixID": 113435,
+        "Extra": [],
+        "Story": 193435,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "12436",
+        "Name": "救赎之斩",
+        "Desc": "卢契烬传承的大剑，据闻唯有最勇武的战士才有资格拿起它。",
+        "Type": 2,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Claymore_GlintstoneClaymore",
+        "Stat": 564.783724,
+        "Custom": "ATK",
+        "CustomStat": 0.27564,
+        "AscMatID": 114088,
+        "MatIDs": [
+            112157,
+            112151
+        ],
+        "EquipAffixName": "罪责的悔赎",
+        "EquipAffixID": 112436,
+        "Extra": [],
+        "Story": 192436,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "12435",
+        "Name": "金律铸影",
+        "Desc": "",
+        "Type": 2,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Claymore_EscapeWheel",
+        "Stat": 509.605949,
+        "Custom": "CR",
+        "CustomStat": 0.27564,
+        "AscMatID": 114056,
+        "MatIDs": [
+            112100,
+            112082
+        ],
+        "EquipAffixName": "交奏的昼与夜",
+        "EquipAffixID": 112435,
+        "Extra": [],
+        "Story": 192435,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "11521",
+        "Name": "星锋剑",
+        "Desc": "",
+        "Type": 1,
+        "Rank": 5,
+        "Icons": "UI_EquipIcon_Sword_WeaponQuestSnezhnaya",
+        "Stat": 608.074597,
+        "Custom": "CR",
+        "CustomStat": 0.330768,
+        "AscMatID": 114096,
+        "MatIDs": [
+            112154,
+            112148
+        ],
+        "EquipAffixName": "旅者之路",
+        "EquipAffixID": 111521,
+        "Extra": [],
+        "Story": 191521,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "11520",
+        "Name": "白湖冬羽",
+        "Desc": "",
+        "Type": 1,
+        "Rank": 5,
+        "Icons": "UI_EquipIcon_Sword_Swanlake",
+        "Stat": 674.334546,
+        "Custom": "CR",
+        "CustomStat": 0.220512,
+        "AscMatID": 114092,
+        "MatIDs": [
+            112157,
+            112151
+        ],
+        "EquipAffixName": "雪鹄的终幕舞",
+        "EquipAffixID": 111520,
+        "Extra": [],
+        "Story": 191520,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "11436",
+        "Name": "引火之源",
+        "Desc": "以宝石为身的长剑，据闻是为了正义的道途而打造，出鞘时会流溢蓝色火焰的光泽。",
+        "Type": 1,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Sword_GlintstoneSword",
+        "Stat": 509.605949,
+        "Custom": "EM",
+        "CustomStat": 165.384,
+        "AscMatID": 114088,
+        "MatIDs": [
+            112154,
+            112148
+        ],
+        "EquipAffixName": "燃于雪原的星火",
+        "EquipAffixID": 111436,
+        "Extra": [],
+        "Story": 191436,
+        "StoryCount": 1,
+        "V": "3"
+    },
+    {
+        "_id": "11435",
+        "Name": "熔猎异端之刃",
+        "Desc": "那是他在初次见到那位受众人祝福的火焰之神时再度拔出的，却已太久未曾使用的武器。",
+        "Type": 1,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Sword_SerpentTooth",
+        "Stat": 509.605949,
+        "Custom": "CR",
+        "CustomStat": 0.27564,
+        "AscMatID": 114064,
+        "MatIDs": [
+            112121,
+            112106
+        ],
+        "EquipAffixName": "独光的赐坠",
+        "EquipAffixID": 111435,
+        "Extra": [],
+        "Story": 191435,
+        "StoryCount": 1,
+        "V": "3"
+    },
     {
         "_id": "15515",
         "Name": "黎明破晓之史",

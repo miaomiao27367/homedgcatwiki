@@ -135,31 +135,36 @@ def process_color_tags(text):
     if not text:
         return ""
     text = text.replace('\\n', '<br>')
-    text = re.sub(r'<color=#([A-Fa-f0-9]{2})([A-Fa-f0-9]{6})>',
-                  r"<color style='color:#\2;'>", text)
+    text = re.sub(r'<color=#([A-Fa-f0-9]{6})([A-Fa-f0-9]{2})>',
+                  r"<color style='color:#\1;'>", text)
+    text = re.sub(r'<color=#([A-Fa-f0-9]{6})>',
+                  r"<color style='color:#\1;'>", text)
     text = text.replace('</color>', '</color>')
     return text
 
 
 def remove_link_tags(text):
-    text = re.sub(r'\{LINK#N\d+\}', '', text)
+    text = re.sub(r'\{LINK#[NS]\d+\}', '', text)
     text = re.sub(r'\{/LINK\}', '', text)
     return text
 
 
-def resolve_param_refs(text, skill_param_map):
-    if not text or not skill_param_map:
+def resolve_param_refs(text, skill_param_map, hyper_param=None):
+    if not text:
         return text
     def replacer(m):
         skill_id = m.group(1)
         idx_str = m.group(2)
         idx = int(idx_str) - 1
-        if skill_id in skill_param_map and idx >= 0 and idx < len(skill_param_map[skill_id]):
+        if skill_param_map and skill_id in skill_param_map and idx >= 0 and idx < len(skill_param_map[skill_id]):
             val = skill_param_map[skill_id][idx]
-            if isinstance(val, float) and val == int(val):
-                return str(int(val))
-            return str(val)
-        return m.group(0)
+        elif hyper_param and skill_id in hyper_param and idx >= 0 and idx < len(hyper_param[skill_id]):
+            val = hyper_param[skill_id][idx]
+        else:
+            return m.group(0)
+        if isinstance(val, float) and val == int(val):
+            return str(int(val))
+        return str(val)
     return re.sub(r'\{PARAM#P(\d+)\|(\d+)S1\}', replacer, text)
 
 
@@ -182,6 +187,9 @@ def download_all_data(character_id, versions_dict):
         download_and_cache(
             f"https://static.nanoka.cc/gi/{api_ver}/zh/hyperlink.json",
             os.path.join(CACHE_DIR, f"{api_ver}-hyperlink.json"))
+        download_and_cache(
+            f"https://static.nanoka.cc/gi/{api_ver}/zh/hyperlinkparam.json",
+            os.path.join(CACHE_DIR, f"{api_ver}-hyperlinkparam.json"))
         download_and_cache(
             f"https://static.nanoka.cc/gi/{api_ver}/zh/character/{character_id}.json",
             os.path.join(CACHE_DIR, f"{api_ver}-{character_id}-zh.json"))
@@ -580,6 +588,12 @@ def extract_hyperlinks(desc_list, api_version, skill_param_map=None):
     with open(hyperlink_file, 'r', encoding='utf-8') as f:
         hl_data = json.load(f)
 
+    hyper_param = None
+    hyperparam_file = os.path.join(CACHE_DIR, f"{api_version}-hyperlinkparam.json")
+    if os.path.exists(hyperparam_file):
+        with open(hyperparam_file, 'r', encoding='utf-8') as f:
+            hyper_param = json.load(f)
+
     link_ids = set()
     for desc in desc_list:
         for m in re.findall(r'\{LINK#N(\d+)\}', desc):
@@ -591,7 +605,7 @@ def extract_hyperlinks(desc_list, api_version, skill_param_map=None):
         if lid in hl_data:
             term = hl_data[lid]
             desc = term.get('desc', '')
-            desc = resolve_param_refs(desc, skill_param_map)
+            desc = resolve_param_refs(desc, skill_param_map, hyper_param)
             hyperlinks.append({
                 "Name": term.get('name', ''),
                 "Desc": process_color_tags(desc),

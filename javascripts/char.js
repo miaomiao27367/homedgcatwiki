@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
 
     var anniversary = 0
     var cur_time = Date.now()
@@ -909,6 +909,7 @@ $(function () {
             var offset = _search_weapon[i]
             var idx = offset < 0 ? _weapon.length - 1 + offset : offset
             var wpn_data = _weapon[idx]
+            if (!wpn_data) return
             
             // 确保武器数据已加载
             if (!loaded.includes(wpn_data._id)) {
@@ -977,6 +978,7 @@ $(function () {
             var offset = _search_avatar[i]
             var idx = offset < 0 ? _avatar.length - 1 + offset : offset
             var avatar_data = _avatar[idx]
+            if (!avatar_data) return
             
             // 确保技能数据已加载
             if (!loaded.includes(avatar_data._id)) {
