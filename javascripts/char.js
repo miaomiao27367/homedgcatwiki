@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿if (typeof _relic === 'undefined') document.write('<script src="/sr/data/CH/Relic.js" type="text/javascript"><\/script>')
+$(function () {
 
     var anniversary = 0
     var cur_time = Date.now()
@@ -780,8 +781,15 @@
                         }
                     }
                 }
-            } else if (_search_relic[avid] != undefined) {
-                popRelic(_search_relic[avid])
+            } else if (_relic[avid] != undefined) {
+                popRelic(avid)
+            } else {
+                Object.keys(_relic).some(function(id) {
+                    if (_relic[id].Name == avid) {
+                        popRelic(id)
+                        return true
+                    }
+                })
             }
         }
     
@@ -1647,8 +1655,8 @@
                 var tname = _weapon[_search_weapon[i]].Name
                 var tcolor = ''
                 var ticon = _weapon[_search_weapon[i]].Path
-            } else if (_search_relic[i] != undefined) {
-                var tname = _relic[_search_relic[i]].Name
+            } else if (_relic[i] != undefined) {
+                var tname = _relic[i].Name
                 var tcolor = ''
                 var ticon = (parseInt(i) > 200) ? 'IconAvatarRelic' : 'IconRelicBody'
             } else {
@@ -2615,7 +2623,8 @@
     function listRelic(tp) {
         $('.area').empty()
         $('.area_pre').empty()
-        _relic.forEach(function (t, i) {
+        Object.keys(_relic).sort(function(a, b) { return b - a }).forEach(function (id) {
+            var t = _relic[id]
             if (t.Skills.length == tp) return
             var skill_show = []
             t.Skills.forEach(function (j, i) {
@@ -2651,7 +2660,7 @@
                     class: 'curio hover-shadow',
                     click: function (p) {
                         cur_coordinate = $('container').scrollTop()
-                        popRelic(i)
+                        popRelic(id)
                         $('container').scrollTop($('h3').height())
                     }
                 }

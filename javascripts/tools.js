@@ -930,6 +930,60 @@ var ToolsApp = {
             btn.disabled = false;
             btnText.textContent = '同步怪物图片';
         }
+    },
+
+    // 发送HSR遗器更新请求
+    sendHSRRelicUpdate: async function() {
+        var submitBtn = document.getElementById('hsrRelicSubmitBtn');
+        var btnText = document.getElementById('hsrRelicBtnText');
+        var resultDiv = document.getElementById('hsrRelicResult');
+
+        var relicIdText = document.getElementById('hsrRelicId').value.trim();
+        var relicIds = relicIdText
+            .split(/[\s,]+/)
+            .map(function(id) { return id.trim(); })
+            .filter(function(id) { return id; });
+
+        var data = {
+            relic_ids: relicIds,
+            version: document.getElementById('hsrRelicVersion').value.trim(),
+            auto_merge: document.getElementById('hsrRelicAutoMerge').checked
+        };
+
+        submitBtn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>处理中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/hsr_update_relic', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            var result = await response.json();
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('hsrRelicResultTitle').textContent =
+                result.status === 'success' ? '✓ 更新成功' : '✗ 更新失败';
+            document.getElementById('hsrRelicResultMessage').textContent = result.message;
+
+            var outputText = result.stdout || result.stderr || '';
+            document.getElementById('hsrRelicResultOutput').textContent = outputText;
+            document.getElementById('hsrRelicResultOutput').style.display = outputText ? 'block' : 'none';
+
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('hsrRelicResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('hsrRelicResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('hsrRelicResultOutput').textContent = error.toString();
+            document.getElementById('hsrRelicResultOutput').style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            btnText.textContent = '发送更新请求';
+        }
     }
 
 };

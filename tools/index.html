@@ -45,6 +45,10 @@
             <span class="tools-sidebar-item-icon">🌀</span>
             <span>HSR 混沌回忆更新</span>
         </div>
+        <div class="tools-sidebar-item" data-tool="hsr-relic-update">
+            <span class="tools-sidebar-item-icon">💎</span>
+            <span>HSR 遗器更新</span>
+        </div>
         <!-- 可以在这里添加更多工具 -->
     </div>
 
@@ -436,6 +440,40 @@
                     <h3 id="hsrChaosResultTitle"></h3>
                     <p id="hsrChaosResultMessage"></p>
                     <pre id="hsrChaosResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- HSR 遗器数据更新工具 -->
+            <div id="hsr-relic-update" class="tools-section">
+                <h2 class="tools-section-title">HSR 遗器(仪器)数据更新工具</h2>
+
+                <form id="hsrRelicUpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRRelicUpdate();">
+                    <div class="form-group">
+                        <label for="hsrRelicId">遗器ID列表</label>
+                        <textarea id="hsrRelicId" rows="3" placeholder="多个ID用逗号或空格分隔，例如: 328, 329">328</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrRelicVersion">完整版本号</label>
+                        <input type="text" id="hsrRelicVersion" value="4.4.52" placeholder="例如: 4.4.52">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="hsrRelicAutoMerge" checked>
+                            自动拼接到 Relic.js（ID>300插入头部，ID<300插入301之后）
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrRelicSubmitBtn">
+                        <span id="hsrRelicBtnText">发送更新请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrRelicResult" class="result">
+                    <h3 id="hsrRelicResultTitle"></h3>
+                    <p id="hsrRelicResultMessage"></p>
+                    <pre id="hsrRelicResultOutput"></pre>
                 </div>
             </div>
 

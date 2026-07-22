@@ -150,10 +150,9 @@ a.translate_ {
 
 .n1, .n2 {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 8px 4px 8px 2px;
-    overflow-x: scroll;
     width: calc(100% - 7px);
 }
 
@@ -165,6 +164,7 @@ a.translate_ {
     margin: 2px 4px;
     padding: 10px 2px 2px;
     flex: 0 0 calc((100vw - 100px) / 3);
+    min-width: 0;
 }
 
 .new_image_wrapper_1 {

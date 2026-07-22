@@ -21,6 +21,7 @@ from reliance.hsr_trans_fiction import generate_fiction_data
 from reliance.hsr_trans_chaos import generate_chaos_data
 from reliance.gi_trans import gi_character_update
 from reliance.gi_weapon_trans import gi_weapon_update, gi_weapon_img_sync
+from reliance.hsr_trans_relic import generate_relic_data
 
 data_url2="26.192.21.124:9080"
 data_url1="26.118.195.109:8080"
@@ -1052,6 +1053,50 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
             except Exception as e:
                 print(f"[hsr_update_chaos] 处理失败: {str(e)}")
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+
+            print("-" * 50)
+            return
+
+        # 处理 /hsr_update_relic
+        if path == '/hsr_update_relic':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+
+                try:
+                    request_data = json.loads(post_data.decode('utf-8'))
+                    relic_ids = request_data.get('relic_ids', [])
+                    version = request_data.get('version', '4.4.52')
+                    auto_merge = request_data.get('auto_merge', True)
+
+                    print(f"[hsr_update_relic] 收到参数: relic_ids={relic_ids}, version={version}, auto_merge={auto_merge}")
+                except:
+                    relic_ids = ["328"]
+                    version = "4.4.52"
+                    auto_merge = True
+                    print(f"[hsr_update_relic] 使用默认参数: relic_ids={relic_ids}, version={version}")
+
+                try:
+                    str_return = generate_relic_data(relic_ids, version, auto_merge)
+                    response_data = {"status": "success", "message": f"成功处理 {len(relic_ids)} 个遗器", "stdout": str_return}
+
+                except Exception as e:
+                    error_msg = str(e)
+                    print(f"[hsr_update_relic] 执行失败: {error_msg}")
+                    response_data = {"status": "error", "message": "遗器数据更新失败", "stderr": f"抛出异常: {error_msg}"}
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+
+            except Exception as e:
+                print(f"[hsr_update_relic] 处理失败: {str(e)}")
                 error_msg = str(e).replace('"', '\\"')
                 self.send_response(500)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')

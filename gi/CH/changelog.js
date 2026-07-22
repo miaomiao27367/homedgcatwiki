@@ -14,5 +14,5 @@ var _changelog_ = {
         "3",
         "4"
     ],
-    "Note": "6.3v4"
+    "Note": "6.8v3"
 }
