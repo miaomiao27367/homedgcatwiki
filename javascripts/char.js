@@ -756,17 +756,15 @@ $(function () {
                 show_boss()
             }
             var avatarIdx = undefined
-            if (/^\d+$/.test(avid)) {
-                for (var ai = 0; ai < _avatar.length; ai++) {
-                    if (_avatar[ai] && _avatar[ai]._id == avid) {
-                        avatarIdx = ai
-                        break
+            if (_avatar[avid] != undefined) {
+                avatarIdx = avid
+            } else {
+                Object.keys(_avatar).some(function(id) {
+                    if (_avatar[id].Name == avid) {
+                        avatarIdx = id
+                        return true
                     }
-                }
-            }
-            if (avatarIdx === undefined && _search_avatar[avid] != undefined) {
-                var offset = _search_avatar[avid]
-                avatarIdx = offset < 0 ? _avatar.length - 1 + offset : offset
+                })
             }
             if (avatarIdx != undefined) {
                 popAvatar(avatarIdx)
@@ -980,9 +978,7 @@ $(function () {
         })
 
         _diff_avatar.forEach(function (i, j) {
-            var offset = _search_avatar[i]
-            var idx = offset < 0 ? _avatar.length - 1 + offset : offset
-            var avatar_data = _avatar[idx]
+            var avatar_data = _avatar[i]
             if (!avatar_data) return
             
             // 确保技能数据已加载
@@ -1642,12 +1638,10 @@ $(function () {
         rotate()
         for (const [i, t] of Object.entries(_changelog2)) {
             if (!t.length) continue
-            if (_search_avatar[i] != undefined) {
-                var offset = _search_avatar[i]
-                var idx = offset < 0 ? _avatar.length - 1 + offset : offset
-                var tname = _avatar[idx].Name
-                var tcolor = _avatar[idx].Element
-                var ticon = _avatar[idx].Path
+            if (_avatar[i] != undefined) {
+                var tname = _avatar[i].Name
+                var tcolor = _avatar[i].Element
+                var ticon = _avatar[i].Path
             } else if (_weapon[i] != undefined) {
                 var tname = _weapon[i].Name
                 var tcolor = ''
@@ -2110,7 +2104,8 @@ $(function () {
             ]
         })
         $('.area').empty()
-        _avatar.forEach(function (t, i) {
+        Object.keys(_avatar).sort(function(a, b) { if (a == "1415") return -1; if (b == "1415") return 1; return parseFloat(_avatar[b].Ver) - parseFloat(_avatar[a].Ver) }).forEach(function (id) {
+            var t = _avatar[id]
             var stats = t.Stats
             if (!stats) {
                 stats = {
@@ -2356,9 +2351,9 @@ $(function () {
                     click: function (p) {
                         cur_coordinate = $('container').scrollTop()
                         if (t.Add) {
-                            popAvatar_2(i)
+                            popAvatar_2(id)
                         } else {
-                            popAvatar(i)
+                            popAvatar(id)
                         }
                         $('container').scrollTop($('h3').height())
                     },

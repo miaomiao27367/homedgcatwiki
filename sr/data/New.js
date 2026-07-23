@@ -27,7 +27,7 @@ var NEW_SR = [];
 
 // 添加角色
 for (const avatarId of (_diff_avatar || [])) {
-    const avatar = _avatar.find(a => a._id == avatarId);
+    const avatar = _avatar[avatarId];
     if (avatar) {
         NEW_SR.push({
             "Name": {
@@ -47,7 +47,7 @@ for (const avatarId of (_diff_avatar || [])) {
 
 // 添加武器
 for (const weaponId of (_diff_weapon || [])) {
-    const weapon = _weapon.find(w => w._id == weaponId);
+    const weapon = _weapon[weaponId];
     if (weapon) {
         NEW_SR.push({
             "Name": {

@@ -720,14 +720,17 @@ def generate_avatar_basic_file(character_id: str, character_data: Dict[str, Any]
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("// Auto Generated\n\n")
-        f.write("var _avatar = [\n")
-        f.write(f"    {json.dumps(avatar_data, ensure_ascii=False, indent=4)}\n")
-        f.write("]\n")
+        f.write(json.dumps(avatar_data, ensure_ascii=False, indent=4))
+        f.write("\n")
+
+
+AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sr', 'data', 'CH', 'Avatar.js')
 
 
 def merge_avatar_to_avatar_js(character_id: str) -> str:
     """
-    将生成的avatar基础数据自动拼接到Avatar.js的_avatar数组中
+    将生成的avatar基础数据插入到 Avatar.js 的 _avatar 对象中
+    新条目插入到对象头部 (var _avatar = { 之后)
 
     Args:
         character_id: 角色ID
@@ -735,7 +738,7 @@ def merge_avatar_to_avatar_js(character_id: str) -> str:
         拼接结果描述
     """
     basic_file = os.path.join(OUTPUT_DIR, f"{character_id}basic.js")
-    avatar_js = "./sr/data/CH/Avatar.js"
+    avatar_js = AVATAR_JS_PATH
 
     if not os.path.exists(basic_file):
         return ""
@@ -750,24 +753,29 @@ def merge_avatar_to_avatar_js(character_id: str) -> str:
     avatar_entry = json.loads(content[start:end+1])
     avatar_id = str(avatar_entry.get('_id', ''))
 
+    if not os.path.exists(avatar_js):
+        return f"错误：找不到 Avatar.js ({avatar_js})"
+
     with open(avatar_js, 'r', encoding='utf-8') as f:
         js_content = f.read()
 
-    if f'"_id": {avatar_id}' in js_content:
+    if f'"{avatar_id}":' in js_content:
         return "角色条目已存在，无需拼接"
 
     new_json = json.dumps(avatar_entry, ensure_ascii=False, indent=4)
     new_json = '\n'.join('    ' + line for line in new_json.split('\n'))
 
-    pattern = '"Spine": "xilian"\n    },\n    {'
+    new_entry = f'    "{avatar_id}": {new_json},\n'
+
+    pattern = 'var _avatar = {\n'
     if pattern not in js_content:
-        return "错误：无法定位 1415 角色条目结束位置"
-    js_content = js_content.replace(pattern, f'"Spine": "xilian"\n    }},\n{new_json},\n    {{', 1)
+        return "错误：无法定位 _avatar 对象起始位置"
+    js_content = js_content.replace(pattern, pattern + new_entry, 1)
 
     with open(avatar_js, 'w', encoding='utf-8') as f:
         f.write(js_content)
 
-    return f"已自动拼接角色 {avatar_id} 到 Avatar.js（1415下方）"
+    return f"已自动拼接角色 {avatar_id} 到 Avatar.js（头部）"
 
 
 def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any], all_versions_tree_data: Dict[str, Any],
