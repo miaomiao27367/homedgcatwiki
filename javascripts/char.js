@@ -1,4 +1,5 @@
 ﻿if (typeof _relic === 'undefined') document.write('<script src="/sr/data/CH/Relic.js" type="text/javascript"><\/script>')
+if (typeof _weapon === 'undefined') document.write('<script src="/sr/data/CH/Weapon.js" type="text/javascript"><\/script>')
 $(function () {
 
     var anniversary = 0
@@ -9,7 +10,7 @@ $(function () {
 
     var ehe = ((lang == 'CH') ? '妮可少女 玉衡杯数据库 yuhengcup.wiki <b>' : 'homdgcat.wiki | t.me/homdgcat <b>')
     if (April_1st) {
-        ehe = ((lang == 'CH') ? '铌钶钞钕 库据数杯衡玉 yuhengcup.wiki <b>' : 'homdgcat.wiki | t.me/homdgcat <b>')
+        ehe = ((lang == 'CH') ? '妮可少女 玉衡杯数据库 yuhengcup.wiki <b>' : 'homdgcat.wiki | t.me/homdgcat <b>')
     }
     var meow = April_1st ? ((lang == 'CH') ? '帕' : '~') : ''
     var meow2 = April_1st ? ((lang == 'CH') ? '喵喵喵' : ' Meow Meow~') : ''
@@ -769,27 +770,25 @@ $(function () {
             }
             if (avatarIdx != undefined) {
                 popAvatar(avatarIdx)
-            } else if (_search_weapon[avid] != undefined) {
-                var weapon_index = _search_weapon[avid]
-                if (_weapon[weapon_index] && (_weapon[weapon_index]._id == avid || _weapon[weapon_index].Name == avid)) {
-                    popWeapon(weapon_index)
-                } else {
-                    for (var i = 0; i < _weapon.length; i++) {
-                        if (_weapon[i] && (_weapon[i]._id == avid || _weapon[i].Name == avid)) {
-                            popWeapon(i)
-                            break
-                        }
-                    }
-                }
+            } else if (_weapon[avid] != undefined) {
+                popWeapon(avid)
             } else if (_relic[avid] != undefined) {
                 popRelic(avid)
             } else {
-                Object.keys(_relic).some(function(id) {
-                    if (_relic[id].Name == avid) {
-                        popRelic(id)
+                var foundInWeapon = Object.keys(_weapon).some(function(id) {
+                    if (_weapon[id].Name == avid) {
+                        popWeapon(id)
                         return true
                     }
                 })
+                if (!foundInWeapon) {
+                    Object.keys(_relic).some(function(id) {
+                        if (_relic[id].Name == avid) {
+                            popRelic(id)
+                            return true
+                        }
+                    })
+                }
             }
         }
     
@@ -914,9 +913,7 @@ $(function () {
         })
         
         _diff_weapon.forEach(function (i, j) {
-            var offset = _search_weapon[i]
-            var idx = offset < 0 ? _weapon.length - 1 + offset : offset
-            var wpn_data = _weapon[idx]
+            var wpn_data = _weapon[i]
             if (!wpn_data) return
             
             // 确保武器数据已加载
@@ -1651,10 +1648,10 @@ $(function () {
                 var tname = _avatar[idx].Name
                 var tcolor = _avatar[idx].Element
                 var ticon = _avatar[idx].Path
-            } else if (_search_weapon[i] != undefined) {
-                var tname = _weapon[_search_weapon[i]].Name
+            } else if (_weapon[i] != undefined) {
+                var tname = _weapon[i].Name
                 var tcolor = ''
-                var ticon = _weapon[_search_weapon[i]].Path
+                var ticon = _weapon[i].Path
             } else if (_relic[i] != undefined) {
                 var tname = _relic[i].Name
                 var tcolor = ''
@@ -2500,7 +2497,8 @@ $(function () {
             ]
         })
         $('.area').empty()
-        _weapon.forEach(function (t, i) {
+        Object.keys(_weapon).sort(function(a, b) { return b - a }).forEach(function (id) {
+            var t = _weapon[id]
             var stats = t.Stats
             if (!stats) {
                 stats = {
@@ -2607,7 +2605,7 @@ $(function () {
                     class: 'avatar-card hover-shadow avatar-card-weapon rar-' + (t.Rarity ? t.Rarity : '6'),
                     click: function (p) {
                         cur_coordinate = $('container').scrollTop()
-                        popWeapon(i)
+                        popWeapon(id)
                         $('container').scrollTop($('h3').height())
                     },
                     a: {

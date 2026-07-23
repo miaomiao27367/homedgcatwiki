@@ -6,7 +6,6 @@
 """
 
 import os
-import re
 import json
 import requests
 from typing import Dict, Any, Optional
@@ -420,14 +419,17 @@ def generate_avatar_weapon_data(weapon_id: str, weapon_data: Dict[str, Any], maj
     
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("// Auto Generated\n\n")
-        f.write("var _weapon = [\n")
-        f.write(f"    {json.dumps(weapon_avatar_data, ensure_ascii=False, indent=4)}\n")
-        f.write("]\n")
+        f.write(json.dumps(weapon_avatar_data, ensure_ascii=False, indent=4))
+        f.write("\n")
 
 
-def merge_weapon_to_avatar_js(weapon_id: str) -> str:
+WEAPON_JS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sr', 'data', 'CH', 'Weapon.js')
+
+
+def merge_weapon_to_weapon_js(weapon_id: str) -> str:
     """
-    将生成的光锥avatar基础数据自动拼接到Avatar.js的_weapon数组中
+    将生成的光锥基础数据插入到 Weapon.js 的 _weapon 对象中
+    新条目插入到对象头部 (var _weapon = { 之后)
 
     Args:
         weapon_id: 光锥ID
@@ -435,7 +437,7 @@ def merge_weapon_to_avatar_js(weapon_id: str) -> str:
         拼接结果描述
     """
     basic_file = os.path.join(OUTPUT_DIR2, f"{weapon_id}basic.js")
-    avatar_js = "./sr/data/CH/Avatar.js"
+    weapon_js = WEAPON_JS_PATH
 
     if not os.path.exists(basic_file):
         return ""
@@ -450,54 +452,30 @@ def merge_weapon_to_avatar_js(weapon_id: str) -> str:
     weapon_entry = json.loads(content[start:end+1])
     weapon_id_str = str(weapon_entry.get('_id', ''))
 
-    with open(avatar_js, 'r', encoding='utf-8') as f:
+    if not os.path.exists(weapon_js):
+        return f"错误：找不到 Weapon.js ({weapon_js})"
+
+    with open(weapon_js, 'r', encoding='utf-8') as f:
         js_content = f.read()
 
-    if f'"_id": {weapon_id_str}' in js_content:
+    if f'"{weapon_id_str}":' in js_content:
         return "光锥条目已存在，无需拼接"
 
     new_json = json.dumps(weapon_entry, ensure_ascii=False, indent=4)
     new_json = '\n'.join('    ' + line for line in new_json.split('\n'))
 
-    pattern = 'var _weapon = [\n    {'
+    new_entry = f'    "{weapon_id_str}": {new_json},\n'
+
+    # 插入到对象头部
+    pattern = 'var _weapon = {\n'
     if pattern not in js_content:
-        return "错误：无法定位 _weapon 数组起始位置"
-    js_content = js_content.replace(pattern, f'var _weapon = [\n{new_json},\n    {{', 1)
+        return "错误：无法定位 _weapon 对象起始位置"
+    js_content = js_content.replace(pattern, pattern + new_entry, 1)
 
-    # 同步更新 _search_weapon 映射表
-    weapon_name = weapon_entry.get('Name', '')
-    search_pattern = r'var _search_weapon = \{([^}]*)\}'
-    search_match = re.search(search_pattern, js_content, re.DOTALL)
-    if search_match:
-        old_entries = search_match.group(1)
-        new_entries_lines = []
-        for line in old_entries.strip().split('\n'):
-            line = line.strip()
-            if not line:
-                continue
-            m = re.match(r'"(.*)":\s*(-?\d+),?', line)
-            if m:
-                key = m.group(1)
-                value = int(m.group(2))
-                new_value = value - 1
-                new_entries_lines.append(f'    "{key}": {new_value},')
-        if new_entries_lines:
-            min_offset = min(
-                int(re.search(r':\s*(-?\d+)', l).group(1))
-                for l in new_entries_lines
-            )
-            new_offset = min_offset - 1
-        else:
-            new_offset = -1
-        new_entries_lines.insert(0, f'    "{weapon_name}": {new_offset},')
-        new_entries_lines.insert(0, f'    "{weapon_id_str}": {new_offset},')
-        new_search_block = 'var _search_weapon = {\n' + '\n'.join(new_entries_lines) + '\n}'
-        js_content = js_content.replace(search_match.group(0), new_search_block)
-
-    with open(avatar_js, 'w', encoding='utf-8') as f:
+    with open(weapon_js, 'w', encoding='utf-8') as f:
         f.write(js_content)
 
-    return f"已自动拼接光锥 {weapon_id_str} 到 Avatar.js（开头）"
+    return f"已自动拼接光锥 {weapon_id_str} 到 Weapon.js（头部）"
 
 def generate_weapon_data(weapon_id: str, major_version: str = None, minor_versions: list = None) -> str:
     """
@@ -536,8 +514,8 @@ def generate_weapon_data(weapon_id: str, major_version: str = None, minor_versio
         if latest_version in all_versions_data:
             generate_avatar_weapon_data(weapon_id, all_versions_data[latest_version], major_version)
 
-    # 自动拼接到Avatar.js
-    merge_msg = merge_weapon_to_avatar_js(weapon_id)
+    # 自动拼接到 Weapon.js
+    merge_msg = merge_weapon_to_weapon_js(weapon_id)
     result = f"光锥 {weapon_id} 数据生成完成！"
     if merge_msg:
         result += "\n" + merge_msg
