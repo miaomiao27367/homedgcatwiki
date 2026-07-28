@@ -1,4 +1,9 @@
 // Auto Generated from turnbasedgamedata (TextMap + export)
+
+var _versions_ = {
+    "1504": ["Live"]
+}
+
 var _avatarskill_ = {
     "150401": {
         "Live": {

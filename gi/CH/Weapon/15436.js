@@ -17,6 +17,11 @@ var _WeaponAffixPConfig_ = {
                 "Affix": [
                     "装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>120</color>点。 / 装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>150</color>点。 / 装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>180</color>点。 / 装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>210</color>点。 / 装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>240</color>点。"
                 ]
+            },
+            "4": {
+                "Affix": [
+                    "装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>120</color>点。 / 装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>150</color>点。 / 装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>180</color>点。 / 装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>210</color>点。 / 装备者施放元素战技后的12秒内，元素精通提升<color style='color:#99FFFF;'>240</color>点。"
+                ]
             }
         }
     }

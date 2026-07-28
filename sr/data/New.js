@@ -70,7 +70,7 @@ NEW_GI = [];
 // 添加角色
 if (typeof _changelog_ !== 'undefined' && _changelog_.NA) {
     for (const avatarId of _changelog_.NA) {
-        const avatar = __AvatarInfoConfig.find(a => a._id == avatarId);
+        const avatar = __AvatarInfoConfig[avatarId];
         if (avatar) {
             NEW_GI.push({
                 "Name": {
@@ -92,7 +92,7 @@ if (typeof _changelog_ !== 'undefined' && _changelog_.NA) {
 // 添加武器
 if (typeof _changelog_ !== 'undefined' && _changelog_.NW) {
     for (const weaponId of _changelog_.NW) {
-        const weapon = _WeaponConfig.find(w => w._id == weaponId);
+        const weapon = _WeaponConfig[weaponId];
         if (weapon) {
             NEW_GI.push({
                 "Name": {

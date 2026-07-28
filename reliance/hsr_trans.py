@@ -795,6 +795,12 @@ def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any],
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("// Auto Generated\n\n")
 
+        # 生成版本列表
+        version_list = list(versions.keys())
+        f.write("var _versions_ = {\n")
+        f.write(f'    "{character_id}": {json.dumps(version_list, ensure_ascii=False)}\n')
+        f.write("}\n\n")
+
         # 生成技能数据（多版本）
         f.write("var _avatarskill_ = {\n")
         # 获取第一个有效的版本键作为遍历基准

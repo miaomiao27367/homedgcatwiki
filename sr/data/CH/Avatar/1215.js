@@ -1,5 +1,9 @@
 // Auto Generated
 
+var _versions_ = {
+    "1215": ["Pre"]
+}
+
 var _avatarskill_ = {
     "121501": {
         "Pre": {

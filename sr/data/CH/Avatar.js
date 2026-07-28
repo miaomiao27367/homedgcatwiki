@@ -1,4 +1,3 @@
-
 // Auto Generated
 
 var _avatar = {
@@ -51,11 +50,7 @@ var _avatar = {
                 null,
                 null
         ],
-        "Camp": null,
-        "V": [
-                "v1",
-                "v2"
-        ]
+        "Camp": null
 },
     "1512": {
         "_id": 1512,
@@ -109,10 +104,6 @@ var _avatar = {
                 null
         ],
         "Camp": null,
-        "V": [
-                "v1",
-                "v2"
-        ],
         "Servant": {
                 "_id": 11512,
                 "Name": "晴空乐手",
@@ -173,15 +164,7 @@ var _avatar = {
                 null,
                 null
         ],
-        "Camp": null,
-        "V": [
-                "v1",
-                "v2",
-                "v3",
-                "v4",
-                "v5",
-                "v6"
-        ]
+        "Camp": null
 },
     "1509": {
         "_id": 1509,
@@ -232,15 +215,7 @@ var _avatar = {
                 null,
                 null
         ],
-        "Camp": null,
-        "V": [
-                "v1",
-                "v2",
-                "v3",
-                "v4",
-                "v5",
-                "v6"
-        ]
+        "Camp": null
 },
     "1508": {
         "_id": 1508,
@@ -291,15 +266,7 @@ var _avatar = {
                 null,
                 null
         ],
-        "Camp": null,
-        "V": [
-                "v1",
-                "v2",
-                "v3",
-                "v4",
-                "v5",
-                "v6"
-        ]
+        "Camp": null
 },
     "1507": {
         "_id": 1507,
@@ -351,13 +318,7 @@ var _avatar = {
                 null,
                 null
         ],
-        "Camp": null,
-        "V": [
-                "v1",
-                "v2",
-                "v3",
-                "v4"
-        ]
+        "Camp": null
 },
     "1506": {
         "_id": 1506,
@@ -412,14 +373,7 @@ var _avatar = {
                 null,
                 null
         ],
-        "Camp": null,
-        "V": [
-                "v1",
-                "v2",
-                "v3",
-                "v4",
-                "v5"
-        ]
+        "Camp": null
 },
     "1505": {
         "_id": 1505,
@@ -469,14 +423,7 @@ var _avatar = {
                 null,
                 null
         ],
-        "Camp": null,
-        "V": [
-                "v1",
-                "v2",
-                "v3",
-                "v4",
-                "v5"
-        ]
+        "Camp": null
 },
     "1504": {
         "_id": 1504,
@@ -525,10 +472,7 @@ var _avatar = {
                 "子安武人",
                 "강수진"
         ],
-        "Camp": 0,
-        "V": [
-                "Live"
-        ]
+        "Camp": 0
 },
     "1502": {
         "_id": 1502,
@@ -578,10 +522,7 @@ var _avatar = {
                 null,
                 null
         ],
-        "Camp": 0,
-        "V": [
-                "Live"
-        ]
+        "Camp": 0
 },
     "1501": {
         "_id": 1501,
@@ -5596,8 +5537,6 @@ var _avatar = {
         ]
 }
 }
-
-
 
 var _item = {
     "2": {

@@ -163,6 +163,7 @@ $(function () {
 
     var this_avatar_vers = 0
     var this_avatar_cur_ver = 0
+    var this_avatar_cmp_ver = 0
 
     var this_weapon_vers = 0
     var this_weapon_cur_ver = 0
@@ -275,6 +276,7 @@ $(function () {
     var _notes = {}
     var _adiff = {}
     var _mtc = {}
+    var _versions = {}
 
     function begin() {
         // 不再从_avatarskilltree加载，因为现在角色数据从id.js中获取
@@ -996,6 +998,7 @@ $(function () {
                     _notes = {..._notes, ..._notes_}
                     _adiff = {..._adiff, ..._adiff_}
                     _mtc = {..._mtc, ..._mtc_}
+                    _versions = {..._versions, ..._versions_}
                 }
             }
             
@@ -2847,6 +2850,7 @@ $(function () {
                 _notes = {..._notes, ..._notes_}
                 _adiff = {..._adiff, ..._adiff_}
                 _mtc = {..._mtc, ..._mtc_}
+                _versions = {..._versions, ..._versions_}
             }
         }
     }
@@ -2888,8 +2892,10 @@ $(function () {
 
     function renderAvatarAfter(i) {
         if (unchanged) {
-            this_avatar_vers = getVerAvatar(this_avatar.V)
+            this_avatar_vers = getVerAvatar(_versions[this_avatar._id])
             this_avatar_cur_ver = this_avatar_vers[1]
+            var cur_idx = _versions[this_avatar._id].indexOf(this_avatar_cur_ver)
+            this_avatar_cmp_ver = cur_idx > 0 ? _versions[this_avatar._id][cur_idx - 1] : this_avatar_cur_ver
         }
         cur_avatar_page = i
         var mats = this_avatar.Mat
@@ -3157,6 +3163,31 @@ $(function () {
                                                         'justify-content': 'center'
                                                     },
                                                     when: !((i == 7) || (i == 8) || (i == 9) || (i == 1221))
+                                                },
+                                                {
+                                                    span: [
+                                                        {
+                                                            select: '',
+                                                            options: this_avatar_vers[0],
+                                                            id: 'cl_vo',
+                                                            class: 'cl_ver_choose',
+                                                        },
+                                                        {
+                                                            span: ' → '
+                                                        },
+                                                        {
+                                                            select: '',
+                                                            options: this_avatar_vers[0],
+                                                            id: 'cl_vn',
+                                                            class: 'cl_ver_choose',
+                                                        }
+                                                    ],
+                                                    class: 'cl_ver_choose_wrap',
+                                                    style: {
+                                                        display: 'flex',
+                                                        'justify-content': 'center'
+                                                    },
+                                                    when: (i == 6)
                                                 },
                                                 {
                                                     span: [
@@ -4061,64 +4092,35 @@ $(function () {
         }
         if (i == 6) {
             var vn = this_avatar_cur_ver
-            var vo = ''
-            var vo_index = this_avatar.V.indexOf(vn) - 1
-            if (vo_index < 0) {
-                $('.mon_body').render({
-                    div: [
-                        {
-                            div: {
-                                p: txt.Changelog[lang3]
+            var vo = this_avatar_cmp_ver
+            var shows_1 = _adiff[this_avatar._id] ? _adiff[this_avatar._id][vn] : []
+            if (!shows_1) shows_1 = []
+            $('.mon_body').render({
+                div: [
+                    {
+                        div: {
+                            p: txt.Changelog[lang3]
+                        },
+                        class: 'a_section_head',
+                        style: {
+                            color: "#" + elemcolor[this_avatar.Element]
+                        }
+                    },
+                    {
+                        div: {
+                            p: function (k) {
+                                return ppics(k.data.replaceAll("#", "</color> ").replaceAll("@", "<color style='color:#f29e38'>").replaceAll("``", "<color style='color:#f29e38'><b>").replaceAll("`", "</b></color><br>").replaceAll("$", "#"))
                             },
-                            class: 'a_section_head',
+                            data: [`<b>${vo} @→# ${vn}<b>`].concat(shows_1, d_avatar(this_avatar, vo, vn)),
                             style: {
-                                color: "#" + elemcolor[this_avatar.Element]
+                                'margin-top': '20px'
                             }
                         },
-                        {
-                            div: {
-                                p: ' ',
-                                style: {
-                                    'margin-top': '20px'
-                                }
-                            },
-                            class: 'a_section_content'
-                        }
-                    ],
-                    class: 'a_section',
-                })
-            } else {
-                vo = this_avatar.V[vo_index]
-                var shows_1 = _adiff[this_avatar._id] ? _adiff[this_avatar._id][vn] : []
-                if (!shows_1) shows_1 = []
-                $('.mon_body').render({
-                    div: [
-                        {
-                            div: {
-                                p: txt.Changelog[lang3]
-                            },
-                            class: 'a_section_head',
-                            style: {
-                                color: "#" + elemcolor[this_avatar.Element]
-                            }
-                        },
-                        {
-                            div: {
-                                p: function (k) {
-                                    return ppics(k.data.replaceAll("#", "</color> ").replaceAll("@", "<color style='color:#f29e38'>").replaceAll("``", "<color style='color:#f29e38'><b>").replaceAll("`", "</b></color><br>").replaceAll("$", "#"))
-                                },
-                                data: [`<b>${vo} @→# ${vn}<b>`].concat(shows_1, d_avatar(this_avatar, vo, vn)),
-                                style: {
-                                    'margin-top': '20px'
-                                }
-                            },
-                            class: 'a_section_content'
-                        }
-                    ],
-                    class: 'a_section',
-                })
-            }
-            
+                        class: 'a_section_content'
+                    }
+                ],
+                class: 'a_section',
+            })
         }
         if (i == 9) {
             $('.mon_body').render({
@@ -4709,6 +4711,8 @@ $(function () {
             refresh_ctm()
         }
         $('.stat_ver_choose select').val(this_avatar_cur_ver)
+        $('#cl_vo').val(this_avatar_cmp_ver)
+        $('#cl_vn').val(this_avatar_cur_ver)
         rotate()
         if (anniversary && ((this_avatar._id == 1221) || (this_avatar._id == 12210))) render_anni()
     }
@@ -5850,6 +5854,13 @@ $(function () {
         unchanged = 0
         this_avatar_cur_ver = $(this).val()
         renderAvatar(cur_avatar_page)
+    })
+
+    $('body').on('change', '.cl_ver_choose', function () {
+        unchanged = 0
+        this_avatar_cmp_ver = $('#cl_vo').val()
+        this_avatar_cur_ver = $('#cl_vn').val()
+        renderAvatar(6)
     })
 
     $('body').on('change', '.stat_ver_choose_w select', function () {

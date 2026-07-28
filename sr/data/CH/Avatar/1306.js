@@ -1,5 +1,9 @@
 // Auto Generated
 
+var _versions_ = {
+    "1306": ["v5","Live"]
+}
+
 var _avatarskill_ = {
     "130601": {
         "v5": {

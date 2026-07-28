@@ -278,10 +278,20 @@ $(function () {
     script_computer.src = '/gi/' + lang3 + '/avatar.js'
     document.head.append(script_computer)
     script_computer.onload = function() {
-        let script_changelog = document.createElement('script')
-        script_changelog.src = '/gi/' + lang3 + '/changelog.js'
-        document.head.append(script_changelog)
-        script_changelog.onload = begin
+        let script_weapon = document.createElement('script')
+        script_weapon.src = '/gi/' + lang3 + '/Weapon.js'
+        document.head.append(script_weapon)
+        script_weapon.onload = function() {
+            let script_relic = document.createElement('script')
+            script_relic.src = '/gi/' + lang3 + '/Relic.js'
+            document.head.append(script_relic)
+            script_relic.onload = function() {
+                let script_changelog = document.createElement('script')
+                script_changelog.src = '/gi/' + lang3 + '/changelog.js'
+                document.head.append(script_changelog)
+                script_changelog.onload = begin
+            }
+        }
     }
 
     loaded_a_1 = []
@@ -729,7 +739,7 @@ $(function () {
 
         _AvatarInfoConfig = __AvatarInfoConfig
 
-        for (var o = 0; o < _AvatarInfoConfig.length; o++) {
+        for (var o in _AvatarInfoConfig) {
             char_id_list[_AvatarInfoConfig[o]._id] = o
         }
 
@@ -1112,7 +1122,7 @@ $(function () {
                             }
                         ],
                         class: (window.innerWidth <= 500 ? 'avatar-card-slim' : 'avatar-card') + ' avatar-card-mark hover-shadow',
-                        data: _AvatarInfoConfig,
+                        data: Object.values(_AvatarInfoConfig).sort(function(a, b) { return parseFloat(b.Version) - parseFloat(a.Version) }),
                         click: function (p) {
                             if (p.org_data.Add) {
                                 startAvatar_2(p.org_data)
@@ -1165,10 +1175,10 @@ $(function () {
                 startAvatar_0(index_avatar[come_id])
             } catch (err) {}
             if (index_weapon[come_id] != undefined) {
-                renderWeaponInfo(_WeaponConfig[index_weapon[come_id]])
+                renderWeaponInfo(_WeaponConfig[come_id])
             }
             if (index_relic[come_id] != undefined) {
-                doRelic(_RelicConfig[index_relic[come_id]])
+                doRelic(_RelicConfig[come_id])
             }
             $('#AVID').val('')
         }
@@ -5256,13 +5266,7 @@ $(function () {
     }
 
     function cl_write_weapon(v, v1, v2) {
-        o_this = 0
-        for (const i in _WeaponConfig) {
-            if (_WeaponConfig[i]._id == v) {
-                o_this = _WeaponConfig[i]
-                break
-            }
-        }
+        o_this = _WeaponConfig[v]
         _old = _WeaponAffixPConfig[o_this.EquipAffixID].Ver[v1].Affix.join("<br>").replaceAll("<color style='color:#99FFFFFF'>", "@").replaceAll("</color>", "$").replaceAll("<br> ", "")
         _new = _WeaponAffixPConfig[o_this.EquipAffixID].Ver[v2].Affix.join("<br>").replaceAll("<color style='color:#99FFFFFF'>", "@").replaceAll("</color>", "$").replaceAll("<br> ", "")
         desc_diff = dif(_old, _new)
@@ -5355,13 +5359,7 @@ $(function () {
     }
 
     function hn_write_avatar(u) {
-        o_this = 0
-        for (const i in __AvatarInfoConfig) {
-            if (__AvatarInfoConfig[i]._id == u) {
-                o_this = __AvatarInfoConfig[i]
-                break
-            }
-        }
+        o_this = __AvatarInfoConfig[u]
         if (!_AvatarDataConfig[u] || !_AvatarDataConfig[u].OtherDataList) return
         var avatar_icon = o_this.Icon
         if (avatar_icon.includes('PlayerBoy')) avatar_icon = 'UI_AvatarIcon_PlayerBoy'
@@ -5441,7 +5439,7 @@ $(function () {
             div: '',
             class: 'relic-area'
         })
-        _RelicConfig.forEach(function (t) {
+        Object.values(_RelicConfig).sort(function(a, b) { return b.ID - a.ID }).forEach(function (t) {
             var skill_show = []
             t.Skills.forEach(function (j) {
                 skill_show.push({
@@ -5867,8 +5865,8 @@ $(function () {
                 }
             ]
         });
-        if (typeof _WeaponConfig !== 'undefined' && _WeaponConfig !== null && Array.isArray(_WeaponConfig)) {
-            _WeaponConfig.forEach(function (wpn) {
+        if (typeof _WeaponConfig !== 'undefined' && _WeaponConfig !== null) {
+            Object.values(_WeaponConfig).sort(function(a, b) { return b._id - a._id }).forEach(function (wpn) {
                 $('.avatar-area-weapon-reserved').render({
                     div: [
                         {
@@ -6957,7 +6955,7 @@ $(function () {
         console.log(v1 + v2)
 
         var show_name = ""
-        for (const ii of __AvatarInfoConfig) {
+        for (const ii of Object.values(__AvatarInfoConfig)) {
             if (ii._id == codename) {
                 show_name = ii.Name
                 break

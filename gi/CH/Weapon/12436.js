@@ -17,6 +17,11 @@ var _WeaponAffixPConfig_ = {
                 "Affix": [
                     "触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>64</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>16%</color>。装备者处于队伍后台时，依然能触发上述效果。 / 触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>80</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>20%</color>。装备者处于队伍后台时，依然能触发上述效果。 / 触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>96</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>24%</color>。装备者处于队伍后台时，依然能触发上述效果。 / 触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>112</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>28%</color>。装备者处于队伍后台时，依然能触发上述效果。 / 触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>128</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>32%</color>。装备者处于队伍后台时，依然能触发上述效果。"
                 ]
+            },
+            "4": {
+                "Affix": [
+                    "触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>64</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>16%</color>。装备者处于队伍后台时，依然能触发上述效果。 / 触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>80</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>20%</color>。装备者处于队伍后台时，依然能触发上述效果。 / 触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>96</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>24%</color>。装备者处于队伍后台时，依然能触发上述效果。 / 触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>112</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>28%</color>。装备者处于队伍后台时，依然能触发上述效果。 / 触发元素反应的12秒内，装备者的元素精通提升<color style='color:#99FFFF;'>128</color>点；触发星烁反应的12秒内，装备者的攻击力提升<color style='color:#99FFFF;'>32%</color>。装备者处于队伍后台时，依然能触发上述效果。"
+                ]
             }
         }
     }
