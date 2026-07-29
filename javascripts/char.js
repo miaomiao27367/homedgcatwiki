@@ -59,6 +59,7 @@ $(function () {
         1326050,
         2763000,
     ]
+    var lv_label = ['1', '20', '30', '40', '50', '60', '70', '80']
     var emote_num = 23
     var unused_emotes = [5, 6, 7, 9, 17, 18]
 
@@ -3185,50 +3186,64 @@ $(function () {
                                                     class: 'cl_ver_choose_wrap',
                                                     style: {
                                                         display: 'flex',
-                                                        'justify-content': 'center'
+                                                        gap: '6px',
+                                                        'justify-content': 'center',
+                                                        'margin-top': '8px'
                                                     },
                                                     when: (i == 6)
                                                 },
                                                 {
-                                                    span: [
+                                                    div: [
                                                         {
-                                                            select: '',
-                                                            options: {
-                                                                "1": 1,
-                                                                "20": 2,
-                                                                "30": 3,
-                                                                "40": 4,
-                                                                "50": 5,
-                                                                "60": 6,
-                                                                "70": 7,
-                                                                "80": 8
-                                                            },
-                                                            id: 'lv_low',
-                                                            class: 'watch',
+                                                            span: 'Lv.1 → Lv.80',
+                                                            class: 'range_label',
+                                                            id: 'lv_range_label',
+                                                            style: {
+                                                                'min-width': '80px',
+                                                                'text-align': 'left'
+                                                            }
                                                         },
                                                         {
-                                                            span: ' → '
-                                                        },
-                                                        {
-                                                            select: '',
-                                                            options: {
-                                                                "1": 1,
-                                                                "20": 2,
-                                                                "30": 3,
-                                                                "40": 4,
-                                                                "50": 5,
-                                                                "60": 6,
-                                                                "70": 7,
-                                                                "80": 8
-                                                            },
-                                                            id: 'lv_high',
-                                                            class: 'watch',
+                                                            div: [
+                                                                {
+                                                                    input: '',
+                                                                    a: {
+                                                                        type: 'range',
+                                                                        min: '1',
+                                                                        max: '8',
+                                                                        value: '1',
+                                                                        step: '1'
+                                                                    },
+                                                                    id: 'lv_low',
+                                                                    class: 'watch range_slider',
+                                                                },
+                                                                {
+                                                                    input: '',
+                                                                    a: {
+                                                                        type: 'range',
+                                                                        min: '1',
+                                                                        max: '8',
+                                                                        value: '8',
+                                                                        step: '1'
+                                                                    },
+                                                                    id: 'lv_high',
+                                                                    class: 'watch range_slider',
+                                                                }
+                                                            ],
+                                                            style: {
+                                                                display: 'flex',
+                                                                'flex-direction': 'column',
+                                                                gap: '4px'
+                                                            }
                                                         }
                                                     ],
                                                     class: 'mat_calc_choose',
                                                     style: {
                                                         display: 'flex',
-                                                        'justify-content': 'center'
+                                                        'justify-content': 'center',
+                                                        'align-items': 'center',
+                                                        'flex-wrap': 'wrap',
+                                                        gap: '8px'
                                                     },
                                                     when: (i == 1221)
                                                 }
@@ -4623,10 +4638,6 @@ $(function () {
                 ]
             })
             _mtc[this_avatar._id].Skills.forEach(function (t, k) {
-                var this_skill_options = {}
-                for (var b = 1; b <= t.Level; b++) {
-                    this_skill_options[b.toString()] = b
-                }
                 $('.mtc_skill').render({
                     tr: [
                         {
@@ -4639,32 +4650,61 @@ $(function () {
                             td: {
                                 div: [
                                     {
-                                        select: '',
-                                        options: this_skill_options,
-                                        id: 'skill_low_' + k,
-                                        class: 'watch',
+                                        span: 'Lv.1 → Lv.' + t.Level,
+                                        class: 'range_label',
+                                        id: 'skill_range_' + k + '_label',
+                                        style: {
+                                            'min-width': '80px',
+                                            'text-align': 'left'
+                                        }
                                     },
                                     {
-                                        span: ' → ',
-                                        class: 'arrow'
-                                    },
-                                    {
-                                        select: '',
-                                        options: this_skill_options,
-                                        id: 'skill_high_' + k,
-                                        class: 'watch',
+                                        div: [
+                                            {
+                                                input: '',
+                                                a: {
+                                                    type: 'range',
+                                                    min: '1',
+                                                    max: t.Level.toString(),
+                                                    value: '1',
+                                                    step: '1'
+                                                },
+                                                id: 'skill_low_' + k,
+                                                class: 'watch range_slider',
+                                            },
+                                            {
+                                                input: '',
+                                                a: {
+                                                    type: 'range',
+                                                    min: '1',
+                                                    max: t.Level.toString(),
+                                                    value: t.Level.toString(),
+                                                    step: '1'
+                                                },
+                                                id: 'skill_high_' + k,
+                                                class: 'watch range_slider',
+                                            }
+                                        ],
+                                        style: {
+                                            display: 'flex',
+                                            'flex-direction': 'column',
+                                            gap: '4px'
+                                        }
                                     }
                                 ],
                                 style: {
                                     margin: '0',
+                                    display: 'flex',
+                                    'align-items': 'center',
+                                    'flex-wrap': 'wrap',
+                                    'justify-content': 'center',
+                                    gap: '4px'
                                 }
                             },
                             class: 'mtc_lower'
                         }
                     ],
                 })
-                $('#skill_low_' + k).val(1)
-                $('#skill_high_' + k).val(t.Level)
             })
             _mtc[this_avatar._id].Traces.forEach(function (t, k) {
                 $('.mtc_skill').render({
@@ -4706,8 +4746,7 @@ $(function () {
                     ],
                 })
             })
-            $('#lv_low').val('1')
-            $('#lv_high').val('8')
+            $('#lv_low').trigger('input')
             refresh_ctm()
         }
         $('.stat_ver_choose select').val(this_avatar_cur_ver)
@@ -5057,6 +5096,21 @@ $(function () {
     })
 
     $('body').on('change', '.watch', refresh_ctm)
+
+    $('body').on('input', '.range_slider', function () {
+        var id = $(this).attr('id')
+        var val = parseInt($(this).val())
+        if (id.startsWith('lv_')) {
+            var low = parseInt($('#lv_low').val())
+            var high = parseInt($('#lv_high').val())
+            $('#lv_range_label').text('Lv.' + lv_label[low - 1] + ' → Lv.' + lv_label[high - 1])
+        } else if (id.startsWith('skill_')) {
+            var k = id.split('_').pop()
+            var low = parseInt($('#skill_low_' + k).val())
+            var high = parseInt($('#skill_high_' + k).val())
+            $('#skill_range_' + k + '_label').text('Lv.' + low + ' → Lv.' + high)
+        }
+    })
 
     function refresh_ctm() {
 

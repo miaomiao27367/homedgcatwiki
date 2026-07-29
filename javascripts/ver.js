@@ -87,68 +87,6 @@ var createSyncPanel = function() {
     });
     dataSection.append(dataTitle, dataCheckboxGroup, avatarIdInput, weaponIdInput);
 
-    // === 图片资源部分（新增） ===
-    var imageSection = $('<div style="background-color: rgba(233,30,99,0.2); border-radius: 12px; padding: 15px;"></div>');
-    var imageTitle = $('<div style="display: flex; align-items: center; gap: 10px; color: white; font-size: 15px; font-weight: bold; margin-bottom: 12px;"><span>🖼️</span><span>图片资源</span></div>');
-    
-    var imageItems = [
-        { id: 'img-avatar', label: '更新角色图片', urls:[  "/images/avatarshopicon/avatar/{id}.png",
-                                                        "/images/avataricon/avatar/{id}.png",
-                                                        "/images/avatardrawcard/{id}.png",
-                                                        "/images/skillicons/avatar/{id}",] },
-        { id: 'img-weapon', label: '更新武器图片', urls: ["/images/lightconemediumicon/{id}.png",
-                                                        "/images/lightconemaxfigures/{id}.png",] },
-        { id: 'img-monster', label: '更新怪物图片', urls: ['/images/monsterfigure/Monster_{id}.png'] }
-    ];
-
-    var imageCheckboxGroup = $('<div style="display: flex; flex-wrap: wrap; gap: 10px;"></div>');
-
-    var avatarImgIdInput = $('<input type="text" id="avatar-img-id-input" placeholder="请输入角色ID（多个用逗号分隔）" style="width: 100%; padding: 8px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; background-color: rgba(255,255,255,0.1); color: white; font-size: 13px; box-sizing: border-box; display: none;" />');
-
-    var weaponImgIdInput = $('<input type="text" id="weapon-img-id-input" placeholder="请输入武器ID（多个用逗号分隔）" style="width: 100%; padding: 8px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; background-color: rgba(255,255,255,0.1); color: white; font-size: 13px; box-sizing: border-box; display: none;" />');
-
-    var monsterImgIdInput = $('<input type="text" id="monster-img-id-input" placeholder="请输入怪物ID（多个用逗号分隔）" style="width: 100%; padding: 8px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; background-color: rgba(255,255,255,0.1); color: white; font-size: 13px; box-sizing: border-box; display: none;" />');
-    
-    imageItems.forEach(function(item) {
-        var checkbox = $('<label style="display: flex; align-items: center; gap: 6px; padding: 8px 12px; background-color: rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer;" onmouseover="this.style.backgroundColor=rgba(255,255,255,0.15)" onmouseout="this.style.backgroundColor=rgba(255,255,255,0.1)">' +
-            '<input type="checkbox" id="' + item.id + '" style="width: 16px; height: 16px; margin: 0; vertical-align: middle;">' +
-            '<span style="color: white; font-size: 14px; line-height: 1;">' + item.label + '</span>' +
-        '</label>');
-
-        if (item.id === 'img-avatar') {
-            checkbox.find('input').change(function() {
-                if ($(this).is(':checked')) {
-                    avatarImgIdInput.show();
-                } else {
-                    avatarImgIdInput.hide();
-                }
-            });
-        }
-        
-        if (item.id === 'img-weapon') {
-            checkbox.find('input').change(function() {
-                if ($(this).is(':checked')) {
-                    weaponImgIdInput.show();
-                } else {
-                    weaponImgIdInput.hide();
-                }
-            });
-        }
-        
-        if (item.id === 'img-monster') {
-            checkbox.find('input').change(function() {
-                if ($(this).is(':checked')) {
-                    monsterImgIdInput.show();
-                } else {
-                    monsterImgIdInput.hide();
-                }
-            });
-        }
-        
-        imageCheckboxGroup.append(checkbox);
-    });
-    imageSection.append(imageTitle, imageCheckboxGroup, avatarImgIdInput, weaponImgIdInput, monsterImgIdInput);
-
     var jsSection = $('<div style="background-color: rgba(76,175,80,0.2); border-radius: 12px; padding: 15px;"></div>');
     var jsTitle = $('<div style="display: flex; align-items: center; gap: 10px; color: white; font-size: 15px; font-weight: bold; margin-bottom: 12px;"><span>⚙️</span><span>渲染JS</span></div>');
     
@@ -173,7 +111,7 @@ var createSyncPanel = function() {
     });
     jsSection.append(jsTitle, jsCheckboxGroup);
 
-    var syncConfig = { dataItems: dataItems, imageItems: imageItems, jsItems: jsItems };
+    var syncConfig = { dataItems: dataItems, jsItems: jsItems };
 
     var customSection = $('<div style="background-color: rgba(255,152,0,0.2); border-radius: 12px; padding: 15px;"></div>');
     var customTitle = $('<div style="display: flex; align-items: center; gap: 10px; color: white; font-size: 15px; font-weight: bold; margin-bottom: 12px;"><span>🎨</span><span>自定义资源</span></div>');
@@ -217,36 +155,6 @@ var createSyncPanel = function() {
             }
         });
 
-        imageItems.forEach(function(item) {
-            if ($('#' + item.id).is(':checked')) {
-                var inputId = '';
-                var label = '';
-                if (item.id === 'img-avatar') {
-                    inputId = 'avatar-img-id-input';
-                    label = '角色';
-                } else if (item.id === 'img-weapon') {
-                    inputId = 'weapon-img-id-input';
-                    label = '武器';
-                } else if (item.id === 'img-monster') {
-                    inputId = 'monster-img-id-input';
-                    label = '怪物';
-                }
-                
-                var ids = $('#' + inputId).val().trim();
-                if (!ids) {
-                    alert('请输入' + label + 'ID！');
-                    return;
-                }
-                var idsArray = ids.split(',').map(function(id) { return id.trim(); }).filter(function(id) { return id; });
-                idsArray.forEach(function(id) {
-                    item.urls.forEach(function(template) {
-                        var url = template.replace('{id}', id);
-                        selectedUrls.push(url);
-                    });
-                });
-            }
-        });
-
         jsItems.forEach(function(item) {
             if ($('#' + item.id).is(':checked') && item.urls && item.urls.length > 0) {
                 selectedUrls = selectedUrls.concat(item.urls);
@@ -270,7 +178,7 @@ var createSyncPanel = function() {
     });
     
     // 添加元素到面板
-    panel.append(closeBtn, title, dataSection, imageSection, jsSection, customSection, startSyncBtn);
+    panel.append(closeBtn, title, dataSection, jsSection, customSection, startSyncBtn);
     
     // 创建遮罩层
     var overlay = $('<div class="sync-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 9999;"></div>').click(function() {

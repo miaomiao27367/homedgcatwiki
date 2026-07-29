@@ -15,7 +15,8 @@ from typing import Dict, Any, Optional
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"  # 可选: en, zh, ja, ko
 OUTPUT_DIR = "./tempdata"
-OUTPUT_DIR2="./sr/data/CH/Avatar"
+OUTPUT_DIR2 = "./sr/data/CH/Avatar"
+DEBUG_OUTPUT_DIR = "./tempoutput"
 
 # 确保输出目录存在
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -466,100 +467,171 @@ def convert_rank_data(character_id: str, ranks: Dict[str, Any], version_key: str
 
     return rank_data
 
-def generate_js_file_old(character_id: str, skill_data: Dict[str, Any], tree_data: Dict[str, Any], rank_data: Dict[str, Any]) -> None:
+
+def _convert_material_list(material_list: list) -> Dict[str, int]:
     """
-    生成JS文件
+    将API的material_list转换为{ "item_id": item_num }格式
     """
-    output_file = os.path.join(OUTPUT_DIR, f"{character_id}.js")
-    
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write("// Auto Generated\n\n")
+    result = {}
+    for mat in material_list:
+        item_id = str(mat.get("item_id", ""))
+        item_num = mat.get("item_num", 0)
+        if item_id and item_num > 0:
+            result[item_id] = item_num
+    return result
 
-        # 写入技能数据
-        f.write("var _avatarskill_ = {\n")
-        if skill_data:
-            for skill_id, skill_info in skill_data.items():
-                f.write(f'\t"{skill_id}": {{\n')
-                f.write('\t\t"Live": {\n')
 
-                # 手动格式化每个字段
-                live_data = skill_info["Live"]
-                f.write(f'\t\t\t"Name": "{live_data["Name"]}",\n')
-                f.write(f'\t\t\t"MaxLevel": {live_data["MaxLevel"]},\n')
-                f.write(f'\t\t\t"Type": "{live_data["Type"]}",\n')
-                f.write(f'\t\t\t"Tag": "{live_data["Tag"]}",\n')
-                f.write(f'\t\t\t"Desc": "{live_data["Desc"]}",\n')
+def convert_mtc_data(character_id: str, character_data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    转换培养材料数据（_mtc_）
 
-                # 格式化Params数组（单行格式）
-                params_str = json.dumps(live_data["Params"], ensure_ascii=False, separators=(",", ":"))
-                f.write(f'\t\t\t"Params": {params_str},\n')
+    Args:
+        character_id: 角色ID
+        character_data: 完整的角色API数据
 
-                f.write(f'\t\t\t"BP": {live_data["BP"]},\n')
-                f.write(f'\t\t\t"SPAdd": {live_data["SPAdd"]},\n')
-                f.write(f'\t\t\t"AttackType": "{live_data["AttackType"]}",\n')
+    Returns:
+        _mtc_ 数据结构
+    """
+    mtc = {
+        "Promotion": [{}, {}, {}, {}, {}, {}, {}, {}],
+        "Skills": [],
+        "Points": [],
+        "Traces": []
+    }
 
-                # 格式化Stance数组
-                stance_str = json.dumps(live_data["Stance"], ensure_ascii=False, separators=(",", ":"))
-                f.write(f'\t\t\t"Stance": {stance_str},\n')
+    stats = character_data.get("stats", {})
+    skill_trees = character_data.get("skill_trees", {})
+    skills = character_data.get("skills", {})
 
-                f.write(f'\t\t\t"Icon": "{live_data["Icon"]}"\n')
-                f.write('\t\t}\n')
-                f.write('\t},\n')
+    # 1. 提取突破材料（Promotion）
+    # stats.0.cost → Promotion[1], stats.5.cost → Promotion[6]
+    for i in range(0, 7):
+        stat_key = str(i)
+        if stat_key in stats:
+            cost = stats[stat_key].get("cost", [])
+            if cost:
+                mtc["Promotion"][i + 1] = _convert_material_list(cost)
 
-            f.write("}\n\n")
-        
-        # 写入天赋树数据
-        f.write("var _avatarskilltree_ = {")
-        if tree_data:
-            f.write("\n")
-            for tree_id, tree_info in tree_data.items():
-                f.write(f'\t"{tree_id}": {json.dumps(tree_info, ensure_ascii=False, indent=4).replace("\n", "\n\t")},\n')
-            f.write("\n")
-        f.write("}\n\n")
-        
-        # 写入星魂数据
-        f.write("var _avatarrank_ = {")
-        if rank_data:
-            f.write("\n")
-            for rank_id, rank_info in rank_data.items():
-                f.write(f'\t"{rank_id}": {json.dumps(rank_info, ensure_ascii=False, indent=4).replace("\n", "\n\t")},\n')
-            f.write("\n")
-        f.write("}\n\n")
-        
-        # 写入其他数据结构
-        f.write('var _story_ = {\n')
-        f.write(f'\t"{character_id}": [{{\n')
-        f.write('\t\t"_id": 1,\n')
-        f.write('\t\t"Story": ""\n')
-        f.write('\t}, {\n')
-        f.write('\t\t"_id": 2,\n')
-        f.write('\t\t"Story": ""\n')
-        f.write('\t}, {\n')
-        f.write('\t\t"_id": 3,\n')
-        f.write('\t\t"Story": ""\n')
-        f.write('\t}, {\n')
-        f.write('\t\t"_id": 4,\n')
-        f.write('\t\t"Story": ""\n')
-        f.write('\t}, {\n')
-        f.write('\t\t"_id": 5,\n')
-        f.write('\t\t"Story": ""\n')
-        f.write('\t}]\n')
-        f.write('}\n\n')
-        
-        f.write(f'var _voice_ = {{"{character_id}": []}}\n\n')
-        f.write(f'var _notes_ = {{"{character_id}": []}}\n\n')
-        f.write(f'var _adiff_ = {{"{character_id}": {{}}}}\n\n')
-        
-        # 写入培养材料数据（TODO暂无数据）
-        f.write('var _mtc_ = {\n')
-        f.write(f'\t"{character_id}": {{\n')
-        f.write('\t\t"Promotion": [{}, {}, {}, {}, {}, {}, {}, {}],\n')
-        f.write('\t\t"Skills": [],\n')
-        f.write('\t\t"Points": [],\n')
-        f.write('\t\t"Traces": []\n')
-        f.write('\t}\n')
-        f.write('}\n')
+    # 2. 识别技能点（point_type: 2 → Skills）
+    # point_type: 1 → Points, point_type: 3 → Traces
+    skill_points = {}  # {point_key: {levels...}}
+    points_group = {}  # {point_name: {"levels": [...], "status_totals": {}}}  跨所有节点合并
+    traces_data = []   # 额外能力数据
 
+    for point_key, point_data in skill_trees.items():
+        point_type = None
+        for level_key, level_data in point_data.items():
+            pt = level_data.get("point_type", 0)
+            if pt:
+                point_type = pt
+                break
+
+        if point_type == 2:
+            skill_points[point_key] = point_data
+        elif point_type == 1:
+            # Points: 属性加成——收集所有节点，稍后按point_name合并
+            for level_key, level_data in point_data.items():
+                name = level_data.get("point_name", "")
+                mat_list = level_data.get("material_list", [])
+                if not name or not mat_list:
+                    continue
+                if name not in points_group:
+                    points_group[name] = {"levels": [], "status_totals": {}}
+                points_group[name]["levels"].append(mat_list)
+                status_list = level_data.get("status_add_list", [])
+                for s in status_list:
+                    sname = s.get("name", "")
+                    sval = s.get("value", 0)
+                    if sname:
+                        points_group[name]["status_totals"][sname] = \
+                            points_group[name]["status_totals"].get(sname, 0) + sval
+        elif point_type == 3:
+            # Traces: 额外能力（只取第一级）
+            first_level = point_data.get("1", {})
+            name = first_level.get("point_name", "")
+            mat_list = first_level.get("material_list", [])
+            if name and mat_list:
+                traces_data.append({
+                    "Name": name,
+                    "Mat": _convert_material_list(mat_list)
+                })
+
+    # 处理合并后的 Points
+    for pname, pdata in points_group.items():
+        merged_mat = {}
+        for mat_list in pdata["levels"]:
+            for mat in mat_list:
+                item_id = str(mat.get("item_id", ""))
+                item_num = mat.get("item_num", 0)
+                if item_id and item_num > 0:
+                    merged_mat[item_id] = merged_mat.get(item_id, 0) + item_num
+
+        if merged_mat:
+            display_name = pname
+            if pdata["status_totals"]:
+                stat_parts = []
+                for sname, sval in pdata["status_totals"].items():
+                    if sval * 100 > 100:
+                        stat_parts.append(f"{sname} +{sval:.0f}")
+                    else:
+                        stat_parts.append(f"{sname} +{sval * 100:.1f}%")
+                if stat_parts:
+                    display_name = '，'.join(stat_parts)
+            mtc["Points"].append({
+                "Name": display_name,
+                "Mat": merged_mat
+            })
+
+    mtc["Traces"] = traces_data
+
+    # 3. 处理技能升级材料（Skills）
+    # 按 point01~point05 顺序，对应普攻/战技/终结技/天赋/附加技
+    for point_key in sorted(skill_points.keys()):
+        point_data = skill_points[point_key]
+        max_level = 0
+        mats = []
+
+        # 收集所有等级的材料
+        level_data_map = {}
+        for level_key, level_data in point_data.items():
+            try:
+                lvl = int(level_key)
+            except ValueError:
+                lvl = 0
+            level_data_map[lvl] = level_data
+            if lvl > max_level:
+                max_level = lvl
+
+        # 获取技能名称
+        skill_name = ""
+        for lvl in sorted(level_data_map.keys()):
+            ld = level_data_map[lvl]
+            skill_ids = ld.get("level_up_skill_id", [])
+            if skill_ids:
+                skill_id = str(skill_ids[0])
+                if skill_id in skills:
+                    skill_name = skills[skill_id].get("type_name", "")
+                break
+
+        if not skill_name:
+            skill_name = point_key
+
+        # 从第2级开始收集材料（第1级通常是默认解锁，material_list为空）
+        for lvl in sorted(level_data_map.keys()):
+            if lvl <= 1:
+                continue
+            ld = level_data_map[lvl]
+            mat_list = ld.get("material_list", [])
+            if mat_list:
+                mats.append(_convert_material_list(mat_list))
+
+        mtc["Skills"].append({
+            "Name": skill_name,
+            "Level": max_level,
+            "Mats": mats
+        })
+
+    return {character_id: mtc}
 
 def extract_avatar_base_info(character_data: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -779,7 +851,9 @@ def merge_avatar_to_avatar_js(character_id: str) -> str:
 
 
 def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any], all_versions_tree_data: Dict[str, Any],
-                     all_versions_rank_data: Dict[str, Any], versions: Dict[str, str]) -> None:
+                     all_versions_rank_data: Dict[str, Any], versions: Dict[str, str],
+                     mtc_data: Dict[str, Any] = None, recommand_data: Dict[str, Any] = None,
+                     output_dir: str = None) -> None:
     """
     生成角色详情JS文件（支持多版本）
 
@@ -789,8 +863,13 @@ def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any],
         all_versions_tree_data: 所有版本的天赋树数据
         all_versions_rank_data: 所有版本的星魂数据
         versions: 版本配置字典，格式: {"v1": "4.3.51", "v2": "4.3.52"}
+        mtc_data: 培养材料数据（可选）
+        output_dir: 输出目录（默认OUTPUT_DIR2）
     """
-    output_file = os.path.join(OUTPUT_DIR2, f"{character_id}.js")
+    if output_dir is None:
+        output_dir = OUTPUT_DIR2
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, f"{character_id}.js")
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("// Auto Generated\n\n")
@@ -891,15 +970,32 @@ def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any],
         f.write("    }\n")
         f.write("]\n\n")
 
-        f.write("var _mtc_ = [\n")
-        f.write("    {\n")
-        f.write('        "Name": "",\n')
-        f.write('        "Desc": ""\n')
-        f.write("    }\n")
-        f.write("]\n")
+        f.write("var _mtc_ = ")
+        if mtc_data:
+            f.write(json.dumps(mtc_data, ensure_ascii=False, indent=4))
+            f.write("\n")
+        else:
+            f.write("[\n")
+            f.write("    {\n")
+            f.write('        "Name": "",\n')
+            f.write('        "Desc": ""\n')
+            f.write("    }\n")
+            f.write("]\n")
+
+        f.write("\nvar _recommand_ = ")
+        if recommand_data:
+            f.write(json.dumps(recommand_data, ensure_ascii=False, indent=4))
+            f.write("\n")
+        else:
+            f.write("{\n")
+            f.write('    "relics": {},\n')
+            f.write('    "lightcones": [],\n')
+            f.write('    "teams": []\n')
+            f.write("}\n")
 
 
-def generate_character_data(character_id: str, major_version: str = None, minor_versions: list = None) -> str:
+def generate_character_data(character_id: str, major_version: str = None, minor_versions: list = None,
+                            debug: bool = False) -> str:
     """
     封装的生成角色数据的函数，供其他程序调用
 
@@ -907,6 +1003,7 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
         character_id: 角色ID
         major_version: 大版本号，例如 "4.3"
         minor_versions: 小版本号列表，例如 [".51", ".52"]
+        debug: 调试模式，输出到tempoutput而不走合并流程
     """
 
     # 参数检查：必须传入所有参数
@@ -944,7 +1041,25 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
         all_versions_rank_data[version_key] = convert_rank_data(character_id, ranks, version_key)
 
     # 生成角色详情JS文件（多版本）
-    generate_js_file(character_id, all_versions_skill_data, all_versions_tree_data, all_versions_rank_data, versions)
+    # 使用最新版本的数据提取培养材料
+    mtc_data = None
+    recommand_data = None
+    if versions:
+        latest_version = list(versions.keys())[-1]
+        if latest_version in all_versions_data:
+            char_data = all_versions_data[latest_version]
+            mtc_data = convert_mtc_data(character_id, char_data)
+            recommand_data = {
+                "relics": char_data.get("relics", {}),
+                "lightcones": char_data.get("lightcones", []),
+                "teams": char_data.get("teams", [])
+            }
+    output_dir = DEBUG_OUTPUT_DIR if debug else OUTPUT_DIR2
+    generate_js_file(character_id, all_versions_skill_data, all_versions_tree_data, all_versions_rank_data,
+                     versions, mtc_data, recommand_data, output_dir=output_dir)
+
+    if debug:
+        return f"角色 {character_id} 调试数据已生成至 {output_dir}/{character_id}.js"
 
     # 生成avatar基本数据文件（使用最新版本的数据）
     if versions:
@@ -967,5 +1082,14 @@ def main():
     for i in idlist:
         generate_character_data(i, major_version="4.3", minor_versions=[".51", ".52"])
 
+
+def main_debug():
+    """调试模式：输出到tempoutput，不走合并流程"""
+    idlist = ["1505", "1506", "1507","1508", "1509", "1510"]
+    for i in idlist:
+        result = generate_character_data(i, major_version="4.4", minor_versions=[".51"], debug=True)
+        print(result)
+
+
 if __name__ == "__main__":
-    main()
+    main_debug()
