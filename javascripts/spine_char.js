@@ -49,11 +49,21 @@
         this._dragStartY = 0;
         this._dragVpX = 0;
         this._dragVpY = 0;
+        this._pinching = false;
+        this._pinchStartDist = 0;
+        this._pinchStartScale = 0;
+        this._pinchStartX = 0;
+        this._pinchStartY = 0;
+        this._pinchVpX = 0;
+        this._pinchVpY = 0;
         this._resizeHandler = null;
         this._wheelHandler = null;
         this._mousedownHandler = null;
         this._mousemoveHandler = null;
         this._mouseupHandler = null;
+        this._touchstartHandler = null;
+        this._touchmoveHandler = null;
+        this._touchendHandler = null;
     }
 
     SpineInstance.prototype = {
@@ -99,6 +109,96 @@
             this._dragging = false;
             if (this._app && this._app.canvas) {
                 this._app.canvas.style.cursor = 'grab';
+            }
+        },
+
+        _getTouchPos: function (touch) {
+            var rect = this._app.canvas.getBoundingClientRect();
+            return {
+                x: touch.clientX - rect.left,
+                y: touch.clientY - rect.top,
+            };
+        },
+
+        _getTouchDist: function (touches) {
+            var dx = touches[0].clientX - touches[1].clientX;
+            var dy = touches[0].clientY - touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        },
+
+        _handleTouchStart: function (e) {
+            var touches = e.touches;
+            if (touches.length === 1) {
+                e.preventDefault();
+                this._dragging = true;
+                this._pinching = false;
+                var t = touches[0];
+                this._dragStartX = t.clientX;
+                this._dragStartY = t.clientY;
+                this._dragVpX = this._vpX;
+                this._dragVpY = this._vpY;
+            } else if (touches.length === 2) {
+                e.preventDefault();
+                this._dragging = false;
+                this._pinching = true;
+                this._pinchStartDist = this._getTouchDist(touches);
+                this._pinchStartScale = this._vpScale;
+                this._pinchStartX = (touches[0].clientX + touches[1].clientX) / 2;
+                this._pinchStartY = (touches[0].clientY + touches[1].clientY) / 2;
+                this._pinchVpX = this._vpX;
+                this._pinchVpY = this._vpY;
+            }
+        },
+
+        _handleTouchMove: function (e) {
+            var touches = e.touches;
+            if (this._dragging && touches.length === 1) {
+                e.preventDefault();
+                var t = touches[0];
+                this._vpX = this._dragVpX + (t.clientX - this._dragStartX);
+                this._vpY = this._dragVpY + (t.clientY - this._dragStartY);
+                this._applyViewport();
+            } else if (this._pinching && touches.length >= 2) {
+                e.preventDefault();
+                var newDist = this._getTouchDist(touches);
+                var newScale = this._pinchStartScale * (newDist / this._pinchStartDist);
+                newScale = Math.max(this._opts.minScale, Math.min(this._opts.maxScale, newScale));
+
+                var cx = (touches[0].clientX + touches[1].clientX) / 2;
+                var cy = (touches[0].clientY + touches[1].clientY) / 2;
+                var rect = this._app.canvas.getBoundingClientRect();
+                var mx = cx - rect.left;
+                var my = cy - rect.top;
+
+                this._vpX = mx - (mx - this._pinchVpX) * (newScale / this._pinchStartScale);
+                this._vpY = my - (my - this._pinchVpY) * (newScale / this._pinchStartScale);
+
+                this._vpX += (cx - this._pinchStartX);
+                this._vpY += (cy - this._pinchStartY);
+                this._pinchStartX = cx;
+                this._pinchStartY = cy;
+                this._pinchVpX = this._vpX;
+                this._pinchVpY = this._vpY;
+                this._pinchStartScale = newScale;
+                this._pinchStartDist = newDist;
+
+                this._vpScale = newScale;
+                this._applyViewport();
+            }
+        },
+
+        _handleTouchEnd: function (e) {
+            if (e.touches.length === 0) {
+                this._dragging = false;
+                this._pinching = false;
+            } else if (e.touches.length === 1 && this._pinching) {
+                this._pinching = false;
+                this._dragging = true;
+                var t = e.touches[0];
+                this._dragStartX = t.clientX;
+                this._dragStartY = t.clientY;
+                this._dragVpX = this._vpX;
+                this._dragVpY = this._vpY;
             }
         },
 
@@ -157,6 +257,15 @@
             }
             if (this._mouseupHandler) {
                 window.removeEventListener('mouseup', this._mouseupHandler);
+            }
+            if (this._touchstartHandler && this._app) {
+                this._app.canvas.removeEventListener('touchstart', this._touchstartHandler);
+            }
+            if (this._touchmoveHandler && this._app) {
+                this._app.canvas.removeEventListener('touchmove', this._touchmoveHandler);
+            }
+            if (this._touchendHandler && this._app) {
+                this._app.canvas.removeEventListener('touchend', this._touchendHandler);
             }
             if (this._resizeHandler) {
                 window.removeEventListener('resize', this._resizeHandler);
@@ -232,12 +341,18 @@
                 self._mousedownHandler = self._handleMouseDown.bind(self);
                 self._mousemoveHandler = self._handleMouseMove.bind(self);
                 self._mouseupHandler = self._handleMouseUp.bind(self);
+                self._touchstartHandler = self._handleTouchStart.bind(self);
+                self._touchmoveHandler = self._handleTouchMove.bind(self);
+                self._touchendHandler = self._handleTouchEnd.bind(self);
                 self._resizeHandler = self._handleResize.bind(self);
 
                 app.canvas.addEventListener('wheel', self._wheelHandler, { passive: false });
                 app.canvas.addEventListener('mousedown', self._mousedownHandler);
                 window.addEventListener('mousemove', self._mousemoveHandler);
                 window.addEventListener('mouseup', self._mouseupHandler);
+                app.canvas.addEventListener('touchstart', self._touchstartHandler, { passive: false });
+                app.canvas.addEventListener('touchmove', self._touchmoveHandler, { passive: false });
+                app.canvas.addEventListener('touchend', self._touchendHandler);
                 window.addEventListener('resize', self._resizeHandler);
 
                 if (typeof opts.onReady === 'function') {

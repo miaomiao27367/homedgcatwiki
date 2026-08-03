@@ -6679,8 +6679,10 @@ $(function () {
                 }
 
                 app.canvas.style.cursor = 'grab'
+                app.canvas.style.touchAction = 'manipulation'
                 spineReady = true
 
+                // --- 鼠标滚轮缩放 ---
                 app.canvas.addEventListener('wheel', function (e) {
                     e.preventDefault()
                     var ratio = stageRatio()
@@ -6695,6 +6697,7 @@ $(function () {
                     applyVp()
                 }, { passive: false })
 
+                // --- 鼠标拖拽 ---
                 var dragging = false, dsX = 0, dsY = 0, dvX = 0, dvY = 0
                 app.canvas.addEventListener('mousedown', function (e) {
                     dragging = true
@@ -6712,6 +6715,87 @@ $(function () {
                 window.addEventListener('mouseup', function () {
                     dragging = false
                     if (app.canvas) app.canvas.style.cursor = 'grab'
+                })
+
+                // --- 触摸拖拽 + 双指缩放 ---
+                var pinching = false
+                var pinchStartDist = 0, pinchStartScale = 0
+                var pinchStartX = 0, pinchStartY = 0
+                var pinchVpX = 0, pinchVpY = 0
+
+                function getTouchDist(touches) {
+                    var dx = touches[0].clientX - touches[1].clientX
+                    var dy = touches[0].clientY - touches[1].clientY
+                    return Math.sqrt(dx * dx + dy * dy)
+                }
+
+                app.canvas.addEventListener('touchstart', function (e) {
+                    var touches = e.touches
+                    if (touches.length === 1) {
+                        e.preventDefault()
+                        dragging = true
+                        pinching = false
+                        dsX = touches[0].clientX; dsY = touches[0].clientY
+                        dvX = vpX; dvY = vpY
+                    } else if (touches.length === 2) {
+                        e.preventDefault()
+                        dragging = false
+                        pinching = true
+                        pinchStartDist = getTouchDist(touches)
+                        pinchStartScale = vpScale
+                        pinchStartX = (touches[0].clientX + touches[1].clientX) / 2
+                        pinchStartY = (touches[0].clientY + touches[1].clientY) / 2
+                        pinchVpX = vpX; pinchVpY = vpY
+                    }
+                }, { passive: false })
+
+                app.canvas.addEventListener('touchmove', function (e) {
+                    var touches = e.touches
+                    if (dragging && touches.length === 1) {
+                        e.preventDefault()
+                        var ratio = stageRatio()
+                        vpX = dvX + (touches[0].clientX - dsX) * ratio
+                        vpY = dvY + (touches[0].clientY - dsY) * ratio
+                        applyVp()
+                    } else if (pinching && touches.length >= 2) {
+                        e.preventDefault()
+                        var newDist = getTouchDist(touches)
+                        var newScale = pinchStartScale * (newDist / pinchStartDist)
+                        newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale))
+
+                        var cx = (touches[0].clientX + touches[1].clientX) / 2
+                        var cy = (touches[0].clientY + touches[1].clientY) / 2
+                        var rect = app.canvas.getBoundingClientRect()
+                        var ratio = stageRatio()
+                        var mx = (cx - rect.left) * ratio
+                        var my = (cy - rect.top) * ratio
+
+                        vpX = mx - (mx - pinchVpX) * (newScale / pinchStartScale)
+                        vpY = my - (my - pinchVpY) * (newScale / pinchStartScale)
+
+                        vpX += (cx - pinchStartX) * ratio
+                        vpY += (cy - pinchStartY) * ratio
+                        pinchStartX = cx
+                        pinchStartY = cy
+                        pinchVpX = vpX; pinchVpY = vpY
+                        pinchStartScale = newScale
+                        pinchStartDist = newDist
+
+                        vpScale = newScale
+                        applyVp()
+                    }
+                }, { passive: false })
+
+                app.canvas.addEventListener('touchend', function (e) {
+                    if (e.touches.length === 0) {
+                        dragging = false
+                        pinching = false
+                    } else if (e.touches.length === 1 && pinching) {
+                        pinching = false
+                        dragging = true
+                        dsX = e.touches[0].clientX; dsY = e.touches[0].clientY
+                        dvX = vpX; dvY = vpY
+                    }
                 })
             }).catch(function (err) {
                 console.error('[Spine] Init error:', err)
