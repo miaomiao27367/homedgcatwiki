@@ -1,6 +1,8 @@
 
 # HomDGCat Wiki's Mirror
 
+---
+
 A offline mirror of [homdgcat.wiki](https://homdgcat.wiki),with only Chinese version.
 
 ---

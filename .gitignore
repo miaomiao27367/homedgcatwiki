@@ -2,7 +2,9 @@ tempdata/
 tempdatamons/
 .idea/
 images/
-spine/
+spine/etc
+spine/gi
+spine/sr
 TextMap/
 logs/
 homdgcat-res/

@@ -1,0 +1,801 @@
+﻿<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Spine Animation Demo | HomDGCat Wiki">
+    <script src="/plugins/pixi.js" type="text/javascript"></script>
+    <script src="/plugins/spine-pixi-v8.js" type="text/javascript"></script>
+    <title>Spine Demo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #1a1a2e;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #spine-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .hud {
+            position: fixed;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            pointer-events: none;
+        }
+        .hud > * { pointer-events: auto; }
+
+        .hud h1 {
+            font-size: 20px;
+            color: #e0c097;
+            text-shadow: 0 0 12px rgba(0,0,0,0.8);
+            margin: 0;
+        }
+
+        #status {
+            font-size: 13px;
+            color: #aaa;
+            text-shadow: 0 0 8px rgba(0,0,0,0.8);
+        }
+
+        /* 切换按钮 */
+        #toggleBtn {
+            font-size: 13px;
+            padding: 3px 10px;
+            border: 2px solid #e0c097;
+            border-radius: 4px;
+            background: rgba(224,192,151,0.1);
+            color: #e0c097;
+            cursor: pointer;
+            transition: background 0.2s;
+            user-select: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #toggleBtn:hover {
+            background: rgba(224,192,151,0.25);
+        }
+
+        /* 下拉面板 */
+        .picker {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            padding: 8px 12px;
+            border: 2px solid #e0c097;
+            border-radius: 6px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            min-width: 180px;
+        }
+        .picker.open {
+            display: flex;
+        }
+
+        .picker-row {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .picker label {
+            font-size: 12px;
+            color: #aaa;
+            min-width: 36px;
+            text-align: right;
+        }
+        .picker select,
+        .picker input {
+            flex: 1;
+            padding: 3px 6px;
+            border: 1px solid #555;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+        }
+        .picker select:focus,
+        .picker input:focus {
+            border-color: #f29e38;
+        }
+        .picker select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .picker button {
+            padding: 3px 0;
+            border: 2px solid #e0c097;
+            border-radius: 4px;
+            background: rgba(224,192,151,0.15);
+            color: #e0c097;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .picker button:hover {
+            background: rgba(224,192,151,0.3);
+        }
+
+        .hint {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #666;
+            z-index: 10;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        /* 动画选择面板 */
+        .anim-panel {
+            display: none;
+            flex-direction: column;
+            gap: 3px;
+            padding: 6px 10px;
+            border: 2px solid #e0c097;
+            border-radius: 6px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            min-width: 180px;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+        .anim-panel.open {
+            display: flex;
+        }
+        .anim-group-title {
+            font-size: 11px;
+            color: #e0c097;
+            font-weight: bold;
+            margin-top: 4px;
+            padding-bottom: 2px;
+            border-bottom: 1px solid rgba(224,192,151,0.3);
+            text-transform: uppercase;
+        }
+        .anim-group-title:first-child {
+            margin-top: 0;
+        }
+        .anim-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #ccc;
+            cursor: pointer;
+            padding: 1px 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .anim-checkbox:hover {
+            color: #fff;
+        }
+        .anim-checkbox input[type="checkbox"] {
+            accent-color: #e0c097;
+            width: 13px;
+            height: 13px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        /* 左侧面板 */
+        .left-panel {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            pointer-events: none;
+        }
+        .left-panel > * { pointer-events: auto; }
+
+        #animToggleBtn {
+            font-size: 13px;
+            padding: 3px 10px;
+            border: 2px solid #e0c097;
+            border-radius: 4px;
+            background: rgba(224,192,151,0.1);
+            color: #e0c097;
+            cursor: pointer;
+            transition: background 0.2s;
+            user-select: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #animToggleBtn:hover {
+            background: rgba(224,192,151,0.25);
+        }
+
+        .parts-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 6px 10px;
+            border: 2px solid #e0c097;
+            border-radius: 6px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            min-width: 160px;
+        }
+        .parts-title {
+            font-size: 11px;
+            color: #e0c097;
+            font-weight: bold;
+            padding-bottom: 2px;
+            border-bottom: 1px solid rgba(224,192,151,0.3);
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .part-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #ccc;
+            cursor: pointer;
+            padding: 1px 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .part-checkbox:hover {
+            color: #fff;
+        }
+        .part-checkbox input[type="checkbox"] {
+            accent-color: #e0c097;
+            width: 13px;
+            height: 13px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        /* ========== 移动端适配 ========== */
+        @media screen and (max-width: 600px) {
+            .hud { top: 8px; gap: 4px; }
+            .hud h1 { font-size: 16px; }
+
+            #toggleBtn {
+                font-size: 14px;
+                padding: 6px 14px;
+            }
+
+            .picker {
+                min-width: 200px;
+                padding: 10px 14px;
+                gap: 8px;
+            }
+            .picker label { font-size: 13px; }
+            .picker select,
+            .picker input {
+                font-size: 16px;
+                padding: 6px 8px;
+            }
+            .picker button {
+                font-size: 14px;
+                padding: 6px 0;
+            }
+
+            .left-panel { top: 8px; left: 8px; gap: 4px; }
+
+            #animToggleBtn {
+                font-size: 14px;
+                padding: 6px 14px;
+            }
+
+            .parts-panel { padding: 8px 12px; min-width: 150px; }
+            .parts-title { font-size: 12px; }
+            .part-checkbox {
+                font-size: 13px;
+                padding: 3px 0;
+                gap: 6px;
+            }
+            .part-checkbox input[type="checkbox"] {
+                width: 16px; height: 16px;
+            }
+
+            .anim-panel { padding: 8px 12px; min-width: 200px; }
+            .anim-group-title { font-size: 12px; }
+            .anim-checkbox {
+                font-size: 13px;
+                padding: 3px 0;
+                gap: 6px;
+            }
+            .anim-checkbox input[type="checkbox"] {
+                width: 16px; height: 16px;
+            }
+
+            .hint {
+                bottom: 12px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="spine-container"></div>
+<div class="left-panel">
+    <div class="parts-panel" id="partsPanel">
+        <div class="parts-title">部件</div>
+    </div>
+    <button id="animToggleBtn">动画选择</button>
+    <div class="anim-panel" id="animPanel"></div>
+</div>
+    <div class="hud">
+        <h1 id="title">Spine Demo</h1>
+        <button id="toggleBtn">切换角色</button>
+        <div class="picker" id="picker">
+            <div class="picker-row">
+                <label>游戏</label>
+                <select id="gameSelect">
+                    <option value="sr">sr</option>
+                    <option value="etc">etc</option>
+                    <option value="gi">gi</option>
+                </select>
+            </div>
+            <div class="picker-row">
+                <label>角色</label>
+                <input id="charInput" type="text" placeholder="角色ID" />
+            </div>
+            <button id="loadBtn">加载</button>
+        </div>
+        <div id="status">Initializing...</div>
+    </div>
+    <div class="hint">滚轮/双指缩放 | 拖拽平移</div>
+
+    <script type="text/javascript">
+        (function () {
+            const statusEl = document.getElementById('status');
+            const titleEl = document.getElementById('title');
+            const containerEl = document.getElementById('spine-container');
+            const pickerEl = document.getElementById('picker');
+            const toggleBtn = document.getElementById('toggleBtn');
+            const gameSelect = document.getElementById('gameSelect');
+            const inputEl = document.getElementById('charInput');
+            const loadBtn = document.getElementById('loadBtn');
+        const partsPanelEl = document.getElementById('partsPanel');
+        const animPanelEl = document.getElementById('animPanel');
+        const animToggleBtn = document.getElementById('animToggleBtn');
+        var animPanelOpen = false;
+
+            var W = window.innerWidth;
+            var H = window.innerHeight;
+
+            var app, viewport, spineObjs = [];
+            var vpScale = 0.5, vpX = 0, vpY = 0;
+            var MIN_SCALE = 0.05, MAX_SCALE = 3;
+            var animName = '';
+
+            // 默认值
+            var params = new URLSearchParams(window.location.search);
+            var defaultGame = params.get('game') || 'sr';
+            var defaultId = params.get('id') || '1415';
+            gameSelect.value = defaultGame;
+            inputEl.value = defaultId;
+
+            // 切换面板
+            var panelOpen = false;
+            toggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                panelOpen = !panelOpen;
+                pickerEl.classList.toggle('open', panelOpen);
+                toggleBtn.textContent = panelOpen ? '收起' : '切换角色';
+            });
+            document.addEventListener('click', function () {
+                if (panelOpen) {
+                    panelOpen = false;
+                    pickerEl.classList.remove('open');
+                    toggleBtn.textContent = '切换角色';
+                }
+            });
+            pickerEl.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+
+        animToggleBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            animPanelOpen = !animPanelOpen;
+            animPanelEl.classList.toggle('open', animPanelOpen);
+            animToggleBtn.textContent = animPanelOpen ? '收起动画' : '动画选择';
+        });
+
+            function applyViewport() {
+                if (!viewport) return;
+                viewport.scale.set(vpScale);
+                viewport.x = vpX;
+                viewport.y = vpY;
+            }
+
+            function updateStatus(msg) {
+                var parts = [];
+                if (animName) parts.push('Playing: ' + animName);
+                if (vpScale) parts.push('Zoom: ' + Math.round(vpScale * 100) + '%');
+                if (msg) parts.unshift(msg);
+                statusEl.textContent = parts.join(' | ');
+            }
+
+            async function loadCharacter(game, charId) {
+                if (!game || !charId) return;
+
+                statusEl.textContent = 'Loading manifest for ' + game + '/' + charId + '...';
+                titleEl.textContent = 'Spine Demo - ' + game + '/' + charId;
+
+                var basePath = '/spine/' + game + '/' + charId + '/';
+                var manifest;
+                try {
+                    manifest = await fetch(basePath + 'manifest.json').then(function (r) { return r.json(); });
+                } catch (e) {
+                    statusEl.textContent = 'Error: manifest not found for ' + game + '/' + charId;
+                    return;
+                }
+
+                // 兼容两种格式：单骨架 { atlas, skel } 和多骨架 { parts: [{ atlas, skel }, ...] }
+                var parts = manifest.parts || [{ atlas: manifest.atlas, skel: manifest.skel }];
+
+                // 清理旧对象
+                for (var i = 0; i < spineObjs.length; i++) {
+                    if (spineObjs[i] && viewport) {
+                        viewport.removeChild(spineObjs[i]);
+                        spineObjs[i].destroy();
+                    }
+                }
+                spineObjs = [];
+
+                // 加载所有部件的资源
+                statusEl.textContent = 'Loading ' + parts.length + ' part(s)...';
+                for (var i = 0; i < parts.length; i++) {
+                    var skelPath = basePath + parts[i].skel;
+                    var atlasPath = basePath + parts[i].atlas;
+
+                    // 自己 fetch + JSON.parse 骨架，避免 PixiJS 默认 JSON 加载器的问题
+                    var resp = await fetch(skelPath);
+                    var text = await resp.text();
+                    PIXI.Assets.cache.set(skelPath, JSON.parse(text));
+
+                    // atlas 正常加载
+                    var atlas = await PIXI.Assets.load({ src: atlasPath });
+                    console.log('part[' + i + '] loaded:', parts[i].skel, '| atlas pages:', atlas.pages.length, atlas.pages.map(function(p){return p.name}));
+                }
+
+                // 创建所有 Spine 对象
+                statusEl.textContent = 'Creating Spine (' + parts.length + ' parts)...';
+                animName = '';
+                for (var i = 0; i < parts.length; i++) {
+                    var skelPath = basePath + parts[i].skel;
+                    var atlasPath = basePath + parts[i].atlas;
+                    var obj = spine.Spine.from({
+                        skeleton: skelPath,
+                        atlas: atlasPath,
+                    });
+                    obj.x = parts[i].x || 0;
+                    obj.y = parts[i].y || 0;
+                    obj.scale.set(parts[i].scaleX != null ? parts[i].scaleX : 0.5, parts[i].scaleY != null ? parts[i].scaleY : 0.5);
+                    viewport.addChild(obj);
+                    spineObjs.push(obj);
+
+                    var bounds = obj.getBounds();
+                    console.log('part[' + i + '] created:', parts[i].skel, '| bounds:', bounds.x.toFixed(0), bounds.y.toFixed(0), bounds.width.toFixed(0), 'x', bounds.height.toFixed(0), '| slots:', obj.skeleton.slots.length, '| anims:', obj.state.data.skeletonData.animations.length);
+
+                    // 播放动画：跳过纯隐藏动画，并优先选隐藏槽位最少的动画
+                    var anims = obj.state.data.skeletonData.animations;
+                    var picked = null;
+                    var bestHiddenCount = Infinity;
+                    var rawData = PIXI.Assets.cache.get(skelPath);
+                    for (var ai = anims.length - 1; ai >= 0; ai--) {
+                        var aname = anims[ai].name;
+                        var rawAnim = rawData && rawData.animations && rawData.animations[aname];
+                        var hasBones = !!(rawAnim && rawAnim.bones);
+                        var hiddenCount = 0;
+                        var hasAnySlot = false;
+                        if (rawAnim && rawAnim.slots) {
+                            var slotKeys = Object.keys(rawAnim.slots);
+                            for (var si = 0; si < slotKeys.length; si++) {
+                                hasAnySlot = true;
+                                var slot = rawAnim.slots[slotKeys[si]];
+                                if (slot.attachment) {
+                                    var allEmpty = true;
+                                    for (var ki = 0; ki < slot.attachment.length; ki++) {
+                                        if (slot.attachment[ki].name) { allEmpty = false; break; }
+                                    }
+                                    if (allEmpty) hiddenCount++;
+                                }
+                            }
+                        }
+                        // 跳过纯隐藏动画：无骨骼且所有槽位attachment都是空
+                        if (!hasBones && hasAnySlot && hiddenCount === slotKeys.length) continue;
+                        if (!hasBones && !hasAnySlot) continue;
+                        // 优先选隐藏槽位最少的动画；同分则保留后面（ai更大）的
+                        if (hiddenCount <= bestHiddenCount) {
+                            bestHiddenCount = hiddenCount;
+                            picked = anims[ai];
+                        }
+                    }
+                    if (picked) {
+                        obj.state.setAnimation(0, picked.name, true);
+                        if (!animName) animName = picked.name;
+                    } else {
+                        console.log('part[' + i + '] no visible anim, showing setup pose');
+                    }
+                }
+
+
+
+                // 创建部件面板和动画面板
+        populatePartsPanel(parts);
+        populateAnimPanel();
+        updateStatus(parts.length + ' part(s)');
+            }
+
+            
+        function populatePartsPanel(parts) {
+            partsPanelEl.innerHTML = '';
+            var title = document.createElement('div');
+            title.className = 'parts-title';
+            title.textContent = '部件';
+            partsPanelEl.appendChild(title);
+
+            for (var pi = 0; pi < spineObjs.length; pi++) {
+                (function (idx) {
+                    var label = document.createElement('label');
+                    label.className = 'part-checkbox';
+                    var cb = document.createElement('input');
+                    cb.type = 'checkbox';
+                    cb.checked = true;
+                    cb.value = idx;
+                    var skelName = parts[idx].skel || ('part' + idx);
+                    skelName = skelName.replace('.json', '');
+                    cb.addEventListener('change', function () {
+                        spineObjs[parseInt(this.value)].visible = this.checked;
+                    });
+                    label.appendChild(cb);
+                    label.appendChild(document.createTextNode(skelName));
+                    partsPanelEl.appendChild(label);
+                })(pi);
+            }
+        }
+
+        function populateAnimPanel() {
+            if (spineObjs.length === 0) return;
+            var mainObj = spineObjs[0];
+            var anims = mainObj.state.data.skeletonData.animations;
+            animPanelEl.innerHTML = '';
+
+            // 按前缀分组（去掉末尾数字/下划线后缀）
+            var groups = {};
+            var nameList = [];
+            for (var ai = 0; ai < anims.length; ai++) {
+                var name = anims[ai].name;
+                nameList.push(name);
+                var prefix = name.replace(/[_\\d]+$/, '').replace(/\\d+$/, '') || name;
+                if (!groups[prefix]) groups[prefix] = [];
+                groups[prefix].push({ name: name, index: ai });
+            }
+
+            var groupNames = Object.keys(groups).sort();
+            for (var gi = 0; gi < groupNames.length; gi++) {
+                var gname = groupNames[gi];
+                var group = groups[gname];
+
+                var title = document.createElement('div');
+                title.className = 'anim-group-title';
+                title.textContent = gname;
+                animPanelEl.appendChild(title);
+
+                for (var ai = 0; ai < group.length; ai++) {
+                    (function (anim) {
+                        var label = document.createElement('label');
+                        label.className = 'anim-checkbox';
+
+                        var cb = document.createElement('input');
+                        cb.type = 'checkbox';
+                        cb.value = anim.name;
+                        cb.dataset.trackIndex = anim.index;
+
+                        cb.addEventListener('change', function () {
+                            var trackIdx = parseInt(this.dataset.trackIndex);
+                            if (this.checked) {
+                                for (var si = 0; si < spineObjs.length; si++) {
+                                    spineObjs[si].state.setAnimation(trackIdx, this.value, true);
+                                }
+                            } else {
+                                for (var si = 0; si < spineObjs.length; si++) {
+                                    spineObjs[si].state.clearTrack(trackIdx);
+                                }
+                            }
+                        });
+
+                        label.appendChild(cb);
+                        label.appendChild(document.createTextNode(anim.name));
+                        animPanelEl.appendChild(label);
+                    })(group[ai]);
+                }
+            }
+        }
+
+        async function init() {
+                statusEl.textContent = 'Initializing PixiJS...';
+
+                app = new PIXI.Application();
+                await app.init({
+                    width: W,
+                    height: H,
+                    backgroundColor: 0x1a1a2e,
+                    antialias: true,
+                    resolution: window.devicePixelRatio || 1,
+                    autoDensity: true,
+                });
+
+                containerEl.appendChild(app.canvas);
+                app.canvas.style.cursor = 'grab';
+                app.canvas.style.touchAction = 'manipulation';
+
+                viewport = new PIXI.Container();
+                app.stage.addChild(viewport);
+
+                vpX = W / 2;
+                vpY = H * 0.6;
+                applyViewport();
+
+                app.canvas.addEventListener('wheel', function (e) {
+                    e.preventDefault();
+                    var oldScale = vpScale;
+                    vpScale *= (1 - e.deltaY * 0.001);
+                    vpScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, vpScale));
+                    var rect = app.canvas.getBoundingClientRect();
+                    var mx = e.clientX - rect.left;
+                    var my = e.clientY - rect.top;
+                    vpX = mx - (mx - vpX) * (vpScale / oldScale);
+                    vpY = my - (my - vpY) * (vpScale / oldScale);
+                    applyViewport();
+                    updateStatus();
+                }, { passive: false });
+
+                // --- 鼠标拖拽 ---
+                var dragging = false, dsX = 0, dsY = 0, dvX = 0, dvY = 0;
+                app.canvas.addEventListener('mousedown', function (e) {
+                    dragging = true;
+                    dsX = e.clientX; dsY = e.clientY;
+                    dvX = vpX; dvY = vpY;
+                    app.canvas.style.cursor = 'grabbing';
+                });
+                window.addEventListener('mousemove', function (e) {
+                    if (!dragging) return;
+                    vpX = dvX + (e.clientX - dsX);
+                    vpY = dvY + (e.clientY - dsY);
+                    applyViewport();
+                });
+                window.addEventListener('mouseup', function () {
+                    dragging = false;
+                    app.canvas.style.cursor = 'grab';
+                });
+
+                // --- 触摸拖拽 + 双指缩放 ---
+                var pinching = false;
+                var pinchStartDist = 0, pinchStartScale = 0;
+                var pinchStartX = 0, pinchStartY = 0;
+                var pinchVpX = 0, pinchVpY = 0;
+
+                function getTouchDist(touches) {
+                    var dx = touches[0].clientX - touches[1].clientX;
+                    var dy = touches[0].clientY - touches[1].clientY;
+                    return Math.sqrt(dx * dx + dy * dy);
+                }
+
+                app.canvas.addEventListener('touchstart', function (e) {
+                    var touches = e.touches;
+                    if (touches.length === 1) {
+                        e.preventDefault();
+                        dragging = true;
+                        pinching = false;
+                        dsX = touches[0].clientX; dsY = touches[0].clientY;
+                        dvX = vpX; dvY = vpY;
+                    } else if (touches.length === 2) {
+                        e.preventDefault();
+                        dragging = false;
+                        pinching = true;
+                        pinchStartDist = getTouchDist(touches);
+                        pinchStartScale = vpScale;
+                        pinchStartX = (touches[0].clientX + touches[1].clientX) / 2;
+                        pinchStartY = (touches[0].clientY + touches[1].clientY) / 2;
+                        pinchVpX = vpX; pinchVpY = vpY;
+                    }
+                }, { passive: false });
+
+                app.canvas.addEventListener('touchmove', function (e) {
+                    var touches = e.touches;
+                    if (dragging && touches.length === 1) {
+                        e.preventDefault();
+                        vpX = dvX + (touches[0].clientX - dsX);
+                        vpY = dvY + (touches[0].clientY - dsY);
+                        applyViewport();
+                    } else if (pinching && touches.length >= 2) {
+                        e.preventDefault();
+                        var newDist = getTouchDist(touches);
+                        var newScale = pinchStartScale * (newDist / pinchStartDist);
+                        newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale));
+
+                        var cx = (touches[0].clientX + touches[1].clientX) / 2;
+                        var cy = (touches[0].clientY + touches[1].clientY) / 2;
+                        var rect = app.canvas.getBoundingClientRect();
+                        var mx = cx - rect.left;
+                        var my = cy - rect.top;
+
+                        vpX = mx - (mx - pinchVpX) * (newScale / pinchStartScale);
+                        vpY = my - (my - pinchVpY) * (newScale / pinchStartScale);
+
+                        vpX += (cx - pinchStartX);
+                        vpY += (cy - pinchStartY);
+                        pinchStartX = cx;
+                        pinchStartY = cy;
+                        pinchVpX = vpX; pinchVpY = vpY;
+                        pinchStartScale = newScale;
+                        pinchStartDist = newDist;
+
+                        vpScale = newScale;
+                        applyViewport();
+                        updateStatus();
+                    }
+                }, { passive: false });
+
+                app.canvas.addEventListener('touchend', function (e) {
+                    if (e.touches.length === 0) {
+                        dragging = false;
+                        pinching = false;
+                    } else if (e.touches.length === 1 && pinching) {
+                        pinching = false;
+                        dragging = true;
+                        dsX = e.touches[0].clientX; dsY = e.touches[0].clientY;
+                        dvX = vpX; dvY = vpY;
+                    }
+                });
+
+                window.addEventListener('resize', function () {
+                    var nW = window.innerWidth;
+                    var nH = window.innerHeight;
+                    app.renderer.resize(nW, nH);
+                    vpX += (nW - W) / 2;
+                    vpY += (nH - H) / 2;
+                    W = nW; H = nH;
+                    applyViewport();
+                });
+
+                await loadCharacter(defaultGame, defaultId);
+            }
+
+            loadBtn.addEventListener('click', function () {
+                loadCharacter(gameSelect.value, inputEl.value.trim());
+            });
+            inputEl.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') loadCharacter(gameSelect.value, inputEl.value.trim());
+            });
+
+            init().catch(function (err) {
+                statusEl.textContent = 'Error: ' + err.message;
+                console.error(err);
+            });
+        })();
+    </script>
+</body>
+
+</html>
