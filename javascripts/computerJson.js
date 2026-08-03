@@ -2045,16 +2045,16 @@ var links = {
         },
         {
             "Name": {
-                "CH": "剧情记录（新新）",
-                "EN": "Quest Logs [NewNew]",
+                "CH": "剧情记录",
+                "EN": "Quest Logs",
             },
             "Link": "/gi/quests",
             "When": quest_allow,
         },
         {
             "Name": {
-                "CH": "生日日历（新）",
-                "EN": "Birthday Calendar [New]",
+                "CH": "生日日历",
+                "EN": "Birthday Calendar",
             },
             "Link": "/gi/birthday",
         },
@@ -2106,14 +2106,6 @@ var links = {
                 "RU": "Подсказки на экране загрузки"
             },
             "Link": "/gi/load",
-        },
-        {
-            "Name": {
-                "CH": "妮可少女的DIY小屋",
-                "EN": "",
-                "RU": ""
-            },
-            "Link": "/gi/diy",
         },
     ],
     "SR": [

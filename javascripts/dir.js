@@ -214,20 +214,7 @@ var GI = [
             "EN": "/gi/load",
             "RU": "/gi/load"
         }
-    },
-    {
-        "Title": {
-            "CH": "妮可少女的DIY小屋",
-            "EN": "",
-            "RU": ""
-        },
-        "Features": [],
-        "Href": {
-            "CH": "/gi/diy",
-            "EN": "",
-            "RU": ""
-        }
-    },
+    }
 ]
 
 var SR = [

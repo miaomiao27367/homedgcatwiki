@@ -1196,8 +1196,9 @@ var _mtc_ = {
     }
 }
 
-var _recommand_ = {
-    "relics": {
+var _recommend_ = {
+    "1510": {
+        "relics": {
         "avatar_id": 1510,
         "set4_id_list": [
             131,
@@ -1345,4 +1346,5 @@ var _recommand_ = {
             ]
         }
     ]
+}
 }

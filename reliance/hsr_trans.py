@@ -852,7 +852,7 @@ def merge_avatar_to_avatar_js(character_id: str) -> str:
 
 def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any], all_versions_tree_data: Dict[str, Any],
                      all_versions_rank_data: Dict[str, Any], versions: Dict[str, str],
-                     mtc_data: Dict[str, Any] = None, recommand_data: Dict[str, Any] = None,
+                     mtc_data: Dict[str, Any] = None, recommend_data: Dict[str, Any] = None,
                      output_dir: str = None) -> None:
     """
     生成角色详情JS文件（支持多版本）
@@ -982,15 +982,17 @@ def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any],
             f.write("    }\n")
             f.write("]\n")
 
-        f.write("\nvar _recommand_ = ")
-        if recommand_data:
-            f.write(json.dumps(recommand_data, ensure_ascii=False, indent=4))
+        f.write("\nvar _recommend_ = ")
+        if recommend_data:
+            f.write(json.dumps(recommend_data, ensure_ascii=False, indent=4))
             f.write("\n")
         else:
             f.write("{\n")
-            f.write('    "relics": {},\n')
-            f.write('    "lightcones": [],\n')
-            f.write('    "teams": []\n')
+            f.write('    "' + character_id + '": {\n')
+            f.write('        "relics": {},\n')
+            f.write('        "lightcones": [],\n')
+            f.write('        "teams": []\n')
+            f.write('    }\n')
             f.write("}\n")
 
 
@@ -1043,20 +1045,22 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
     # 生成角色详情JS文件（多版本）
     # 使用最新版本的数据提取培养材料
     mtc_data = None
-    recommand_data = None
+    recommend_data = None
     if versions:
         latest_version = list(versions.keys())[-1]
         if latest_version in all_versions_data:
             char_data = all_versions_data[latest_version]
             mtc_data = convert_mtc_data(character_id, char_data)
-            recommand_data = {
-                "relics": char_data.get("relics", {}),
-                "lightcones": char_data.get("lightcones", []),
-                "teams": char_data.get("teams", [])
+            recommend_data = {
+                character_id: {
+                    "relics": char_data.get("relics", {}),
+                    "lightcones": char_data.get("lightcones", []),
+                    "teams": char_data.get("teams", [])
+                }
             }
     output_dir = DEBUG_OUTPUT_DIR if debug else OUTPUT_DIR2
     generate_js_file(character_id, all_versions_skill_data, all_versions_tree_data, all_versions_rank_data,
-                     versions, mtc_data, recommand_data, output_dir=output_dir)
+                     versions, mtc_data, recommend_data, output_dir=output_dir)
 
     if debug:
         return f"角色 {character_id} 调试数据已生成至 {output_dir}/{character_id}.js"

@@ -1143,6 +1143,16 @@ table {
     width: 100%;
 }
 
+.mtc_recommend {
+    width: 100%;
+    margin: 10px 0;
+    display: none;
+}
+
+.mtc_recommend a {
+    text-decoration: none;
+}
+
 .mtc_result_item {
     width: 60px;
     margin: 5px;
@@ -2094,6 +2104,117 @@ input.range_slider {
         width: calc(50% - 8px);
         margin: 2px 0;
     }
+}
+
+/* ========== recommend 推荐模块 ========== */
+.recommend_wrap {
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.recommend_title {
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.recommend_card_link {
+    text-decoration: none;
+    background: #1e2b33;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* --- 遗器推荐 --- */
+.recommend_item {
+    font-size: 13px;
+    color: #ccc;
+}
+
+/* --- 光锥推荐 --- */
+.recommend_lc_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 0 15px;
+}
+
+.recommend_lc_card_inner {
+    border-radius: 5px;
+    padding: 8px;
+    text-align: center;
+}
+
+.recommend_lc_img {
+    height: 180px;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.recommend_lc_name {
+    font-size: 13px;
+    color: #eee;
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+/* --- 配队推荐 --- */
+.recommend_team_group {
+    margin: 6px 0;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+.recommend_team_title {
+    font-size: 13px;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.recommend_team_members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.recommend_team_member_inner {
+    width: 100%;
+    border-radius: 5px;
+    padding: 4px;
+    text-align: center;
+}
+
+.recommend_team_avatar {
+    width: 72px;
+    height: 72px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.recommend_team_name {
+    font-size: 11px;
+    color: #eee;
+    line-height: 1.2;
+}
+
+.recommend_team_backup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+.recommend_team_backup_avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
 }
 
 @media screen and (max-width: 500px) {

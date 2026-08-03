@@ -277,6 +277,7 @@ $(function () {
     var _notes = {}
     var _adiff = {}
     var _mtc = {}
+    var _recommend = {}
     var _versions = {}
 
     function begin() {
@@ -991,15 +992,16 @@ $(function () {
                 document.head.append(script_computer_a)
                 script_computer_a.onload = function () {
                     loaded.push(avatar_data._id)
-                    _avatarskill = {..._avatarskill, ..._avatarskill_}
-                    _avatarskilltree = {..._avatarskilltree, ..._avatarskilltree_}
-                    _avatarrank = {..._avatarrank, ..._avatarrank_}
-                    _story = {..._story, ..._story_}
-                    _voice = {..._voice, ..._voice_}
-                    _notes = {..._notes, ..._notes_}
-                    _adiff = {..._adiff, ..._adiff_}
-                    _mtc = {..._mtc, ..._mtc_}
-                    _versions = {..._versions, ..._versions_}
+                    if (typeof _avatarskill_ !== 'undefined') _avatarskill = {..._avatarskill, ..._avatarskill_}
+                    if (typeof _avatarskilltree_ !== 'undefined') _avatarskilltree = {..._avatarskilltree, ..._avatarskilltree_}
+                    if (typeof _avatarrank_ !== 'undefined') _avatarrank = {..._avatarrank, ..._avatarrank_}
+                    if (typeof _story_ !== 'undefined') _story = {..._story, ..._story_}
+                    if (typeof _voice_ !== 'undefined') _voice = {..._voice, ..._voice_}
+                    if (typeof _notes_ !== 'undefined') _notes = {..._notes, ..._notes_}
+                    if (typeof _adiff_ !== 'undefined') _adiff = {..._adiff, ..._adiff_}
+                    if (typeof _mtc_ !== 'undefined') _mtc = {..._mtc, ..._mtc_}
+                    if (typeof _recommend_ !== 'undefined') _recommend = {..._recommend, ..._recommend_}
+                    if (typeof _versions_ !== 'undefined') _versions = {..._versions, ..._versions_}
                 }
             }
             
@@ -2843,15 +2845,16 @@ $(function () {
             document.head.append(script_computer_a)
             script_computer_a.onload = function () {
                 loaded.push(this_avatar._id)
-                _avatarskill = {..._avatarskill, ..._avatarskill_}
-                _avatarskilltree = {..._avatarskilltree, ..._avatarskilltree_}
-                _avatarrank = {..._avatarrank, ..._avatarrank_}
-                _story = {..._story, ..._story_}
-                _voice = {..._voice, ..._voice_}
-                _notes = {..._notes, ..._notes_}
-                _adiff = {..._adiff, ..._adiff_}
-                _mtc = {..._mtc, ..._mtc_}
-                _versions = {..._versions, ..._versions_}
+                if (typeof _avatarskill_ !== 'undefined') _avatarskill = {..._avatarskill, ..._avatarskill_}
+                if (typeof _avatarskilltree_ !== 'undefined') _avatarskilltree = {..._avatarskilltree, ..._avatarskilltree_}
+                if (typeof _avatarrank_ !== 'undefined') _avatarrank = {..._avatarrank, ..._avatarrank_}
+                if (typeof _story_ !== 'undefined') _story = {..._story, ..._story_}
+                if (typeof _voice_ !== 'undefined') _voice = {..._voice, ..._voice_}
+                if (typeof _notes_ !== 'undefined') _notes = {..._notes, ..._notes_}
+                if (typeof _adiff_ !== 'undefined') _adiff = {..._adiff, ..._adiff_}
+                if (typeof _mtc_ !== 'undefined') _mtc = {..._mtc, ..._mtc_}
+                if (typeof _recommend_ !== 'undefined') _recommend = {..._recommend, ..._recommend_}
+                if (typeof _versions_ !== 'undefined') _versions = {..._versions, ..._versions_}
             }
         }
     }
@@ -2893,10 +2896,11 @@ $(function () {
 
     function renderAvatarAfter(i) {
         if (unchanged) {
-            this_avatar_vers = getVerAvatar(_versions[this_avatar._id])
+            var version_data = _versions[this_avatar._id]
+            this_avatar_vers = getVerAvatar(version_data)
             this_avatar_cur_ver = this_avatar_vers[1]
-            var cur_idx = _versions[this_avatar._id].indexOf(this_avatar_cur_ver)
-            this_avatar_cmp_ver = cur_idx > 0 ? _versions[this_avatar._id][cur_idx - 1] : this_avatar_cur_ver
+            var cur_idx = version_data ? version_data.indexOf(this_avatar_cur_ver) : -1
+            this_avatar_cmp_ver = cur_idx > 0 ? version_data[cur_idx - 1] : this_avatar_cur_ver
         }
         cur_avatar_page = i
         var mats = this_avatar.Mat
@@ -3630,6 +3634,9 @@ $(function () {
             else {
                 if (Object.keys(ST.Tree4).length) show_4 = 1
             }
+            if (!ST.Tree1) ST.Tree1 = {}
+            if (!ST.Tree2) ST.Tree2 = {}
+            if (!ST.Tree3) ST.Tree3 = {}
             $('.mon_body').render([
                 {
                     div: [
@@ -4250,17 +4257,17 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[0]),
                                     t: [
                                         {
-                                                            img: (_item[mats[0]] && _item[mats[0]].Icon) ? (imgpre + "images/" + _item[mats[0]].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
-                                                            event: {
-                                                                error: function (d) {
-                                                                    $(d.sender).hide()
-                                                                    $(d.sender).parent().render({ img: '/images/itemicon/Icon_Testmaterial01.png', a: { loading: lazy } })
-                                                                }
-                                                            },
-                                                            a: {
-                                                                loading: lazy
-                                                            }
-                                                        },
+                                            img: (_item[mats[0]] && _item[mats[0]].Icon) ? (imgpre + "images/" + _item[mats[0]].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                            event: {
+                                                error: function (d) {
+                                                    $(d.sender).hide()
+                                                    $(d.sender).parent().render({ img: '/images/itemicon/Icon_Testmaterial01.png', a: { loading: lazy } })
+                                                }
+                                                },
+                                            a: {
+                                                loading: lazy
+                                            }
+                                            },
                                         {
                                             span: '73',
                                             class: 'mat_num',
@@ -4283,17 +4290,17 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[1]),
                                     t: [
                                         {
-                                                            img: (_item[mats[1]] && _item[mats[1]].Icon) ? (imgpre + "images/" + _item[mats[1]].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
-                                                            event: {
-                                                                error: function (d) {
-                                                                    $(d.sender).hide()
-                                                                    $(d.sender).parent().render({ img: '/images/itemicon/Icon_Testmaterial01.png', a: { loading: lazy } })
-                                                                }
-                                                            },
-                                                            a: {
-                                                                loading: lazy
-                                                            }
-                                                        },
+                                            img: (_item[mats[1]] && _item[mats[1]].Icon) ? (imgpre + "images/" + _item[mats[1]].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                            event: {
+                                                error: function (d) {
+                                                    $(d.sender).hide()
+                                                    $(d.sender).parent().render({ img: '/images/itemicon/Icon_Testmaterial01.png', a: { loading: lazy } })
+                                                }
+                                                },
+                                            a: {
+                                                loading: lazy
+                                            }
+                                            },
                                         {
                                             span: '65',
                                             class: 'mat_num',
@@ -4635,6 +4642,27 @@ $(function () {
                         },
                         class: 'a_section'
                     },
+                    {
+                        div: {
+                            div: '',
+                            class: 'a_section_content recommend_relics'
+                        },
+                        class: 'a_section'
+                    },
+                    {
+                        div: {
+                            div: '',
+                            class: 'a_section_content recommend_lightcones'
+                        },
+                        class: 'a_section'
+                    },
+                    {
+                        div: {
+                            div: '',
+                            class: 'a_section_content recommend_teams'
+                        },
+                        class: 'a_section'
+                    },
                 ]
             })
             _mtc[this_avatar._id].Skills.forEach(function (t, k) {
@@ -4748,6 +4776,7 @@ $(function () {
             })
             $('#lv_low').trigger('input')
             refresh_ctm()
+            render_recommend()
         }
         $('.stat_ver_choose select').val(this_avatar_cur_ver)
         $('#cl_vo').val(this_avatar_cmp_ver)
@@ -5174,12 +5203,13 @@ $(function () {
 
         $('.mtc_result').empty()
         for (const [d, n] of Object.entries(_cumulative_mats)) {
+            var item_icon = _item[d] ? _item[d].Icon : ''
             $('.mtc_result').render({
                 a: '/sr/item/#_' + d,
                 t: [
                     {
                         div: {
-                            img: '/images/' + _item[d].Icon
+                            img: item_icon ? '/images/' + item_icon : ''
                         },
                         class: 'mtc_result_item_icon'
                     },
@@ -5196,6 +5226,132 @@ $(function () {
         }
 
     }
+
+        function render_recommend() {
+            var rc = _recommend && _recommend[this_avatar._id]
+            var _relic_type = {
+                "HEAD": "头部",
+                "HAND": "手部",
+                "BODY": "躯干",
+                "FOOT": "脚部",
+                "NECK": "连结绳",
+                "OBJECT": "位面球"
+            }
+
+            // Relics
+            $('.recommend_relics').empty()
+            if (rc && rc.relics && Object.keys(rc.relics).length > 0) {
+                $('.recommend_relics').show()
+                var relic_html = '<div class="recommend_wrap">'
+                relic_html += '<p class="recommend_title">遗器推荐</p>'
+
+                if (rc.relics.set4_id_list && rc.relics.set4_id_list.length > 0) {
+                    relic_html += '<p class="recommend_item">4件套：'
+                    rc.relics.set4_id_list.forEach(function (sid) {
+                        if (_relic[sid]) relic_html += _relic[sid].Name + ' / '
+                    })
+                    relic_html = relic_html.slice(0, -3) + '</p>'
+                }
+
+                if (rc.relics.set2_id_list && rc.relics.set2_id_list.length > 0) {
+                    relic_html += '<p class="recommend_item">2件套：'
+                    rc.relics.set2_id_list.forEach(function (sid) {
+                        if (_relic[sid]) relic_html += _relic[sid].Name + ' / '
+                    })
+                    relic_html = relic_html.slice(0, -3) + '</p>'
+                }
+
+                if (rc.relics.property_list && rc.relics.property_list.length > 0) {
+                    relic_html += '<p class="recommend_item">主词条：'
+                    rc.relics.property_list.forEach(function (p) {
+                        var rt = _relic_type[p.relic_type] || p.relic_type
+                        var pn = _propname[p.property_type] || p.property_type
+                        relic_html += rt + ' ' + pn + ' / '
+                    })
+                    relic_html = relic_html.slice(0, -3) + '</p>'
+                }
+
+                if (rc.relics.sub_affix_property_list && rc.relics.sub_affix_property_list.length > 0) {
+                    relic_html += '<p class="recommend_item">副属性：'
+                    rc.relics.sub_affix_property_list.forEach(function (s) {
+                        relic_html += (_propname[s] || s) + ' / '
+                    })
+                    relic_html = relic_html.slice(0, -3) + '</p>'
+                }
+
+                relic_html += '</div>'
+                $('.recommend_relics').append(relic_html)
+            } else {
+                $('.recommend_relics').hide()
+            }
+
+            // Lightcones
+            $('.recommend_lightcones').empty()
+            if (rc && rc.lightcones && rc.lightcones.length > 0) {
+                $('.recommend_lightcones').show()
+                var lc_html = '<div class="recommend_wrap">'
+                lc_html += '<p class="recommend_title">光锥推荐</p>'
+                lc_html += '<div class="recommend_lc_grid">'
+                rc.lightcones.forEach(function (lc_id) {
+                    if (_weapon[lc_id]) {
+                        lc_html += '<a href="/sr/char#_' + lc_id + '" target="_blank" class="recommend_card_link">'
+                        lc_html += '<div class="recommend_lc_card_inner">'
+                        lc_html += '<img src="/images/lightconemediumicon/' + _weapon[lc_id].Pic + '" class="recommend_lc_img">'
+                        lc_html += '<span class="recommend_lc_name">' + _weapon[lc_id].Name + '</span>'
+                        lc_html += '</div></a>'
+                    }
+                })
+                lc_html += '</div></div>'
+                $('.recommend_lightcones').append(lc_html)
+            } else {
+                $('.recommend_lightcones').hide()
+            }
+
+            // Teams
+            $('.recommend_teams').empty()
+            if (rc && rc.teams && rc.teams.length > 0) {
+                $('.recommend_teams').show()
+                var team_html = '<div class="recommend_wrap">'
+                team_html += '<p class="recommend_title">配队推荐</p>'
+                rc.teams.forEach(function (team, ti) {
+                    team_html += '<div class="recommend_team_group">'
+                    team_html += '<p class="recommend_team_title">队伍 ' + (ti + 1) + '</p>'
+                    team_html += '<div class="recommend_team_members">'
+                    var self_icon = this_avatar.Icon.replaceAll("avatarshopicon", "avataricon").replaceAll("/Avatar/", "/avatar/")
+                    team_html += '<a href="/sr/char#_' + this_avatar._id + '" target="_blank" class="recommend_card_link">'
+                    team_html += '<div class="recommend_team_member_inner">'
+                    team_html += '<img src="/images/' + self_icon + '.png" class="recommend_team_avatar">'
+                    team_html += '<span class="recommend_team_name">' + this_avatar.Name + '</span>'
+                    team_html += '</div></a>'
+                    team.member_list.forEach(function (mid, idx) {
+                        if (_avatar[mid]) {
+                            var avt_icon = _avatar[mid].Icon.replaceAll("avatarshopicon", "avataricon").replaceAll("/Avatar/", "/avatar/")
+                            team_html += '<a href="/sr/char#_' + mid + '" target="_blank" class="recommend_card_link">'
+                            team_html += '<div class="recommend_team_member_inner">'
+                            team_html += '<img src="/images/' + avt_icon + '.png" class="recommend_team_avatar">'
+                            team_html += '<span class="recommend_team_name">' + _avatar[mid].Name + '</span>'
+                            var backup_key = 'backup_list' + (idx + 1)
+                            if (team[backup_key] && team[backup_key].length > 0) {
+                                team_html += '<div class="recommend_team_backup">'
+                                team[backup_key].forEach(function (bid) {
+                                    if (_avatar[bid]) {
+                                        var b_icon = _avatar[bid].Icon.replaceAll("avatarshopicon", "avataricon").replaceAll("/Avatar/", "/avatar/")
+                                        team_html += '<img src="/images/' + b_icon + '.png" class="recommend_team_backup_avatar" title="' + _avatar[bid].Name + '">'
+                                    }
+                                })
+                                team_html += '</div>'
+                            }
+                            team_html += '</div></a>'
+                        }
+                    })
+                    team_html += '</div></div>'
+                })
+                team_html += '</div>'
+                $('.recommend_teams').append(team_html)
+            } else {
+                $('.recommend_teams').hide()
+            }
+        }
 
     $('body').on('dblclick', ".special", function () {
         renderAvatar(10)
@@ -5840,11 +5996,13 @@ $(function () {
     }
 
     function getVer(dic) {
+        if (!dic) return [{}, ""]
         var di = Object.keys(dic)
         return getVerAvatar(di)
     }
 
     function getVerAvatar(di) {
+        if (!di || !di.length) return [{}, ""]
         var out = {}
         di.forEach(function (k) {
             if (k == "Pre" || k == "Live") {
