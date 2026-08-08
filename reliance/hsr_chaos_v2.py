@@ -31,7 +31,7 @@ PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
 OUTPUT_DIR = os.path.join(SCRIPT_DIR, "tempdata")
-MONSTER_DB_PATH = os.path.join(PROJECT_ROOT, "data", "CH", "Monster_1.js")
+MONSTER_DB_PATH = os.path.join(PROJECT_ROOT, "data", "CH", "Monster.js")
 LEVEL_CURVES_PATH = os.path.join(PROJECT_ROOT, "data", "LevelCurves.js")
 DEFAULT_VERSION = "4.3.52"
 
@@ -60,48 +60,26 @@ def load_local_monster_db() -> Dict[str, Any]:
     with open(MONSTER_DB_PATH, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    start = content.find('{')
-    end = content.rfind('}')
+    start = content.find('var _monster = {')
+    end = content.find('var _monsterlist = [')
     if start == -1 or end == -1:
-        print("警告: 无法解析 Monster_1.js")
+        print("警告: 无法解析 Monster.js")
         return monster_db
 
-    json_str = content[start:end + 1]
+    json_str = content[start + len('var _monster = '):end].strip()
+    json_str = json_str.rstrip(';').strip()
     json_str = remove_trailing_commas(json_str)
 
     try:
         data = json.loads(json_str)
         for key, value in data.items():
             monster_db[key] = value
+            # 展开Child变体到顶层（兼容旧查询逻辑）
+            if isinstance(value, dict) and "Child" in value:
+                for child_id, child_data in value["Child"].items():
+                    monster_db[child_id] = child_data
     except json.JSONDecodeError as e:
         print(f"警告: JSON解析失败: {e}")
-
-    monster_db = load_monster_2(monster_db)
-    return monster_db
-
-
-def load_monster_2(monster_db: Dict[str, Any]) -> Dict[str, Any]:
-    path = os.path.join(PROJECT_ROOT, "data", "CH", "Monster_2.js")
-    if not os.path.exists(path):
-        return monster_db
-
-    with open(path, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    start = content.find('{')
-    end = content.rfind('}')
-    if start == -1 or end == -1:
-        return monster_db
-
-    json_str = content[start:end + 1]
-    json_str = remove_trailing_commas(json_str)
-
-    try:
-        data = json.loads(json_str)
-        for key, value in data.items():
-            monster_db[key] = value
-    except json.JSONDecodeError:
-        pass
 
     return monster_db
 

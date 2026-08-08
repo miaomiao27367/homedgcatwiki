@@ -151,7 +151,9 @@ def convert_monster_skill(monster_id: str, monster_data: Dict[str, Any], output_
 
 def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], output_dir: str):
     """
-    将API原始怪物JSON转换为Monster_1.js基础模块格式
+    将API原始怪物JSON转换为Monster.js嵌套格式
+    - 7位ID的本体存储完整Stats
+    - 9位ID的变体归入本体的Child，Stats存储为相对于本体的倍率
 
     Args:
         monster_id: 怪物ID
@@ -162,7 +164,10 @@ def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], ou
         print(f"Error: 怪物 {monster_id} 的数据为空")
         return
 
-    # 元素名映射: API → Monster_1.js
+    STAT_KEYS = ["HP", "ATK", "DEF", "SPD", "Stance"]
+    STAT_DIVISORS = {"HP": 93, "ATK": 1, "DEF": 210, "SPD": 1, "Stance": 30}
+
+    # 元素名映射: API → local
     ELEM_MAP = {
         'Physical': 'Phys',
         'Fire': 'Fire',
@@ -176,7 +181,30 @@ def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], ou
     def map_elem(e):
         return ELEM_MAP.get(e, e)
 
-    # 图标路径转换
+    def compute_stats(hp_base, attack_base, defence_base, speed_base, stance_base,
+                      hp_mod=1.0, atk_mod=1.0, def_mod=1.0, spd_mod=1.0, stance_mod=1.0):
+        return {
+            "HP": round((hp_base * hp_mod) / STAT_DIVISORS["HP"], 4),
+            "ATK": round((attack_base * atk_mod) / STAT_DIVISORS["ATK"], 4),
+            "DEF": round((defence_base * def_mod) / STAT_DIVISORS["DEF"], 4),
+            "SPD": round((speed_base * spd_mod) / STAT_DIVISORS["SPD"], 4),
+            "Stance": round((stance_base * stance_mod) / STAT_DIVISORS["Stance"], 4),
+        }
+
+    def compute_ratio_stats(parent_stats, child_stats):
+        if not parent_stats or not child_stats:
+            return child_stats
+        ratio = {}
+        for key in STAT_KEYS:
+            p_val = parent_stats.get(key, 1)
+            c_val = child_stats.get(key, p_val)
+            if p_val and p_val != 0:
+                ratio[key] = round(c_val / p_val, 4)
+            else:
+                ratio[key] = 1.0
+        return ratio
+
+    # 图标路径
     image_path = monster_data.get('image_path') or ''
     icon = ''
     figure = ''
@@ -185,9 +213,22 @@ def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], ou
         icon = f"mostericon/Monster_{m.group(1)}.png"
         figure = f"monsterfigure/Monster_{m.group(1)}.png"
 
-    # 遍历所有child，生成_monster条目
+    hp_base = monster_data.get('hp_base') or 0
+    attack_base = monster_data.get('attack_base') or 0
+    defence_base = monster_data.get('defence_base') or 0
+    speed_base = monster_data.get('speed_base') or 0
+    stance_base = monster_data.get('stance_base') or 0
+
     children = monster_data.get('child') or []
-    basic_entries = {}
+    if not children:
+        print(f"Error: 怪物 {monster_id} 没有child数据")
+        return
+
+    # 区分本体和变体
+    # 本体: 7位ID且hp_modify_ratio接近1（或第一个child）
+    # 变体: 9位ID且hp_modify_ratio≠1
+    base_child = None
+    variants = []
 
     for child in children:
         if not child:
@@ -195,47 +236,102 @@ def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], ou
         child_id = child.get('id')
         if child_id is None:
             continue
-        # 跳过变体子级（hp_modify_ratio != 1），本地只保留本体数据
-        #if (child.get('hp_modify_ratio') or 1) != 1:
-        #    continue
 
-        # 构建RESBase
-        res_base = {}
-        for r in child.get('damage_type_resistance') or []:
-            res_base[map_elem(r.get('damage_type', ''))] = r.get('value', 0)
+        hp_mod = child.get('hp_modify_ratio') or 1
+        is_default = abs(hp_mod - 1.0) < 0.001
 
-        # 构建Weak
-        weak = [map_elem(w) for w in child.get('stance_weak_list') or []]
+        if is_default and base_child is None:
+            base_child = child
+        elif not is_default:
+            variants.append(child)
 
-        # 构建Skills
-        skills = [s.get('id') for s in child.get('skill_list') or [] if s.get('id') is not None]
+    if base_child is None:
+        base_child = children[0]
 
-        entry = {
-            "_id": child_id,
-            "Name": monster_data.get('name') or '',
-            "Desc": monster_data.get('desc') or '',
-            "Stats": {
-                "HP": ((monster_data.get('hp_base') or 0) * (child.get('hp_modify_ratio') or 1)) / 93,
-                "ATK": (monster_data.get('attack_base') or 0) * (child.get('attack_modify_ratio') or 1),
-                "DEF": ((monster_data.get('defence_base') or 0) * (child.get('defence_modify_ratio') or 1)) / 210,
-                "SPD": (monster_data.get('speed_base') or 0) * (child.get('speed_modify_ratio') or 1),
-                "Stance": (monster_data.get('stance_base') or 0) / 30
-            },
-            "Weak": weak,
-            "RESBase": res_base,
-            "StatusRESBase": monster_data.get('status_resistance_base') or 0,
-            "DebuffRES": {},
-            "Skills": skills,
-            "Camp": 0,
-            "Icon": icon,
-            "Figure": figure
-        }
-        basic_entries[str(child_id)] = entry
+    base_id = base_child.get('id')
+    if base_id is None:
+        return
 
-    # 确保输出目录存在
+    base_id_str = str(base_id)
+
+    # 构建RESBase
+    res_base = {}
+    for r in base_child.get('damage_type_resistance') or []:
+        res_base[map_elem(r.get('damage_type', ''))] = r.get('value', 0)
+
+    # 构建Weak
+    weak = [map_elem(w) for w in base_child.get('stance_weak_list') or []]
+
+    # 构建Skills
+    skills = [s.get('id') for s in base_child.get('skill_list') or [] if s.get('id') is not None]
+
+    hp_count = monster_data.get('hp_multiple_ratio')
+    stance_count = monster_data.get('stance_break')
+
+    base_entry = {
+        "_id": base_id,
+        "Name": monster_data.get('name') or '',
+        "Desc": (monster_data.get('desc') or '').replace('\\n', '\n'),
+        "Stats": compute_stats(
+            hp_base, attack_base, defence_base, speed_base, stance_base,
+            base_child.get('hp_modify_ratio') or 1,
+            base_child.get('attack_modify_ratio') or 1,
+            base_child.get('defence_modify_ratio') or 1,
+            base_child.get('speed_modify_ratio') or 1,
+            base_child.get('stance_modify_ratio') or 1,
+        ),
+        "Weak": weak,
+        "RESBase": res_base,
+        "StatusRESBase": monster_data.get('status_resistance_base') or 0,
+        "DebuffRES": {},
+        "Skills": skills,
+        "Camp": monster_data.get('monster_camp_id') or 0,
+        "Icon": icon,
+        "Figure": figure,
+    }
+    if hp_count and hp_count > 1:
+        base_entry["HPCount"] = hp_count
+    if stance_count and stance_count > 1:
+        base_entry["StanceCount"] = stance_count
+
+    # 构建变体Child
+    if variants:
+        base_stats = base_entry["Stats"]
+        base_entry["Child"] = {}
+        for child in variants:
+            child_id = child.get('id')
+            if child_id is None:
+                continue
+
+            child_stats = compute_stats(
+                hp_base, attack_base, defence_base, speed_base, stance_base,
+                child.get('hp_modify_ratio') or 1,
+                child.get('attack_modify_ratio') or 1,
+                child.get('defence_modify_ratio') or 1,
+                child.get('speed_modify_ratio') or 1,
+                child.get('stance_modify_ratio') or 1,
+            )
+
+            child_res_base = {}
+            for r in child.get('damage_type_resistance') or []:
+                child_res_base[map_elem(r.get('damage_type', ''))] = r.get('value', 0)
+
+            child_weak = [map_elem(w) for w in child.get('stance_weak_list') or []]
+            child_skills = [s.get('id') for s in child.get('skill_list') or [] if s.get('id') is not None]
+
+            child_entry = {
+                "_id": child_id,
+                "Stats": compute_ratio_stats(base_stats, child_stats),
+                "Weak": child_weak,
+                "RESBase": child_res_base,
+                "Skills": child_skills,
+            }
+            base_entry["Child"][str(child_id)] = child_entry
+
+    # 输出
+    basic_entries = {base_id_str: base_entry}
+
     os.makedirs(output_dir, exist_ok=True)
-
-    # 写入文件
     resolved_id = monster_data.get('id') or monster_id
     basic_js_content = f"var _monster_{resolved_id} = {json.dumps(basic_entries, ensure_ascii=False, indent=2)};"
     basic_js_path = os.path.join(output_dir, f"{resolved_id}_basic.js")
@@ -248,34 +344,34 @@ def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], ou
 
 def merge_basic_data_to_monster_js(basic_entries: Dict[str, Any]) -> str:
     """
-    将新生成的基础数据自动拼接到Monster_1.js的_monster和_monsterlist中
+    将新生成的基础数据自动拼接到Monster.js的_monster和_monsterlist中
 
     Args:
-        basic_entries: convert_monster_basic_data生成的条目字典 {child_id: entry}
+        basic_entries: convert_monster_basic_data生成的条目字典 {base_id: nested_entry}
     Returns:
         拼接结果描述
     """
-    monster_js_path = "./sr/data/CH/Monster_1.js"
+    monster_js_path = "./sr/data/CH/Monster.js"
 
     with open(monster_js_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 筛选出尚不存在的条目
+    # 筛选出尚不存在的本体ID
     new_ids = []
-    for child_id in basic_entries:
-        if f'"{child_id}":' not in content:
-            new_ids.append(child_id)
+    for base_id in basic_entries:
+        if f'"{base_id}":' not in content:
+            new_ids.append(base_id)
 
     if not new_ids:
         return "所有条目已存在，无需拼接"
 
     # 构建新条目JSON字符串
     new_entries = {cid: basic_entries[cid] for cid in new_ids}
-    new_json = json.dumps(new_entries, ensure_ascii=False, indent=2)
+    new_json = json.dumps(new_entries, ensure_ascii=False, indent=4)
     new_json = new_json[1:-1].strip()  # 去掉外层 {}
 
-    # 1. 插入到 _monster 对象末尾
-    pattern_monster = '}\n\nvar _monsterlist = ['
+    # 1. 插入到 _monster 对象末尾（在 }; 之前）
+    pattern_monster = '};\n\nvar _monsterlist = ['
     if pattern_monster not in content:
         return "错误：无法定位 _monster 对象结束位置"
     content = content.replace(
@@ -285,20 +381,21 @@ def merge_basic_data_to_monster_js(basic_entries: Dict[str, Any]) -> str:
     )
 
     # 2. 插入到 _monsterlist 数组末尾
-    pattern_list = '\n]\n\nvar _status = {'
+    pattern_list = '];\n\nvar _status = {'
     if pattern_list not in content:
         return "错误：无法定位 _monsterlist 数组结束位置"
+    # 只添加7位ID（本体）
     new_id_lines = ',\n'.join(f'    {cid}' for cid in new_ids)
     content = content.replace(
         pattern_list,
-        f',\n{new_id_lines}\n]\n\nvar _status = {{',
+        f',\n{new_id_lines}\n];\n\nvar _status = {{',
         1
     )
 
     with open(monster_js_path, 'w', encoding='utf-8') as f:
         f.write(content)
 
-    return f"已自动拼接 {len(new_ids)} 个新条目到 Monster_1.js：{', '.join(new_ids)}"
+    return f"已自动拼接 {len(new_ids)} 个新条目到 Monster.js：{', '.join(new_ids)}"
 
 
 def generate_monster_basic_data(monster_id: str, version: str = None) -> str:

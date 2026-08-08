@@ -45,15 +45,34 @@ def remove_trailing_commas(json_str: str) -> str:
 
 def load_local_monster_db() -> Dict[str, Any]:
     monster_db = {}
-    for path in [MONSTER_1_PATH, MONSTER_2_PATH]:
-        if os.path.exists(path):
-            try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    for key, value in data.items():
-                        monster_db[key] = value
-            except Exception:
-                pass
+    if not os.path.exists(MONSTER_PATH):
+        print(f"警告: 找不到 {MONSTER_PATH}")
+        return monster_db
+
+    with open(MONSTER_PATH, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    start = content.find('var _monster = {')
+    end = content.find('var _monsterlist = [')
+    if start == -1 or end == -1:
+        print("警告: 无法解析 Monster.js")
+        return monster_db
+
+    json_str = content[start + len('var _monster = '):end].strip()
+    json_str = json_str.rstrip(';').strip()
+    json_str = remove_trailing_commas(json_str)
+
+    try:
+        data = json.loads(json_str)
+        for key, value in data.items():
+            monster_db[key] = value
+            # 展开Child变体到顶层（兼容旧查询逻辑）
+            if isinstance(value, dict) and "Child" in value:
+                for child_id, child_data in value["Child"].items():
+                    monster_db[child_id] = child_data
+    except json.JSONDecodeError as e:
+        print(f"警告: JSON解析失败: {e}")
+
     return monster_db
 
 

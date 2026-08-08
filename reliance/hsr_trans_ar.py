@@ -128,48 +128,49 @@ def get_monster_child(monster_data: Dict[str, Any], target_id: int) -> Optional[
 
 
 def load_monster_base_stats() -> Dict[str, Dict[str, float]]:
-    """从Monster_1.js和Monster_2.js加载怪物基础属性（作为API不可用时的fallback）"""
+    """从Monster.js加载怪物基础属性（作为API不可用时的fallback，含嵌套Child变体）"""
     import re
 
     result = {}
 
-    for js_path, var_name in [("./sr/data/CH/Monster_1.js", "var _monster ="),
-                               ("./sr/data/CH/Monster_2.js", "var _monster_2 =")]:
-        with open(js_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+    js_path = "./sr/data/CH/Monster.js"
+    with open(js_path, 'r', encoding='utf-8') as f:
+        content = f.read()
 
-        start = content.index(var_name)
-        eq = content.index('=', start)
-        brace = content.index('{', eq)
+    start = content.find('var _monster = {')
+    end = content.find('var _monsterlist = [')
+    if start == -1 or end == -1:
+        return result
 
-        depth = 0
-        i = brace
-        while i < len(content):
-            ch = content[i]
-            i += 1
-            if ch == '{':
-                depth += 1
-            elif ch == '}':
-                depth -= 1
-                if depth == 0:
-                    break
+    js_obj = content[start + len('var _monster = '):end].strip()
+    js_obj = js_obj.rstrip(';').strip()
+    js_obj = re.sub(r',\s*}', '}', js_obj)
+    js_obj = re.sub(r',\s*]', ']', js_obj)
 
-        js_obj = content[brace:i]
-        js_obj = re.sub(r',\s*}', '}', js_obj)
-        js_obj = re.sub(r',\s*]', ']', js_obj)
+    monster_data = json.loads(js_obj)
 
-        monster_data = json.loads(js_obj)
-
-        for mid, mdata in monster_data.items():
-            stats = mdata.get("Stats", {})
-            if stats:
-                result[mid] = {
-                    "HP": stats.get("HP", 0),
-                    "SPD": stats.get("SPD", 0),
-                    "Stance": stats.get("Stance", 0),
-                    "HPCount": mdata.get("HPCount", 1.0),
-                    "Multistage": mdata.get("Multistage", 1)
-                }
+    for mid, mdata in monster_data.items():
+        stats = mdata.get("Stats", {})
+        if stats:
+            result[mid] = {
+                "HP": stats.get("HP", 0),
+                "SPD": stats.get("SPD", 0),
+                "Stance": stats.get("Stance", 0),
+                "HPCount": mdata.get("HPCount", 1.0),
+                "Multistage": mdata.get("Multistage", 1)
+            }
+        # 展开Child变体，Stats是倍率，需要乘本体值
+        if isinstance(mdata, dict) and "Child" in mdata and stats:
+            for child_id, child_data in mdata["Child"].items():
+                child_stats = child_data.get("Stats", {})
+                if child_stats:
+                    result[child_id] = {
+                        "HP": stats.get("HP", 0) * child_stats.get("HP", 1),
+                        "SPD": stats.get("SPD", 0) * child_stats.get("SPD", 1),
+                        "Stance": stats.get("Stance", 0) * child_stats.get("Stance", 1),
+                        "HPCount": mdata.get("HPCount", 1.0),
+                        "Multistage": mdata.get("Multistage", 1)
+                    }
     return result
 
 

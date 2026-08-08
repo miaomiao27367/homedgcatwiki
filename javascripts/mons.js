@@ -62,7 +62,6 @@ $(function () {
     var show_sch = 0
     var si = 0
 
-    var has_2 = 0
     var m_s = 0
 
     var switch_hlg = 0
@@ -78,7 +77,7 @@ $(function () {
     ]
 
     let script_computer = document.createElement('script')
-    script_computer.src = '/sr/data/' + lang3 + '/Monster_1.js'
+    script_computer.src = '/sr/data/' + lang3 + '/Monster.js'
     document.head.append(script_computer)
     script_computer.onload = begin
 
@@ -137,13 +136,6 @@ $(function () {
         script_2.onload = function () {
             m_s = 1
             if (cm != 114514) renderSkill(cm)
-            
-            let script_computer_2 = document.createElement('script')
-            script_computer_2.src = '/sr/data/' + lang3 + '/Monster_2.js'
-            document.head.append(script_computer_2)
-            script_computer_2.onload = function () {
-                has_2 = 1
-            }
         }
 
         $('container').render({
@@ -236,50 +228,50 @@ $(function () {
     }
 
     function monsterRender(kid) {
-        if (kid == 1000) {
-            if (has_2) {
-                monsterRenderAfter(kid)
-            } else {
-                $(".lt").show()
-                var ou = setInterval(function () {
-                    if (has_2) {
-                        $(".lt").hide()
-                        monsterRenderAfter(kid)
-                        clearInterval(ou)
-                    }
-                }, 200)
-            }
-        } else {
-            monsterRenderAfter(kid)
-        }
+        monsterRenderAfter(kid)
     }
 
     function monsterRenderAfter(kid) {
         $('#monster_card_area_1').empty()
         _monsterlist.forEach(function (t_0) {
             var t = _monster[t_0]
-            if (kid != 1000 && !t) return
+            if (!t) return
+
             if (kid == 1000) {
-                show = true
-                if (!t) t = _monster_2[t_0]
-                if (!t) return
-            } else if (kid == 1001) {
-                show = t.IsBug
-            } else if (kid == 1002) {
-                show = t.IsComplete
-            } else if (kid == 1003) {
-                show = t.IsIllusion
-            } else if (kid == 9999) {
-                show = t.New
-            } else if (kid == 7000) {
-                show = t._id.toString()[0] == "7"
-            } else if (kid == 99) {
-                show = (t.Camp == 0) && (t._id < 9999999)
-            } else {
-                show = (t.Camp == kid) && (t._id < 9999999)
-            }
-            if (show) {
                 actual_render(t, '#monster_card_area_1')
+                if (t.Child) {
+                    Object.keys(t.Child).forEach(function (childId) {
+                        var child = t.Child[childId]
+                        var childCopy = Object.assign({}, child)
+                        if (t.Stats && child.Stats) {
+                            childCopy.Stats = {}
+                            for (var key in t.Stats) {
+                                childCopy.Stats[key] = Math.round(t.Stats[key] * (child.Stats[key] || 1) * 10000) / 10000
+                            }
+                        }
+                        actual_render(childCopy, '#monster_card_area_1')
+                    })
+                }
+            } else {
+                var show = false
+                if (kid == 1001) {
+                    show = t.IsBug
+                } else if (kid == 1002) {
+                    show = t.IsComplete
+                } else if (kid == 1003) {
+                    show = t.IsIllusion
+                } else if (kid == 9999) {
+                    show = t.New
+                } else if (kid == 7000) {
+                    show = t._id.toString()[0] == "7"
+                } else if (kid == 99) {
+                    show = (t.Camp == 0) && (t._id < 9999999)
+                } else {
+                    show = (t.Camp == kid) && (t._id < 9999999)
+                }
+                if (show) {
+                    actual_render(t, '#monster_card_area_1')
+                }
             }
         })
         if (!rendered_buttoms) {
@@ -385,7 +377,21 @@ $(function () {
 
     function popMons(ind) {
         var me = _monster[ind]
-        if (!me) me = _monster_2[ind]
+        if (!me) {
+            var parentId = String(ind).slice(0, 7)
+            var parent = _monster[parentId]
+            if (parent && parent.Child && parent.Child[ind]) {
+                me = Object.assign({}, parent.Child[ind])
+                if (parent.Stats && me.Stats) {
+                    var computedStats = {}
+                    for (var key in parent.Stats) {
+                        computedStats[key] = Math.round(parent.Stats[key] * (me.Stats[key] || 1) * 10000) / 10000
+                    }
+                    me.Stats = computedStats
+                }
+            }
+        }
+        if (!me) return
         // 渲染基本信息结构主体 不能乱改
         poplayer_([
             {
@@ -888,22 +894,20 @@ $(function () {
             cur_mon.Su.forEach(function (smid) {
                 var sm_mon = _monster[smid]
                 if (!sm_mon) {
-                    if (has_2) {
-                        sm_mon = _monster_2[smid]
-                        render_summon(smid, sm_mon)
-                    } else {
-                        var summon_interval = setInterval(function () {
-                            if (has_2) {
-                                sm_mon = _monster_2[smid]
-                                render_summon(smid, sm_mon)
-                                refresh_summon()
-                                clearInterval(summon_interval)
+                    var _parentId = String(smid).slice(0, 7)
+                    var _parent = _monster[_parentId]
+                    if (_parent && _parent.Child && _parent.Child[smid]) {
+                        sm_mon = Object.assign({}, _parent.Child[smid])
+                        if (_parent.Stats && sm_mon.Stats) {
+                            var _s = {}
+                            for (var _k in _parent.Stats) {
+                                _s[_k] = Math.round(_parent.Stats[_k] * (sm_mon.Stats[_k] || 1) * 10000) / 10000
                             }
-                        }, 200)
+                            sm_mon.Stats = _s
+                        }
                     }
-                } else {
-                    render_summon(smid, sm_mon)
                 }
+                if (sm_mon) render_summon(smid, sm_mon)
             })
         }
         // 渲染变种怪物
@@ -928,21 +932,20 @@ $(function () {
             cur_mon.variant.forEach(function (varid) {
                 var var_mon = _monster[varid]
                 if (!var_mon) {
-                    if (has_2) {
-                        var_mon = _monster_2[varid]
-                        render_variant(varid, var_mon)
-                    } else {
-                        var variant_interval = setInterval(function () {
-                            if (has_2) {
-                                var_mon = _monster_2[varid]
-                                render_variant(varid, var_mon)
-                                clearInterval(variant_interval)
+                    var _vParentId = String(varid).slice(0, 7)
+                    var _vParent = _monster[_vParentId]
+                    if (_vParent && _vParent.Child && _vParent.Child[varid]) {
+                        var_mon = Object.assign({}, _vParent.Child[varid])
+                        if (_vParent.Stats && var_mon.Stats) {
+                            var _vs = {}
+                            for (var _vk in _vParent.Stats) {
+                                _vs[_vk] = Math.round(_vParent.Stats[_vk] * (var_mon.Stats[_vk] || 1) * 10000) / 10000
                             }
-                        }, 200)
+                            var_mon.Stats = _vs
+                        }
                     }
-                } else {
-                    render_variant(varid, var_mon)
                 }
+                if (var_mon) render_variant(varid, var_mon)
             })
         }
 
@@ -1229,7 +1232,21 @@ $(function () {
         $('.summon_panel').each(function(i, obj) {
 
             var sm_mon = _monster[$(this).attr('data-id')]
-            if (!sm_mon) sm_mon = _monster_2[$(this).attr('data-id')]
+            if (!sm_mon) {
+                var _rsid = $(this).attr('data-id')
+                var _rParentId = String(_rsid).slice(0, 7)
+                var _rParent = _monster[_rParentId]
+                if (_rParent && _rParent.Child && _rParent.Child[_rsid]) {
+                    sm_mon = Object.assign({}, _rParent.Child[_rsid])
+                    if (_rParent.Stats && sm_mon.Stats) {
+                        var _rs = {}
+                        for (var _rk in _rParent.Stats) {
+                            _rs[_rk] = Math.round(_rParent.Stats[_rk] * (sm_mon.Stats[_rk] || 1) * 10000) / 10000
+                        }
+                        sm_mon.Stats = _rs
+                    }
+                }
+            }
 
             var _eg = _elitegroup[EG]
             var _hlg = _hardlevelgroup[HLG][LV - 1]
@@ -1748,7 +1765,6 @@ $(function () {
         var results = []
         _monsterlist.forEach(function (t_0) {
             var t = _monster[t_0]
-            if (!t) t = _monster_2[t_0]
             if (!t) return
             if (results.length < 100) {
                 if (t.Name.includes(search)) {
@@ -1757,6 +1773,21 @@ $(function () {
                 if (t_0.toString().includes(search)) {
                     results.push(t)
                 }
+            }
+            if (t.Child && results.length < 100) {
+                Object.keys(t.Child).forEach(function (childId) {
+                    var child = t.Child[childId]
+                    if (child.Name.includes(search) || childId.includes(search)) {
+                        var childCopy = Object.assign({}, child)
+                        if (t.Stats && child.Stats) {
+                            childCopy.Stats = {}
+                            for (var key in t.Stats) {
+                                childCopy.Stats[key] = Math.round(t.Stats[key] * (child.Stats[key] || 1) * 10000) / 10000
+                            }
+                        }
+                        results.push(childCopy)
+                    }
+                })
             }
         })
         results.sort((a, b) => a._id - b._id)
@@ -1882,22 +1913,17 @@ $(function () {
         if (_monster[monid]) {
             popMons(monid)
             return
-        } else if (!_monsterlist.includes(parseInt(monid))) {
-            return
-        } else {
-            if (has_2) {
-                popMons(monid)
-                return
-            }
-            $('.lt').show()
-            var pu = setInterval(function () {
-                if (has_2) {
-                    $('.lt').hide()
-                    clearInterval(pu)
-                    popMons(monid)
-                }
-            }, 200)
         }
+        var parentId = String(monid).slice(0, 7)
+        var parent = _monster[parentId]
+        if (parent && parent.Child && parent.Child[monid]) {
+            popMons(monid)
+            return
+        }
+        if (!_monsterlist.includes(parseInt(monid))) {
+            return
+        }
+        popMons(monid)
     }
 
     function rnd(x) {
