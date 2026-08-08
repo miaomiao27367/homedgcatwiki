@@ -428,36 +428,15 @@ var ToolsApp = {
         }
     },
 
-    // 发送HSR Fiction更新请求
+    // 发送HSR Fiction更新请求 (v2: 基于EliteGroup自动计算HP)
     sendHSRFictionUpdate: async function() {
         var submitBtn = document.getElementById('hsrFictionSubmitBtn');
         var btnText = document.getElementById('hsrFictionBtnText');
         var resultDiv = document.getElementById('hsrFictionResult');
 
-        var monsterOverrides = [];
-        var floors = document.querySelectorAll('#hsrFictionMonsterOverrides .monster-floor');
-        var hasAnyValue = false;
-        for (var f = 0; f < floors.length; f++) {
-            var inputs = floors[f].querySelectorAll('input');
-            for (var i = 0; i < inputs.length; i++) {
-                var val = inputs[i].value.trim();
-                if (val) {
-                    hasAnyValue = true;
-                    var parts = val.split(/\s+/);
-                    var v1 = parseFloat(parts[0]) || 1.0;
-                    var v2 = parseFloat(parts[1]) || 1.0;
-                    var v3 = parseFloat(parts[2]) || 1.0;
-                    monsterOverrides.push([v1, v2, v3]);
-                } else {
-                    monsterOverrides.push(null);
-                }
-            }
-        }
-
         var data = {
             story_id: document.getElementById('hsrFictionStoryId').value.trim(),
-            version: document.getElementById('hsrFictionVersion').value.trim(),
-            monster_overrides: hasAnyValue ? monsterOverrides : null
+            version: document.getElementById('hsrFictionVersion').value.trim()
         };
 
         submitBtn.disabled = true;
@@ -496,24 +475,15 @@ var ToolsApp = {
         }
     },
 
-    // 发送HSR Chaos更新请求
+    // 发送HSR Chaos更新请求 (v2: 基于EliteGroup的HPRatio自动计算)
     sendHSRChaosUpdate: async function() {
         var submitBtn = document.getElementById('hsrChaosSubmitBtn');
         var btnText = document.getElementById('hsrChaosBtnText');
         var resultDiv = document.getElementById('hsrChaosResult');
 
-        var hpRatiosStr = document.getElementById('hsrChaosHpRatios').value.trim();
-        var hpRatios = null;
-        if (hpRatiosStr) {
-            hpRatios = hpRatiosStr.split(',').map(function(s) {
-                return parseFloat(s.trim());
-            });
-        }
-
         var data = {
             maze_id: document.getElementById('hsrChaosMazeId').value.trim(),
-            version: document.getElementById('hsrChaosVersion').value.trim(),
-            hp_ratios: hpRatios
+            version: document.getElementById('hsrChaosVersion').value.trim()
         };
 
         submitBtn.disabled = true;
@@ -984,7 +954,108 @@ var ToolsApp = {
             submitBtn.disabled = false;
             btnText.textContent = '发送更新请求';
         }
-    }
+    },
+
+    // 发送HSR物品转换请求
+    sendHSRItemConvert: async function() {
+        var submitBtn = document.getElementById('hsrItemConvertSubmitBtn');
+        var btnText = document.getElementById('hsrItemConvertBtnText');
+        var resultDiv = document.getElementById('hsrItemConvertResult');
+
+        var itemIdText = document.getElementById('hsrItemId').value.trim();
+        var itemIds = itemIdText
+            .split(/[\s,]+/)
+            .map(function(id) { return id.trim(); })
+            .filter(function(id) { return id; });
+
+        var data = {
+            item_ids: itemIds,
+            version: document.getElementById('hsrItemVersion').value.trim(),
+            ver: document.getElementById('hsrItemVer').value.trim(),
+            include_dots: document.getElementById('hsrItemIncludeDots').checked,
+            auto_merge: document.getElementById('hsrItemAutoMerge').checked
+        };
+
+        submitBtn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>处理中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/hsr_item_convert', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            var result = await response.json();
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('hsrItemConvertResultTitle').textContent =
+                result.status === 'success' ? '✓ 转换成功' : '✗ 转换失败';
+            document.getElementById('hsrItemConvertResultMessage').textContent = result.message;
+
+            var outputText = result.stdout || result.stderr || '';
+            document.getElementById('hsrItemConvertResultOutput').textContent = outputText;
+            document.getElementById('hsrItemConvertResultOutput').style.display = outputText ? 'block' : 'none';
+
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('hsrItemConvertResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('hsrItemConvertResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('hsrItemConvertResultOutput').textContent = error.toString();
+            document.getElementById('hsrItemConvertResultOutput').style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            btnText.textContent = '发送转换请求';
+        }
+    },
+
+    // 发送HSR物品图片同步请求
+    sendHSRItemImgSync: async function() {
+        var btn = document.getElementById('hsrItemImgSyncBtn');
+        var btnText = document.getElementById('hsrItemImgBtnText');
+        var resultDiv = document.getElementById('hsrItemImgResult');
+
+        var idText = document.getElementById('hsrItemImgId').value.trim();
+        var ids = idText
+            ? idText.split(/[\s,]+/).map(function(id) { return id.trim(); }).filter(function(id) { return id; })
+            : [];
+
+        var data = { ids: ids };
+
+        btn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>同步中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/hsr_sync_item_image', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            var result = await response.json();
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('hsrItemImgResultTitle').textContent =
+                result.status === 'success' ? '✓ 同步完成' : '✗ 同步失败';
+            document.getElementById('hsrItemImgResultMessage').textContent = result.message;
+            var out = result.stdout || result.stderr || '';
+            document.getElementById('hsrItemImgResultOutput').textContent = out;
+            document.getElementById('hsrItemImgResultOutput').style.display = out ? 'block' : 'none';
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('hsrItemImgResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('hsrItemImgResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('hsrItemImgResultOutput').textContent = error.toString();
+            document.getElementById('hsrItemImgResultOutput').style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = '同步物品图片';
+        }
+    },
 
 };
 

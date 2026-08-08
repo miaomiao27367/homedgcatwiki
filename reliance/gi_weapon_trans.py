@@ -526,38 +526,53 @@ def gi_weapon_update(weapon_id, version_map=None):
 
 def get_weapon_icon_from_avatar(weapon_id):
     """
-    从本地 avatar.js 获取武器图标名称
+    从本地 Weapon.js 或 avatar.js 获取武器图标名称
     :param weapon_id: 武器ID
     :return: 图标名称（如 "UI_EquipIcon_Sword_Swanlake"）或空字符串
     """
-    avatar_js_path = os.path.join(os.getcwd(), AVATAR_JS_PATH)
-    if not os.path.exists(avatar_js_path):
-        print(f"  [警告] 未找到 {avatar_js_path}")
-        return ""
-
     wid = str(weapon_id)
-    try:
-        with open(avatar_js_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-        # 找到对应 _id 的条目（武器 _id 是字符串）
+
+    def _search_icons(content, source_name):
         block_pattern = rf'"_id":\s*"{wid}"'
         block_match = re.search(block_pattern, content)
         if block_match:
             pos = block_match.start()
-            # 从该位置搜索 Icons 字段
             icons_match = re.search(r'"Icons":\s*"([^"]+)"', content[pos:pos+2000])
             if icons_match:
                 return icons_match.group(1)
-    except Exception as e:
-        print(f"  [警告] 读取 avatar.js 失败: {e}")
-    
-    print(f"  [警告] 武器 {wid} 未在 avatar.js 中找到")
+        return None
+
+    # 优先从 Weapon.js 查找（武器数据已独立到 Weapon.js）
+    weapon_js_path = os.path.join(os.getcwd(), WEAPON_DIR + ".js")
+    if os.path.exists(weapon_js_path):
+        try:
+            with open(weapon_js_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            icon = _search_icons(content, "Weapon.js")
+            if icon:
+                return icon
+        except Exception as e:
+            print(f"  [警告] 读取 Weapon.js 失败: {e}")
+
+    # 回退到 avatar.js 查找
+    avatar_js_path = os.path.join(os.getcwd(), AVATAR_JS_PATH)
+    if os.path.exists(avatar_js_path):
+        try:
+            with open(avatar_js_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            icon = _search_icons(content, "avatar.js")
+            if icon:
+                return icon
+        except Exception as e:
+            print(f"  [警告] 读取 avatar.js 失败: {e}")
+
+    print(f"  [警告] 武器 {wid} 未在 Weapon.js 或 avatar.js 中找到")
     return ""
 
 
 def gi_weapon_img_sync(weapon_id, version="6.7.52"):
     """
-    下载武器图片（从本地 avatar.js 获取图标数据）
+    下载武器图片（从本地 Weapon.js 或 avatar.js 获取图标数据）
     参数:
         weapon_id: 武器ID，如 "14522"
         version: 保留参数（兼容旧调用）
@@ -566,31 +581,54 @@ def gi_weapon_img_sync(weapon_id, version="6.7.52"):
     wid = str(weapon_id)
 
     try:
-        # 从本地 avatar.js 获取图标数据
+        # 从本地 Weapon.js / avatar.js 获取图标数据
         icon = get_weapon_icon_from_avatar(wid)
         if not icon:
-            return False, f"武器 {wid} 未在本地 avatar.js 中找到，请先更新武器数据"
+            return False, f"武器 {wid} 未在本地 Weapon.js 或 avatar.js 中找到，请先更新武器数据"
 
         from urllib.parse import urljoin
         IMG_SAVE_DIR = "homdgcat-res/Weapon"
         IMG_BASE_URL = "https://static.nanoka.cc/assets/gi"
         os.makedirs(IMG_SAVE_DIR, exist_ok=True)
 
+        import shutil
+
         results = []
-        for suffix, filename in [("", f"{icon}.png"), ("_Awaken", f"{icon}_Awaken.png")]:
-            url = f"{IMG_BASE_URL}/{icon}{suffix}.webp"
-            save_path = os.path.join(IMG_SAVE_DIR, filename)
+        normal_path = os.path.join(IMG_SAVE_DIR, f"{icon}.png")
+        awaken_path = os.path.join(IMG_SAVE_DIR, f"{icon}_Awaken.png")
+
+        # --- 下载突破前图片 ---
+        normal_url = f"{IMG_BASE_URL}/{icon}.webp"
+        if os.path.exists(normal_path):
+            results.append(f"{icon}.png (缓存)")
+        else:
             try:
-                if os.path.exists(save_path):
-                    results.append(f"{filename} (缓存)")
-                    continue
-                r = requests.get(url, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+                r = requests.get(normal_url, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
                 r.raise_for_status()
-                with open(save_path, 'wb') as f:
+                with open(normal_path, 'wb') as f:
                     f.write(r.content)
-                results.append(f"{filename} (下载成功)")
+                results.append(f"{icon}.png (下载成功)")
             except Exception as e:
-                results.append(f"{filename} (失败: {e})")
+                results.append(f"{icon}.png (失败: {e})")
+
+        # --- 下载突破后图片 ---
+        awaken_url = f"{IMG_BASE_URL}/{icon}_Awaken.webp"
+        if os.path.exists(awaken_path):
+            results.append(f"{icon}_Awaken.png (缓存)")
+        else:
+            try:
+                r = requests.get(awaken_url, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+                r.raise_for_status()
+                with open(awaken_path, 'wb') as f:
+                    f.write(r.content)
+                results.append(f"{icon}_Awaken.png (下载成功)")
+            except Exception:
+                # 突破后资源不存在，将突破前图片复制为 _Awaken.png
+                if os.path.exists(normal_path):
+                    shutil.copy2(normal_path, awaken_path)
+                    results.append(f"{icon}_Awaken.png (复用突破前)")
+                else:
+                    results.append(f"{icon}_Awaken.png (失败: 突破前图片也不存在)")
 
         return True, f"武器 {wid} 图片: " + ", ".join(results)
 

@@ -4201,7 +4201,7 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[0] - 2),
                                     t: [
                                         {   
-                                            img: imgpre + "images/" + _item[mats[0] - 2].Icon,
+                                            img: imgpre + "images/itemicon/" + (mats[0] - 2) + ".png",
                                             event: {
                                                 error: function (d) {
                                                     $(d.sender).hide()
@@ -4229,7 +4229,7 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[0] - 1),
                                     t: [
                                         {
-                                                            img: (_item[mats[0] - 1] && _item[mats[0] - 1].Icon) ? (imgpre + "images/" + _item[mats[0] - 1].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                                            img: imgpre + "images/itemicon/" + (mats[0] - 1) + ".png",
                                                             event: {
                                                                 error: function (d) {
                                                                     $(d.sender).hide()
@@ -4257,7 +4257,7 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[0]),
                                     t: [
                                         {
-                                            img: (_item[mats[0]] && _item[mats[0]].Icon) ? (imgpre + "images/" + _item[mats[0]].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                            img: imgpre + "images/itemicon/" + mats[0] + ".png",
                                             event: {
                                                 error: function (d) {
                                                     $(d.sender).hide()
@@ -4290,7 +4290,7 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[1]),
                                     t: [
                                         {
-                                            img: (_item[mats[1]] && _item[mats[1]].Icon) ? (imgpre + "images/" + _item[mats[1]].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                            img: imgpre + "images/itemicon/" + mats[1] + ".png",
                                             event: {
                                                 error: function (d) {
                                                     $(d.sender).hide()
@@ -4328,7 +4328,7 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[2] - 2),
                                     t: [
                                         {   
-                                            img: imgpre + "images/" + _item[mats[2] - 2].Icon,
+                                            img: 	imgpre + "images/itemicon/" + (mats[2] - 2) + ".png",
                                             event: {
                                                 error: function (d) {
                                                     $(d.sender).hide()
@@ -4356,7 +4356,7 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[2] - 1),
                                     t: [
                                         {   
-                                            img: imgpre + "images/" + _item[mats[2] - 1].Icon,
+                                            img: imgpre + "images/itemicon/" + (mats[2] - 1) + ".png",
                                             event: {
                                                 error: function (d) {
                                                     $(d.sender).hide()
@@ -4384,7 +4384,7 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[2]),
                                     t: [
                                         {   
-                                            img: imgpre + "images/" + _item[mats[2]].Icon,
+                                            img: imgpre + "images/itemicon/" + mats[2] + ".png",
                                             event: {
                                                 error: function (d) {
                                                     $(d.sender).hide()
@@ -4417,7 +4417,7 @@ $(function () {
                                     a: '/sr/item/#_' + (mats[3]),
                                     t: [
                                         {   
-                                            img: imgpre + "images/" + _item[mats[3]].Icon,
+                                            img: imgpre + "images/itemicon/" + mats[3] + ".png",
                                             event: {
                                                 error: function (d) {
                                                     $(d.sender).hide()
@@ -5203,7 +5203,7 @@ $(function () {
 
         $('.mtc_result').empty()
         for (const [d, n] of Object.entries(_cumulative_mats)) {
-            var item_icon = _item[d] ? _item[d].Icon : ''
+            var item_icon = "itemicon/" + d + ".png"
             $('.mtc_result').render({
                 a: '/sr/item/#_' + d,
                 t: [
@@ -5546,7 +5546,7 @@ $(function () {
                                                     a: '/sr/item/#' + (mats[0] - 2),
                                                     t: [
                                                         {
-                                                            img: (_item[mats[0] - 2] && _item[mats[0] - 2].Icon) ? (imgpre + "images/" + _item[mats[0] - 2].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                                            img: imgpre + "images/itemicon/" + (mats[0] - 2) + ".png",
                                                             event: {
                                                                 error: function (d) {
                                                                     $(d.sender).hide()
@@ -5578,7 +5578,7 @@ $(function () {
                                                     a: '/sr/item/#' + (mats[0] - 1),
                                                     t: [
                                                         {
-                                                            img: (_item[mats[0] - 1] && _item[mats[0] - 1].Icon) ? (imgpre + "images/" + _item[mats[0] - 1].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                                            img: imgpre + "images/itemicon/" + (mats[0] - 1) + ".png",
                                                             event: {
                                                                 error: function (d) {
                                                                     $(d.sender).hide()
@@ -5611,7 +5611,7 @@ $(function () {
                                                     a: '/sr/item/#' + (mats[0]),
                                                     t: [
                                                         {
-                                                            img: (_item[mats[0]] && _item[mats[0]].Icon) ? (imgpre + "images/" + _item[mats[0]].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                                            img: imgpre + "images/itemicon/" + mats[0] + ".png",
                                                             event: {
                                                                 error: function (d) {
                                                                     $(d.sender).hide()
@@ -5649,7 +5649,7 @@ $(function () {
                                                     a: '/sr/item/#' + (mats[1] - 2),
                                                     t: [
                                                         {
-                                                            img: (_item[mats[1] - 2] && _item[mats[1] - 2].Icon) ? (imgpre + "images/" + _item[mats[1] - 2].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                                            img: imgpre + "images/itemicon/" + (mats[1] - 2) + ".png",
                                                             event: {
                                                                 error: function (d) {
                                                                     $(d.sender).hide()
@@ -5682,7 +5682,7 @@ $(function () {
                                                     a: '/sr/item/#' + (mats[1] - 1),
                                                     t: [
                                                         {
-                                                            img: (_item[mats[1] - 1] && _item[mats[1] - 1].Icon) ? (imgpre + "images/" + _item[mats[1] - 1].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                                            img: imgpre + "images/itemicon/" + (mats[1] - 1) + ".png",
                                                             event: {
                                                                 error: function (d) {
                                                                     $(d.sender).hide()
@@ -5715,7 +5715,7 @@ $(function () {
                                                     a: '/sr/item/#' + (mats[1]),
                                                     t: [
                                                         {
-                                                            img: (_item[mats[1]] && _item[mats[1]].Icon) ? (imgpre + "images/" + _item[mats[1]].Icon) : '/images/itemicon/Icon_Testmaterial01.png',
+                                                            img: imgpre + "images/itemicon/" + mats[1] + ".png",
                                                             event: {
                                                                 error: function (d) {
                                                                     $(d.sender).hide()

@@ -17,15 +17,15 @@ from reliance.hsr_trans_weapon import generate_weapon_data
 from reliance.hsr_trans_mons_skills import generate_monster_data, generate_monster_basic_data, merge_missing_ee_data
 from reliance.hsr_trans_ar import generate_ar_data
 from reliance.hsr_trans_as import generate_as_data
-from reliance.hsr_trans_fiction import generate_fiction_data
-from reliance.hsr_trans_chaos import generate_chaos_data
+from reliance.hsr_fiction_v2 import generate_fiction_v2
+from reliance.hsr_chaos_v2 import generate_chaos_v2
 from reliance.gi_trans import gi_character_update
 from reliance.gi_weapon_trans import gi_weapon_update, gi_weapon_img_sync
 from reliance.hsr_trans_relic import generate_relic_data
+from reliance.item_converter import generate_item_data, sync_item_images
 
 data_url2="26.192.21.124:9080"
 data_url1="26.118.195.109:8080"
-
 
 def save_hsr_cache(character_ids, major_version, minor_versions):
     """保存用户选择的HSR更新参数到缓存文件"""
@@ -47,7 +47,6 @@ def save_hsr_cache(character_ids, major_version, minor_versions):
         print(f"[缓存] 保存失败: {e}")
         return False
 
-
 def load_hsr_cache():
     """从缓存文件读取用户选择的HSR更新参数"""
     cache_file = './logs/hsr_trans_avatar.txt'
@@ -63,7 +62,6 @@ def load_hsr_cache():
     except Exception as e:
         print(f"[缓存] 读取失败: {e}")
         return None
-
 
 def save_hsr_weapon_cache(weapon_ids, major_version, minor_versions):
     """保存用户选择的HSR光锥更新参数到缓存文件"""
@@ -85,7 +83,6 @@ def save_hsr_weapon_cache(weapon_ids, major_version, minor_versions):
         print(f"[缓存] 保存失败: {e}")
         return False
 
-
 def load_hsr_weapon_cache():
     """从缓存文件读取用户选择的HSR光锥更新参数"""
     cache_file = './logs/hsr_trans_weapon.txt'
@@ -101,7 +98,6 @@ def load_hsr_weapon_cache():
     except Exception as e:
         print(f"[缓存] 读取失败: {e}")
         return None
-
 
 def save_gi_cache(character_ids, version_map):
     """保存用户选择的GI更新参数到缓存文件"""
@@ -122,7 +118,6 @@ def save_gi_cache(character_ids, version_map):
         print(f"[缓存] 保存失败: {e}")
         return False
 
-
 def load_gi_cache():
     """从缓存文件读取用户选择的GI更新参数"""
     cache_file = './logs/gi_trans_avatar.txt'
@@ -138,7 +133,6 @@ def load_gi_cache():
     except Exception as e:
         print(f"[缓存] 读取失败: {e}")
         return None
-
 
 def save_gi_weapon_cache(weapon_ids, version_map):
     """保存用户选择的GI武器更新参数到缓存文件"""
@@ -159,7 +153,6 @@ def save_gi_weapon_cache(weapon_ids, version_map):
         print(f"[缓存] 保存失败: {e}")
         return False
 
-
 def load_gi_weapon_cache():
     """从缓存文件读取用户选择的GI武器更新参数"""
     cache_file = './logs/gi_trans_weapon.txt'
@@ -175,7 +168,6 @@ def load_gi_weapon_cache():
     except Exception as e:
         print(f"[缓存] 读取失败: {e}")
         return None
-
 
 class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
@@ -948,7 +940,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             print("-" * 50)
             return
 
-        # 处理 /hsr_update_fiction
+        # 处理 /hsr_update_fiction (v2: 基于EliteGroup自动计算HP)
         if path == '/hsr_update_fiction':
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
@@ -958,44 +950,20 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     request_data = json.loads(post_data.decode('utf-8'))
                     story_id = request_data.get('story_id', '')
                     version = request_data.get('version', '')
-                    monster_overrides = request_data.get('monster_overrides', None)
 
-                    print(f"[hsr_update_fiction] 收到参数: story_id={story_id}, version={version}, monster_overrides={'有' if monster_overrides else '无'}")
+                    print(f"[hsr_update_fiction_v2] 收到参数: story_id={story_id}, version={version}")
                 except:
                     story_id = "101"
                     version = "4.3.52"
-                    monster_overrides = None
-                    print(f"[hsr_update_fiction] 使用默认参数: story_id={story_id}, version={version}")
+                    print(f"[hsr_update_fiction_v2] 使用默认参数: story_id={story_id}, version={version}")
 
                 try:
-                    # 仿照hsr_trans_fiction.py的__main__构造hp_add_values
-                    # monster_overrides: 8个元素(4层×2半波)，每个为null或[v1, v2, v3]
-                    # 转换为: {floor_num: {wave_idx: hp_add_value}}
-                    hp_add_values = None
-                    if monster_overrides:
-                        hp_add_values = {}
-                        for floor_idx in range(4):
-                            floor_num = str(floor_idx + 1)
-                            # 上半: wave_idx 0,1,2
-                            upper_vals = monster_overrides[floor_idx * 2]
-                            if upper_vals:
-                                hp_add_values[floor_num] = {}
-                                for wave_idx, val in enumerate(upper_vals):
-                                    hp_add_values[floor_num][wave_idx] = float(val)
-                            # 下半: wave_idx 3,4,5
-                            lower_vals = monster_overrides[floor_idx * 2 + 1]
-                            if lower_vals:
-                                if floor_num not in hp_add_values:
-                                    hp_add_values[floor_num] = {}
-                                for wave_idx, val in enumerate(lower_vals):
-                                    hp_add_values[floor_num][wave_idx + 3] = float(val)
-
-                    str_return, not_found_ids, converted_data = generate_fiction_data(story_id, version, hp_add_values)
-                    response_data = {"status": "success", "message": f"虚构叙事数据生成完成", "stdout": str_return}
+                    str_return, not_found_ids, converted_data = generate_fiction_v2(story_id, version)
+                    response_data = {"status": "success", "message": "虚构叙事数据生成完成 (v2)", "stdout": str_return}
 
                 except Exception as e:
                     error_msg = str(e)
-                    print(f"[hsr_update_fiction] 执行失败: {error_msg}")
+                    print(f"[hsr_update_fiction_v2] 执行失败: {error_msg}")
                     response_data = {"status": "error", "message": "虚构叙事数据生成失败", "stderr": f"抛出异常: {error_msg}"}
 
                 self.send_response(200)
@@ -1004,7 +972,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
 
             except Exception as e:
-                print(f"[hsr_update_fiction] 处理失败: {str(e)}")
+                print(f"[hsr_update_fiction_v2] 处理失败: {str(e)}")
                 error_msg = str(e).replace('"', '\\"')
                 self.send_response(500)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')
@@ -1014,7 +982,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             print("-" * 50)
             return
 
-        # 处理 /hsr_update_chaos
+        # 处理 /hsr_update_chaos (v2: 基于EliteGroup的HPRatio自动计算)
         if path == '/hsr_update_chaos':
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
@@ -1024,26 +992,20 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     request_data = json.loads(post_data.decode('utf-8'))
                     maze_id = request_data.get('maze_id', '')
                     version = request_data.get('version', '')
-                    hp_ratios = request_data.get('hp_ratios', None)
 
-                    print(f"[hsr_update_chaos] 收到参数: maze_id={maze_id}, version={version}, hp_ratios={hp_ratios}")
+                    print(f"[hsr_update_chaos_v2] 收到参数: maze_id={maze_id}, version={version}")
                 except:
                     maze_id = "1033"
                     version = "4.3.52"
-                    hp_ratios = None
-                    print(f"[hsr_update_chaos] 使用默认参数: maze_id={maze_id}, version={version}")
+                    print(f"[hsr_update_chaos_v2] 使用默认参数: maze_id={maze_id}, version={version}")
 
                 try:
-                    if hp_ratios and len(hp_ratios) == 12:
-                        str_return = generate_chaos_data(maze_id, version, hp_ratios)
-                    else:
-                        from reliance.hsr_trans_chaos import DEFAULT_FLOOR_HP_RATIOS
-                        str_return = generate_chaos_data(maze_id, version, DEFAULT_FLOOR_HP_RATIOS)
-                    response_data = {"status": "success", "message": f"混沌回忆数据生成完成", "stdout": str_return}
+                    str_return = generate_chaos_v2(maze_id, version)
+                    response_data = {"status": "success", "message": "混沌回忆数据生成完成 (v2)", "stdout": str_return}
 
                 except Exception as e:
                     error_msg = str(e)
-                    print(f"[hsr_update_chaos] 执行失败: {error_msg}")
+                    print(f"[hsr_update_chaos_v2] 执行失败: {error_msg}")
                     response_data = {"status": "error", "message": "混沌回忆数据生成失败", "stderr": f"抛出异常: {error_msg}"}
 
                 self.send_response(200)
@@ -1052,7 +1014,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
 
             except Exception as e:
-                print(f"[hsr_update_chaos] 处理失败: {str(e)}")
+                print(f"[hsr_update_chaos_v2] 处理失败: {str(e)}")
                 error_msg = str(e).replace('"', '\\"')
                 self.send_response(500)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')
@@ -1097,6 +1059,87 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
             except Exception as e:
                 print(f"[hsr_update_relic] 处理失败: {str(e)}")
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+
+            print("-" * 50)
+            return
+
+        # 处理 /hsr_item_convert
+        if path == '/hsr_item_convert':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+
+                try:
+                    request_data = json.loads(post_data.decode('utf-8'))
+                    item_ids = request_data.get('item_ids', [])
+                    version = request_data.get('version', '4.4.54')
+                    ver = request_data.get('ver', '4.0')
+                    include_dots = request_data.get('include_dots', False)
+                    auto_merge = request_data.get('auto_merge', True)
+
+                    print(f"[hsr_item_convert] 收到参数: item_ids={item_ids}, version={version}, ver={ver}, include_dots={include_dots}, auto_merge={auto_merge}")
+                except:
+                    item_ids = ["110281"]
+                    version = "4.4.54"
+                    ver = "4.0"
+                    include_dots = False
+                    auto_merge = True
+                    print(f"[hsr_item_convert] 使用默认参数: item_ids={item_ids}, version={version}")
+
+                try:
+                    str_return = generate_item_data(item_ids, version, ver, include_dots, auto_merge)
+                    response_data = {"status": "success", "message": f"成功处理 {len(item_ids)} 个物品", "stdout": str_return}
+
+                except Exception as e:
+                    error_msg = str(e)
+                    print(f"[hsr_item_convert] 执行失败: {error_msg}")
+                    response_data = {"status": "error", "message": "物品数据转换失败", "stderr": f"抛出异常: {error_msg}"}
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+
+            except Exception as e:
+                print(f"[hsr_item_convert] 处理失败: {str(e)}")
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+
+            print("-" * 50)
+            return
+
+        # 处理 /hsr_sync_item_image
+        if path == '/hsr_sync_item_image':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                request_data = json.loads(post_data.decode('utf-8'))
+                item_ids = request_data.get('ids', [])
+                print(f"[hsr_sync_item_image] 物品ID: {item_ids}")
+
+                try:
+                    str_return = sync_item_images(item_ids)
+                    response_data = {"status": "success", "message": "物品图片同步完成", "stdout": str_return}
+                except Exception as e:
+                    error_msg = str(e)
+                    print(f"[hsr_sync_item_image] 执行失败: {error_msg}")
+                    response_data = {"status": "error", "message": "物品图片同步失败", "stderr": str(e)}
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+
+            except Exception as e:
+                print(f"[hsr_sync_item_image] 处理失败: {str(e)}")
                 error_msg = str(e).replace('"', '\\"')
                 self.send_response(500)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')

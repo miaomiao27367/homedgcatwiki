@@ -3,11 +3,11 @@
 
 ---
 
-A offline mirror of [homdgcat.wiki](https://homdgcat.wiki),with only Chinese version.
+一个玉衡杯本地镜像，仅包含中文版本 仅个人学习使用
 
 ---
 
-## Content structure
+## 文件结构
 
 ```
 homdgcatwiki/

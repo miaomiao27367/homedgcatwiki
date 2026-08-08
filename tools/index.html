@@ -8,46 +8,40 @@
 </head>
 <body>
     <div class="tools-sidebar">
-        <div class="tools-sidebar-title">🛠️ 工具中心</div>
-        <div class="tools-sidebar-item active" data-tool="hsr-update">
-            <span class="tools-sidebar-item-icon">🎮</span>
-            <span>HSR 角色更新</span>
-        </div>
+        <div class="tools-sidebar-title">工具中心</div>
         <div class="tools-sidebar-item" data-tool="gi-update">
-            <span class="tools-sidebar-item-icon">✨</span>
             <span>GI 角色更新</span>
         </div>
         <div class="tools-sidebar-item" data-tool="gi-weapon-update">
-            <span class="tools-sidebar-item-icon">⚔️</span>
             <span>GI 武器更新</span>
         </div>
+        <div class="tools-sidebar-divider"></div>
+        <div class="tools-sidebar-item" data-tool="hsr-update">
+            <span>HSR 角色更新</span>
+        </div>
         <div class="tools-sidebar-item" data-tool="hsr-weapon-update">
-            <span class="tools-sidebar-item-icon">⚔️</span>
             <span>HSR 光锥更新</span>
         </div>
         <div class="tools-sidebar-item" data-tool="hsr-monster-update">
-            <span class="tools-sidebar-item-icon">👾</span>
             <span>HSR 怪物更新</span>
         </div>
         <div class="tools-sidebar-item" data-tool="hsr-ar-update">
-            <span class="tools-sidebar-item-icon">🌌</span>
             <span>HSR 异象仲裁更新</span>
         </div>
         <div class="tools-sidebar-item" data-tool="hsr-as-update">
-            <span class="tools-sidebar-item-icon">🔥</span>
             <span>HSR 末日幻影更新</span>
         </div>
           <div class="tools-sidebar-item" data-tool="hsr-fiction-update">
-            <span class="tools-sidebar-item-icon">📖</span>
             <span>HSR 虚构叙事更新</span>
         </div>
         <div class="tools-sidebar-item" data-tool="hsr-chaos-update">
-            <span class="tools-sidebar-item-icon">🌀</span>
             <span>HSR 混沌回忆更新</span>
         </div>
         <div class="tools-sidebar-item" data-tool="hsr-relic-update">
-            <span class="tools-sidebar-item-icon">💎</span>
             <span>HSR 遗器更新</span>
+        </div>
+        <div class="tools-sidebar-item" data-tool="hsr-item-convert">
+            <span>HSR 物品转换</span>
         </div>
         <!-- 可以在这里添加更多工具 -->
     </div>
@@ -96,7 +90,7 @@
 
                 <div class="img-sync-section">
                     <div class="img-sync-divider"></div>
-                    <h3 class="img-sync-title">🖼️ 角色图片同步</h3>
+                    <h3 class="img-sync-title">角色图片同步</h3>
                     <div class="form-group">
                         <label for="hsrAvatarImgId">角色ID（可复用上方ID，多个用逗号分隔）</label>
                         <input type="text" id="hsrAvatarImgId" placeholder="1510, 1509">
@@ -140,7 +134,7 @@
 
                 <div class="img-sync-section">
                     <div class="img-sync-divider"></div>
-                    <h3 class="img-sync-title">🖼️ 角色图片同步</h3>
+                    <h3 class="img-sync-title">角色图片同步</h3>
                     <div class="form-group">
                         <label for="giAvatarImgId">角色ID（可复用上方ID，多个用逗号分隔）</label>
                         <input type="text" id="giAvatarImgId" placeholder="150, 148">
@@ -186,7 +180,7 @@
 
                 <div class="img-sync-section">
                     <div class="img-sync-divider"></div>
-                    <h3 class="img-sync-title">🖼️ 武器图片同步</h3>
+                    <h3 class="img-sync-title">武器图片同步</h3>
                     <div class="form-group">
                         <label for="giWeaponImgId">武器ID（可复用上方ID，多个用逗号分隔）</label>
                         <input type="text" id="giWeaponImgId" placeholder="14522, 11519">
@@ -244,7 +238,7 @@
 
                 <div class="img-sync-section">
                     <div class="img-sync-divider"></div>
-                    <h3 class="img-sync-title">🖼️ 光锥图片同步</h3>
+                    <h3 class="img-sync-title">光锥图片同步</h3>
                     <div class="form-group">
                         <label for="hsrWeaponImgId">光锥ID（可复用上方ID，多个用逗号分隔）</label>
                         <input type="text" id="hsrWeaponImgId" placeholder="23060, 23061">
@@ -288,7 +282,7 @@
 
                 <div class="img-sync-section">
                     <div class="img-sync-divider"></div>
-                    <h3 class="img-sync-title">🖼️ 怪物图片同步</h3>
+                    <h3 class="img-sync-title">怪物图片同步</h3>
                     <div class="form-group">
                         <label for="hsrMonsterImgId">怪物ID（可复用上方ID，多个用逗号分隔）</label>
                         <input type="text" id="hsrMonsterImgId" placeholder="8015030, 8015040">
@@ -373,32 +367,6 @@
                         <input type="text" id="hsrFictionVersion" value="4.3.52" placeholder="例如: 4.3.52">
                     </div>
 
-                    <div class="form-group">
-                        <label>怪物参数覆盖（4层×2半波，空格分隔3个怪物参数，留空使用默认值）</label>
-                        <div id="hsrFictionMonsterOverrides" class="monster-overrides-grid">
-                            <div class="monster-floor" data-floor="1">
-                                <div class="monster-floor-label">第1层</div>
-                                <div class="monster-wave"><span class="wave-label">上</span><input type="text" placeholder="1.0 1.0 1.0"></div>
-                                <div class="monster-wave"><span class="wave-label">下</span><input type="text" placeholder="1.0 1.0 1.0"></div>
-                            </div>
-                            <div class="monster-floor" data-floor="2">
-                                <div class="monster-floor-label">第2层</div>
-                                <div class="monster-wave"><span class="wave-label">上</span><input type="text" placeholder="1.0 1.0 1.0"></div>
-                                <div class="monster-wave"><span class="wave-label">下</span><input type="text" placeholder="1.0 1.0 1.0"></div>
-                            </div>
-                            <div class="monster-floor" data-floor="3">
-                                <div class="monster-floor-label">第3层</div>
-                                <div class="monster-wave"><span class="wave-label">上</span><input type="text" placeholder="1.0 1.0 1.0"></div>
-                                <div class="monster-wave"><span class="wave-label">下</span><input type="text" placeholder="1.0 1.0 1.0"></div>
-                            </div>
-                            <div class="monster-floor" data-floor="4">
-                                <div class="monster-floor-label">第4层</div>
-                                <div class="monster-wave"><span class="wave-label">上</span><input type="text" placeholder="1.0 1.0 1.0"></div>
-                                <div class="monster-wave"><span class="wave-label">下</span><input type="text" placeholder="1.0 1.0 1.0"></div>
-                            </div>
-                        </div>
-                    </div>
-
                     <button type="submit" class="btn btn-primary" id="hsrFictionSubmitBtn">
                         <span id="hsrFictionBtnText">发送更新请求</span>
                     </button>
@@ -424,11 +392,6 @@
                     <div class="form-group">
                         <label for="hsrChaosVersion">完整版本号</label>
                         <input type="text" id="hsrChaosVersion" value="4.3.52" placeholder="例如: 4.3.52">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="hsrChaosHpRatios">楼层HP倍率（12层，逗号分隔，留空使用默认值）</label>
-                        <input type="text" id="hsrChaosHpRatios" value="" placeholder="1.0, 1.0, 1.0, 1.0, 1.0, 1.1, 1.1, 1.0, 1.0, 1.4, 2.0, 5.2">
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="hsrChaosSubmitBtn">
@@ -474,6 +437,73 @@
                     <h3 id="hsrRelicResultTitle"></h3>
                     <p id="hsrRelicResultMessage"></p>
                     <pre id="hsrRelicResultOutput"></pre>
+                </div>
+            </div>
+
+            <!-- HSR 物品转换工具 -->
+            <div id="hsr-item-convert" class="tools-section">
+                <h2 class="tools-section-title">HSR 物品数据转换工具</h2>
+
+                <form id="hsrItemConvertForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRItemConvert();">
+                    <div class="form-group">
+                        <label for="hsrItemId">物品ID列表</label>
+                        <textarea id="hsrItemId" rows="3" placeholder="多个ID用逗号或空格分隔，例如: 110281, 110282">110281</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrItemVersion">完整版本号</label>
+                        <input type="text" id="hsrItemVersion" value="4.4.54" placeholder="例如: 4.4.54">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hsrItemVer">Ver字段（手动输入）</label>
+                        <input type="text" id="hsrItemVer" value="4.0" placeholder="例如: 4.0, 3.1, 3.x">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="hsrItemIncludeDots">
+                            包含占位名（"..."）
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="hsrItemAutoMerge" checked>
+                            自动写入 Item.js（自动备份）
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrItemConvertSubmitBtn">
+                        <span id="hsrItemConvertBtnText">发送转换请求</span>
+                    </button>
+                </form>
+
+                <div id="hsrItemConvertResult" class="result">
+                    <h3 id="hsrItemConvertResultTitle"></h3>
+                    <p id="hsrItemConvertResultMessage"></p>
+                    <pre id="hsrItemConvertResultOutput"></pre>
+                </div>
+
+                <hr style="margin: 30px 0 20px; border-color: #333;">
+
+                <h3 style="font-size: 16px; margin-bottom: 15px;">物品图片同步（webp→png）</h3>
+
+                <form id="hsrItemImgSyncForm" onsubmit="event.preventDefault(); ToolsApp.sendHSRItemImgSync();">
+                    <div class="form-group">
+                        <label for="hsrItemImgId">物品ID列表</label>
+                        <textarea id="hsrItemImgId" rows="3" placeholder="多个ID用逗号或空格分隔">110281</textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="hsrItemImgSyncBtn">
+                        <span id="hsrItemImgBtnText">同步物品图片</span>
+                    </button>
+                </form>
+
+                <div id="hsrItemImgResult" class="result">
+                    <h3 id="hsrItemImgResultTitle"></h3>
+                    <p id="hsrItemImgResultMessage"></p>
+                    <pre id="hsrItemImgResultOutput"></pre>
                 </div>
             </div>
 

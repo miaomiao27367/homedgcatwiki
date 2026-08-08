@@ -96,6 +96,66 @@ $(function () {
                                 },
                                 {
                                     schedule: {
+                                        img: imgpre + 'images/itemicon/110183.png',
+                                    },
+                                    class: (I_TYPE == '4') ? 'active' : '',
+                                    a: {
+                                        'data-id': '4',
+                                        title: (lang == 'CH') ? '合成素材' : 'Synth. Materials'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'images/itemicon/110183.png',
+                                    },
+                                    class: (I_TYPE == '5') ? 'active' : '',
+                                    a: {
+                                        'data-id': '5',
+                                        title: (lang == 'CH') ? '任务道具' : 'Quest Items'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'images/itemicon/900001.png',
+                                    },
+                                    class: (I_TYPE == '10') ? 'active' : '',
+                                    a: {
+                                        'data-id': '10',
+                                        title: (lang == 'CH') ? '贵重物' : 'Valuables'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'images/itemicon/110183.png',
+                                    },
+                                    class: (I_TYPE == '11') ? 'active' : '',
+                                    a: {
+                                        'data-id': '11',
+                                        title: (lang == 'CH') ? '配方' : 'Recipes'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'images/itemicon/110183.png',
+                                    },
+                                    class: (I_TYPE == '12') ? 'active' : '',
+                                    a: {
+                                        'data-id': '12',
+                                        title: (lang == 'CH') ? '读物' : 'Books'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'images/itemicon/110183.png',
+                                    },
+                                    class: (I_TYPE == '13') ? 'active' : '',
+                                    a: {
+                                        'data-id': '13',
+                                        title: (lang == 'CH') ? '其他' : 'Others'
+                                    }
+                                },
+                                {
+                                    schedule: {
                                         img: imgpre + 'images/itemicon/chatbubble/220006.png',
                                     },
                                     class: (I_TYPE == '9') ? 'active' : '',
@@ -168,13 +228,12 @@ $(function () {
         renderItems()
 
         if (avid) {
-            for (const [t, dat] of Object.entries(_item)) {
-                for (const id_ in dat) {
-                    if (dat[id_]._id == avid) {
-                        I_TYPE = t
-                        popItem(parseInt(id_) + 1)
-                    }
-                }
+            var filtered = Object.values(_item).filter(function (t) { return t._id == avid; });
+            if (filtered.length) {
+                I_TYPE = String(filtered[0].Type);
+                var typeList = Object.values(_item).filter(function (t) { return t.Type == I_TYPE; }).sort(function (a, b) { return a._id - b._id; });
+                var idx = typeList.findIndex(function (t) { return t._id == avid; });
+                popItem(idx + 1)
             }
         }
 
@@ -211,7 +270,8 @@ $(function () {
     }
 
     function renderItem(vvv) {
-        _item[I_TYPE].forEach(function (t, i) {
+        var typeItems = Object.values(_item).filter(function (t) { return t.Type == I_TYPE; }).sort(function (a, b) { return a._id - b._id; });
+        typeItems.forEach(function (t, i) {
             if (vvv != t.Ver) return
             $('.area').render({
                 div: [
@@ -258,14 +318,15 @@ $(function () {
     })
 
     function popItem(y) {
-        this_item = _item[I_TYPE][y - 1]
+        var typeItems = Object.values(_item).filter(function (t) { return t.Type == I_TYPE; }).sort(function (a, b) { return a._id - b._id; });
+        this_item = typeItems[y - 1]
         switch_title(this_item.Name)
         poplayer_([
             {
                 div: {
                     div: [
                         {
-                            img: this_item.Pic.includes('LightConeMaxFigures') ? (imgpre + 'images/lightconemaxfigures/' + this_item.Pic.replace('SpriteOutput/LightConeMaxFigures', '')) : (this_item.Pic.includes('AvatarIcon') ? (imgpre + 'images/avataricon/' + this_item.Pic.replace('SpriteOutput/AvatarIcon/', '')) : (imgpre + 'images/itemfigures/' + this_item.Pic)),
+                            img: this_item.Pic.includes('LightConeMaxFigures') ? (imgpre + 'images/lightconemaxfigures/' + this_item.Pic.replace('SpriteOutput/LightConeMaxFigures', '')) : (this_item.Pic.includes('AvatarIcon') ? (imgpre + 'images/avataricon/' + this_item.Pic.replace('SpriteOutput/AvatarIcon/', '')) : (imgpre + 'images/itemicon/' + this_item.Pic)),
                             class: 'icon',
                             when: (this_item.Pic != undefined) && (this_item.Pic != "") && !(this_item.Pic.includes('SpriteOutput') && !this_item.Pic.includes('LightConeMaxFigures') && !this_item.Pic.includes('AvatarIcon'))
                         },
@@ -310,7 +371,7 @@ $(function () {
                                 'border-color': '#eeeeee',
                                 margin: '20px auto 15px'
                             },
-                            when: this_item.Src
+                            when: this_item.Src != undefined && this_item.Src != ""
                         },
                         {
                             div: {
@@ -319,7 +380,7 @@ $(function () {
                                 },
                                 class: 'desc',
                                 data: this_item.Src,
-                                when: this_item.Src
+                                when: this_item.Src != undefined && this_item.Src != ""
                             },
                         },
                     ],

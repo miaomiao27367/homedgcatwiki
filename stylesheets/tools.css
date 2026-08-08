@@ -73,6 +73,12 @@ body::before {
     font-size: 18px;
 }
 
+.tools-sidebar-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 8px 16px;
+}
+
 .tools-content {
     flex: 1;
     padding: 0;

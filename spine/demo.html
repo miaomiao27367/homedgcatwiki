@@ -330,6 +330,80 @@
                 font-size: 11px;
             }
         }
+
+        /* ========== 调试拖拽面板 ========== */
+        #debugToggleBtn {
+            font-size: 13px;
+            padding: 3px 10px;
+            border: 2px solid #f29e38;
+            border-radius: 4px;
+            background: rgba(242,158,56,0.1);
+            color: #f29e38;
+            cursor: pointer;
+            transition: background 0.2s;
+            user-select: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #debugToggleBtn:hover { background: rgba(242,158,56,0.25); }
+        #debugToggleBtn.active {
+            background: rgba(242,158,56,0.35);
+            border-color: #ff6b35;
+            color: #ff6b35;
+        }
+
+        .debug-panel {
+            display: none;
+            position: fixed;
+            bottom: 48px;
+            right: 12px;
+            z-index: 10;
+            padding: 8px 12px;
+            border: 2px solid #f29e38;
+            border-radius: 6px;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(4px);
+            max-width: 380px;
+            max-height: 55vh;
+            overflow: auto;
+            pointer-events: auto;
+        }
+        .debug-panel.open { display: block; }
+        .debug-panel .debug-title {
+            font-size: 11px;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
+        .debug-panel pre {
+            font-size: 11px;
+            color: #f29e38;
+            margin: 4px 0;
+            white-space: pre-wrap;
+            font-family: 'Consolas', 'Courier New', monospace;
+            line-height: 1.4;
+        }
+        .debug-panel button {
+            padding: 3px 10px;
+            border: 2px solid #f29e38;
+            border-radius: 4px;
+            background: rgba(242,158,56,0.15);
+            color: #f29e38;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+        .debug-panel button:hover { background: rgba(242,158,56,0.3); }
+
+        @media screen and (max-width: 600px) {
+            .debug-panel {
+                max-width: 90vw;
+                right: 5vw;
+            }
+            #debugToggleBtn {
+                font-size: 14px;
+                padding: 6px 14px;
+            }
+        }
     </style>
 </head>
 
@@ -340,7 +414,13 @@
         <div class="parts-title">部件</div>
     </div>
     <button id="animToggleBtn">动画选择</button>
+    <button id="debugToggleBtn">调试拖拽</button>
     <div class="anim-panel" id="animPanel"></div>
+</div>
+<div class="debug-panel" id="debugPanel">
+    <div class="debug-title">偏移量 (拖拽后复制到manifest.json)</div>
+    <pre id="debugOutput"></pre>
+    <button id="copyDebugBtn">复制JSON</button>
 </div>
     <div class="hud">
         <h1 id="title">Spine Demo</h1>
@@ -387,6 +467,14 @@
             var MIN_SCALE = 0.05, MAX_SCALE = 3;
             var animName = '';
 
+            var debugMode = false;
+            var selectedPartIdx = -1;
+            var debugDragPart = false;
+            var debugDragStart = { x: 0, y: 0, ox: 0, oy: 0 };
+            var partsData = [];
+            var extraTicker = null;
+            var debugHighlight = null;
+
             // 默认值
             var params = new URLSearchParams(window.location.search);
             var defaultGame = params.get('game') || 'sr';
@@ -427,6 +515,93 @@
                 viewport.y = vpY;
             }
 
+            function screenToViewport(sx, sy) {
+                return { x: (sx - vpX) / vpScale, y: (sy - vpY) / vpScale };
+            }
+
+            function hitTestParts(sx, sy) {
+                var vp = screenToViewport(sx, sy);
+                for (var i = spineObjs.length - 1; i >= 0; i--) {
+                    var obj = spineObjs[i];
+                    if (!obj || !obj.visible) continue;
+                    var bounds = obj.getBounds();
+                    var left = (bounds.x - vpX) / vpScale;
+                    var top = (bounds.y - vpY) / vpScale;
+                    var right = left + bounds.width / vpScale;
+                    var bottom = top + bounds.height / vpScale;
+                    if (vp.x >= left && vp.x <= right && vp.y >= top && vp.y <= bottom) {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+
+            function selectPart(idx) {
+                if (idx === selectedPartIdx) return;
+                deselectPart();
+                selectedPartIdx = idx;
+                if (idx >= 0 && idx < spineObjs.length) {
+                    var obj = spineObjs[idx];
+                    debugHighlight = new PIXI.Graphics();
+                    var bounds = obj.getBounds();
+                    var lx = (bounds.x - vpX) / vpScale;
+                    var ly = (bounds.y - vpY) / vpScale;
+                    var lw = bounds.width / vpScale;
+                    var lh = bounds.height / vpScale;
+                    debugHighlight.rect(lx, ly, lw, lh);
+                    debugHighlight.stroke({ width: 2 / vpScale, color: 0xff6b35 });
+                    viewport.addChild(debugHighlight);
+                }
+                updateDebugPanel();
+            }
+
+            function deselectPart() {
+                selectedPartIdx = -1;
+                if (debugHighlight) {
+                    viewport.removeChild(debugHighlight);
+                    debugHighlight.destroy();
+                    debugHighlight = null;
+                }
+                updateDebugPanel();
+            }
+
+            function updateDebugPanel() {
+                var out = [];
+                out.push('{');
+                out.push('  "parts": [');
+                for (var i = 0; i < partsData.length; i++) {
+                    var pd = partsData[i];
+                    var x = 0, y = 0;
+                    if (i < spineObjs.length && spineObjs[i]) {
+                        x = Math.round(spineObjs[i].x * 100) / 100;
+                        y = Math.round(spineObjs[i].y * 100) / 100;
+                    }
+                    var xStr = (x !== 0 || y !== 0) ? (', "x": ' + x + ', "y": ' + y) : '';
+                    var comma = i < partsData.length - 1 ? ',' : '';
+                    out.push('    {"atlas": "' + pd.atlas + '", "skel": "' + pd.skel + '"' + xStr + ' }' + comma);
+                }
+                out.push('  ]');
+                out.push('}');
+                document.getElementById('debugOutput').textContent = out.join('\n');
+            }
+
+            function updateDebugHighlight() {
+                if (!debugHighlight || selectedPartIdx < 0 || selectedPartIdx >= spineObjs.length) return;
+                var obj = spineObjs[selectedPartIdx];
+                if (!obj) return;
+                viewport.removeChild(debugHighlight);
+                debugHighlight.destroy();
+                debugHighlight = new PIXI.Graphics();
+                var bounds = obj.getBounds();
+                var lx = (bounds.x - vpX) / vpScale;
+                var ly = (bounds.y - vpY) / vpScale;
+                var lw = bounds.width / vpScale;
+                var lh = bounds.height / vpScale;
+                debugHighlight.rect(lx, ly, lw, lh);
+                debugHighlight.stroke({ width: 2 / vpScale, color: 0xff6b35 });
+                viewport.addChild(debugHighlight);
+            }
+
             function updateStatus(msg) {
                 var parts = [];
                 if (animName) parts.push('Playing: ' + animName);
@@ -441,6 +616,10 @@
                 statusEl.textContent = 'Loading manifest for ' + game + '/' + charId + '...';
                 titleEl.textContent = 'Spine Demo - ' + game + '/' + charId;
 
+                deselectPart();
+                debugDragPart = false;
+                selectedPartIdx = -1;
+
                 var basePath = '/spine/' + game + '/' + charId + '/';
                 var manifest;
                 try {
@@ -452,6 +631,7 @@
 
                 // 兼容两种格式：单骨架 { atlas, skel } 和多骨架 { parts: [{ atlas, skel }, ...] }
                 var parts = manifest.parts || [{ atlas: manifest.atlas, skel: manifest.skel }];
+                partsData = parts;
 
                 // 清理旧对象
                 for (var i = 0; i < spineObjs.length; i++) {
@@ -468,10 +648,14 @@
                     var skelPath = basePath + parts[i].skel;
                     var atlasPath = basePath + parts[i].atlas;
 
-                    // 自己 fetch + JSON.parse 骨架，避免 PixiJS 默认 JSON 加载器的问题
-                    var resp = await fetch(skelPath);
-                    var text = await resp.text();
-                    PIXI.Assets.cache.set(skelPath, JSON.parse(text));
+                    // JSON 骨架：自己 fetch + JSON.parse，避免 PixiJS 默认 JSON 加载器的问题
+                    // 二进制 .skel 骨架：交给 spine.Spine.from() 原生加载
+                    var skelName = parts[i].skel.toLowerCase();
+                    if (skelName.endsWith('.json')) {
+                        var resp = await fetch(skelPath);
+                        var text = await resp.text();
+                        PIXI.Assets.cache.set(skelPath, JSON.parse(text));
+                    }
 
                     // atlas 正常加载
                     var atlas = await PIXI.Assets.load({ src: atlasPath });
@@ -500,36 +684,42 @@
                     // 播放动画：跳过纯隐藏动画，并优先选隐藏槽位最少的动画
                     var anims = obj.state.data.skeletonData.animations;
                     var picked = null;
-                    var bestHiddenCount = Infinity;
                     var rawData = PIXI.Assets.cache.get(skelPath);
-                    for (var ai = anims.length - 1; ai >= 0; ai--) {
-                        var aname = anims[ai].name;
-                        var rawAnim = rawData && rawData.animations && rawData.animations[aname];
-                        var hasBones = !!(rawAnim && rawAnim.bones);
-                        var hiddenCount = 0;
-                        var hasAnySlot = false;
-                        if (rawAnim && rawAnim.slots) {
-                            var slotKeys = Object.keys(rawAnim.slots);
-                            for (var si = 0; si < slotKeys.length; si++) {
-                                hasAnySlot = true;
-                                var slot = rawAnim.slots[slotKeys[si]];
-                                if (slot.attachment) {
-                                    var allEmpty = true;
-                                    for (var ki = 0; ki < slot.attachment.length; ki++) {
-                                        if (slot.attachment[ki].name) { allEmpty = false; break; }
+                    if (rawData) {
+                        // JSON 骨架：根据原始数据过滤纯隐藏动画
+                        var bestHiddenCount = Infinity;
+                        for (var ai = anims.length - 1; ai >= 0; ai--) {
+                            var aname = anims[ai].name;
+                            var rawAnim = rawData.animations && rawData.animations[aname];
+                            var hasBones = !!(rawAnim && rawAnim.bones);
+                            var hiddenCount = 0;
+                            var hasAnySlot = false;
+                            if (rawAnim && rawAnim.slots) {
+                                var slotKeys = Object.keys(rawAnim.slots);
+                                for (var si = 0; si < slotKeys.length; si++) {
+                                    hasAnySlot = true;
+                                    var slot = rawAnim.slots[slotKeys[si]];
+                                    if (slot.attachment) {
+                                        var allEmpty = true;
+                                        for (var ki = 0; ki < slot.attachment.length; ki++) {
+                                            if (slot.attachment[ki].name) { allEmpty = false; break; }
+                                        }
+                                        if (allEmpty) hiddenCount++;
                                     }
-                                    if (allEmpty) hiddenCount++;
                                 }
                             }
+                            // 跳过纯隐藏动画：无骨骼且所有槽位attachment都是空
+                            if (!hasBones && hasAnySlot && hiddenCount === slotKeys.length) continue;
+                            if (!hasBones && !hasAnySlot) continue;
+                            // 优先选隐藏槽位最少的动画；同分则保留后面（ai更大）的
+                            if (hiddenCount <= bestHiddenCount) {
+                                bestHiddenCount = hiddenCount;
+                                picked = anims[ai];
+                            }
                         }
-                        // 跳过纯隐藏动画：无骨骼且所有槽位attachment都是空
-                        if (!hasBones && hasAnySlot && hiddenCount === slotKeys.length) continue;
-                        if (!hasBones && !hasAnySlot) continue;
-                        // 优先选隐藏槽位最少的动画；同分则保留后面（ai更大）的
-                        if (hiddenCount <= bestHiddenCount) {
-                            bestHiddenCount = hiddenCount;
-                            picked = anims[ai];
-                        }
+                    } else {
+                        // 二进制 .skel 骨架：直接选第一个动画
+                        if (anims.length > 0) picked = anims[0];
                     }
                     if (picked) {
                         obj.state.setAnimation(0, picked.name, true);
@@ -538,24 +728,117 @@
                         console.log('part[' + i + '] no visible anim, showing setup pose');
                     }
                 }
+                // 解析 extra 自定义动画（骨骼摆动/缩放/旋转 + 槽位闪烁）
+                var EXTRA_SPEED = 0.01;        // mode 3 频率倍率（0.01 = freq=5 时约20秒一个周期）
+                var EXTRA_BLINK = 0.5;         // 闪烁幅度衰减（0.5 = 减半，防过曝）
+                var extraAnimConfigs = [];
+                for (var ei = 0; ei < spineObjs.length; ei++) {
+                    var skelPath2 = basePath + parts[ei].skel;
+                    var rawData2 = PIXI.Assets.cache.get(skelPath2);
+                    if (!rawData2 || !rawData2.extra) continue;
+                    var eObj = spineObjs[ei];
+                    var skeleton = eObj.skeleton;
 
+                    var extraKeys = Object.keys(rawData2.extra);
+                    for (var ek = 0; ek < extraKeys.length; ek++) {
+                        var key = extraKeys[ek];
+                        var cfg = rawData2.extra[key];
+                        var anim = cfg.animation && cfg.animation.animation;
+                        if (!anim || anim.mode === 0) continue;
+                        var bone = skeleton.findBone(cfg.rootBoneName || key);
+                        if (!bone) { console.log('bone not found:', cfg.rootBoneName || key, 'in', parts[ei].skel); continue; }
+                        extraAnimConfigs.push({
+                            type: 'bone',
+                            mode: anim.mode,
+                            bone: bone,
+                            setupX: bone.data.x,
+                            setupY: bone.data.y,
+                            setupScaleX: bone.data.scaleX,
+                            setupRotation: bone.data.rotation,
+                            data: anim,
+                            startTime: performance.now() / 1000
+                        });
+                    }
 
+                    if (rawData2.extraSlot) {
+                        var slotKeys = Object.keys(rawData2.extraSlot);
+                        for (var sk = 0; sk < slotKeys.length; sk++) {
+                            var slotKey = slotKeys[sk];
+                            var slotCfg = rawData2.extraSlot[slotKey];
+                            var slotAnim = slotCfg.animation && slotCfg.animation.default;
+                            if (!slotAnim || slotAnim.mode !== 1) continue;
+                            var slot = skeleton.findSlot(slotCfg.slotName || slotKey);
+                            if (!slot) continue;
+                            extraAnimConfigs.push({
+                                type: 'slot',
+                                mode: 1,
+                                slot: slot,
+                                origAlpha: slot.color.a,
+                                data: slotAnim,
+                                startTime: performance.now() / 1000
+                            });
+                        }
+                    }
+                }
+
+                if (extraAnimConfigs.length > 0) {
+                    if (extraTicker) { app.ticker.remove(extraTicker); }
+                    extraTicker = function () {
+                        var t = performance.now() / 1000;
+                        for (var ai = 0; ai < extraAnimConfigs.length; ai++) {
+                            var ac = extraAnimConfigs[ai];
+                            var dt = (t - ac.startTime) * EXTRA_SPEED;
+                            var dtRaw = t - ac.startTime;
+                            var d = ac.data;
+
+                            if (ac.type === 'bone' && ac.mode === 3) {
+                                if (d.moveXAmp) {
+                                    ac.bone.x = ac.setupX + (d.moveXCenter || 0) + d.moveXAmp * Math.sin(dt * d.moveXFreq * Math.PI * 2 + (d.moveXDelay || 0));
+                                }
+                                if (d.moveYAmp) {
+                                    ac.bone.y = ac.setupY + (d.moveYCenter || 0) + d.moveYAmp * Math.sin(dt * d.moveYFreq * Math.PI * 2 + (d.moveYDelay || 0));
+                                }
+                                if (d.scaleXAmp) {
+                                    var s = 1 + (d.scaleXCenter || 0) + d.scaleXAmp * Math.sin(dt * d.scaleXFreq * Math.PI * 2 + (d.scaleXDelay || 0));
+                                    ac.bone.scaleX = ac.setupScaleX * s;
+                                    ac.bone.scaleY = ac.setupScaleX * s;
+                                }
+                                if (d.rotateAmp) {
+                                    ac.bone.rotation = ac.setupRotation + d.rotateAmp * Math.sin(dt * d.rotateFreq * Math.PI * 2 + (d.rotateDelay || 0));
+                                }
+                            } else if (ac.type === 'bone' && ac.mode === 1) {
+                                if (d.rotateRange) {
+                                    ac.bone.rotation = ac.setupRotation + (d.rotateCenter || 0) + d.rotateRange * Math.sin(dtRaw * Math.PI * 2 / d.rotateTime + (d.rotateOffset || 0));
+                                }
+                            } else if (ac.type === 'slot' && ac.mode === 1) {
+                                if (d.blinkTime) {
+                                    var alpha = ac.origAlpha * (1 - d.max * EXTRA_BLINK * (0.5 + 0.5 * Math.sin((dtRaw + (d.delay || 0)) * Math.PI * 2 / d.blinkTime)));
+                                    ac.slot.color.a = alpha;
+                                }
+                            }
+                        }
+                    };
+                    app.ticker.add(extraTicker);
+                    console.log('Extra animations registered:', extraAnimConfigs.length);
+                }
 
                 // 创建部件面板和动画面板
-        populatePartsPanel(parts);
-        populateAnimPanel();
-        updateStatus(parts.length + ' part(s)');
+                populatePartsPanel(parts);
+                populateAnimPanel();
+                updateStatus(parts.length + ' part(s)');
             }
 
             
         function populatePartsPanel(parts) {
+            if (!parts || !parts.length) return;
             partsPanelEl.innerHTML = '';
             var title = document.createElement('div');
             title.className = 'parts-title';
             title.textContent = '部件';
             partsPanelEl.appendChild(title);
 
-            for (var pi = 0; pi < spineObjs.length; pi++) {
+            var count = Math.min(spineObjs.length, parts.length);
+            for (var pi = 0; pi < count; pi++) {
                 (function (idx) {
                     var label = document.createElement('label');
                     label.className = 'part-checkbox';
@@ -563,7 +846,7 @@
                     cb.type = 'checkbox';
                     cb.checked = true;
                     cb.value = idx;
-                    var skelName = parts[idx].skel || ('part' + idx);
+                    var skelName = (parts[idx] && parts[idx].skel) || ('part' + idx);
                     skelName = skelName.replace('.json', '');
                     cb.addEventListener('change', function () {
                         spineObjs[parseInt(this.value)].visible = this.checked;
@@ -674,18 +957,48 @@
                 // --- 鼠标拖拽 ---
                 var dragging = false, dsX = 0, dsY = 0, dvX = 0, dvY = 0;
                 app.canvas.addEventListener('mousedown', function (e) {
+                    if (debugMode) {
+                        var hitIdx = hitTestParts(e.clientX, e.clientY);
+                        if (hitIdx >= 0) {
+                            selectPart(hitIdx);
+                            debugDragPart = true;
+                            debugDragStart.x = e.clientX;
+                            debugDragStart.y = e.clientY;
+                            debugDragStart.ox = spineObjs[hitIdx].x;
+                            debugDragStart.oy = spineObjs[hitIdx].y;
+                            app.canvas.style.cursor = 'move';
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return;
+                        }
+                        deselectPart();
+                    }
                     dragging = true;
                     dsX = e.clientX; dsY = e.clientY;
                     dvX = vpX; dvY = vpY;
                     app.canvas.style.cursor = 'grabbing';
                 });
                 window.addEventListener('mousemove', function (e) {
+                    if (debugDragPart && selectedPartIdx >= 0 && selectedPartIdx < spineObjs.length) {
+                        var dx = (e.clientX - debugDragStart.x) / vpScale;
+                        var dy = (e.clientY - debugDragStart.y) / vpScale;
+                        spineObjs[selectedPartIdx].x = debugDragStart.ox + dx;
+                        spineObjs[selectedPartIdx].y = debugDragStart.oy + dy;
+                        updateDebugHighlight();
+                        updateDebugPanel();
+                        return;
+                    }
                     if (!dragging) return;
                     vpX = dvX + (e.clientX - dsX);
                     vpY = dvY + (e.clientY - dsY);
                     applyViewport();
                 });
                 window.addEventListener('mouseup', function () {
+                    if (debugDragPart) {
+                        debugDragPart = false;
+                        app.canvas.style.cursor = debugMode ? 'crosshair' : 'grab';
+                        return;
+                    }
                     dragging = false;
                     app.canvas.style.cursor = 'grab';
                 });
@@ -788,6 +1101,35 @@
             });
             inputEl.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter') loadCharacter(gameSelect.value, inputEl.value.trim());
+            });
+
+            var debugToggleBtn = document.getElementById('debugToggleBtn');
+            var debugPanelEl = document.getElementById('debugPanel');
+            var copyDebugBtn = document.getElementById('copyDebugBtn');
+
+            debugToggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                debugMode = !debugMode;
+                debugToggleBtn.classList.toggle('active', debugMode);
+                debugPanelEl.classList.toggle('open', debugMode);
+                debugToggleBtn.textContent = debugMode ? '调试中...' : '调试拖拽';
+                app.canvas.style.cursor = debugMode ? 'crosshair' : 'grab';
+                if (!debugMode) {
+                    deselectPart();
+                    debugDragPart = false;
+                }
+                if (debugMode) updateDebugPanel();
+            });
+
+            copyDebugBtn.addEventListener('click', function () {
+                var text = document.getElementById('debugOutput').textContent;
+                navigator.clipboard.writeText(text).then(function () {
+                    copyDebugBtn.textContent = '已复制!';
+                    setTimeout(function () { copyDebugBtn.textContent = '复制JSON'; }, 1500);
+                }).catch(function () {
+                    copyDebugBtn.textContent = '复制失败';
+                    setTimeout(function () { copyDebugBtn.textContent = '复制JSON'; }, 1500);
+                });
             });
 
             init().catch(function (err) {
