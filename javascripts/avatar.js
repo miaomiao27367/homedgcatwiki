@@ -44,7 +44,6 @@ $(function () {
         3423125
     ]
 
-    var this_ver_ = ""
     var ou1;
     var ou2;
     var showtop = 0
@@ -325,9 +324,6 @@ $(function () {
     function begin() {
 
         begun = 1
-
-        this_ver_ = _changelog_.Note
-        pop_ver = " " + this_ver_
 
         _VS = _changelog_.VS
         console.log(_VS)

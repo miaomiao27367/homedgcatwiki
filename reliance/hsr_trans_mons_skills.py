@@ -344,58 +344,122 @@ def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], ou
 
 def merge_basic_data_to_monster_js(basic_entries: Dict[str, Any]) -> str:
     """
-    将新生成的基础数据自动拼接到Monster.js的_monster和_monsterlist中
+    将新生成的基础数据增量合并到Monster.js的_monster和_monsterlist中
 
-    Args:
-        basic_entries: convert_monster_basic_data生成的条目字典 {base_id: nested_entry}
-    Returns:
-        拼接结果描述
+    策略：
+    - 新本体（7位ID不存在）：完整插入（本体+Child变体）
+    - 已有本体：只追加尚不存在的Child变体到已有本体的Child下
     """
     monster_js_path = "./sr/data/CH/Monster.js"
 
     with open(monster_js_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 筛选出尚不存在的本体ID
-    new_ids = []
-    for base_id in basic_entries:
-        if f'"{base_id}":' not in content:
-            new_ids.append(base_id)
+    new_bases = []
+    children_to_add = {}  # {base_id: {child_id: child_entry, ...}}
 
-    if not new_ids:
+    for base_id, entry in basic_entries.items():
+        base_id_str = str(base_id)
+        if f'"{base_id_str}":' not in content:
+            # 全新本体 → 整条插入
+            new_bases.append(base_id_str)
+        elif "Child" in entry:
+            # 已有本体 → 只检查Child中是否有新变体
+            for child_id, child_entry in entry["Child"].items():
+                child_id_str = str(child_id)
+                if f'"{child_id_str}":' not in content:
+                    children_to_add.setdefault(base_id_str, {})[child_id_str] = child_entry
+
+    if not new_bases and not children_to_add:
         return "所有条目已存在，无需拼接"
 
-    # 构建新条目JSON字符串
-    new_entries = {cid: basic_entries[cid] for cid in new_ids}
-    new_json = json.dumps(new_entries, ensure_ascii=False, indent=4)
-    new_json = new_json[1:-1].strip()  # 去掉外层 {}
+    result_parts = []
 
-    # 1. 插入到 _monster 对象末尾（在 }; 之前）
-    pattern_monster = '};\n\nvar _monsterlist = ['
-    if pattern_monster not in content:
-        return "错误：无法定位 _monster 对象结束位置"
-    content = content.replace(
-        pattern_monster,
-        f',\n{new_json}\n{pattern_monster}',
-        1
-    )
+    # 1. 插入全新本体
+    if new_bases:
+        new_entries = {cid: basic_entries[cid] for cid in new_bases}
+        new_json = json.dumps(new_entries, ensure_ascii=False, indent=4)
+        new_json = new_json[1:-1].strip()  # 去掉外层 {}
 
-    # 2. 插入到 _monsterlist 数组末尾
-    pattern_list = '];\n\nvar _status = {'
-    if pattern_list not in content:
-        return "错误：无法定位 _monsterlist 数组结束位置"
-    # 只添加7位ID（本体）
-    new_id_lines = ',\n'.join(f'    {cid}' for cid in new_ids)
-    content = content.replace(
-        pattern_list,
-        f',\n{new_id_lines}\n];\n\nvar _status = {{',
-        1
-    )
+        pattern_monster = '};\n\nvar _monsterlist = ['
+        if pattern_monster not in content:
+            return "错误：无法定位 _monster 对象结束位置"
+        content = content.replace(
+            pattern_monster,
+            f',\n{new_json}\n{pattern_monster}',
+            1
+        )
+
+        pattern_list = '];\n\nvar _status = {'
+        if pattern_list not in content:
+            return "错误：无法定位 _monsterlist 数组结束位置"
+        new_id_lines = ',\n'.join(f'    {cid}' for cid in new_bases)
+        content = content.replace(
+            pattern_list,
+            f',\n{new_id_lines}\n];\n\nvar _status = {{',
+            1
+        )
+
+        result_parts.append(f"新增本体 {len(new_bases)} 个：{', '.join(new_bases)}")
+
+    # 2. 为已有本体追加新Child变体
+    if children_to_add:
+        import re
+        total_added = 0
+        for base_id, child_dict in children_to_add.items():
+            # 定位到本体的起始位置
+            base_entry_pattern = re.compile(
+                rf'"{re.escape(base_id)}":\s*\{{',
+                re.DOTALL
+            )
+            m = base_entry_pattern.search(content)
+            if not m:
+                continue
+
+            # 构建新变体JSON
+            new_child_json = json.dumps(child_dict, ensure_ascii=False, indent=16)
+            new_child_json = new_child_json[1:-1].strip()
+
+            # 从本体条目开始处找到 Child 块
+            child_pattern = re.compile(r'"Child":\s*\{')
+            child_m = child_pattern.search(content, m.start())
+
+            if child_m:
+                # 已有Child块 → 在闭合 } 前追加
+                child_open = child_m.end()
+                brace_count = 1
+                pos = child_open
+                while pos < len(content) and brace_count > 0:
+                    if content[pos] == '{':
+                        brace_count += 1
+                    elif content[pos] == '}':
+                        brace_count -= 1
+                    pos += 1
+                child_close = pos - 1
+                content = content[:child_close] + ',\n' + new_child_json + '\n' + content[child_close:]
+            else:
+                # 没有Child块 → 在本体条目闭合 } 前插入Child块
+                # 从本体{开始找匹配的闭合}
+                brace_count = 1
+                pos = m.end()
+                while pos < len(content) and brace_count > 0:
+                    if content[pos] == '{':
+                        brace_count += 1
+                    elif content[pos] == '}':
+                        brace_count -= 1
+                    pos += 1
+                base_close = pos - 1
+                child_block = ',\n        "Child": {\n' + new_child_json + '\n        }'
+                content = content[:base_close] + child_block + '\n' + content[base_close:]
+
+            total_added += len(child_dict)
+
+        result_parts.append(f"追加变体 {total_added} 个")
 
     with open(monster_js_path, 'w', encoding='utf-8') as f:
         f.write(content)
 
-    return f"已自动拼接 {len(new_ids)} 个新条目到 Monster.js：{', '.join(new_ids)}"
+    return "；".join(result_parts)
 
 
 def generate_monster_basic_data(monster_id: str, version: str = None) -> str:

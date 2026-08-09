@@ -47,14 +47,9 @@ $(function () {
     script_computer.onload = begin_2
 
     let script_computer_2 = document.createElement('script')
-    script_computer_2.src = '/sr/data/' + lang3 + '/Monster_1.js'
+    script_computer_2.src = '/sr/data/' + lang3 + '/Monster.js'
     document.head.append(script_computer_2)
     script_computer_2.onload = begin_2
-
-    let script_computer_3 = document.createElement('script')
-    script_computer_3.src = '/sr/data/' + lang3 + '/Monster_2.js'
-    document.head.append(script_computer_3)
-    script_computer_3.onload = begin_2
 
     function begin() {
 
@@ -107,8 +102,27 @@ $(function () {
 
     function begin_2() {
         count++
-        if (count == 3) {
-            _monster = {..._monster, ..._monster_2}
+        if (count == 2) {
+            // 展开 Monster.js 的 Child 变体到 _monster 顶层
+            var baseKeys = Object.keys(_monster)
+            for (var i = 0; i < baseKeys.length; i++) {
+                var base = _monster[baseKeys[i]]
+                if (base && base.Child) {
+                    var childKeys = Object.keys(base.Child)
+                    for (var j = 0; j < childKeys.length; j++) {
+                        var childId = childKeys[j]
+                        var child = base.Child[childId]
+                        var childCopy = Object.assign({}, child)
+                        if (base.Stats && child.Stats) {
+                            childCopy.Stats = {}
+                            for (var k in base.Stats) {
+                                childCopy.Stats[k] = Math.round(base.Stats[k] * (child.Stats[k] || 1) * 10000) / 10000
+                            }
+                        }
+                        _monster[childId] = childCopy
+                    }
+                }
+            }
             $('.loading').hide()
             $('.content').render({
                 div: [

@@ -1,14 +1,33 @@
-VER_GI = "6.4"//GI
+var __MANIFEST__ = (function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/manifest.json', false);
+    xhr.send();
+    return JSON.parse(xhr.responseText);
+})();
 
-VER_SR = "4.3v3"//SR
+var __GI_CONFIG__ = __MANIFEST__.gi;
+var __SR_CONFIG__ = __MANIFEST__.sr;
 
-GI_DATES = {
-    "6.4": ["6.4", Date.parse('2026-02-25T18:00:00+08:00')],
-}
+VER_GI = __GI_CONFIG__.Current_Ver //GI
+VER_SR = __SR_CONFIG__.Current_Ver //SR
+
+GI_DATES = (function() {
+    var d = {};
+    var dates = __GI_CONFIG__.Dates;
+    for (var k in dates) {
+        d[k] = [k, Date.parse(dates[k])];
+    }
+    return d;
+})();
 //测试服倒计时
-SR_DATES = {
-    "4.3": ["4.3", Date.parse('2026-06-01T10:00:00+08:00')],
-}
+SR_DATES = (function() {
+    var d = {};
+    var dates = __SR_CONFIG__.Dates;
+    for (var k in dates) {
+        d[k] = [k, Date.parse(dates[k])];
+    }
+    return d;
+})();
 
 // 角色数据URL模板
 var avatarIdUrls = [
@@ -42,7 +61,7 @@ var createSyncPanel = function() {
     var dataItems = [
         { id: 'data-avatar', label: '角色数据', urls: [] },
         { id: 'data-weapon', label: '武器数据', urls: [] },
-        { id: 'data-monster', label: '怪物数据', urls: ["/sr/data/CH/Monster_1.js","/sr/data/CH/Monster_2.js"] },
+        { id: 'data-monster', label: '怪物数据', urls: ["/sr/data/CH/Monster.js"] },
         { id: 'data-chaos', label: '混沌回忆', urls: ["/sr/data/CH/Chaos_1.js","/sr/data/CH/Chaos_2.js","/sr/data/CH/Chaos_star.js"] },
         { id: 'data-fiction', label: '虚构叙事', urls: ["/sr/data/CH/Fiction_1.js","/sr/data/CH/Fiction_2.js","/sr/data/CH/Fiction_star.js"] },
         { id: 'data-apocalypse', label: '末日幻影', urls: ["/sr/data/CH/AS.js","/sr/data/CH/AS_star.js"] },

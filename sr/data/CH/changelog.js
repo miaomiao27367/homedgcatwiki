@@ -69,7 +69,13 @@ var _changelog_veradd = {
     ]
 }
 
-var cl_select = {"v4 - Live": 4, "v3 - v4": 3, "v2 - v3": 2, "v1 - v2": 1}
-var cl_vers = ["v1", "v2", "v3", "v4", "Live"]
-var _diff_avatar = [1512,1513]
-var _diff_weapon = [23063,23064,22008]
+var cl_vers = __SR_CONFIG__.VS
+var cl_select = (function() {
+    var s = {};
+    for (var i = 0; i < cl_vers.length - 1; i++) {
+        s[cl_vers[i] + " - " + cl_vers[i + 1]] = i + 1;
+    }
+    return s;
+})()
+var _diff_avatar = __SR_CONFIG__.diff.avatar
+var _diff_weapon = __SR_CONFIG__.diff.weapon

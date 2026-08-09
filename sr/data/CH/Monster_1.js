@@ -6276,7 +6276,7 @@ var _monster = {
             "Imaginary": 0.2
         },
         "StatusRESBase": 0.0,
-        "HPCount": 3,
+        "HPCount": 2,
         "Skills": [
             203302001
         ],
@@ -6311,7 +6311,7 @@ var _monster = {
             "Imaginary": 0.2
         },
         "StatusRESBase": 0.0,
-        "HPCount": 3,
+        "HPCount": 2,
         "Skills": [
             203302101
         ],
@@ -6700,7 +6700,7 @@ var _monster = {
         "Name": "「飞霄」之影",
         "Desc": "借由「赤月」的转移死而不绝的呼雷，以飞霄形貌现身，与本尊相对而立，宛如镜照。",
         "Stats": {
-            "HP": 15.0,
+            "HP": 13.5,
             "ATK": 18.0,
             "DEF": 1.0,
             "SPD": 120.0,
@@ -6721,7 +6721,7 @@ var _monster = {
         "DebuffRES": {
             "CTRL": 1.0
         },
-        "HPCount": 3,
+        "HPCount": 16,
         "Skills": [
             203501001,
             203501002,
@@ -6738,7 +6738,9 @@ var _monster = {
         "Figure": "monsterfigure/Monster_2033020.png",
         "Su": [
             2033020
-        ]
+        ],
+        "Multistage":3,
+        "Multistage_list": [1,6,9]
     },
     "2035011": {
         "_id": 2035011,
@@ -6766,7 +6768,7 @@ var _monster = {
         "DebuffRES": {
             "CTRL": 1.0
         },
-        "HPCount": 3,
+        "HPCount": 3.592,
         "Skills": [
             203501101,
             203501102,
@@ -6783,7 +6785,9 @@ var _monster = {
         "Figure": "monsterfigure/Monster_2033020.png",
         "Su": [
             2033021
-        ]
+        ],
+        "Multistage":3,
+        "Multistage_list": [1,6,9]
     },
     "2035012": {
         "_id": 2035012,
@@ -13422,7 +13426,6 @@ var _monster = {
             "Elec": 0.2
         },
         "StatusRESBase": 0.2,
-        "HPCount": 2,
         "Skills": [
             402201001,
             402201002
@@ -15730,7 +15733,7 @@ var _monster = {
         "DebuffRES": {
             "CTRL": 1.0
         },
-        "HPCount": 3,
+        "HPCount": 3.75,
         "Skills": [
             403501001,
             403501002,
@@ -22909,7 +22912,7 @@ var _monster = {
             "ATK": 18.0,
             "DEF": 1.0,
             "SPD": 140.0,
-            "Stance": 120.0
+            "Stance": 40.0
         },
         "Weak": [
             "Fire",
@@ -22921,7 +22924,7 @@ var _monster = {
         "DebuffRES": {
             "CTRL": 1.0
         },
-        "HPCount": 2,
+        "HPCount": 3.9,
         "Skills": [
             801503001,
             801503002,
@@ -22943,11 +22946,14 @@ var _monster = {
         "Icon": "mostericon/Monster_8015030.png",
         "Figure": "monsterfigure/Monster_8015030.png",
         "Su": [
-        ]
+            801204001
+        ],
+        "Multistage":3,
+        "Multistage_list": [1,1,1.9]
     },
     "8015040": {
         "_id": 8015040,
-        "Name": "万色归空主，归寂•「二」",
+        "Name": "万色归空主，归寂•住",
         "Desc": "...",
         "Stats": {
             "HP": 160.0,
@@ -22966,7 +22972,7 @@ var _monster = {
         "DebuffRES": {
             "CTRL": 1.0
         },
-        "HPCount": 2,
+        "HPCount": 3.9,
         "Skills": [
             801504001,
             801504002,
@@ -22988,7 +22994,10 @@ var _monster = {
         "Icon": "mostericon/Monster_8015040.png",
         "Figure": "monsterfigure/Monster_8015040.png",
         "Su": [
-        ]
+            801204001
+        ],
+        "Multistage":3,
+        "Multistage_list": [1,1,1.9]
     },
     "8015050": {
         "_id": 8015050,
@@ -22999,7 +23008,7 @@ var _monster = {
             "ATK": 18.0,
             "DEF": 1.0,
             "SPD": 140.0,
-            "Stance": 108.0
+            "Stance": 68.0
         },
         "Weak": [
             "Fire",
@@ -23011,7 +23020,7 @@ var _monster = {
         "DebuffRES": {
             "CTRL": 1.0
         },
-        "HPCount": 2,
+        "HPCount": 3.9,
         "Skills": [
             801505001,
             801505002,
@@ -23033,7 +23042,10 @@ var _monster = {
         "Icon": "mostericon/Monster_8015050.png",
         "Figure": "monsterfigure/Monster_8015050.png",
         "Su": [
-        ]
+            801204001
+        ],
+        "Multistage":3,
+        "Multistage_list": [1,1,1.9]
     },
     "8022010": {
         "_id": 8022010,
@@ -24118,8 +24130,7 @@ var _monster = {
             8032033,
             8032034
         ]
-    }
-,
+    },
 "8032040": {
     "_id": 8032040,
     "Name": "千星戍卫",
@@ -24160,7 +24171,7 @@ var _monster = {
     "Name": "「灯塔」",
     "Desc": "千星城的超级英雄，武装着博识学会最先进的科技成果，不遗余力地惩奸除恶，维护城市的和平。五年来，他数次拯救千星城的人民于大小灾难中。\\n有人指出，这些壮举绝不可能靠一人完成，而所谓「灯塔」也不过是由娱乐工业复合体包装打造出的虚假偶像。但人们已经全心期盼着有人能在他们陷入危机时扛起一切——只是他们并不知晓，「灯塔」的铠甲之下藏着某些更为幽暗的秘密……",
     "Stats": {
-      "HP": 13.0,
+      "HP": 14.0,
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 144,
@@ -24237,7 +24248,7 @@ var _monster = {
     "Name": "弗有垂暮的不老仙",
     "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
     "Stats": {
-      "HP": 262.5,
+      "HP": 280,
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
@@ -24295,7 +24306,7 @@ var _monster = {
     "Name": "弗有垂暮的不老仙",
     "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
     "Stats": {
-      "HP": 262.5,
+      "HP": 280,
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
@@ -24353,7 +24364,7 @@ var _monster = {
     "Name": "弗有垂暮的不老仙",
     "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
     "Stats": {
-      "HP": 262.5,
+      "HP": 280,
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
@@ -24411,7 +24422,7 @@ var _monster = {
     "Name": "弗有垂暮的不老仙",
     "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
     "Stats": {
-      "HP": 262.5,
+      "HP": 280,
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
@@ -24469,11 +24480,11 @@ var _monster = {
     "Name": "弗有垂暮的不老仙",
     "Desc": "由「建木」化生，拱卫其根系的灵瑞之兽，履迹所之，和泽滋生，枝杪郁敷。\\n自毁于太古时代的战争后，「建木」终于在星核的修补下再度生长。彼时仙人们所造的珍禽奇兽纷至沓来，宛如旧梦重临。",
     "Stats": {
-      "HP": 262.5,
+      "HP": 280,
       "ATK": 18,
       "DEF": 1.0,
       "SPD": 120,
-      "Stance": 20.0
+      "Stance": 24.0
     },
     "Weak": [
       "Phys",
@@ -26450,6 +26461,1346 @@ var _monster = {
             406301006,
             406301000
         ]
+  }
+,
+"502302001": {
+    "_id": 502302001,
+    "Name": "吞神子嗣",
+    "Desc": "归寂分裂「贪饕」力量所生成的怪物军团，如今「幻造种」的原型。他自哈托彼亚沉睡的核心中感应到「贪饕」永不停歇的吞噬渴望，其力量的脉动与「毁灭」命途十分合拍。这份躁动令他感到有趣，因此他开始自己的黑暗创造——抹去人类的头颅，留下发笑和吞噬的嘴，永不满足地向外界咆哮、索要、吞吃。",
+    "Stats": {
+      "HP": 7.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 18.0
+    },
+    "Weak": [
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      502302001,
+      502302002,
+      502302003,
+      502302004,
+      502302005
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_5023020.png",
+    "Figure": "monsterfigure/Monster_5023020.png"
+  },
+  "502302002": {
+    "_id": 502302002,
+    "Name": "吞神子嗣",
+    "Desc": "归寂分裂「贪饕」力量所生成的怪物军团，如今「幻造种」的原型。他自哈托彼亚沉睡的核心中感应到「贪饕」永不停歇的吞噬渴望，其力量的脉动与「毁灭」命途十分合拍。这份躁动令他感到有趣，因此他开始自己的黑暗创造——抹去人类的头颅，留下发笑和吞噬的嘴，永不满足地向外界咆哮、索要、吞吃。",
+    "Stats": {
+      "HP": 4.839008,
+      "ATK": 40.008888,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 18.0
+    },
+    "Weak": [
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      502302001,
+      502302002,
+      502302003,
+      502302004,
+      502302005
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_5023020.png",
+    "Figure": "monsterfigure/Monster_5023020.png"
+  },
+  "502302003": {
+    "_id": 502302003,
+    "Name": "吞神子嗣",
+    "Desc": "归寂分裂「贪饕」力量所生成的怪物军团，如今「幻造种」的原型。他自哈托彼亚沉睡的核心中感应到「贪饕」永不停歇的吞噬渴望，其力量的脉动与「毁灭」命途十分合拍。这份躁动令他感到有趣，因此他开始自己的黑暗创造——抹去人类的头颅，留下发笑和吞噬的嘴，永不满足地向外界咆哮、索要、吞吃。",
+    "Stats": {
+      "HP": 10.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 18.0
+    },
+    "Weak": [
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      502302001,
+      502302002,
+      502302003,
+      502302004,
+      502302005
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_5023020.png",
+    "Figure": "monsterfigure/Monster_5023020.png"
+  },
+  "502302004": {
+    "_id": 502302004,
+    "Name": "吞神子嗣",
+    "Desc": "归寂分裂「贪饕」力量所生成的怪物军团，如今「幻造种」的原型。他自哈托彼亚沉睡的核心中感应到「贪饕」永不停歇的吞噬渴望，其力量的脉动与「毁灭」命途十分合拍。这份躁动令他感到有趣，因此他开始自己的黑暗创造——抹去人类的头颅，留下发笑和吞噬的嘴，永不满足地向外界咆哮、索要、吞吃。",
+    "Stats": {
+      "HP": 4.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 18.0
+    },
+    "Weak": [
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      502302001,
+      502302002,
+      502302003,
+      502302004,
+      502302005
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_5023020.png",
+    "Figure": "monsterfigure/Monster_5023020.png"
+  },
+  "502302005": {
+    "_id": 502302005,
+    "Name": "吞神子嗣",
+    "Desc": "归寂分裂「贪饕」力量所生成的怪物军团，如今「幻造种」的原型。他自哈托彼亚沉睡的核心中感应到「贪饕」永不停歇的吞噬渴望，其力量的脉动与「毁灭」命途十分合拍。这份躁动令他感到有趣，因此他开始自己的黑暗创造——抹去人类的头颅，留下发笑和吞噬的嘴，永不满足地向外界咆哮、索要、吞吃。",
+    "Stats": {
+      "HP": 4.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 18.0
+    },
+    "Weak": [
+      "Fire",
+      "Elec",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      502302001,
+      502302002,
+      502302003,
+      502302004,
+      502302005
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_5023020.png",
+    "Figure": "monsterfigure/Monster_5023020.png"
+  }
+,
+"801204001": {
+    "_id": 801204001,
+    "Name": "喜剧学家",
+    "Desc": "...",
+    "Stats": {
+      "HP": 9.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 167,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      801204001,
+      801204002,
+      801204003
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_8012040.png",
+    "Figure": "monsterfigure/Monster_8012040.png"
+  }
+,
+"200201001": {
+    "_id": 200201001,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 1.6,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201002": {
+    "_id": 200201002,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 1.6,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201003": {
+    "_id": 200201003,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 1.6,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201004": {
+    "_id": 200201004,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 2.5000000000000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201005": {
+    "_id": 200201005,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 1.6,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201006": {
+    "_id": 200201006,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 6.4,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201007": {
+    "_id": 200201007,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 1.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201008": {
+    "_id": 200201008,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 4.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201009": {
+    "_id": 200201009,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 1.6,
+      "ATK": 25.714278,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201010": {
+    "_id": 200201010,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 0.75,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Elec",
+      "Wind"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201011": {
+    "_id": 200201011,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 0.42500000000000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201012": {
+    "_id": 200201012,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 1.6,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201013": {
+    "_id": 200201013,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 0.1,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  },
+  "200201014": {
+    "_id": 200201014,
+    "Name": "云骑巡防士卒",
+    "Desc": "罗浮仙舟云骑军地面巡防部队的成员，手持阵刀，身着轻银打造的铠甲，维护各个洞天的日常秩序。",
+    "Stats": {
+      "HP": 2.5000000000000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 2.0
+    },
+    "Weak": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      200201001,
+      200201002,
+      200201003,
+      200201004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2002010.png",
+    "Figure": "monsterfigure/Monster_2002010.png"
+  }
+,
+"100403001": {
+    "_id": 100403001,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 9.999996,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403002": {
+    "_id": 100403002,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 17.000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403003": {
+    "_id": 100403003,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 21.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Quantum"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403004": {
+    "_id": 100403004,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 20.000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403005": {
+    "_id": 100403005,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 50.000004000000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403006": {
+    "_id": 100403006,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 12.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Elec"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403007": {
+    "_id": 100403007,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 20.000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403008": {
+    "_id": 100403008,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 82.5,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403009": {
+    "_id": 100403009,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 20.000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403010": {
+    "_id": 100403010,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 12.0,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  },
+  "100403011": {
+    "_id": 100403011,
+    "Name": "布洛妮娅",
+    "Desc": "贝洛伯格守护者的继任者，银鬃铁卫的统帅。\\n布洛妮娅会使用多种战术攻击敌人，并大幅提升友军的作战能力。",
+    "Stats": {
+      "HP": 20.000004,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 120,
+      "Stance": 7.0
+    },
+    "Weak": [
+      "Phys",
+      "Fire",
+      "Imaginary"
+    ],
+    "RESBase": {
+      "Ice": 0.2,
+      "Elec": 0.2,
+      "Wind": 0.2,
+      "Quantum": 0.2
+    },
+    "StatusRESBase": 0.2,
+    "DebuffRES": {},
+    "Skills": [
+      100403001,
+      100403002,
+      100403003,
+      100403004
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_1004030.png",
+    "Figure": "monsterfigure/Monster_1004030.png"
+  }
+,
+"202206008": {
+    "_id": 202206008,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 4.0000004,
+      "ATK": 12.000006,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206009": {
+    "_id": 202206009,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 0.999999,
+      "ATK": 12.000006,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206011": {
+    "_id": 202206011,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 1.2999998,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206012": {
+    "_id": 202206012,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 1.4999996,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Ice",
+      "Elec",
+      "Wind"
+    ],
+    "RESBase": {
+      "Phys": 0.2,
+      "Fire": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206013": {
+    "_id": 202206013,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 0.9000001999999999,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206014": {
+    "_id": 202206014,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 2.5000008,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206015": {
+    "_id": 202206015,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 6.000000599999999,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206016": {
+    "_id": 202206016,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 6.000000599999999,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
+  },
+  "202206017": {
+    "_id": 202206017,
+    "Name": "「药王秘传」器元士",
+    "Desc": "潜伏于罗浮仙舟中的秘密传承「药王秘传」的成员。\\n借器修道，与之连同一体。他们渴求复兴古老的丰饶之秘，令仙舟人跨入下一阶段的进化。",
+    "Stats": {
+      "HP": 6.000000599999999,
+      "ATK": 18,
+      "DEF": 1.0,
+      "SPD": 83,
+      "Stance": 3.0
+    },
+    "Weak": [
+      "Phys",
+      "Ice",
+      "Wind"
+    ],
+    "RESBase": {
+      "Fire": 0.2,
+      "Elec": 0.2,
+      "Quantum": 0.2,
+      "Imaginary": 0.2
+    },
+    "StatusRESBase": 0.1,
+    "DebuffRES": {},
+    "Skills": [
+      202206001
+    ],
+    "Camp": 0,
+    "Icon": "mostericon/Monster_2022060.png",
+    "Figure": "monsterfigure/Monster_2022060.png"
   }
 }
 

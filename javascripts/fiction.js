@@ -45,45 +45,51 @@ $(function () {
         EN: 'Ratio of contribution in the chart below<br>Minion A 40% | Minion B 40% | Boss 20%',
     }
 
-    // 先加载 Monster_1/2 完整数据，再加载 Fiction_1.js，最后从完整数据构建 _monster
+    // 先加载 Monster.js 完整数据，再加载 Fiction_1.js，最后从完整数据构建 _monster
     var _monster_full = {}
 
     let script_m1 = document.createElement('script')
-    script_m1.src = '/sr/data/' + lang3 + '/Monster_1.js'
+    script_m1.src = '/sr/data/' + lang3 + '/Monster.js'
     document.head.append(script_m1)
 
     script_m1.onload = function () {
-        _monster_full = _monster
-
-        let script_m2 = document.createElement('script')
-        script_m2.src = '/sr/data/' + lang3 + '/Monster_2.js'
-        document.head.append(script_m2)
-
-        script_m2.onload = function () {
-            if (typeof _monster_2 !== 'undefined') {
-                for (var key in _monster_2) {
-                    if (!_monster_full[key]) {
-                        _monster_full[key] = _monster_2[key]
+        // 展开 Child 变体到 _monster_full 顶层
+        var baseKeys = Object.keys(_monster)
+        for (var i = 0; i < baseKeys.length; i++) {
+            var base = _monster[baseKeys[i]]
+            _monster_full[baseKeys[i]] = base
+            if (base && base.Child) {
+                var childKeys = Object.keys(base.Child)
+                for (var j = 0; j < childKeys.length; j++) {
+                    var childId = childKeys[j]
+                    var child = base.Child[childId]
+                    var childCopy = Object.assign({}, child)
+                    if (base.Stats && child.Stats) {
+                        childCopy.Stats = {}
+                        for (var k in base.Stats) {
+                            childCopy.Stats[k] = Math.round(base.Stats[k] * (child.Stats[k] || 1) * 10000) / 10000
+                        }
                     }
+                    _monster_full[childId] = childCopy
                 }
             }
-
-            // 从 Monster_1/2 完整数据构建精简版 _monster
-            var newMonster = {}
-            for (var key in _monster_full) {
-                var m = _monster_full[key]
-                newMonster[key] = {
-                    "1": m.Figure || ("monsterfigure/Monster_" + key + ".png"),
-                    "2": m.Weak || [],
-                    "3": m.HPCount || 1,
-                    "4": m.Name || "",
-                    "11": m.StanceCount || 0
-                }
-            }
-            _monster = newMonster
-
-            begin()
         }
+
+        // 从完整数据构建精简版 _monster
+        var newMonster = {}
+        for (var key in _monster_full) {
+            var m = _monster_full[key]
+            newMonster[key] = {
+                "1": m.Figure || ("monsterfigure/Monster_" + key + ".png"),
+                "2": m.Weak || [],
+                "3": m.HPCount || 1,
+                "4": m.Name || "",
+                "11": m.StanceCount || 0
+            }
+        }
+        _monster = newMonster
+
+        begin()
     }
 
     function begin() {
