@@ -1,0 +1,9 @@
+﻿{
+    "version": 1,
+    "files": [
+        "reliance/gi_weapon_trans.py",
+        "reliance/gi_trans.py",
+        "javascripts/ver.js",
+        "reliance/hsr_trans_mons_skills.py"
+    ]
+}
