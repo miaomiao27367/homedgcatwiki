@@ -64,6 +64,22 @@ $(function () {
 
     var m_s = 0
 
+    var show_variants = 0
+    var current_kid = 9999
+    var switch_variants_text = [
+        {
+            CH: '显示变体',
+            EN: 'Show Variants'
+        },
+        {
+            CH: '隐藏变体',
+            EN: 'Hide Variants'
+        }
+    ]
+
+    var _diff_monster = []
+    var _sr_ver = ''
+
     var switch_hlg = 0
     var switch_hlg_text = [
         {
@@ -76,10 +92,16 @@ $(function () {
         }
     ]
 
-    let script_computer = document.createElement('script')
-    script_computer.src = '/sr/data/' + lang3 + '/Monster.js'
-    document.head.append(script_computer)
-    script_computer.onload = begin
+    fetch('/manifest.json')
+        .then(function (r) { return r.json() })
+        .then(function (manifest) {
+            _diff_monster = (manifest.sr && manifest.sr.diff && manifest.sr.diff.monster) ? manifest.sr.diff.monster : []
+            _sr_ver = (manifest.sr && manifest.sr.Current_Ver) ? manifest.sr.Current_Ver : ''
+            let script_computer = document.createElement('script')
+            script_computer.src = '/sr/data/' + lang3 + '/Monster.js'
+            document.head.append(script_computer)
+            script_computer.onload = begin
+        })
 
     var ojb = document.getElementsByTagName("container")
     ojb[0].addEventListener("scroll", update)
@@ -129,6 +151,10 @@ $(function () {
     var rendered_buttoms = 0
 
     function begin() {
+
+        if (_sr_ver && _kingdoms[0]) {
+            _kingdoms[0].Name = '<b>' + _sr_ver + ' 新增</b>'
+        }
 
         let script_2 = document.createElement('script')
         script_2.src = '/sr/data/' + lang3 + '/MonsterSkill.js'
@@ -228,6 +254,7 @@ $(function () {
     }
 
     function monsterRender(kid) {
+        current_kid = kid
         monsterRenderAfter(kid)
     }
 
@@ -241,15 +268,7 @@ $(function () {
                 actual_render(t, '#monster_card_area_1')
                 if (t.Child) {
                     Object.keys(t.Child).forEach(function (childId) {
-                        var child = t.Child[childId]
-                        var childCopy = Object.assign({}, child)
-                        if (t.Stats && child.Stats) {
-                            childCopy.Stats = {}
-                            for (var key in t.Stats) {
-                                childCopy.Stats[key] = Math.round(t.Stats[key] * (child.Stats[key] || 1) * 10000) / 10000
-                            }
-                        }
-                        actual_render(childCopy, '#monster_card_area_1')
+                        actual_render(t.Child[childId], '#monster_card_area_1')
                     })
                 }
             } else {
@@ -261,16 +280,21 @@ $(function () {
                 } else if (kid == 1003) {
                     show = t.IsIllusion
                 } else if (kid == 9999) {
-                    show = t.New
+                    show = _diff_monster.includes(t._id)
                 } else if (kid == 7000) {
                     show = t._id.toString()[0] == "7"
                 } else if (kid == 99) {
-                    show = (t.Camp == 0) && (t._id < 9999999)
+                    show = (t.Camp == 0)
                 } else {
-                    show = (t.Camp == kid) && (t._id < 9999999)
+                    show = (t.Camp == kid)
                 }
                 if (show) {
                     actual_render(t, '#monster_card_area_1')
+                    if (show_variants && t.Child) {
+                        Object.keys(t.Child).forEach(function (childId) {
+                            actual_render(t.Child[childId], '#monster_card_area_1')
+                        })
+                    }
                 }
             }
         })
@@ -290,6 +314,13 @@ $(function () {
                     },
                     class: 'but',
                     id: 'but_2'
+                },
+                {
+                    span: {
+                        span: switch_variants_text[show_variants][lang]
+                    },
+                    class: 'but',
+                    id: 'but_variants'
                 }
             ])
         }
@@ -366,6 +397,14 @@ $(function () {
                         ],
                         when: t.Stats
                     },
+                    {
+                        p: 'ID ' + t._id,
+                        style: {
+                            'margin': '4px 0 0',
+                            'font-size': '11px',
+                            'color': '#888'
+                        }
+                    },
                 ],
                 class: 'avatar-card hover-shadow',
                 a: {
@@ -382,13 +421,6 @@ $(function () {
             var parent = _monster[parentId]
             if (parent && parent.Child && parent.Child[ind]) {
                 me = Object.assign({}, parent.Child[ind])
-                if (parent.Stats && me.Stats) {
-                    var computedStats = {}
-                    for (var key in parent.Stats) {
-                        computedStats[key] = Math.round(parent.Stats[key] * (me.Stats[key] || 1) * 10000) / 10000
-                    }
-                    me.Stats = computedStats
-                }
             }
         }
         if (!me) return
@@ -898,13 +930,6 @@ $(function () {
                     var _parent = _monster[_parentId]
                     if (_parent && _parent.Child && _parent.Child[smid]) {
                         sm_mon = Object.assign({}, _parent.Child[smid])
-                        if (_parent.Stats && sm_mon.Stats) {
-                            var _s = {}
-                            for (var _k in _parent.Stats) {
-                                _s[_k] = Math.round(_parent.Stats[_k] * (sm_mon.Stats[_k] || 1) * 10000) / 10000
-                            }
-                            sm_mon.Stats = _s
-                        }
                     }
                 }
                 if (sm_mon) render_summon(smid, sm_mon)
@@ -936,13 +961,6 @@ $(function () {
                     var _vParent = _monster[_vParentId]
                     if (_vParent && _vParent.Child && _vParent.Child[varid]) {
                         var_mon = Object.assign({}, _vParent.Child[varid])
-                        if (_vParent.Stats && var_mon.Stats) {
-                            var _vs = {}
-                            for (var _vk in _vParent.Stats) {
-                                _vs[_vk] = Math.round(_vParent.Stats[_vk] * (var_mon.Stats[_vk] || 1) * 10000) / 10000
-                            }
-                            var_mon.Stats = _vs
-                        }
                     }
                 }
                 if (var_mon) render_variant(varid, var_mon)
@@ -1238,13 +1256,6 @@ $(function () {
                 var _rParent = _monster[_rParentId]
                 if (_rParent && _rParent.Child && _rParent.Child[_rsid]) {
                     sm_mon = Object.assign({}, _rParent.Child[_rsid])
-                    if (_rParent.Stats && sm_mon.Stats) {
-                        var _rs = {}
-                        for (var _rk in _rParent.Stats) {
-                            _rs[_rk] = Math.round(_rParent.Stats[_rk] * (sm_mon.Stats[_rk] || 1) * 10000) / 10000
-                        }
-                        sm_mon.Stats = _rs
-                    }
                 }
             }
 
@@ -1778,14 +1789,7 @@ $(function () {
                 Object.keys(t.Child).forEach(function (childId) {
                     var child = t.Child[childId]
                     if (child.Name.includes(search) || childId.includes(search)) {
-                        var childCopy = Object.assign({}, child)
-                        if (t.Stats && child.Stats) {
-                            childCopy.Stats = {}
-                            for (var key in t.Stats) {
-                                childCopy.Stats[key] = Math.round(t.Stats[key] * (child.Stats[key] || 1) * 10000) / 10000
-                            }
-                        }
-                        results.push(childCopy)
+                        results.push(child)
                     }
                 })
             }
@@ -1806,6 +1810,12 @@ $(function () {
         $('#kingdoms').show()
         $('#INPUT').val('')
 
+    })
+
+    $('body').on('click', '#but_variants', function () {
+        show_variants = 1 - show_variants
+        $('#but_variants span').html(switch_variants_text[show_variants][lang])
+        monsterRender(current_kid)
     })
 
     $('body').on('click', '.up', function () {
