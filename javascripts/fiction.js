@@ -802,6 +802,16 @@ $(function () {
 
         function getMonsterData(id) {
             if (_monster[id]) return _monster[id]
+            if (_monster_full[id]) {
+                var m = _monster_full[id]
+                return {
+                    "1": m.Figure || ("monsterfigure/Monster_" + id + ".png"),
+                    "2": m.Weak || [],
+                    "3": m.HPCount || 1,
+                    "4": m.Name || "",
+                    "11": m.StanceCount || 0
+                }
+            }
             var strId = String(id)
             for (var trim = 1; trim <= 3; trim++) {
                 if (strId.length <= trim) break

@@ -1,9 +1,10 @@
 ﻿{
-    "version": 1,
+    "version": 2,
     "files": [
-        "reliance/gi_weapon_trans.py",
-        "reliance/gi_trans.py",
         "javascripts/ver.js",
-        "reliance/hsr_trans_mons_skills.py"
+        "reliance/hsr_trans_mons_skills.py",
+        "javascripts/chaos.js",
+        "javascripts/fiction.js",
+        "javascripts/arbitration.js"
     ]
 }

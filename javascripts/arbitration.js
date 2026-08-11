@@ -80,17 +80,7 @@ $(function () {
         document.head.append(script_ar)
 
         script_ar.onload = function () {
-            // AR.js 不再包含 _monster，从完整数据构建
-            var newMonster = {}
-            for (var key in _monster_full) {
-                var m = _monster_full[key]
-                newMonster[key] = {
-                    "1": m.Name || "",
-                    "2": m.Figure || ("monsterfigure/Monster_" + key + ".png"),
-                    "3": m.Weak || []
-                }
-            }
-            _monster = newMonster
+            // AR.js 自带 _monster（含手动配置值），缺失的从 _monster_full 兜底
             begin()
         }
     }
@@ -910,6 +900,14 @@ $(function () {
 
     function getMonsterData(id) {
         if (_monster[id]) return _monster[id]
+        if (_monster_full[id]) {
+            var m = _monster_full[id]
+            return {
+                "1": m.Name || "",
+                "2": m.Figure || ("monsterfigure/Monster_" + id + ".png"),
+                "3": m.Weak || []
+            }
+        }
         var strId = String(id)
         for (var trim = 1; trim <= 3; trim++) {
             if (strId.length <= trim) break
