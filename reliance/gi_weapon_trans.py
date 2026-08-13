@@ -11,7 +11,7 @@ API_VERSION = "6.7.52"
 CACHE_DIR = "tempdata"
 OUTPUT_DIR = os.path.join(CACHE_DIR, "output")
 WEAPON_DIR = "gi/CH/Weapon"
-AVATAR_JS_PATH = "gi/CH/avatar.js"
+AVATAR_JS_PATH = "gi/CH/Weapon.js"
 
 # ----------------------------------------------------------
 #  武器类型映射: API -> 本地数字
@@ -123,6 +123,8 @@ def extract_weapon_config(zh_file, weapon_id, ver_key="L"):
         print(f"  [警告] 未知武器类型: {raw_type}，已映射为 0，请手动更新 WEAPON_TYPE_MAPPING")
     rank = api.get('rarity', 5)
     icon = api.get('icon', '')
+    # 去掉图标名中的 C# 格式占位符 {0}
+    icon = icon.replace("_{0}", "")
 
     # --- 武器属性 ---
     weapon_props = api.get('weapon_prop', [])
@@ -241,7 +243,7 @@ def extract_weapon_config(zh_file, weapon_id, ver_key="L"):
 def generate_weapon_config_json(entry):
     """生成 _WeaponConfig 条目的 JSON 字符串"""
     c = entry
-    return f'''    {{
+    return f'''    "{c["_id"]}": {{
         "_id": "{c["_id"]}",
         "Name": "{c["Name"]}",
         "Desc": "{escape_js_string(c["Desc"])}",
@@ -381,7 +383,7 @@ def generate_weapon_js(weapon_id, affix_config, story_cache, output_file, merge_
 
 
 # ============================================================
-#  插入到 avatar.js 的 _WeaponConfig
+#  插入到 Weapon.js 的 _WeaponConfig
 # ============================================================
 
 def merge_to_avatar_js(entry):
@@ -401,21 +403,21 @@ def merge_to_avatar_js(entry):
         os.makedirs(OUTPUT_DIR, exist_ok=True)
         new_entry = generate_weapon_config_json(entry)
         with open(dup_path, 'w', encoding='utf-8') as f:
-            f.write('var _WeaponConfig = [\n')
+            f.write('var _WeaponConfig = {\n')
             f.write(new_entry)
-            f.write('\n]')
+            f.write('\n}')
         return f"武器 {wid} 条目已存在，新数据已输出到 {dup_path}"
 
-    # 定位 _WeaponConfig 数组头部
-    marker = 'var _WeaponConfig = ['
+    # 定位 _WeaponConfig 对象头部
+    marker = 'var _WeaponConfig = {'
     marker_pos = content.find(marker)
     if marker_pos < 0:
         return "错误：无法定位 _WeaponConfig"
 
-    # 插入到数组第一个元素之前（即 [ 之后）
+    # 插入到对象第一个元素之前（即 { 之后）
     head_pos = content.find('\n', marker_pos) + 1
     if head_pos <= 0:
-        return "错误：无法定位 _WeaponConfig 数组头部"
+        return "错误：无法定位 _WeaponConfig 对象头部"
 
     new_entry = generate_weapon_config_json(entry)
     new_content = content[:head_pos] + new_entry + '\n' + content[head_pos:]
@@ -585,6 +587,9 @@ def gi_weapon_img_sync(weapon_id, version="6.7.52"):
         icon = get_weapon_icon_from_avatar(wid)
         if not icon:
             return False, f"武器 {wid} 未在本地 Weapon.js 或 avatar.js 中找到，请先更新武器数据"
+
+        # 去掉图标名中的 C# 格式占位符 {0}
+        icon = icon.replace("_{0}", "")
 
         from urllib.parse import urljoin
         IMG_SAVE_DIR = "homdgcat-res/Weapon"

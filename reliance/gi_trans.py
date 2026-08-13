@@ -128,7 +128,7 @@ def download_and_cache(url, save_path):
 def escape_js_string(s):
     if not isinstance(s, str):
         return str(s)
-    return s.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n').replace('\r', '')
+    return s.replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n').replace('\r', '').replace('\\\\n', '\\n')
 
 
 def process_color_tags(text):
@@ -385,10 +385,10 @@ def generate_avatar_js(info, output_file):
 
 
 def generate_avatar_entry_json(info):
-    """生成单个avatar条目的JSON字符串（用于拼接）"""
+    """生成单个avatar条目的JSON字符串（用于拼接），格式为 "id": { ... },"""
     c = info
     lines = []
-    lines.append('    {')
+    lines.append(f'    "{c["_id"]}": {{')
     lines.append(f'        "_name": "{escape_js_string(c["_name"])}",')
     lines.append(f'        "_id": {c["_id"]},')
     for key in ["Name", "Desc", "Title", "Constellation", "Nation", "Belong"]:
@@ -427,7 +427,7 @@ def generate_avatar_entry_json(info):
 def merge_to_avatar_js(character_id, char_info):
     """
     将生成的角色条目自动插入到 gi/CH/avatar.js 的 __AvatarInfoConfig 中。
-    以刻晴条目中的 "Test": "test value" 为定位标记，插入到刻晴后面。
+    按角色ID降序排列，插入到正确的顺序位置。
     """
     avatar_js = AVATAR_JS_PATH
     if not os.path.exists(avatar_js):
@@ -444,37 +444,60 @@ def merge_to_avatar_js(character_id, char_info):
         os.makedirs(OUTPUT_DIR, exist_ok=True)
         new_entry = generate_avatar_entry_json(char_info)
         with open(dup_path, 'w', encoding='utf-8') as f:
-            f.write('var __AvatarInfoConfig = [\n')
+            f.write('var __AvatarInfoConfig = {\n')
             f.write(new_entry)
-            f.write('\n]')
+            f.write('\n}')
         return f"角色 {avatar_id} 条目已存在，新数据已输出到 {dup_path} 请人工比对保留哪个"
 
-    # 定位标记: "Test": "test value"
-    marker = '"Test": "test value"'
-    marker_pos = content.find(marker)
-    if marker_pos < 0:
-        return "错误：无法定位 'Test': 'test value' 标记"
+    # 找到 __AvatarInfoConfig 中所有已有的ID及其行位置
+    # 格式:     "706": {
+    pattern = re.compile(r'^    "(\d+)": \{', re.MULTILINE)
+    existing_ids = []
+    for m in pattern.finditer(content):
+        existing_ids.append((int(m.group(1)), m.start(), m.group(0)))
 
-    # 从标记位置往后找，找到闭合该条目的 },\n    {
-    after_marker = content[marker_pos:]
-    close_idx = after_marker.find('},\n    {')
-    if close_idx < 0:
-        # 尝试另一种格式
-        close_idx = after_marker.find('}\n    ]')
-        if close_idx < 0:
-            return "错误：无法定位刻晴条目结束位置"
+    if not existing_ids:
+        return "错误：无法在 avatar.js 中找到现有角色条目"
+
+    # 按ID降序排列（和文件中顺序一致）
+    existing_ids.sort(key=lambda x: x[0], reverse=True)
+
+    # 找到新ID应该插入的位置（降序：新ID > 当前ID时插入在前面）
+    new_id = avatar_id
+    insert_before = None  # 插入到该条目之前
+    for eid, pos, match_str in existing_ids:
+        if new_id > eid:
+            insert_before = (eid, pos, match_str)
+            break
 
     # 生成新条目
     new_entry = generate_avatar_entry_json(char_info)
 
-    # 拼接: 在刻晴条目 }, 之后插入
-    insert_pos = marker_pos + close_idx + 2  # 跳过 },
-    new_content = content[:insert_pos] + '\n' + new_entry + content[insert_pos:]
+    if insert_before is None:
+        # 新ID比所有现有ID都小，插入到最后一个条目之后
+        # 找到最后一个条目的结束位置:     }, 后面紧跟下一个 "id": 或 }
+        last_id_str = f'"{existing_ids[-1][0]}":'
+        last_pos = content.rfind(last_id_str)
+        if last_pos < 0:
+            return "错误：无法定位最后一个角色条目"
+        # 从最后一个条目开始找闭合的 },
+        after_last = content[last_pos:]
+        # 找到该条目的结束: 先找到最后一个 },\n    (后面还有条目)
+        # 或者找到 }\n} (后面是 __AvatarInfoConfig 的闭合)
+        close_match = re.search(r'\n    },\n(?:    "|})', after_last)
+        if not close_match:
+            return "错误：无法定位最后一个角色条目的结束位置"
+        insert_pos = last_pos + close_match.start() + len('\n    },')
+        new_content = content[:insert_pos] + '\n' + new_entry + content[insert_pos:]
+    else:
+        # 插入到 insert_before 之前
+        before_pos = insert_before[1]
+        new_content = content[:before_pos] + new_entry + '\n' + content[before_pos:]
 
     with open(avatar_js, 'w', encoding='utf-8') as f:
         f.write(new_content)
 
-    return f"已自动拼接角色 {avatar_id} 到 {avatar_js}（刻晴下方）"
+    return f"已自动拼接角色 {avatar_id} 到 {avatar_js}（按ID降序）"
 
 
 # ============================================================
@@ -1019,7 +1042,10 @@ def main():
         print("错误: 未指定任何版本配置。")
         return
 
-    first_ver_key = list(versions_dict.keys())[0]
+    if "L" in versions_dict:
+        first_ver_key = "L"
+    else:
+        first_ver_key = str(max(int(k) for k in versions_dict.keys()))
     first_api_ver = versions_dict[first_ver_key]
     print(f"版本配置: {versions_dict}")
 
@@ -1097,7 +1123,10 @@ def gi_character_update(character_id, versions_dict):
         if not versions_dict:
             versions_dict = {"L": API_VERSION}
 
-        first_ver_key = list(versions_dict.keys())[0]
+        if "L" in versions_dict:
+            first_ver_key = "L"
+        else:
+            first_ver_key = str(max(int(k) for k in versions_dict.keys()))
         first_api_ver = versions_dict[first_ver_key]
         print(f"版本配置: {versions_dict}")
 
