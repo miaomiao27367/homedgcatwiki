@@ -5,20 +5,12 @@ var _WeaponAffixPConfig_ = {
         "Ver": {
             "1": {
                 "Affix": [
-                    "施放元素战技或元素爆发后的20秒内，攻击力提升24%。持续期间内，若装备者创造了护盾，则接下来的20秒内，还会获得「流电圣敕」效果：队伍中附近所有角色触发的月感电反应造成的伤害提升40%。",
-                    "施放元素战技或元素爆发后的20秒内，攻击力提升30%。持续期间内，若装备者创造了护盾，则接下来的20秒内，还会获得「流电圣敕」效果：队伍中附近所有角色触发的月感电反应造成的伤害提升50%。",
-                    "施放元素战技或元素爆发后的20秒内，攻击力提升36%。持续期间内，若装备者创造了护盾，则接下来的20秒内，还会获得「流电圣敕」效果：队伍中附近所有角色触发的月感电反应造成的伤害提升60%。",
-                    "施放元素战技或元素爆发后的20秒内，攻击力提升42%。持续期间内，若装备者创造了护盾，则接下来的20秒内，还会获得「流电圣敕」效果：队伍中附近所有角色触发的月感电反应造成的伤害提升70%。",
-                    "施放元素战技或元素爆发后的20秒内，攻击力提升48%。持续期间内，若装备者创造了护盾，则接下来的20秒内，还会获得「流电圣敕」效果：队伍中附近所有角色触发的月感电反应造成的伤害提升80%。"
+                    "施放元素战技或元素爆发后的20秒内，攻击力提升 <color style='color:#99FFFFFF'>24%</color> / <color style='color:#99FFFFFF'>30%</color> / <color style='color:#99FFFFFF'>36%</color> / <color style='color:#99FFFFFF'>42%</color> / <color style='color:#99FFFFFF'>48%</color> 。持续期间内，若装备者创造了护盾，则接下来的20秒内，还会获得「流电圣敕」效果：队伍中附近所有角色触发的月感电反应造成的伤害提升 <color style='color:#99FFFFFF'>40%</color> / <color style='color:#99FFFFFF'>50%</color> / <color style='color:#99FFFFFF'>60%</color> / <color style='color:#99FFFFFF'>70%</color> / <color style='color:#99FFFFFF'>80%</color> 。"
                 ]
             },
             "2": {
                 "Affix": [
                     "施放元素战技或元素爆发后的20秒内，攻击力提升 <color style='color:#99FFFFFF'>24%</color> / <color style='color:#99FFFFFF'>30%</color> / <color style='color:#99FFFFFF'>36%</color> / <color style='color:#99FFFFFF'>42%</color> / <color style='color:#99FFFFFF'>48%</color> 。持续期间内，若装备者创造了护盾，则接下来的20秒内，还会获得「流电圣敕」效果：队伍中附近所有角色触发的月感电反应造成的伤害提升 <color style='color:#99FFFFFF'>40%</color> / <color style='color:#99FFFFFF'>50%</color> / <color style='color:#99FFFFFF'>60%</color> / <color style='color:#99FFFFFF'>70%</color> / <color style='color:#99FFFFFF'>80%</color> 。",
-                    " ",
-                    " ",
-                    " ",
-                    " "
                 ]
             },
             "3": {

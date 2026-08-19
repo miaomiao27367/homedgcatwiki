@@ -1057,6 +1057,120 @@ var ToolsApp = {
         }
     },
 
+    // 发送GI物品转换请求
+    sendGIItemConvert: async function() {
+        var submitBtn = document.getElementById('giItemConvertSubmitBtn');
+        var btnText = document.getElementById('giItemConvertBtnText');
+        var resultDiv = document.getElementById('giItemConvertResult');
+
+        var itemIdText = document.getElementById('giItemId').value.trim();
+        var itemIds = itemIdText
+            .split(/[\s,]+/)
+            .map(function(id) { return id.trim(); })
+            .filter(function(id) { return id; });
+
+        var data = {
+            item_ids: itemIds,
+            version: document.getElementById('giItemVersion').value.trim(),
+            auto_merge: document.getElementById('giItemAutoMerge').checked
+        };
+
+        submitBtn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>处理中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/gi_item_convert', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            var result = await response.json();
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('giItemConvertResultTitle').textContent =
+                result.status === 'success' ? '✓ 转换成功' : '✗ 转换失败';
+            document.getElementById('giItemConvertResultMessage').textContent = result.message;
+
+            var outputText = result.stdout || result.stderr || '';
+            document.getElementById('giItemConvertResultOutput').textContent = outputText;
+            document.getElementById('giItemConvertResultOutput').style.display = outputText ? 'block' : 'none';
+
+            if (result.unmapped && Object.keys(result.unmapped).length > 0) {
+                var warnP = document.createElement('p');
+                warnP.style.color = '#e6a817';
+                warnP.textContent = '⚠ 以下物品类型未映射，已归入"其他"分类：';
+                var warnUl = document.createElement('ul');
+                warnUl.style.color = '#e6a817';
+                for (var uid in result.unmapped) {
+                    var li = document.createElement('li');
+                    li.textContent = 'ID ' + uid + ': "' + result.unmapped[uid] + '"';
+                    warnUl.appendChild(li);
+                }
+                resultDiv.appendChild(warnP);
+                resultDiv.appendChild(warnUl);
+            }
+
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giItemConvertResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('giItemConvertResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('giItemConvertResultOutput').textContent = error.toString();
+            document.getElementById('giItemConvertResultOutput').style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            btnText.textContent = '发送转换请求';
+        }
+    },
+
+    // 发送GI物品图片同步请求
+    sendGIItemImgSync: async function() {
+        var btn = document.getElementById('giItemImgSyncBtn');
+        var btnText = document.getElementById('giItemImgBtnText');
+        var resultDiv = document.getElementById('giItemImgResult');
+
+        var idText = document.getElementById('giItemImgId').value.trim();
+        var ids = idText
+            ? idText.split(/[\s,]+/).map(function(id) { return id.trim(); }).filter(function(id) { return id; })
+            : [];
+
+        var data = { ids: ids };
+
+        btn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>同步中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/gi_sync_item_image', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            var result = await response.json();
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('giItemImgResultTitle').textContent =
+                result.status === 'success' ? '✓ 同步完成' : '✗ 同步失败';
+            document.getElementById('giItemImgResultMessage').textContent = result.message;
+            var out = result.stdout || result.stderr || '';
+            document.getElementById('giItemImgResultOutput').textContent = out;
+            document.getElementById('giItemImgResultOutput').style.display = out ? 'block' : 'none';
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giItemImgResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('giItemImgResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('giItemImgResultOutput').textContent = error.toString();
+            document.getElementById('giItemImgResultOutput').style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = '同步物品图片';
+        }
+    },
+
 };
 
 // 页面加载完成后初始化

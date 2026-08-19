@@ -23,6 +23,7 @@ from reliance.gi_trans import gi_character_update
 from reliance.gi_weapon_trans import gi_weapon_update, gi_weapon_img_sync
 from reliance.hsr_trans_relic import generate_relic_data
 from reliance.item_converter import generate_item_data, sync_item_images
+from reliance.gi_item_converter import generate_gi_item_data, sync_gi_item_images
 
 data_url2="26.192.21.124:9080"
 data_url1="26.118.195.109:8080"
@@ -1140,6 +1141,89 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
             except Exception as e:
                 print(f"[hsr_sync_item_image] 处理失败: {str(e)}")
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+
+            print("-" * 50)
+            return
+
+        # 处理 /gi_item_convert
+        if path == '/gi_item_convert':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+
+                try:
+                    request_data = json.loads(post_data.decode('utf-8'))
+                    item_ids = request_data.get('item_ids', [])
+                    version = request_data.get('version', '6.7.52')
+                    auto_merge = request_data.get('auto_merge', True)
+
+                    print(f"[gi_item_convert] item_ids={item_ids}, version={version}, auto_merge={auto_merge}")
+                except:
+                    item_ids = ["201"]
+                    version = "6.7.52"
+                    auto_merge = True
+                    print(f"[gi_item_convert] 使用默认参数: item_ids={item_ids}")
+
+                try:
+                    str_return, unmapped = generate_gi_item_data(item_ids, version, auto_merge=auto_merge)
+                    response_data = {"status": "success", "message": f"成功处理 {len(item_ids)} 个物品", "stdout": str_return}
+                    if unmapped:
+                        response_data["unmapped"] = unmapped
+
+                except Exception as e:
+                    error_msg = str(e)
+                    print(f"[gi_item_convert] 执行失败: {error_msg}")
+                    response_data = {"status": "error", "message": "物品数据转换失败", "stderr": f"抛出异常: {error_msg}"}
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+
+            except Exception as e:
+                print(f"[gi_item_convert] 处理失败: {str(e)}")
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+
+            print("-" * 50)
+            return
+
+        # 处理 /gi_sync_item_image
+        if path == '/gi_sync_item_image':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                try:
+                    request_data = json.loads(post_data.decode('utf-8'))
+                    item_ids = request_data.get('ids', [])
+                    print(f"[gi_sync_item_image] 物品ID: {item_ids}")
+                except:
+                    item_ids = []
+                    print(f"[gi_sync_item_image] 使用默认空列表")
+
+                try:
+                    str_return = sync_gi_item_images(item_ids)
+                    response_data = {"status": "success", "message": "图片同步完成", "stdout": str_return}
+                except Exception as e:
+                    error_msg = str(e)
+                    print(f"[gi_sync_item_image] 执行失败: {error_msg}")
+                    response_data = {"status": "error", "message": "图片同步失败", "stderr": f"抛出异常: {error_msg}"}
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+
+            except Exception as e:
+                print(f"[gi_sync_item_image] 处理失败: {str(e)}")
                 error_msg = str(e).replace('"', '\\"')
                 self.send_response(500)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')

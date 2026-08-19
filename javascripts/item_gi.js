@@ -160,6 +160,66 @@ $(function () {
                                         'data-id': '10',
                                         title: (lang == 'CH') ? '绘想游迹' : 'Envisaged Echoes'
                                     }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_201.png',
+                                    },
+                                    class: (I_TYPE == '9') ? 'active' : '',
+                                    a: {
+                                        'data-id': '9',
+                                        title: (lang == 'CH') ? '货币与兑换券' : 'Currency & Coupons'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_223.png',
+                                    },
+                                    class: (I_TYPE == '13') ? 'active' : '',
+                                    a: {
+                                        'data-id': '13',
+                                        title: (lang == 'CH') ? '祈愿' : 'Wishes'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_222.png',
+                                    },
+                                    class: (I_TYPE == '14') ? 'active' : '',
+                                    a: {
+                                        'data-id': '14',
+                                        title: (lang == 'CH') ? '贵重物品' : 'Precious Items'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_104003.png',
+                                    },
+                                    class: (I_TYPE == '15') ? 'active' : '',
+                                    a: {
+                                        'data-id': '15',
+                                        title: (lang == 'CH') ? '经验与强化素材' : 'EXP & Enhancement'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_100991.png',
+                                    },
+                                    class: (I_TYPE == '17') ? 'active' : '',
+                                    a: {
+                                        'data-id': '17',
+                                        title: (lang == 'CH') ? '鱼' : 'Fish'
+                                    }
+                                },
+                                {
+                                    schedule: {
+                                        img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_114001.png',
+                                    },
+                                    class: (I_TYPE == '18') ? 'active' : '',
+                                    a: {
+                                        'data-id': '18',
+                                        title: (lang == 'CH') ? '精炼材料' : 'Refinement Materials'
+                                    }
                                 }
                             ],
                             class: 'a_w_r'
@@ -182,40 +242,17 @@ $(function () {
         })
 
         if (avid) {
-            if (index_material_1[avid] != undefined) {
-                I_TYPE = 1
-                popItem(index_material_1[avid] + 1)
-            } else if (index_material_2[avid] != undefined) {
-                I_TYPE = 2
-                popItem(index_material_2[avid] + 1)
-            } else if (index_material_3[avid] != undefined) {
-                I_TYPE = 3
-                popItem(index_material_3[avid] + 1)
-            } else if (index_material_4[avid] != undefined) {
-                I_TYPE = 4
-                popItem(index_material_4[avid] + 1)
-            } else if (index_ingre_2[avid] != undefined) {
-                I_TYPE = 5
-                popItem(index_ingre_2[avid] + 1)
-            } else if (index_namecard[avid] != undefined) {
-                I_TYPE = 6
-                popItem(index_namecard[avid] + 1)
-            } else if (index_food[avid] != undefined) {
-                I_TYPE = 7
-                popItem(index_food[avid] + 1)
-            } else if (index_ingre_1[avid] != undefined) {
-                I_TYPE = 8
-                popItem(index_ingre_1[avid] + 1)
-            } else if (index_trail[avid] != undefined) {
-                I_TYPE = 10
-                popItem(index_trail[avid] + 1)
-            } else if (index_pfp[avid] != undefined) {
-                I_TYPE = 11
-                popItem(index_pfp[avid] + 1)
-            } else if (index_widget[avid] != undefined) {
-                I_TYPE = 12
-                popItem(index_widget[avid] + 1)
-            } 
+            var targetItem = _items[avid];
+            if (targetItem) {
+                I_TYPE = targetItem.SortType;
+                var typeItems = getTypeItems();
+                for (var i = 0; i < typeItems.length; i++) {
+                    if (typeItems[i]._id == avid) {
+                        popItem(i + 1);
+                        break;
+                    }
+                }
+            }
         }
 
         renderItems()
@@ -233,11 +270,20 @@ $(function () {
         renderItems()
     })
 
+    function getTypeItems() {
+        return Object.values(_items).filter(function (t) {
+            return t.SortType == I_TYPE
+        }).sort(function (a, b) {
+            return a._id - b._id
+        })
+    }
+
     function renderItems() {
 
         $('.area').empty()
 
-        _items[parseInt(I_TYPE)].forEach(function (t, i) {
+        var typeItems = getTypeItems()
+        typeItems.forEach(function (t, i) {
             $('.area').render({
                 div: [
                     {
@@ -270,7 +316,7 @@ $(function () {
                 ],
                 class: 'item-card hover-shadow',
                 style: {
-                    'background-image': `linear-gradient(180deg, ${rarity_color[t.R]}, #fff)`
+                    'background-image': `linear-gradient(180deg, ${rarity_color[t.Rarity]}, #fff)`
                 },
                 a: {
                     'data-id': i + 1
@@ -285,7 +331,8 @@ $(function () {
     })
 
     function popItem(y) {
-        this_item = _items[parseInt(I_TYPE)][y - 1]
+        var typeItems = getTypeItems()
+        this_item = typeItems[y - 1]
         switch_title(this_item.Name)
         poplayer_({
             div: {
@@ -490,7 +537,7 @@ $(function () {
     }
 
     $('body').on('click', '.item-jump', function () {
-        window.location.href = `/gi/item/${$(this).attr('data-id')}`
+        window.location.href = `/gi/item#_${$(this).attr('data-id')}`
     })
 
     $('body').on('click', '.avatar-jump', function () {

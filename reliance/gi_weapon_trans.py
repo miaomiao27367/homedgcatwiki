@@ -77,6 +77,60 @@ def process_color_tags(text):
     return text
 
 
+def merge_refinement_descs(descs):
+    """
+    将多个精炼等级的独立描述合并为一个，数值部分用 / 分隔
+    例如: "提升52点" + "提升65点" + "提升78点" → "提升52/65/78点"
+    如果各等级描述结构不一致（如文本有差异），则回退到原逻辑用 / 拼接
+    """
+    if not descs:
+        return ""
+    if len(descs) == 1:
+        return descs[0]
+
+    # 匹配数字（可能被颜色标签包裹）：(<color...>)?数字(小数可选)(</color>)?
+    num_pattern = re.compile(r'(<color[^>]*>)?(\d+\.?\d*)(</color>)?')
+
+    # 解析每个描述，提取文本段和数字段
+    all_segments = []
+    for desc in descs:
+        segments = []
+        last_end = 0
+        for m in num_pattern.finditer(desc):
+            if m.start() > last_end:
+                segments.append(('text', desc[last_end:m.start()]))
+            segments.append(('num', m.group(1) or '', m.group(2), m.group(3) or ''))
+            last_end = m.end()
+        if last_end < len(desc):
+            segments.append(('text', desc[last_end:]))
+        all_segments.append(segments)
+
+    # 验证所有描述的segment结构一致
+    first = all_segments[0]
+    for segs in all_segments[1:]:
+        if len(segs) != len(first):
+            return ' / '.join(descs)
+        for i, (s1, s2) in enumerate(zip(first, segs)):
+            if s1[0] != s2[0]:
+                return ' / '.join(descs)
+            if s1[0] == 'text' and s1[1] != s2[1]:
+                return ' / '.join(descs)
+
+    # 构建合并结果：文本不变，变化的数值用 / 合并
+    result = []
+    for i, seg in enumerate(first):
+        if seg[0] == 'text':
+            result.append(seg[1])
+        else:
+            nums = [s[i][2] for s in all_segments]
+            if len(set(nums)) == 1:
+                result.append(f"{seg[1]}{nums[0]}{seg[3]}")
+            else:
+                result.append(f"{seg[1]}{'/'.join(nums)}{seg[3]}")
+
+    return ''.join(result)
+
+
 # ============================================================
 #  数据下载
 # ============================================================
@@ -293,7 +347,7 @@ def extract_weapon_affix_story(zh_file, weapon_id, story_file, ver_key="1"):
         desc = refinement[level].get('desc', '')
         refined_descs.append(process_color_tags(desc))
 
-    combined_desc = ' / '.join(refined_descs)
+    combined_desc = merge_refinement_descs(refined_descs)
 
     affix_config = {
         str(equip_affix_id): {
@@ -396,17 +450,7 @@ def merge_to_avatar_js(entry):
         content = f.read()
 
     wid = entry["_id"]
-    
-    # 检查是否已存在相同ID的条目（武器在avatar.js中只存一份，不区分版本）
-    if f'"_id": "{wid}"' in content:
-        dup_path = os.path.join(OUTPUT_DIR, f"weapon_{wid}_duplicate.js")
-        os.makedirs(OUTPUT_DIR, exist_ok=True)
-        new_entry = generate_weapon_config_json(entry)
-        with open(dup_path, 'w', encoding='utf-8') as f:
-            f.write('var _WeaponConfig = {\n')
-            f.write(new_entry)
-            f.write('\n}')
-        return f"武器 {wid} 条目已存在，新数据已输出到 {dup_path}"
+    new_entry_str = generate_weapon_config_json(entry).rstrip('\n')
 
     # 定位 _WeaponConfig 对象头部
     marker = 'var _WeaponConfig = {'
@@ -414,13 +458,46 @@ def merge_to_avatar_js(entry):
     if marker_pos < 0:
         return "错误：无法定位 _WeaponConfig"
 
-    # 插入到对象第一个元素之前（即 { 之后）
+    # 检查是否已存在相同ID的条目，存在则替换
+    id_marker = f'"_id": "{wid}"'
+    id_pos = content.find(id_marker)
+    if id_pos >= 0:
+        # 找到该条目在对象中的起始位置（向前找最近的 '"' 开头）
+        block_start = content.rfind('\n    "', 0, id_pos)
+        if block_start < 0 or block_start < marker_pos:
+            return f"错误：无法定位武器 {wid} 的条目起始位置"
+
+        # 找到该条目的结束位置（匹配 } 后跟 , 或 } ）
+        brace_depth = 0
+        block_end = id_pos
+        in_block = False
+        for i in range(block_start, len(content)):
+            ch = content[i]
+            if ch == '{':
+                brace_depth += 1
+                in_block = True
+            elif ch == '}':
+                brace_depth -= 1
+                if in_block and brace_depth == 0:
+                    # 找到闭合的 }，检查后面是否有逗号
+                    if i + 1 < len(content) and content[i + 1] == ',':
+                        block_end = i + 2
+                    else:
+                        block_end = i + 1
+                    break
+
+        new_content = content[:block_start] + '\n' + new_entry_str + '\n' + content[block_end:]
+        with open(ws, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+
+        return f"武器 {wid} 条目已存在，已用新版本数据替换"
+
+    # 不存在，插入到对象第一个元素之前（即 { 之后）
     head_pos = content.find('\n', marker_pos) + 1
     if head_pos <= 0:
         return "错误：无法定位 _WeaponConfig 对象头部"
 
-    new_entry = generate_weapon_config_json(entry)
-    new_content = content[:head_pos] + new_entry + '\n' + content[head_pos:]
+    new_content = content[:head_pos] + new_entry_str + '\n' + content[head_pos:]
 
     with open(ws, 'w', encoding='utf-8') as f:
         f.write(new_content)

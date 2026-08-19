@@ -303,7 +303,7 @@ $(function () {
     function popItem(y) {
         this_item = _material[y]
         if (this_item.Link) {
-            window.location.href = `../item/${this_item._id}`
+            window.location.href = `../item#_${this_item._id}`
             return
         }
         poplayer({

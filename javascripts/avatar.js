@@ -1597,7 +1597,7 @@ $(function () {
             var grp_render = []
             grp.forEach(function (item_data) {
                 var outs = {
-                    a: '/gi/item/' + item_data.ID + '?lang=' + lang3,
+                    a: '/gi/item#_' + item_data.ID + '?lang=' + lang3,
                     t: [
                         {
                             img: `/homdgcat-res/Mat/UI_ItemIcon_${item_data.ID}.png`,
@@ -1912,11 +1912,11 @@ $(function () {
         $('.mtc_result').empty()
         for (const [d, n] of Object.entries(_cumulative_mats)) {
             $('.mtc_result').render({
-                a: '/gi/item/' + d,
+                a: '/gi/item#_' + d,
                 t: [
                     {
                         div: {
-                            img: '/homdgcat-res/Mat/' + _MaterialConfig[d] + '.png'
+                            img: '/homdgcat-res/Mat/UI_ItemIcon_' + d + '.png'
                         },
                         class: 'mtc_result_item_icon'
                     },
@@ -2012,14 +2012,12 @@ $(function () {
                                     div: [
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + (k.data.CommonMatt - 2) + '?lang=' + lang3
+                                                return '/gi/item#_' + (k.data.CommonMatt - 2) + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.CommonMatt - 2]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.CommonMatt - 2) + ".png"
                                                     },
                                                     class: 'img_2',
                                                     event: {
@@ -2041,14 +2039,12 @@ $(function () {
                                         },
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + (k.data.CommonMatt - 1) + '?lang=' + lang3
+                                                return '/gi/item#_' + (k.data.CommonMatt - 1) + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.CommonMatt - 1]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.CommonMatt - 1) + ".png"
                                                     },
                                                     class: 'img_2',
                                                     event: {
@@ -2070,14 +2066,12 @@ $(function () {
                                         },
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + k.data.CommonMatt + '?lang=' + lang3
+                                                return '/gi/item#_' + k.data.CommonMatt + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.CommonMatt]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.CommonMatt) + ".png"
                                                     },
                                                     class: 'img_2',
                                                     event: {
@@ -2104,14 +2098,12 @@ $(function () {
                                     div: [
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + k.data.AscMat + '?lang=' + lang3
+                                                return '/gi/item#_' + k.data.AscMat + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.AscMat]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.AscMat) + ".png"
                                                     },
                                                     class: 'img_2',
                                                     event: {
@@ -2143,14 +2135,12 @@ $(function () {
                                     div: [
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + (k.data.TalentMatt - 2) + '?lang=' + lang3
+                                                return '/gi/item#_' + (k.data.TalentMatt - 2) + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.TalentMatt - 2]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.TalentMatt - 2) + ".png"
                                                     },
                                                     event: {
                                                         error: function (d) {
@@ -2171,14 +2161,12 @@ $(function () {
                                         },
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + (k.data.TalentMatt - 1) + '?lang=' + lang3
+                                                return '/gi/item#_' + (k.data.TalentMatt - 1) + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.TalentMatt - 1]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.TalentMatt - 1) + ".png"
                                                     },
                                                     event: {
                                                         error: function (d) {
@@ -2199,14 +2187,12 @@ $(function () {
                                         },
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + k.data.TalentMatt + '?lang=' + lang3
+                                                return '/gi/item#_' + k.data.TalentMatt + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.TalentMatt]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.TalentMatt) + ".png"
                                                     },
                                                     event: {
                                                         error: function (d) {
@@ -2237,14 +2223,12 @@ $(function () {
                                     div: [
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + k.data.WeekMat + '?lang=' + lang3
+                                                return '/gi/item#_' + k.data.WeekMat + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.WeekMat]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.WeekMat) + ".png"
                                                     },
                                                     class: 'img_2',
                                                     event: {
@@ -2276,14 +2260,12 @@ $(function () {
                                     div: [
                                         {
                                             a: function (k) {
-                                                return '/gi/item/' + k.data.SpecialityMat + '?lang=' + lang3
+                                                return '/gi/item#_' + k.data.SpecialityMat + '?lang=' + lang3
                                             },
                                             t: [
                                                 {
                                                     img: function (k) {
-                                                        var mat = _MaterialConfig[k.data.SpecialityMat]
-                                                        if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                        return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                        return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (k.data.SpecialityMat) + ".png"
                                                     },
                                                     event: {
                                                         error: function (d) {
@@ -2979,7 +2961,7 @@ $(function () {
                                                         p: dish.Name + ` 🔗`,
                                                         event: {
                                                             click: function () {
-                                                                window.location.href = `/gi/item/${dish.JD}`
+                                                                window.location.href = `/gi/item#_${dish.JD}`
                                                             }
                                                         },
                                                         style: {
@@ -6209,7 +6191,7 @@ $(function () {
                             {
                                 div: [
                                     {
-                                        a: '/gi/item/' + (wpn.AscMatID - 3) + '?lang=' + lang3,
+                                        a: '/gi/item#_' + (wpn.AscMatID - 3) + '?lang=' + lang3,
                                         t: [
                                             {
                                                 img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_' + (wpn.AscMatID - 3) + '.png',
@@ -6242,7 +6224,7 @@ $(function () {
                                         class: 'mat_a hover-shadow',
                                     },
                                     {
-                                        a: '/gi/item/' + (wpn.AscMatID - 2) + '?lang=' + lang3,
+                                        a: '/gi/item#_' + (wpn.AscMatID - 2) + '?lang=' + lang3,
                                         t: [
                                             {
                                                 img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_' + (wpn.AscMatID - 2) + '.png',
@@ -6275,7 +6257,7 @@ $(function () {
                                         class: 'mat_a hover-shadow',
                                     },
                                     {
-                                        a: '/gi/item/' + (wpn.AscMatID - 1) + '?lang=' + lang3,
+                                        a: '/gi/item#_' + (wpn.AscMatID - 1) + '?lang=' + lang3,
                                         t: [
                                             {
                                                 img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_' + (wpn.AscMatID - 1) + '.png',
@@ -6308,7 +6290,7 @@ $(function () {
                                         class: 'mat_a hover-shadow',
                                     },
                                     {
-                                        a: '/gi/item/' + (wpn.AscMatID) + '?lang=' + lang3,
+                                        a: '/gi/item#_' + (wpn.AscMatID) + '?lang=' + lang3,
                                         t: [
                                             {
                                                 img: imgpre + 'homdgcat-res/Mat/UI_ItemIcon_' + (wpn.AscMatID) + '.png',
@@ -6347,14 +6329,12 @@ $(function () {
                                 div: [
                                     {
                                         a: function (k) {
-                                            return '/gi/item/' + (wpn.MatIDs[0] - 2) + '?lang=' + lang3
+                                            return '/gi/item#_' + (wpn.MatIDs[0] - 2) + '?lang=' + lang3
                                         },
                                         t: [
                                             {
                                                 img: function (k) {
-                                                    var mat = _MaterialConfig[wpn.MatIDs[0] - 2]
-                                                    if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                    return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                    return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (wpn.MatIDs[0] - 2) + ".png"
                                                 },
                                                 class: 'img_2',
                                                 event: {
@@ -6387,14 +6367,12 @@ $(function () {
                                     },
                                     {
                                         a: function (k) {
-                                            return '/gi/item/' + (wpn.MatIDs[0] - 1) + '?lang=' + lang3
+                                            return '/gi/item#_' + (wpn.MatIDs[0] - 1) + '?lang=' + lang3
                                         },
                                         t: [
                                             {
                                                 img: function (k) {
-                                                    var mat = _MaterialConfig[wpn.MatIDs[0] - 1]
-                                                    if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                    return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                    return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (wpn.MatIDs[0] - 1) + ".png"
                                                 },
                                                 class: 'img_2',
                                                 event: {
@@ -6427,14 +6405,12 @@ $(function () {
                                     },
                                     {
                                         a: function (k) {
-                                            return '/gi/item/' + (wpn.MatIDs[0]) + '?lang=' + lang3
+                                            return '/gi/item#_' + (wpn.MatIDs[0]) + '?lang=' + lang3
                                         },
                                         t: [
                                             {
                                                 img: function (k) {
-                                                    var mat = _MaterialConfig[wpn.MatIDs[0]]
-                                                    if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                    return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                    return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (wpn.MatIDs[0]) + ".png"
                                                 },
                                                 class: 'img_2',
                                                 event: {
@@ -6472,14 +6448,12 @@ $(function () {
                                 div: [
                                     {
                                         a: function (k) {
-                                            return '/gi/item/' + (wpn.MatIDs[1] - 2) + '?lang=' + lang3
+                                            return '/gi/item#_' + (wpn.MatIDs[1] - 2) + '?lang=' + lang3
                                         },
                                         t: [
                                             {
                                                 img: function (k) {
-                                                    var mat = _MaterialConfig[wpn.MatIDs[1] - 2]
-                                                    if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                    return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                    return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (wpn.MatIDs[1] - 2) + ".png"
                                                 },
                                                 class: 'img_2',
                                                 event: {
@@ -6512,14 +6486,12 @@ $(function () {
                                     },
                                     {
                                         a: function (k) {
-                                            return '/gi/item/' + (wpn.MatIDs[1] -1) + '?lang=' + lang3
+                                            return '/gi/item#_' + (wpn.MatIDs[1] -1) + '?lang=' + lang3
                                         },
                                         t: [
                                             {
                                                 img: function (k) {
-                                                    var mat = _MaterialConfig[wpn.MatIDs[1] - 1]
-                                                    if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                    return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                    return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (wpn.MatIDs[1] - 1) + ".png"
                                                 },
                                                 class: 'img_2',
                                                 event: {
@@ -6552,14 +6524,12 @@ $(function () {
                                     },
                                     {
                                         a: function (k) {
-                                            return '/gi/item/' + (wpn.MatIDs[1]) + '?lang=' + lang3
+                                            return '/gi/item#_' + (wpn.MatIDs[1]) + '?lang=' + lang3
                                         },
                                         t: [
                                             {
                                                 img: function (k) {
-                                                    var mat = _MaterialConfig[wpn.MatIDs[1]]
-                                                    if (!mat) return imgpre + "homdgcat-res/Mat/UI_ItemIcon_120864.png"
-                                                    return imgpre + "homdgcat-res/Mat/" + mat + ".png"
+                                                    return imgpre + "homdgcat-res/Mat/UI_ItemIcon_" + (wpn.MatIDs[1]) + ".png"
                                                 },
                                                 class: 'img_2',
                                                 event: {
