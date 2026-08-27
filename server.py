@@ -633,8 +633,13 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             if file_exists:
                 self.path = path
             else:
-                # 记录404请求
-                self.log_404(self.path)
+                # SPA fallback: 无扩展名的路径（如 /gi/char）回退到 index.html
+                # 有扩展名的路径（如 /some/file.js）保持 404
+                _, ext = os.path.splitext(path)
+                if not ext:
+                    self.path = '/index.html'
+                else:
+                    self.log_404(self.path)
 
             # 调用父类方法处理请求
             super().do_GET()

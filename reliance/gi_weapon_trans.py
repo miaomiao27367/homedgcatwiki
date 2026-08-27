@@ -91,9 +91,7 @@ def merge_refinement_descs(descs):
     # 匹配数字（可能被颜色标签包裹）：(<color...>)?数字(小数可选)(</color>)?
     num_pattern = re.compile(r'(<color[^>]*>)?(\d+\.?\d*)(</color>)?')
 
-    # 解析每个描述，提取文本段和数字段
-    all_segments = []
-    for desc in descs:
+    def parse_segments(desc):
         segments = []
         last_end = 0
         for m in num_pattern.finditer(desc):
@@ -103,32 +101,61 @@ def merge_refinement_descs(descs):
             last_end = m.end()
         if last_end < len(desc):
             segments.append(('text', desc[last_end:]))
-        all_segments.append(segments)
+        return segments
 
-    # 验证所有描述的segment结构一致
-    first = all_segments[0]
-    for segs in all_segments[1:]:
-        if len(segs) != len(first):
-            return ' / '.join(descs)
-        for i, (s1, s2) in enumerate(zip(first, segs)):
+    def segments_match(segs_a, segs_b):
+        if len(segs_a) != len(segs_b):
+            return False
+        for i, (s1, s2) in enumerate(zip(segs_a, segs_b)):
             if s1[0] != s2[0]:
-                return ' / '.join(descs)
+                return False
             if s1[0] == 'text' and s1[1] != s2[1]:
-                return ' / '.join(descs)
+                return False
+        return True
 
-    # 构建合并结果：文本不变，变化的数值用 / 合并
-    result = []
-    for i, seg in enumerate(first):
-        if seg[0] == 'text':
-            result.append(seg[1])
-        else:
-            nums = [s[i][2] for s in all_segments]
-            if len(set(nums)) == 1:
-                result.append(f"{seg[1]}{nums[0]}{seg[3]}")
+    def merge_matching(descs_subset):
+        all_segs = [parse_segments(d) for d in descs_subset]
+        first = all_segs[0]
+        result = []
+        for i, seg in enumerate(first):
+            if seg[0] == 'text':
+                result.append(seg[1])
             else:
-                result.append(f"{seg[1]}{'/'.join(nums)}{seg[3]}")
+                nums = [s[i][2] for s in all_segs]
+                if len(set(nums)) == 1:
+                    result.append(f"{seg[1]}{nums[0]}{seg[3]}")
+                else:
+                    result.append(f"{seg[1]}{'/'.join(nums)}{seg[3]}")
+        return ''.join(result)
 
-    return ''.join(result)
+    # 尝试全量合并
+    all_segments = [parse_segments(d) for d in descs]
+    first = all_segments[0]
+    can_merge_all = True
+    for segs in all_segments[1:]:
+        if not segments_match(first, segs):
+            can_merge_all = False
+            break
+
+    if can_merge_all:
+        return merge_matching(descs)
+
+    # 全量合并失败时，从末尾往前找最长可合并后缀
+    # 例如精炼1结构不同，精炼2-5结构一致 → 合并2-5，精炼1单独保留
+    last = all_segments[-1]
+    merge_start = len(descs) - 1
+    for i in range(len(descs) - 2, -1, -1):
+        if segments_match(all_segments[i], last):
+            merge_start = i
+        else:
+            break
+
+    if merge_start == 0:
+        return ' / '.join(descs)
+
+    merged = merge_matching(descs[merge_start:])
+    result_parts = descs[:merge_start] + [merged]
+    return ' / '.join(result_parts)
 
 
 # ============================================================

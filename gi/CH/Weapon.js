@@ -21,8 +21,10 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "1"
+        "V": "3"
     },
+
+
     "390002": {
         "_id": "390002",
         "Name": "星锋剑",
@@ -43,12 +45,14 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "1"
+        "V": "3"
     },
+
+
     "15437": {
         "_id": "15437",
-        "Name": "武器-弓",
-        "Desc": "",
+        "Name": "柔风游弦",
+        "Desc": "由纯净无瑕的宝石制成的苍翠弓弦，引动时总能挽起温暖如春的柔风。",
         "Type": 5,
         "Rank": 4,
         "Icons": "UI_EquipIcon_Bow_Windtalker",
@@ -60,17 +64,19 @@ var _WeaponConfig = {
             112154,
             112151
         ],
-        "EquipAffixName": "",
+        "EquipAffixName": "蝰蛇的谣歌",
         "EquipAffixID": 115437,
         "Extra": [],
-        "Story": 0,
-        "StoryCount": 0,
-        "V": "1"
+        "Story": 195437,
+        "StoryCount": 1,
+        "V": "3"
     },
+
+
     "14524": {
         "_id": "14524",
-        "Name": "武器-法器",
-        "Desc": "",
+        "Name": "漩流颂歌",
+        "Desc": "蓝玉髓所铸的精致灯盏，仿若自童话中诞生的宝物，据闻尘封着一曲为所有人忘却的颂歌。",
         "Type": 3,
         "Rank": 5,
         "Icons": "UI_EquipIcon_Catalyst_Bludnye",
@@ -82,16 +88,18 @@ var _WeaponConfig = {
             112154,
             112148
         ],
-        "EquipAffixName": "7.1UP武器",
+        "EquipAffixName": "沉眠的回旋曲",
         "EquipAffixID": 114524,
         "Extra": [],
-        "Story": 0,
-        "StoryCount": 0,
-        "V": "1"
+        "Story": 194524,
+        "StoryCount": 1,
+        "V": "3"
     },
+
+
     "14437": {
         "_id": "14437",
-        "Name": "武器-法器",
+        "Name": "凝雪沉心",
         "Desc": "",
         "Type": 3,
         "Rank": 4,
@@ -104,17 +112,19 @@ var _WeaponConfig = {
             112157,
             112148
         ],
-        "EquipAffixName": "",
+        "EquipAffixName": "寒霜的遗秘",
         "EquipAffixID": 114437,
         "Extra": [],
-        "Story": 0,
-        "StoryCount": 0,
-        "V": "1"
+        "Story": 194437,
+        "StoryCount": 1,
+        "V": "3"
     },
+
+
     "11522": {
         "_id": "11522",
-        "Name": "武器-单手剑",
-        "Desc": "",
+        "Name": "蝶变",
+        "Desc": "溢彩流光的长剑，曾有人以之破除束缚，剑风轻盈如同翩跹的蝶舞。",
         "Type": 1,
         "Rank": 5,
         "Icons": "UI_EquipIcon_Sword_Samosvist",
@@ -126,17 +136,19 @@ var _WeaponConfig = {
             112157,
             112151
         ],
-        "EquipAffixName": "武器词缀",
+        "EquipAffixName": "破茧的自由舞",
         "EquipAffixID": 111522,
         "Extra": [],
-        "Story": 0,
-        "StoryCount": 0,
-        "V": "1"
+        "Story": 191522,
+        "StoryCount": 1,
+        "V": "3"
     },
+
+
     "11438": {
         "_id": "11438",
-        "Name": "武器-单手剑",
-        "Desc": "",
+        "Name": "银釭",
+        "Desc": "璃月归藏三隐之一的「万象风角灵官」留下的长剑。传说为天降的秘银所锻，曾一剑斩断过流动的海水。",
         "Type": 1,
         "Rank": 4,
         "Icons": "UI_EquipIcon_Sword_Fajian",
@@ -148,16 +160,18 @@ var _WeaponConfig = {
             112043,
             112034
         ],
-        "EquipAffixName": "",
+        "EquipAffixName": "翦霞照水",
         "EquipAffixID": 111438,
         "Extra": [],
-        "Story": 0,
-        "StoryCount": 0,
-        "V": "1"
+        "Story": 191438,
+        "StoryCount": 1,
+        "V": "3"
     },
+
+
     "11437": {
         "_id": "11437",
-        "Name": "武器-单手剑",
+        "Name": "新枝",
         "Desc": "",
         "Type": 1,
         "Rank": 4,
@@ -170,13 +184,15 @@ var _WeaponConfig = {
             112157,
             112151
         ],
-        "EquipAffixName": "",
+        "EquipAffixName": "叶脉蔓生",
         "EquipAffixID": 111437,
         "Extra": [],
-        "Story": 0,
-        "StoryCount": 0,
-        "V": "1"
+        "Story": 191437,
+        "StoryCount": 1,
+        "V": "3"
     },
+
+
     "350004": {
         "_id": "350004",
         "Name": "猰貐·真化",
@@ -365,16 +381,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1380003,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "224008": {
         "_id": "224008",
         "Name": "影域特化榴晶",
@@ -387,16 +404,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1224008,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "224007": {
         "_id": "224007",
         "Name": "榴晶·冰",
@@ -409,16 +427,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1224007,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "224006": {
         "_id": "224006",
         "Name": "榴晶·雷",
@@ -431,16 +450,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1224006,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "224005": {
         "_id": "224005",
         "Name": "榴晶·水",
@@ -453,16 +473,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1224005,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "224004": {
         "_id": "224004",
         "Name": "榴晶·火",
@@ -475,16 +496,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1224004,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "224003": {
         "_id": "224003",
         "Name": "瓦尔萨格的日轮",
@@ -497,16 +519,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1224003,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "224002": {
         "_id": "224002",
         "Name": "阿夏梅兹的千光",
@@ -519,16 +542,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1224002,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "224001": {
         "_id": "224001",
         "Name": "莎塔娜娅的苍银",
@@ -541,16 +565,17 @@ var _WeaponConfig = {
         "CustomStat": 0,
         "AscMatID": 114008,
         "MatIDs": [
-                null,
-                null
+            null,
+            null
         ],
         "EquipAffixName": "",
         "EquipAffixID": 1224001,
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "15515": {
         "_id": "15515",
         "Name": "黎明破晓之史",
@@ -805,20 +830,21 @@ var _WeaponConfig = {
         "CustomStat": 0.517284,
         "AscMatID": 114088,
         "MatIDs": [
-                112157,
-                112151
+            112157,
+            112151
         ],
         "EquipAffixName": "法度的制衡",
         "EquipAffixID": 115436,
         "Extra": [],
         "Story": 195436,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "15435": {
         "_id": "15435",
         "Name": "悬黎千钧",
-        "Desc": "",
+        "Desc": "力夺千钧的长弓，即便是在至深至暗的夜中，也放射着梦色的光华。",
         "Type": 5,
         "Rank": 4,
         "Icons": "UI_EquipIcon_Bow_ShatteredMirror",
@@ -827,16 +853,17 @@ var _WeaponConfig = {
         "CustomStat": 0.27564,
         "AscMatID": 114024,
         "MatIDs": [
-                112043,
-                112034
+            112043,
+            112034
         ],
         "EquipAffixName": "缀夜为烛",
         "EquipAffixID": 115435,
         "Extra": [],
         "Story": 195435,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "15434": {
         "_id": "15434",
         "Name": "虹蛇的雨弦",
@@ -1993,16 +2020,17 @@ var _WeaponConfig = {
         "CustomStat": 0.27564,
         "AscMatID": 114088,
         "MatIDs": [
-                112154,
-                112148
+            112154,
+            112148
         ],
         "EquipAffixName": "誓言的回音",
         "EquipAffixID": 114436,
         "Extra": [],
         "Story": 194436,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "14435": {
         "_id": "14435",
         "Name": "群王局戏",
@@ -2015,16 +2043,17 @@ var _WeaponConfig = {
         "CustomStat": 0.27564,
         "AscMatID": 114040,
         "MatIDs": [
-                112073,
-                112067
+            112073,
+            112067
         ],
         "EquipAffixName": "被遗忘的昼夜",
         "EquipAffixID": 114435,
         "Extra": [],
         "Story": 194435,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "14434": {
         "_id": "14434",
         "Name": "霜辰",
@@ -2983,16 +3012,17 @@ var _WeaponConfig = {
         "CustomStat": 110.256,
         "AscMatID": 114096,
         "MatIDs": [
-                112157,
-                112148
+            112157,
+            112148
         ],
         "EquipAffixName": "旧日和弦",
         "EquipAffixID": 113436,
         "Extra": [],
         "Story": 193436,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "13435": {
         "_id": "13435",
         "Name": "寒息",
@@ -3005,16 +3035,17 @@ var _WeaponConfig = {
         "CustomStat": 0.4594,
         "AscMatID": 114092,
         "MatIDs": [
-                112154,
-                112151
+            112154,
+            112151
         ],
         "EquipAffixName": "万顷一掷",
         "EquipAffixID": 113435,
         "Extra": [],
         "Story": 193435,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "13434": {
         "_id": "13434",
         "Name": "圣祭者的辉杖",
@@ -3819,20 +3850,21 @@ var _WeaponConfig = {
         "CustomStat": 0.27564,
         "AscMatID": 114088,
         "MatIDs": [
-                112157,
-                112151
+            112157,
+            112151
         ],
         "EquipAffixName": "罪责的悔赎",
         "EquipAffixID": 112436,
         "Extra": [],
         "Story": 192436,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "12435": {
         "_id": "12435",
         "Name": "金律铸影",
-        "Desc": "",
+        "Desc": "饰以黄金的重剑，传说在遥远的过去曾是某位大调律师爱用的兵器。",
         "Type": 2,
         "Rank": 4,
         "Icons": "UI_EquipIcon_Claymore_EscapeWheel",
@@ -3841,16 +3873,17 @@ var _WeaponConfig = {
         "CustomStat": 0.27564,
         "AscMatID": 114056,
         "MatIDs": [
-                112100,
-                112082
+            112100,
+            112082
         ],
         "EquipAffixName": "交奏的昼与夜",
         "EquipAffixID": 112435,
         "Extra": [],
         "Story": 192435,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "12433": {
         "_id": "12433",
         "Name": "万能钥匙",
@@ -4536,7 +4569,7 @@ var _WeaponConfig = {
     "11521": {
         "_id": "11521",
         "Name": "星锋剑",
-        "Desc": "",
+        "Desc": "曾经闪耀着苍星辉光的长剑。在踏上旅途之人的手中，成为了不属于任何旧时代的崭新光芒。",
         "Type": 1,
         "Rank": 5,
         "Icons": "UI_EquipIcon_Sword_WeaponQuestSnezhnaya",
@@ -4545,20 +4578,21 @@ var _WeaponConfig = {
         "CustomStat": 0.330768,
         "AscMatID": 114096,
         "MatIDs": [
-                112154,
-                112148
+            112154,
+            112148
         ],
         "EquipAffixName": "旅者之路",
         "EquipAffixID": 111521,
         "Extra": [],
         "Story": 191521,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "11520": {
         "_id": "11520",
         "Name": "白湖冬羽",
-        "Desc": "",
+        "Desc": "如同白雪鹄的柔羽一般轻盈的长剑，无论何时都能保持未染的纯净。",
         "Type": 1,
         "Rank": 5,
         "Icons": "UI_EquipIcon_Sword_Swanlake",
@@ -4567,16 +4601,17 @@ var _WeaponConfig = {
         "CustomStat": 0.220512,
         "AscMatID": 114092,
         "MatIDs": [
-                112157,
-                112151
+            112157,
+            112151
         ],
         "EquipAffixName": "雪鹄的终幕舞",
         "EquipAffixID": 111520,
         "Extra": [],
         "Story": 191520,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "11519": {
         "_id": "11519",
         "Name": "朏魄含光",
@@ -4941,16 +4976,17 @@ var _WeaponConfig = {
         "CustomStat": 165.384,
         "AscMatID": 114088,
         "MatIDs": [
-                112154,
-                112148
+            112154,
+            112148
         ],
         "EquipAffixName": "燃于雪原的星火",
         "EquipAffixID": 111436,
         "Extra": [],
         "Story": 191436,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "11435": {
         "_id": "11435",
         "Name": "熔猎异端之刃",
@@ -4963,16 +4999,17 @@ var _WeaponConfig = {
         "CustomStat": 0.27564,
         "AscMatID": 114064,
         "MatIDs": [
-                112121,
-                112106
+            112121,
+            112106
         ],
         "EquipAffixName": "独光的赐坠",
         "EquipAffixID": 111435,
         "Extra": [],
         "Story": 191435,
         "StoryCount": 1,
-        "V": "3"
-},
+        "V": "L"
+    },
+
     "11434": {
         "_id": "11434",
         "Name": "织月者的曙色",

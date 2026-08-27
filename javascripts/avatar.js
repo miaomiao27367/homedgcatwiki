@@ -1,3 +1,6 @@
+if (typeof __AvatarInfoConfig === 'undefined') document.write('<script src="/gi/CH/avatar.js" type="text/javascript"><\/script>')
+if (typeof _WeaponConfig === 'undefined') document.write('<script src="/gi/CH/Weapon.js" type="text/javascript"><\/script>')
+if (typeof _RelicConfig === 'undefined') document.write('<script src="/gi/CH/Relic.js" type="text/javascript"><\/script>')
 $(function () {
 
     var anniversary = 0
@@ -5954,7 +5957,6 @@ $(function () {
 
     function renderWeaponInfo(wpn) {
         cur_weapon_id = wpn._id
-        renderWeaponInfoAfter(wpn)
         if (!loaded_w.includes(wpn._id)) {
             let script_computer_2 = document.createElement('script')
             script_computer_2.src = `/gi/${lang3}/Weapon/${wpn._id}.js`
@@ -5963,7 +5965,10 @@ $(function () {
                 _WeaponAffixPConfig = {..._WeaponAffixPConfig, ..._WeaponAffixPConfig_}
                 weapon_story_cache = {...weapon_story_cache, ...weapon_story_cache_}
                 loaded_w.push(wpn._id)
+                renderWeaponInfoAfter(wpn)
             }
+        } else {
+            renderWeaponInfoAfter(wpn)
         }
     }
 
