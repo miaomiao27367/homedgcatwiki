@@ -1,10 +1,10 @@
 ﻿{
-    "version": 2,
+    "version": 3,
     "files": [
-        "javascripts/ver.js",
-        "reliance/hsr_trans_mons_skills.py",
-        "javascripts/chaos.js",
-        "javascripts/fiction.js",
-        "javascripts/arbitration.js"
+        "reliance/sync_elite.py",
+        "reliance/hsr_trans_ar.py",
+        "reliance/hsr_trans_as.py",
+        "reliance/hsr_chaos_v2.py",
+        "reliance/hsr_fiction_v2.py"
     ]
 }
