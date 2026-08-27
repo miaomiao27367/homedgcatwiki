@@ -308,7 +308,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         os.makedirs(local_dir, exist_ok=True)
 
         if folder_name == 'avataricon/avatar':
-            temp="avataricon"
+            temp="avataricon/avatar"
         else:
             temp=remote_folder
 
