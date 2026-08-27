@@ -113,8 +113,8 @@ $(function () {
             document.head.append(script_star)
 
             max_index = _fictionschedule.length
-            cur_index = _fictiondict[$('#CID').val()]
-            if (!cur_index) cur_index = 0
+            cur_index = _fiction.findIndex(function(c) { return c._id == $('#CID').val() })
+            if (cur_index < 0) cur_index = 0
 
             cur_floor = $('#FID').val() ? (parseInt($('#FID').val()) - 1) : -1
             cur_floor_data = 0

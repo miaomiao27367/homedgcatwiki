@@ -68,6 +68,8 @@ def sync_elite_to_local(api_data: list, var_name: str, api_name: str) -> None:
 
     missing = []
     for entry in api_data:
+        if not isinstance(entry, dict):
+            continue
         eg_id = entry.get("EliteGroup")
         if eg_id is not None and eg_id not in local_ids:
             missing.append(entry)
@@ -152,7 +154,24 @@ def load_elite_group_data(version: str = "4.3.52") -> Tuple[Dict[str, Dict[str, 
             except Exception:
                 continue
 
+        # 兼容API格式变更：如果data是dict，尝试提取内部的列表
+        if isinstance(data, dict):
+            if api_name in data:
+                data = data[api_name]
+            elif "data" in data:
+                data = data["data"]
+            else:
+                print(f"  警告: {api_name} API返回了dict格式但无法提取列表，跳过")
+                continue
+
+        if not isinstance(data, list):
+            print(f"  警告: {api_name} 数据格式异常（非list），跳过")
+            continue
+
         for entry in data:
+            # 兼容API格式变更：跳过非dict的entry
+            if not isinstance(entry, dict):
+                continue
             eg_id = entry.get("EliteGroup")
             if eg_id is not None:
                 cache_dict[str(eg_id)] = {
@@ -262,10 +281,14 @@ def get_elite_group(curves: Dict[str, Any], elite_group_id: int,
         return infinite_cache[eg_str]
 
     if use_infinite and eg_str in curves.get("infiniteelitegroup", {}):
-        return curves["infiniteelitegroup"][eg_str]
+        result = curves["infiniteelitegroup"][eg_str]
+        if isinstance(result, dict):
+            return result
 
     eg = curves["elitegroup"]
     if eg_str in eg:
-        return eg[eg_str]
+        result = eg[eg_str]
+        if isinstance(result, dict):
+            return result
 
     return {"HPRatio": 1, "AttackRatio": 1.1}

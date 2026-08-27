@@ -53,8 +53,8 @@ $(function () {
         document.head.append(script_star)
 
         max_index = _chaosschedule.length
-        cur_index = _chaosdict[$('#CID').val()]
-        if (!cur_index) cur_index = 0
+        cur_index = _chaos.findIndex(function(c) { return c._id == $('#CID').val() })
+        if (cur_index < 0) cur_index = 0
 
         cur_floor = $('#FID').val() ? (parseInt($('#FID').val()) - 1) : -1
         cur_floor_data = 0

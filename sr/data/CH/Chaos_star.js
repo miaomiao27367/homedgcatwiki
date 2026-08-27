@@ -36,5 +36,48 @@ var _Chaos_star = {
                 ]
             }
         ]
+    },
+    "1036": {
+        "ElemStar": [
+            "Phys",
+            "Elec"
+        ],
+        "Star": [
+            {
+                "_id": 30126123,
+                "Level": 95,
+                "HardLevelGroup": 3,
+                "EliteGroup": {
+                    "ID": 167,
+                    "ATK": 1,
+                    "HP": 7.4
+                },
+                "Monsters": [
+                    [
+                        {
+                            "ID": 2023030,
+                            "HP": 2842145,
+                            "SPD": 158,
+                            "Stance": 14
+                        },
+                        {
+                            "ID": 4053010,
+                            "HP": 3875652,
+                            "SPD": 190,
+                            "Stance": 18
+                        }
+                    ],
+                    [
+                        {
+                            "ID": 5024010,
+                            "HP": 12402085,
+                            "SPD": 190,
+                            "Stance": 24,
+                            "HPCount": 2
+                        }
+                    ]
+                ]
+            }
+        ]
     }
 }
