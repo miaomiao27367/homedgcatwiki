@@ -128,7 +128,7 @@ def _is_monster_cached(monster_id: int, version: str) -> bool:
 
 
 def _collect_monster_ids_from_boss(boss_data: Dict[str, Any]) -> set:
-    """从boss数据中收集所有怪物ID（含星启层）"""
+    """从boss数据中收集所有怪物ID（含星启层），9位ID替换为7位父级"""
     ids: set = set()
     for lv in boss_data.get("level", []):
         for field in ("event_id_list1", "event_id_list2", "event_id_list"):
@@ -136,7 +136,11 @@ def _collect_monster_ids_from_boss(boss_data: Dict[str, Any]) -> set:
                 for wave in evt.get("monster_list", []):
                     for v in wave.values():
                         if isinstance(v, int) and v > 0:
-                            ids.add(v)
+                            s = str(v)
+                            if len(s) == 9:
+                                ids.add(int(s[:-2]))  # 9位ID → 7位父级
+                            else:
+                                ids.add(v)
     return ids
 
 
@@ -155,8 +159,7 @@ def prefetch_all_monsters(boss_data: Dict[str, Any], version: str,
                           max_workers: int = 8) -> None:
     """并行预下载所有怪物数据，大幅加速首次运行"""
     monster_ids = _collect_monster_ids_from_boss(boss_data)
-    parent_ids = _collect_parent_ids(monster_ids)
-    all_ids = monster_ids | parent_ids
+    all_ids = monster_ids
 
     uncached = [mid for mid in all_ids if not _is_monster_cached(mid, version)]
     if not uncached:
@@ -229,15 +232,15 @@ def load_monster_base_stats() -> Dict[str, Dict[str, float]]:
                 "SPD": stats.get("SPD", 0),
                 "Stance": stats.get("Stance", 0)
             }
-        # 展开Child变体，Stats是倍率，需要乘本体值
-        if isinstance(mdata, dict) and "Child" in mdata and stats:
+        # 展开Child变体，Stats已是最终值，直接使用
+        if isinstance(mdata, dict) and "Child" in mdata:
             for child_id, child_data in mdata["Child"].items():
                 child_stats = child_data.get("Stats", {})
                 if child_stats:
                     result[child_id] = {
-                        "HP": stats.get("HP", 0) * child_stats.get("HP", 1),
-                        "SPD": stats.get("SPD", 0) * child_stats.get("SPD", 1),
-                        "Stance": stats.get("Stance", 0) * child_stats.get("Stance", 1),
+                        "HP": child_stats.get("HP", 0),
+                        "SPD": child_stats.get("SPD", 0),
+                        "Stance": child_stats.get("Stance", 0),
                     }
     return result
 
@@ -267,79 +270,88 @@ def calc_monster_stats(monster_id: int, level: int, hard_level_group: int,
     计算怪物在指定等级下的HP/SPD/Stance
 
     回退优先级：
-    1. API精确匹配
-    2. Monster_2.js / Monster_1.js 变体/基础数据
+    1. Monster.js本地数据
+    2. API精确匹配
     3. API父级ID回退
     """
-    monster_data = download_monster_data(monster_id, version)
-    child = None
+    base_hp = None
+    base_spd = None
+    base_stance = None
+    hp_count = 1
 
-    if monster_data:
-        child = get_monster_child(monster_data, monster_id)
+    # 优先级1: 本地Monster.js
+    base_stats = get_monster_base_stats()
+    key = str(monster_id)
+    if key in base_stats:
+        bs = base_stats[key]
+        base_hp = bs["HP"]
+        base_spd = bs["SPD"]
+        base_stance = bs["Stance"]
+        # 尝试从父级API获取phase_max_hp_ratio
+        str_mid = str(monster_id)
+        for trim_len in [1, 2, 3]:
+            if len(str_mid) > trim_len:
+                parent_id = int(str_mid[:-trim_len])
+                parent_data = download_monster_data(parent_id, version)
+                if parent_data:
+                    hp_count = get_hp_count(parent_data)
+                    break
 
-    if monster_data and child:
-        hp_base = monster_data.get("hp_base", 0) or 0
-        speed_base = monster_data.get("speed_base", 0) or 0
-        stance_base = monster_data.get("stance_base", 0) or 0
-        hp_count = get_hp_count(monster_data)
+    # 优先级2: API精确匹配（9位ID无直接API端点，跳过）
+    if base_hp is None and len(str(monster_id)) != 9:
+        monster_data = download_monster_data(monster_id, version)
+        child = None
+        if monster_data:
+            child = get_monster_child(monster_data, monster_id)
+        if monster_data and child:
+            hp_base = monster_data.get("hp_base", 0) or 0
+            speed_base = monster_data.get("speed_base", 0) or 0
+            stance_base = monster_data.get("stance_base", 0) or 0
+            hp_count = get_hp_count(monster_data)
 
-        hp_mod = child.get("hp_modify_ratio", 1) or 1
-        spd_mod = child.get("speed_modify_ratio", 1) or 1
-        stance_mod = child.get("stance_modify_ratio", 1) or 1
+            hp_mod = child.get("hp_modify_ratio", 1) or 1
+            spd_mod = child.get("speed_modify_ratio", 1) or 1
+            stance_mod = child.get("stance_modify_ratio", 1) or 1
 
-        base_hp = (hp_base / 93.0) * hp_mod
-        base_spd = speed_base * spd_mod
-        base_stance = (stance_base / 30.0) * stance_mod
-    else:
-        # 回退: Monster_1.js / Monster_2.js
-        base_stats = get_monster_base_stats()
-        key = str(monster_id)
-        if key in base_stats:
-            bs = base_stats[key]
-            base_hp = bs["HP"]
-            base_spd = bs["SPD"]
-            base_stance = bs["Stance"]
-            # 尝试从父级API获取phase_max_hp_ratio
-            hp_count = 1
-            str_mid = str(monster_id)
-            for trim_len in [1, 2, 3]:
-                if len(str_mid) > trim_len:
-                    parent_id = int(str_mid[:-trim_len])
-                    parent_data = download_monster_data(parent_id, version)
-                    if parent_data:
-                        hp_count = get_hp_count(parent_data)
-                        break
+            base_hp = (hp_base / 93.0) * hp_mod
+            base_spd = speed_base * spd_mod
+            base_stance = (stance_base / 30.0) * stance_mod
+
+    # 优先级3: API父级ID回退（9位ID父级是前7位，跳过不必要的trim）
+    if base_hp is None:
+        str_id = str(monster_id)
+        found_parent = False
+        if len(str_id) == 9:
+            trim_lengths = [2]  # 9位ID直接取前7位
         else:
-            # 回退: API父级ID回退
-            str_id = str(monster_id)
-            found_parent = False
-            for trim_len in [1, 2, 3]:
-                if len(str_id) > trim_len:
-                    parent_id = int(str_id[:-trim_len])
-                    parent_data = download_monster_data(parent_id, version)
-                    if parent_data:
-                        child = get_monster_child(parent_data, parent_id)
-                        if child:
-                            hp_base = parent_data.get("hp_base", 0) or 0
-                            speed_base = parent_data.get("speed_base", 0) or 0
-                            stance_base = parent_data.get("stance_base", 0) or 0
+            trim_lengths = [1, 2, 3]
+        for trim_len in trim_lengths:
+            if len(str_id) > trim_len:
+                parent_id = int(str_id[:-trim_len])
+                parent_data = download_monster_data(parent_id, version)
+                if parent_data:
+                    child = get_monster_child(parent_data, monster_id)
+                    if child:
+                        hp_base = parent_data.get("hp_base", 0) or 0
+                        speed_base = parent_data.get("speed_base", 0) or 0
+                        stance_base = parent_data.get("stance_base", 0) or 0
 
-                            hp_mod = child.get("hp_modify_ratio", 1) or 1
-                            spd_mod = child.get("speed_modify_ratio", 1) or 1
-                            stance_mod = child.get("stance_modify_ratio", 1) or 1
+                        hp_mod = child.get("hp_modify_ratio", 1) or 1
+                        spd_mod = child.get("speed_modify_ratio", 1) or 1
+                        stance_mod = child.get("stance_modify_ratio", 1) or 1
 
-                            base_hp = (hp_base / 93.0) * hp_mod
-                            base_spd = speed_base * spd_mod
-                            base_stance = (stance_base / 30.0) * stance_mod
-                            hp_count = get_hp_count(parent_data)
-                            found_parent = True
-                            break
-            if not found_parent:
-                print(f"警告：无法获取怪物 {monster_id} 的数据（API和Monster_1/2.js中均未找到）")
-                return {"ID": monster_id, "HP": 0, "SPD": 0, "Stance": 0}
+                        base_hp = (hp_base / 93.0) * hp_mod
+                        base_spd = speed_base * spd_mod
+                        base_stance = (stance_base / 30.0) * stance_mod
+                        hp_count = get_hp_count(parent_data)
+                        found_parent = True
+                        break
+        if not found_parent:
+            print(f"警告：无法获取怪物 {monster_id} 的数据（本地和API中均未找到）")
+            return {"ID": monster_id, "HP": 0, "SPD": 0, "Stance": 0}
 
     curve = get_level_curve(curves, hard_level_group, level)
-    elite = get_elite_group(curves, elite_group_id)
+    elite = get_elite_group(curves, elite_group_id, version=version)
 
     curve_hp = curve.get("HP", 1)
     curve_spd = curve.get("SPD", 1)
@@ -361,8 +373,8 @@ def calc_monster_stats(monster_id: int, level: int, hard_level_group: int,
 
 def convert_tag_to_buff(tag: Dict[str, Any]) -> Dict[str, Any]:
     """将API的tag格式转换为AS.js的Buff格式"""
-    desc = tag.get("desc", "")
-    params = tag.get("param", [])
+    desc = tag.get("desc") or ""
+    params = tag.get("param") or []
 
     desc = desc.replace("<color=#f29e38ff>", "<color style='color:#f29e38;'>")
     desc = desc.replace("<unbreak>", "").replace("</unbreak>", "")
@@ -520,7 +532,7 @@ def convert_boss_to_chaos(boss_id: str, boss_data: Dict[str, Any],
     buff = None
     api_buff = boss_data.get("buff", {})
     if api_buff:
-        desc = api_buff.get("desc", "")
+        desc = api_buff.get("desc") or ""
         desc = desc.replace("<color=#f29e38ff>", "<color style='color:#f29e38;'>")
         desc = desc.replace("<unbreak>", "").replace("</unbreak>", "")
 
@@ -1016,9 +1028,9 @@ def generate_as_data(boss_id: str, version: str = None,
         return f"AS {boss_id}（{boss_data.get('name', '')}）数据已导出 -> {output_file}（测试模式，star数据生成失败）"
 
     # 正常模式：自动拼接到AS.js
-    name = boss_data.get("name", "")
-    begin_time = boss_data.get("begin_time", "")
-    end_time = boss_data.get("end_time", "")
+    name = boss_data.get("name") or ""
+    begin_time = boss_data.get("begin_time") or ""
+    end_time = boss_data.get("end_time") or ""
     merge_msg = merge_chaos_to_as_js(boss_id, chaos_entry, name,
                                       begin_time, end_time)
 

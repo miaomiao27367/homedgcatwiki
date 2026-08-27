@@ -159,15 +159,15 @@ def load_monster_base_stats() -> Dict[str, Dict[str, float]]:
                 "HPCount": mdata.get("HPCount", 1.0),
                 "Multistage": mdata.get("Multistage", 1)
             }
-        # 展开Child变体，Stats是倍率，需要乘本体值
-        if isinstance(mdata, dict) and "Child" in mdata and stats:
+        # 展开Child变体，Stats已是最终值，直接使用
+        if isinstance(mdata, dict) and "Child" in mdata:
             for child_id, child_data in mdata["Child"].items():
                 child_stats = child_data.get("Stats", {})
                 if child_stats:
                     result[child_id] = {
-                        "HP": stats.get("HP", 0) * child_stats.get("HP", 1),
-                        "SPD": stats.get("SPD", 0) * child_stats.get("SPD", 1),
-                        "Stance": stats.get("Stance", 0) * child_stats.get("Stance", 1),
+                        "HP": child_stats.get("HP", 0),
+                        "SPD": child_stats.get("SPD", 0),
+                        "Stance": child_stats.get("Stance", 0),
                         "HPCount": mdata.get("HPCount", 1.0),
                         "Multistage": mdata.get("Multistage", 1)
                     }
@@ -194,9 +194,9 @@ def calc_monster_stats(monster_id: int, level: int, hard_level_group: int,
     SPD = round(base_spd × curve_spd + speed_modify_value)
 
     回退优先级：
-    1. API精确匹配（父级/基础ID直接有API端点）
-    2. API父级ID回退（截断末尾数字查找父级，变种怪物主要路径）
-    3. Monster_2.js / Monster_1.js 本地数据兜底
+    1. Monster.js本地数据
+    2. API精确匹配
+    3. API父级ID回退
     """
     base_hp = None
     base_spd = None
@@ -206,31 +206,46 @@ def calc_monster_stats(monster_id: int, level: int, hard_level_group: int,
     spd_mod_val = 0
     stance_mod_val = 0
 
-    # 优先级1: API精确匹配
-    monster_data = download_monster_data(monster_id, version)
-    if monster_data:
-        child = get_monster_child(monster_data, monster_id)
-        if child:
-            hp_base = monster_data.get("hp_base", 0) or 0
-            speed_base = monster_data.get("speed_base", 0) or 0
-            stance_base = monster_data.get("stance_base", 0) or 0
+    # 优先级1: 本地Monster.js
+    base_stats = get_monster_base_stats()
+    key = str(monster_id)
+    if key in base_stats:
+        bs = base_stats[key]
+        base_hp = bs["HP"]
+        base_spd = bs["SPD"]
+        base_stance = bs["Stance"]
+        hp_count = bs.get("Multistage", 1)
 
-            hp_mod = child.get("hp_modify_ratio", 1) or 1
-            spd_mod = child.get("speed_modify_ratio", 1) or 1
-            stance_mod = child.get("stance_modify_ratio", 1) or 1
-            spd_mod_val = child.get("speed_modify_value") or 0
-            stance_mod_val = child.get("stance_modify_value") or 0
+    # 优先级2: API精确匹配（9位ID无直接API端点，跳过）
+    if base_hp is None and len(str(monster_id)) != 9:
+        monster_data = download_monster_data(monster_id, version)
+        if monster_data:
+            child = get_monster_child(monster_data, monster_id)
+            if child:
+                hp_base = monster_data.get("hp_base", 0) or 0
+                speed_base = monster_data.get("speed_base", 0) or 0
+                stance_base = monster_data.get("stance_base", 0) or 0
 
-            base_hp = (hp_base / 93.0) * hp_mod
-            base_spd = speed_base * spd_mod
-            base_stance = (stance_base / 30.0) * stance_mod
-            hp_count = monster_data.get("max_monster_phase", 1) or 1
-            stance_count = monster_data.get("stance_count", 1) or 1
+                hp_mod = child.get("hp_modify_ratio", 1) or 1
+                spd_mod = child.get("speed_modify_ratio", 1) or 1
+                stance_mod = child.get("stance_modify_ratio", 1) or 1
+                spd_mod_val = child.get("speed_modify_value") or 0
+                stance_mod_val = child.get("stance_modify_value") or 0
 
-    # 优先级2: API父级ID回退（变种怪物主要路径，API无变种直接JSON）
+                base_hp = (hp_base / 93.0) * hp_mod
+                base_spd = speed_base * spd_mod
+                base_stance = (stance_base / 30.0) * stance_mod
+                hp_count = monster_data.get("max_monster_phase", 1) or 1
+                stance_count = monster_data.get("stance_count", 1) or 1
+
+    # 优先级3: API父级ID回退（9位ID父级是前7位，跳过不必要的trim）
     if base_hp is None:
         str_id = str(monster_id)
-        for trim_len in [1, 2, 3]:
+        if len(str_id) == 9:
+            trim_lengths = [2]  # 9位ID直接取前7位
+        else:
+            trim_lengths = [1, 2, 3]
+        for trim_len in trim_lengths:
             if len(str_id) > trim_len:
                 parent_id = int(str_id[:-trim_len])
                 parent_data = download_monster_data(parent_id, version)
@@ -254,22 +269,12 @@ def calc_monster_stats(monster_id: int, level: int, hard_level_group: int,
                         stance_count = parent_data.get("stance_count", 1) or 1
                         break
 
-    # 优先级3: 本地Monster_2.js / Monster_1.js兜底
     if base_hp is None:
-        base_stats = get_monster_base_stats()
-        key = str(monster_id)
-        if key in base_stats:
-            bs = base_stats[key]
-            base_hp = bs["HP"]
-            base_spd = bs["SPD"]
-            base_stance = bs["Stance"]
-            hp_count = bs.get("Multistage", 1)
-        else:
-            print(f"警告：无法获取怪物 {monster_id} 的数据（API和Monster_1/2.js中均未找到）")
-            return {"ID": monster_id, "HP": 0, "SPD": 0, "Stance": 0, "HPCount": 1, "StanceCount": 1}
+        print(f"警告：无法获取怪物 {monster_id} 的数据（本地和API中均未找到）")
+        return {"ID": monster_id, "HP": 0, "SPD": 0, "Stance": 0, "HPCount": 1, "StanceCount": 1}
 
     curve = get_level_curve(curves, hard_level_group, level)
-    elite = get_elite_group(curves, elite_group_id, use_infinite)
+    elite = get_elite_group(curves, elite_group_id, use_infinite, version)
 
     curve_hp = curve.get("HP", 1)
     curve_spd = curve.get("SPD", 1)
@@ -292,8 +297,8 @@ def calc_monster_stats(monster_id: int, level: int, hard_level_group: int,
 
 def convert_tag_to_buff(tag: Dict[str, Any]) -> Dict[str, Any]:
     """将API的tag格式转换为AR.js的Buff格式"""
-    desc = tag.get("desc", "")
-    params = tag.get("param", [])
+    desc = tag.get("desc") or ""
+    params = tag.get("param") or []
 
     desc = desc.replace("<color=#f29e38ff>", "<color style='color:#f29e38;'>")
     desc = desc.replace("<unbreak>", "").replace("</unbreak>", "")
@@ -340,7 +345,7 @@ def convert_tag_to_buff(tag: Dict[str, Any]) -> Dict[str, Any]:
 
     return {
         "_id": tag.get("id", 0),
-        "Name": tag.get("name", ""),
+        "Name": tag.get("name") or "",
         "Desc": desc
     }
 
@@ -401,7 +406,7 @@ def convert_trial_stage(api_event: Dict[str, Any], infinite_list: Dict[str, Any]
     if not all_waves:
         return None
 
-    elite = get_elite_group(curves, stage_elite_group_id, use_infinite=(len(inf_entries) > 0))
+    elite = get_elite_group(curves, stage_elite_group_id, use_infinite=(len(inf_entries) > 0), version=version)
 
     result = {
         "_id": api_event.get("stage_id", 0),

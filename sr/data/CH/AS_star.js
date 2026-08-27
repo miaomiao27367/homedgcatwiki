@@ -1,4 +1,75 @@
 var _AS_star = {
+    "3022": {
+        "ElemStar": ["Phys",
+                "Fire",
+                "Wind",
+                "Imaginary"
+        ],
+        "Star": [
+        {
+            "_id": 420554,
+            "Level": 90,
+            "EliteGroup": {
+                "ID": 155,
+                "HP": 2.8
+            },
+            "Monsters": [
+                [{"ID": 203401404, "HP": 10162951, "HPCount": 2.0, "SPD": 211, "Stance": 38}]
+            ]
+        }
+        ],
+        "SB": [
+        {
+                "_id": 0,
+                "Name": "攻无不克",
+                "Desc": "忆灵造成伤害时无视目标<color style='color:#f29e38;'> 20% </color>的防御力。"
+        },
+        {
+                "_id": 0,
+                "Name": "登锋陷阵",
+                "Desc": "队伍中的第1位角色施放终结技后，使自身的弱点击破效率提高<color style='color:#f29e38;'> 50% </color>，暴击伤害提高<color style='color:#f29e38;'> 50% </color>，持续<color style='color:#f29e38;'> 1 </color>回合。"
+        },
+        {
+                "_id": 0,
+                "Name": "聚气化神",
+                "Desc": "我方目标每次消耗战技点后，使自身暴击伤害提高<color style='color:#f29e38;'> 6% </color>，最多叠加<color style='color:#f29e38;'> 10 </color>层。"
+        }
+],
+        "SC": [
+        {
+                "_id": 0,
+                "Name": "坚防守备",
+                "Desc": "首领幻影受到的伤害降低<color style='color:#f29e38;'> 50% </color>。<color style='color:#f29e38;'>弱点击破</color>后，行动额外延后，受到的伤害提高<color style='color:#f29e38;'> 100% </color>。"
+        },
+        {
+                "_id": 0,
+                "Name": "宁枉勿纵",
+                "Desc": "首领幻影在施放【裂地三舍，寸草不留】时，将会消灭其他所有狼卒。"
+        },
+        {
+                "_id": 0,
+                "Name": "狼顾鸱张",
+                "Desc": "首领幻影在进入第二阶段后，【孤战】期间每回合可再次行动。"
+        },
+        {
+                "_id": 0,
+                "Name": "至死方休",
+                "Desc": "首领幻影在进入【孤战】后，受到的伤害额外降低<color style='color:#f29e38;'> 60% </color>。"
+        }
+],
+        "SG": [
+        {
+                "Name": "阶段一：风雷激荡",
+                "Desc": "首领幻影进入【噬月】状态时，我方需要选择1名最强的角色与首领幻影进行【孤战】。",
+                "Answer": "应对策略：在首领幻影进入【噬月】状态前，尽可能击杀狼卒以获得强化。"
+        },
+        {
+                "Name": "阶段二：吞天噬月",
+                "Desc": "首领幻影的技能会对狼卒造成伤害，且进入【噬月】状态时会获得额外强化。",
+                "Answer": "应对策略：在首领幻影行动前击杀狼卒，防止狼卒被首领幻影消灭。"
+        }
+]
+    },
     "3018": {
         "ElemStar": ["Phys",
                     "Ice",

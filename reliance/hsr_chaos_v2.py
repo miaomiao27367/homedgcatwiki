@@ -31,8 +31,8 @@ PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
 OUTPUT_DIR = os.path.join(SCRIPT_DIR, "tempdata")
-MONSTER_DB_PATH = os.path.join(PROJECT_ROOT, "data", "CH", "Monster.js")
-LEVEL_CURVES_PATH = os.path.join(PROJECT_ROOT, "data", "LevelCurves.js")
+MONSTER_DB_PATH = os.path.join(PROJECT_ROOT, "sr", "data", "CH", "Monster.js")
+LEVEL_CURVES_PATH = os.path.join(PROJECT_ROOT, "sr", "data", "LevelCurves.js")
 DEFAULT_VERSION = "4.3.52"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -196,7 +196,8 @@ def convert_floor_data_v2(
     monster_db: Dict[str, Any],
     level_curves: Dict[str, Any],
     elite_curves: Dict[str, Any],
-    use_infinite: bool = False
+    use_infinite: bool = False,
+    version: str = "4.3.52"
 ) -> Dict[str, Any]:
     """
     转换单个楼层数据（v2：使用elitegroup的HPRatio替代手动floor_hp_ratio）
@@ -219,8 +220,8 @@ def convert_floor_data_v2(
     lower_elite_group = lower_event.get("elite_group", 0)
 
     # v2: 从elitegroup数据获取HPRatio
-    upper_elite = get_elite_group(elite_curves, upper_elite_group, use_infinite) if upper_elite_group else {"HPRatio": 1.0}
-    lower_elite = get_elite_group(elite_curves, lower_elite_group, use_infinite) if lower_elite_group else {"HPRatio": 1.0}
+    upper_elite = get_elite_group(elite_curves, upper_elite_group, use_infinite, version) if upper_elite_group else {"HPRatio": 1.0}
+    lower_elite = get_elite_group(elite_curves, lower_elite_group, use_infinite, version) if lower_elite_group else {"HPRatio": 1.0}
 
     upper_hp_ratio = upper_elite.get("HPRatio", 1.0)
     lower_hp_ratio = lower_elite.get("HPRatio", 1.0)
@@ -328,7 +329,8 @@ def generate_chaos_v2(maze_id: str, version: str = DEFAULT_VERSION) -> str:
         floor = levels[i]
         floor_num = i + 1
         floors.append(convert_floor_data_v2(
-            floor, floor_num, monster_db, level_curves, elite_curves
+            floor, floor_num, monster_db, level_curves, elite_curves,
+            version=version
         ))
 
     converted_data = {

@@ -1,6 +1,314 @@
 // Auto Generated
 
 var _maze = {
+    "4010":     {
+        "BuffA": [
+            {
+                "_id": 3033091,
+                "Name": "净化",
+                "Desc": "敌方目标回合开始时解除自身所有持续伤害效果，且受到的持续伤害降低<color style='color:#f29e38;'> 50% </color>。"
+            }
+        ],
+        "ElemA": [
+            "Fire",
+            "Imaginary"
+        ],
+        "TrialA": {
+            "_id": 30510011,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 361,
+                "ATK": 1.1,
+                "HP": 6
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 5023010,
+                        "HP": 1256968,
+                        "SPD": 190,
+                        "Stance": 14,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 5013040,
+                        "HP": 3142420,
+                        "SPD": 158,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 5014020,
+                        "HP": 7332314,
+                        "SPD": 158,
+                        "Stance": 24,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "BuffB": [
+            {
+                "_id": 3033042,
+                "Name": "桎梏+",
+                "Desc": "我方目标初始获得<color style='color:#f29e38;'> 2 </color>层该效果，每层使自身造成的伤害降低<color style='color:#f29e38;'> 20% </color>，该效果不可解除，每次施放终结技后移除1层该效果。"
+            },
+            {
+                "_id": 3033069,
+                "Name": "激怒",
+                "Desc": "我方目标每次施放终结技后使敌方全体目标叠加1层该效果，每层使敌方目标的速度提高<color style='color:#f29e38;'> 30% </color>，最多叠加<color style='color:#f29e38;'> 4 </color>层。该效果的层数在敌方目标回合开始时清空。"
+            }
+        ],
+        "ElemB": [
+            "Phys",
+            "Elec"
+        ],
+        "TrialB": {
+            "_id": 30510012,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 358,
+                "ATK": 1.1,
+                "HP": 5.6
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 5023020,
+                        "HP": 3128454,
+                        "SPD": 158,
+                        "Stance": 18,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 2013020,
+                        "HP": 2346340,
+                        "SPD": 158,
+                        "Stance": 10,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 5024010,
+                        "HP": 6368638,
+                        "SPD": 190,
+                        "Stance": 24,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "BuffC": [
+            {
+                "_id": 3033076,
+                "Name": "闭锁",
+                "Desc": "我方目标每次施放攻击后叠加1层该效果，达到<color style='color:#f29e38;'> 6 </color>层后使该目标陷入持续1回合的【禁锢】状态，并固定降低<color style='color:#f29e38;'> 30% </color>能量。该效果的层数在目标回合开始时或负面效果触发后清空。"
+            }
+        ],
+        "ElemC": [
+            "Fire",
+            "Wind"
+        ],
+        "TrialC": {
+            "_id": 30510013,
+            "Level": 95,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 356,
+                "ATK": 1.1,
+                "HP": 5.5
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 4053020,
+                        "HP": 2880552,
+                        "SPD": 218,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 2023020,
+                        "HP": 2304441,
+                        "SPD": 190,
+                        "Stance": 12,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 3024030,
+                        "HP": 13128333,
+                        "SPD": 190,
+                        "Stance": 20,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "FinalBuffs": [
+            {
+                "_id": 3033082,
+                "Name": "狂喜之夜",
+                "Desc": "我方编队中第一位角色造成的欢愉伤害增笑<color style='color:#f29e38;'> 50% </color>。"
+            },
+            {
+                "_id": 3033083,
+                "Name": "领航誓言",
+                "Desc": "我方编队中第一位角色造成的战技和终结技伤害的全属性抗性穿透提高<color style='color:#f29e38;'> 50% </color>。"
+            },
+            {
+                "_id": 3033084,
+                "Name": "急速冲锋",
+                "Desc": "我方【狂兽的胚芽】的速度提高<color style='color:#f29e38;'> 80% </color>。"
+            }
+        ],
+        "FinalTagsHard": [
+            {
+                "_id": 3033010,
+                "Name": "反相+",
+                "Desc": "敌方目标每次受到攻击后，攻击者都会损失自身最大生命值<color style='color:#f29e38;'> 3% </color>的生命值，该效果不致命。"
+            },
+            {
+                "_id": 3033079,
+                "Name": "洞穿+",
+                "Desc": "敌方目标施放攻击时，如果受到攻击的我方目标持有护盾，则使敌方目标造成的伤害提高<color style='color:#f29e38;'> 400% </color>。"
+            },
+            {
+                "_id": 3033081,
+                "Name": "不屈+",
+                "Desc": "敌方目标受到攻击时，获得相当于自身<color style='color:#f29e38;'> 2% </color>生命上限的护盾。"
+            }
+        ],
+        "FinalHard": {
+            "_id": 30510022,
+            "Level": 120,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 375,
+                "ATK": 1,
+                "HP": 5.8
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 402302001,
+                        "HP": 16732304,
+                        "SPD": 150,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 8033020,
+                        "HP": 14640766,
+                        "SPD": 216,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 503401002,
+                        "HP": 23529803,
+                        "SPD": 270,
+                        "Stance": 36,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "FinalTagsEasy": [
+            {
+                "_id": 3033003,
+                "Name": "反相",
+                "Desc": "敌方目标每次受到攻击后，攻击者都会损失自身最大生命值<color style='color:#f29e38;'> 2% </color>的生命值，该效果不致命。"
+            },
+            {
+                "_id": 3033078,
+                "Name": "洞穿",
+                "Desc": "敌方目标施放攻击时，如果受到攻击的我方目标持有护盾，则使敌方目标造成的伤害提高<color style='color:#f29e38;'> 200% </color>。"
+            },
+            {
+                "_id": 3033080,
+                "Name": "不屈",
+                "Desc": "敌方目标受到攻击时，获得相当于自身<color style='color:#f29e38;'> 1% </color>生命上限的护盾。"
+            }
+        ],
+        "FinalEasy": {
+            "_id": 30510021,
+            "Level": 100,
+            "HardLevelGroup": 3,
+            "EliteGroup": {
+                "ID": 374,
+                "ATK": 1.1,
+                "HP": 6.3
+            },
+            "Monsters": [
+                [
+                    {
+                        "ID": 402302001,
+                        "HP": 4543686,
+                        "SPD": 132,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    },
+                    {
+                        "ID": 8033020,
+                        "HP": 3975725,
+                        "SPD": 190,
+                        "Stance": 16,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ],
+                [
+                    {
+                        "ID": 503401002,
+                        "HP": 6389558,
+                        "SPD": 238,
+                        "Stance": 36,
+                        "HPCount": 1,
+                        "StanceCount": 1
+                    }
+                ]
+            ]
+        },
+        "ElemFinal": [
+            "Wind",
+            "Quantum",
+            "Imaginary"
+        ],
+        "TargetsTrial": [
+            "不超过4轮战斗胜利",
+            "不超过2轮战斗胜利",
+            "没有角色无法战斗"
+        ],
+        "TargetsFinal": [
+            "不超过6轮战斗胜利",
+            "不超过4轮战斗胜利",
+            "不超过2轮战斗胜利"
+        ],
+        "RewardLine": 1
+    },
+
     "4009":     {
         "BuffA": [
             {
@@ -3025,6 +3333,11 @@ var _maze = {
 }
 
 var _schedule = [
+    {
+        "_id": 4010,
+        "Name": "落叶归根",
+        "Time": ""
+    },
     {
         "_id": 4009,
         "Name": "军团再临",

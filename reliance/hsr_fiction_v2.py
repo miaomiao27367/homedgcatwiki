@@ -30,6 +30,7 @@ LANGUAGE = "zh"
 OUTPUT_DIR = "./tempdata"
 DEFAULT_VERSION = "4.3.52"
 
+MONSTER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "sr", "data", "CH", "Monster.js")
 MONSTER_1_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "tempdata", "Monster_1.json")
 MONSTER_2_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "tempdata", "Monster_2.json")
 
@@ -157,7 +158,8 @@ def convert_monster_data_v2(
     level_curves: Dict[str, Any],
     elite_curves: Dict[str, Any],
     level: int,
-    use_infinite: bool = True
+    use_infinite: bool = True,
+    version: str = "4.3.52"
 ) -> Tuple[List[Dict[str, Any]], List[str]]:
     """
     转换怪物数据（v2：使用elitegroup的HPRatio替代手动hp_add_values）
@@ -172,7 +174,7 @@ def convert_monster_data_v2(
         # v2: 从elitegroup获取HPRatio作为HP倍率
         hp_ratio = 1.0
         if elite_group_id:
-            elite = get_elite_group(elite_curves, elite_group_id, use_infinite)
+            elite = get_elite_group(elite_curves, elite_group_id, use_infinite, version)
             hp_ratio = elite.get("HPRatio", 1.0)
 
         wave_monsters = []
@@ -251,7 +253,8 @@ def generate_fiction_v2(story_id: str, version: str = DEFAULT_VERSION) -> Tuple[
             upper_stage_id = upper_event.get("stage_id", floor_num * 100 + 1)
             upper_monster_waves = parse_infinite_list_v2(infinite_list1)
             upper_waves, not_found = convert_monster_data_v2(
-                upper_monster_waves, monster_db, level_curves, level_curves, upper_level
+                upper_monster_waves, monster_db, level_curves, level_curves, upper_level,
+                version=version
             )
             all_not_found_ids.extend(not_found)
             if upper_waves:
@@ -271,7 +274,8 @@ def generate_fiction_v2(story_id: str, version: str = DEFAULT_VERSION) -> Tuple[
             lower_stage_id = lower_event.get("stage_id", floor_num * 100 + 2)
             lower_monster_waves = parse_infinite_list_v2(infinite_list2)
             lower_waves, not_found = convert_monster_data_v2(
-                lower_monster_waves, monster_db, level_curves, level_curves, lower_level
+                lower_monster_waves, monster_db, level_curves, level_curves, lower_level,
+                version=version
             )
             all_not_found_ids.extend(not_found)
             if lower_waves:

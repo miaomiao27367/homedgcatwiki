@@ -19,8 +19,8 @@ LEVEL_CURVES_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # --- 模块级缓存 ---
-_elite_group_cache: Dict[str, Dict[str, float]] | None = None
-_infinite_elite_group_cache: Dict[str, Dict[str, float]] | None = None
+_elite_group_cache: Dict[str, Dict[str, Dict[str, float]]] = {}
+_infinite_elite_group_cache: Dict[str, Dict[str, Dict[str, float]]] = {}
 
 
 def sync_elite_to_local(api_data: list, var_name: str, api_name: str) -> None:
@@ -114,21 +114,21 @@ def sync_elite_to_local(api_data: list, var_name: str, api_name: str) -> None:
     print(f"  [自动缓存] {api_name}: 已将 {len(missing)} 条缺失条目补充到 LevelCurves.js ({var_name})")
 
 
-def load_elite_group_data() -> Tuple[Dict[str, Dict[str, float]], Dict[str, Dict[str, float]]]:
-    """从API下载 EliteGroup.json 和 InfiniteEliteGroup.json，构建查找表"""
+def load_elite_group_data(version: str = "4.3.52") -> Tuple[Dict[str, Dict[str, float]], Dict[str, Dict[str, float]]]:
+    """从API下载 EliteGroup.json 和 InfiniteEliteGroup.json，构建查找表（按版本缓存）"""
     global _elite_group_cache, _infinite_elite_group_cache
 
-    if _elite_group_cache is not None and _infinite_elite_group_cache is not None:
-        return _elite_group_cache, _infinite_elite_group_cache
+    if version in _elite_group_cache and version in _infinite_elite_group_cache:
+        return _elite_group_cache[version], _infinite_elite_group_cache[version]
 
-    _elite_group_cache = {}
-    _infinite_elite_group_cache = {}
+    _elite_group_cache[version] = {}
+    _infinite_elite_group_cache[version] = {}
 
     for api_name, cache_dict in [
-        ("EliteGroup", _elite_group_cache),
-        ("InfiniteEliteGroup", _infinite_elite_group_cache)
+        ("EliteGroup", _elite_group_cache[version]),
+        ("InfiniteEliteGroup", _infinite_elite_group_cache[version])
     ]:
-        local_file = os.path.join(OUTPUT_DIR, f"{api_name}.json")
+        local_file = os.path.join(OUTPUT_DIR, f"{api_name}_{version}.json")
         if os.path.exists(local_file):
             try:
                 with open(local_file, 'r', encoding='utf-8') as f:
@@ -139,7 +139,7 @@ def load_elite_group_data() -> Tuple[Dict[str, Dict[str, float]], Dict[str, Dict
             data = None
 
         if data is None:
-            url = f"{BASE_URL}/4.3.52/{api_name}.json"
+            url = f"{BASE_URL}/{version}/{api_name}.json"
             try:
                 response = requests.get(url)
                 response.raise_for_status()
@@ -170,7 +170,7 @@ def load_elite_group_data() -> Tuple[Dict[str, Dict[str, float]], Dict[str, Dict
         except Exception:
             pass
 
-    return _elite_group_cache, _infinite_elite_group_cache
+    return _elite_group_cache[version], _infinite_elite_group_cache[version]
 
 
 def load_level_curves() -> Dict[str, Any]:
@@ -241,14 +241,15 @@ def load_level_curves() -> Dict[str, Any]:
 
 
 def get_elite_group(curves: Dict[str, Any], elite_group_id: int,
-                    use_infinite: bool = False) -> Dict[str, float]:
+                    use_infinite: bool = False,
+                    version: str = "4.3.52") -> Dict[str, float]:
     """
     获取精英组数据
     查找优先级：API缓存 → 本地 _infiniteelitegroup → 本地 _elitegroup
     """
     eg_str = str(elite_group_id)
 
-    elite_cache, infinite_cache = load_elite_group_data()
+    elite_cache, infinite_cache = load_elite_group_data(version)
 
     if use_infinite and eg_str in infinite_cache:
         return infinite_cache[eg_str]
