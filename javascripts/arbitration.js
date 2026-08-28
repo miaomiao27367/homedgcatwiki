@@ -3,6 +3,7 @@ $(function () {
     var imgpre = $('#IMGPRE').val()
     var lazy = $('#NOLAZY').val() ? '' : 'lazy'
     var dev_only = 0
+    var multistage_mode = 0
 
     _NAME = {
         CH: '异相仲裁',
@@ -179,6 +180,43 @@ $(function () {
                                         }
                                     ],
                                     class: 'level_ yunli_button hover-shadow',
+                                },
+                                {
+                                    div: [
+                                        {
+                                            span: ((lang == 'CH') ? '多阶段血量' : 'Multistage HP'),
+                                            style: {
+                                                'margin-right': '8px',
+                                                'font-size': '0.85em',
+                                                'align-self': 'center'
+                                            }
+                                        },
+                                        {
+                                            div: [
+                                                {
+                                                    div: '',
+                                                    class: 'slider_thumb'
+                                                }
+                                            ],
+                                            class: 'slider_switch ms_switch',
+                                            event: {
+                                                click: function () {
+                                                    multistage_mode = 1 - multistage_mode
+                                                    if (multistage_mode) {
+                                                        $(this).addClass('slider_on')
+                                                    } else {
+                                                        $(this).removeClass('slider_on')
+                                                    }
+                                                    writeData()
+                                                }
+                                            }
+                                        },
+                                    ],
+                                    class: 'level_ hover-shadow',
+                                    style: {
+                                        'display': 'flex',
+                                        'align-items': 'center'
+                                    }
                                 },
                             ],
                             class: 'button_w'
@@ -902,10 +940,22 @@ $(function () {
         if (_monster[id]) return _monster[id]
         if (_monster_full[id]) {
             var m = _monster_full[id]
+            var p = m
+            if (String(id).length > 7) {
+                var sid = String(id)
+                for (var t = 1; t <= 3; t++) {
+                    if (sid.length <= t) break
+                    var bid = sid.substring(0, sid.length - t)
+                    if (_monster_full[bid]) { p = _monster_full[bid]; break }
+                }
+            }
             return {
                 "1": m.Name || "",
                 "2": m.Figure || ("monsterfigure/Monster_" + id + ".png"),
-                "3": m.Weak || []
+                "3": m.Weak || [],
+                "4": p.HPCount || 0,
+                "12": p.Multistage || 0,
+                "13": p.Multistage_list || []
             }
         }
         var strId = String(id)
@@ -917,11 +967,14 @@ $(function () {
                 return {
                     "1": m.Name || "",
                     "2": m.Figure || ("monsterfigure/Monster_" + baseId + ".png"),
-                    "3": m.Weak || []
+                    "3": m.Weak || [],
+                    "4": m.HPCount || 0,
+                    "12": m.Multistage || 0,
+                    "13": m.Multistage_list || []
                 }
             }
         }
-        return { "1": "", "2": "monsterfigure/None.png", "3": [] }
+        return { "1": "", "2": "monsterfigure/None.png", "3": [], "4": 0, "12": 0, "13": [] }
     }
 
     function Wave(i, w, stage_lv, stage_hlg, stage_eg, letter) {
@@ -999,8 +1052,29 @@ $(function () {
                             {
                                 span: function () {
                                     var s = '<b><color style="color:#cc0000;">' + t.HP.toString() + '</color></b>'
-                                    if (t.HPCount && t.HPCount > 1) {
-                                        s += '<b>×' + t.HPCount + '</b>'
+                                    var has_multistage = me["12"] && me["12"] > 1
+                                    var has_hpcount = me["4"] && me["4"] > 1
+                                    var hpcount_val = me["4"] || 1
+                                    if (multistage_mode === 0) {
+                                        if (has_hpcount) {
+                                            s += '<b>×' + hpcount_val + '</b>'
+                                        } else if (has_multistage) {
+                                            var sum = 0
+                                            for (var pi = 0; pi < me["13"].length; pi++) {
+                                                sum += me["13"][pi]
+                                            }
+                                            s += '<b>×' + sum + '</b>'
+                                        }
+                                    } else {
+                                        if (has_multistage) {
+                                            var phases = []
+                                            for (var pi = 0; pi < me["13"].length; pi++) {
+                                                phases.push('P' + (pi + 1) + ':×' + me["13"][pi])
+                                            }
+                                            s += ' <span style="color:#f29e38;font-size:0.85em;">' + phases.join(' ') + '</span>'
+                                        } else if (has_hpcount) {
+                                            s += '<b>×' + hpcount_val + '</b>'
+                                        }
                                     }
                                     return s
                                 },

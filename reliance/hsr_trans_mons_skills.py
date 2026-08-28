@@ -265,8 +265,14 @@ def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], ou
     # 构建Skills
     skills = [s.get('id') for s in base_child.get('skill_list') or [] if s.get('id') is not None]
 
-    hp_count = monster_data.get('hp_multiple_ratio')
     stance_count = monster_data.get('stance_break')
+
+    phase_list = monster_data.get('phase_list') or []
+    multistage = 0
+    multistage_list = []
+    if phase_list and len(phase_list) > 1:
+        multistage_list = [p.get('phase_max_hp_ratio', 1.0) for p in phase_list]
+        multistage = len(multistage_list)
 
     base_entry = {
         "_id": base_id,
@@ -289,10 +295,11 @@ def convert_monster_basic_data(monster_id: str, monster_data: Dict[str, Any], ou
         "Icon": icon,
         "Figure": figure,
     }
-    if hp_count and hp_count > 1:
-        base_entry["HPCount"] = hp_count
     if stance_count and stance_count > 1:
         base_entry["StanceCount"] = stance_count
+    if multistage > 1:
+        base_entry["Multistage"] = multistage
+        base_entry["Multistage_list"] = multistage_list
 
     # 构建变体Child
     if variants:

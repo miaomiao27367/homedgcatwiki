@@ -517,6 +517,11 @@ def convert_boss_to_chaos(boss_id: str, boss_data: Dict[str, Any],
                     count = mon.get("HPCount", 1)
                     hpas += hp * count
 
+        for stage in upper_stages + lower_stages:
+            for wave in stage.get("Monsters", []):
+                for mon in wave:
+                    mon.pop("HPCount", None)
+
         floor_entry = {
             "Floor": floor_num,
             "ElemUpper": upper_dmg,
@@ -845,8 +850,6 @@ def generate_as_star_from_boss(boss_id: str, boss_data: Dict[str, Any],
                         "SPD": stats["SPD"],
                         "Stance": stats["Stance"]
                     }
-                    if stats.get("HPCount", 1) > 1:
-                        m["HPCount"] = stats["HPCount"]
                     wave_monsters.append(m)
                 else:
                     wave_monsters.append({
@@ -938,8 +941,6 @@ def merge_star_to_as_star_js(boss_id: str, star_data: Dict[str, Any]) -> str:
                     f'"ID": {m.get("ID", 0)}',
                     f'"HP": {m.get("HP", 0)}'
                 ]
-                if m.get("HPCount", 1) > 1:
-                    parts.append(f'"HPCount": {m["HPCount"]}')
                 if m.get("SPD", 0) > 0:
                     parts.append(f'"SPD": {m["SPD"]}')
                 if m.get("Stance", 0):

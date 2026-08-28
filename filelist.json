@@ -1,13 +1,12 @@
 ﻿{
-    "version": 4,
+    "version": 5,
     "files": [
-        "reliance/sync_elite.py",
-        "reliance/hsr_trans_ar.py",
-        "reliance/hsr_trans_as.py",
-        "reliance/hsr_chaos_v2.py",
-        "reliance/hsr_fiction_v2.py",
+        "javascripts/as.js",
+        "javascripts/arbitration.js",
         "javascripts/fiction.js",
         "javascripts/chaos.js",
-        "javascripts/as.js"
+        "reliance/hsr_trans_as.py",
+        "reliance/hsr_trans_ar.py",
+        "reliance/hsr_trans_mons_skills.py"
     ]
 }

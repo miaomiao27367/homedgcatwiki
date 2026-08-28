@@ -37,13 +37,42 @@ $(function () {
     var HIDE_SHOW = 0
     var starButton = null
     var showStar = false
+    var multistage_mode = 0
 
     var has_2 = 1 // Secondary loading not implemented yet
 
-    let script_computer = document.createElement('script')
-    script_computer.src = '/sr/data/' + lang3 + '/AS.js'
-    document.head.append(script_computer)
-    script_computer.onload = begin
+    var _monster_full = {}
+    let script_m1 = document.createElement('script')
+    script_m1.src = '/sr/data/' + lang3 + '/Monster.js'
+    document.head.append(script_m1)
+
+    script_m1.onload = function () {
+        var baseKeys = Object.keys(_monster)
+        for (var i = 0; i < baseKeys.length; i++) {
+            var base = _monster[baseKeys[i]]
+            _monster_full[baseKeys[i]] = base
+            if (base && base.Child) {
+                var childKeys = Object.keys(base.Child)
+                for (var j = 0; j < childKeys.length; j++) {
+                    var childId = childKeys[j]
+                    var child = base.Child[childId]
+                    var childCopy = Object.assign({}, child)
+                    if (base.Stats && child.Stats) {
+                        childCopy.Stats = {}
+                        for (var k in base.Stats) {
+                            childCopy.Stats[k] = Math.round(base.Stats[k] * (child.Stats[k] || 1) * 10000) / 10000
+                        }
+                    }
+                    _monster_full[childId] = childCopy
+                }
+            }
+        }
+
+        let script_computer = document.createElement('script')
+        script_computer.src = '/sr/data/' + lang3 + '/AS.js'
+        document.head.append(script_computer)
+        script_computer.onload = begin
+    }
 
     function begin() {
 
@@ -179,11 +208,35 @@ $(function () {
                                         class: 'slider_thumb'
                                     }
                                 ],
-                                class: 'slider_switch',
+                                class: 'slider_switch star_switch',
                                 event: {
                                     click: function() {
                                         showStar = !showStar;
                                         writeData();  // 调用 writeData() 重新渲染
+                                    }
+                                }
+                            },
+                        ],
+                        class: 'star_button hover-shadow'
+                    },
+                    {
+                        div: [
+                            {
+                                span: (lang == 'CH') ? '多阶段血量' : 'Multistage HP',
+                                class: 'slider_label'
+                            },
+                            {
+                                div: [
+                                    {
+                                        div: '',
+                                        class: 'slider_thumb'
+                                    }
+                                ],
+                                class: 'slider_switch ms_switch',
+                                event: {
+                                    click: function () {
+                                        multistage_mode = 1 - multistage_mode
+                                        writeData()
                                     }
                                 }
                             },
@@ -901,7 +954,7 @@ $(function () {
         var star_data = typeof _AS_star !== 'undefined' && _AS_star ? _AS_star[cur_schedule_ver] : null;
         if (showStar && isFloor12 && star_data) {
             $('.star, .star_b_c').show();
-            $('.slider_switch').addClass('slider_on');
+            $('.star_switch').addClass('slider_on');
             
             // 获取星启模式数据
             var star_level = star_data.Star[0].Level;
@@ -943,7 +996,12 @@ $(function () {
             })
         } else {
             $('.star, .star_b_c').hide();
-            $('.slider_switch').removeClass('slider_on');
+            $('.star_switch').removeClass('slider_on');
+        }
+        if (multistage_mode) {
+            $('.ms_switch').addClass('slider_on')
+        } else {
+            $('.ms_switch').removeClass('slider_on')
         }
         $('.u_b').empty()
         $('.u_b').render([
@@ -1540,9 +1598,9 @@ $(function () {
                 })
             })
         })
-        if (_monster[max_id] && _monster[max_id]["9"]) {
+        if (getMonsterData(max_id)["9"] && Object.keys(getMonsterData(max_id)["9"]).length > 0) {
             var reses = []
-            for (const [p, q] of Object.entries(_monster[max_id]["9"])) {
+            for (const [p, q] of Object.entries(getMonsterData(max_id)["9"])) {
                 reses.push({
                     div: [
                         {
@@ -1629,11 +1687,55 @@ $(function () {
         return temp
     }
 
+    function getMonsterData(id) {
+        var as_data = _monster[id] || {}
+        var monster_data = _monster_full[id]
+        if (!monster_data) {
+            var strId = String(id)
+            for (var trim = 1; trim <= 3; trim++) {
+                if (strId.length <= trim) break
+                var baseId = strId.substring(0, strId.length - trim)
+                if (_monster_full[baseId]) {
+                    monster_data = _monster_full[baseId]
+                    break
+                }
+            }
+        }
+        // 9位ID的Multistage/StanceCount从父级继承
+        var parent_data = null
+        if (String(id).length > 7) {
+            var strId = String(id)
+            for (var trim = 1; trim <= 3; trim++) {
+                if (strId.length <= trim) break
+                var baseId = strId.substring(0, strId.length - trim)
+                if (_monster_full[baseId]) {
+                    parent_data = _monster_full[baseId]
+                    break
+                }
+            }
+        }
+        var mdata = parent_data || monster_data || {}
+        return {
+            "1": as_data["1"] || (monster_data ? monster_data.Figure || ("monsterfigure/Monster_" + id + ".png") : "monsterfigure/None.png"),
+            "2": as_data["2"] || (monster_data ? monster_data.Weak || [] : []),
+            "3": as_data["3"] || (mdata.StanceCount || 0),
+            "4": as_data["4"] || (monster_data ? monster_data.Name || "" : ""),
+            "5": as_data["5"] || 0,
+            "6": as_data["6"] || 0,
+            "9": as_data["9"] || {},
+            "13": as_data["13"] || 0,
+            "HPCount": mdata.HPCount || 0,
+            "Multistage": mdata.Multistage || 0,
+            "Multistage_list": mdata.Multistage_list || []
+        }
+    }
+
     function Wave(i, w, stage_lv, stage_hlg, stage_eg) {
         var monsters = []
         var affix0 = []
         w.forEach(function (t) {
-            var me = _monster[t.ID] || { "2": "monsterfigure/None.png" }
+            var me = getMonsterData(t.ID)
+            if (!me["2"]) me["2"] = "monsterfigure/None.png"
             monsters.push({
                 span: [
                     {
@@ -1698,8 +1800,29 @@ $(function () {
                             {
                                 span: function () {
                                     var s = '<b><color style="color:#cc0000;">' + t.HP.toString() + '</color></b>'
-                                    if (t.HPCount && t.HPCount > 1) {
-                                        s += '<b>×' + t.HPCount + '</b>'
+                                    var has_multistage = me["Multistage"] && me["Multistage"] > 1
+                                    var has_hpcount = me["HPCount"] && me["HPCount"] > 1
+                                    var hpcount_val = me["HPCount"] || 1
+                                    if (multistage_mode === 0) {
+                                        if (has_hpcount) {
+                                            s += '<b>×' + hpcount_val + '</b>'
+                                        } else if (has_multistage) {
+                                            var sum = 0
+                                            for (var pi = 0; pi < me["Multistage_list"].length; pi++) {
+                                                sum += me["Multistage_list"][pi]
+                                            }
+                                            s += '<b>×' + sum + '</b>'
+                                        }
+                                    } else {
+                                        if (has_multistage) {
+                                            var phases = []
+                                            for (var pi = 0; pi < me["Multistage_list"].length; pi++) {
+                                                phases.push('P' + (pi + 1) + ':×' + me["Multistage_list"][pi])
+                                            }
+                                            s += ' <span style="color:#f29e38;font-size:0.85em;">' + phases.join(' ') + '</span>'
+                                        } else if (has_hpcount) {
+                                            s += '<b>×' + hpcount_val + '</b>'
+                                        }
                                     }
                                     return s + (me["5"] ? ` <color style='color:#666;'>[${((stage_eg ? (stage_eg.HP ? stage_eg.HP : 1) : 1) * me["5"] * 100).toFixed(0)}%]</color>` : '')
                                 },
@@ -1755,7 +1878,7 @@ $(function () {
         var temp = {
             div: [
                 {
-                    p: (_monster[w[0].ID] || {})['4'] || '',
+                    p: getMonsterData(w[0].ID)['4'] || '',
                     class: 'wave_name'
                 },
                 {

@@ -35,6 +35,7 @@ $(function () {
     var IS_DMG = 1
     var cm = {}
     var HIDE_SHOW = 0
+    var multistage_mode = 0
     var starButton = null
     var showStar = false
 
@@ -84,7 +85,9 @@ $(function () {
                 "2": m.Weak || [],
                 "3": m.HPCount || 1,
                 "4": m.Name || "",
-                "11": m.StanceCount || 0
+                "11": m.StanceCount || 0,
+                "12": m.Multistage || 0,
+                "13": m.Multistage_list || []
             }
         }
         _monster = newMonster
@@ -322,6 +325,43 @@ $(function () {
                                 },
                             ],
                             class: 'star_button hover-shadow'
+                        },
+                        {
+                            div: [
+                                {
+                                    span: ((lang == 'CH') ? '多阶段血量' : 'Multistage HP'),
+                                    style: {
+                                        'margin-right': '8px',
+                                        'font-size': '0.85em',
+                                        'align-self': 'center'
+                                    }
+                                },
+                                {
+                                    div: [
+                                        {
+                                            div: '',
+                                            class: 'slider_thumb'
+                                        }
+                                    ],
+                                    class: 'slider_switch ms_switch',
+                                    event: {
+                                        click: function () {
+                                            multistage_mode = 1 - multistage_mode
+                                            if (multistage_mode) {
+                                                $(this).addClass('slider_on')
+                                            } else {
+                                                $(this).removeClass('slider_on')
+                                            }
+                                            writeData()
+                                        }
+                                    }
+                                },
+                            ],
+                            class: 'star_button hover-shadow',
+                            style: {
+                                'display': 'flex',
+                                'align-items': 'center'
+                            }
                         },
                         {
                             p: HP_Calculation[lang],
@@ -804,12 +844,23 @@ $(function () {
             if (_monster[id]) return _monster[id]
             if (_monster_full[id]) {
                 var m = _monster_full[id]
+                var p = m
+                if (String(id).length > 7) {
+                    var sid = String(id)
+                    for (var t = 1; t <= 3; t++) {
+                        if (sid.length <= t) break
+                        var bid = sid.substring(0, sid.length - t)
+                        if (_monster_full[bid]) { p = _monster_full[bid]; break }
+                    }
+                }
                 return {
                     "1": m.Figure || ("monsterfigure/Monster_" + id + ".png"),
                     "2": m.Weak || [],
-                    "3": m.HPCount || 1,
+                    "3": p.HPCount || 1,
                     "4": m.Name || "",
-                    "11": m.StanceCount || 0
+                    "11": p.StanceCount || 0,
+                    "12": p.Multistage || 0,
+                    "13": p.Multistage_list || []
                 }
             }
             var strId = String(id)
@@ -823,11 +874,13 @@ $(function () {
                         "2": m.Weak || [],
                         "3": m.HPCount || 1,
                         "4": m.Name || "",
-                        "11": m.StanceCount || 0
+                        "11": m.StanceCount || 0,
+                        "12": m.Multistage || 0,
+                        "13": m.Multistage_list || []
                     }
                 }
             }
-            return {"1": "monsterfigure/None.png", "2": [], "3": 1, "4": ""}
+            return {"1": "monsterfigure/None.png", "2": [], "3": 1, "4": "", "11": 0, "12": 0, "13": []}
         }
 
         function Wave(i, w, stage_lv, stage_hlg, stage_eg, hp_add) {
@@ -906,8 +959,28 @@ $(function () {
                                 {
                                     span: function () {
                                         var s = '<b><color style="color:#cc0000;">' + t.HP.toString() + '</color></b>'
-                                        if (me["3"] && me["3"] > 1) {
-                                            s += '<b>×' + me["3"] + '</b>'
+                                        var has_multistage = me["12"] && me["12"] > 1
+                                        var has_hpcount = me["3"] && me["3"] > 1
+                                        if (multistage_mode === 0) {
+                                            if (has_hpcount) {
+                                                s += '<b>×' + me["3"] + '</b>'
+                                            } else if (has_multistage) {
+                                                var sum = 0
+                                                for (var pi = 0; pi < me["13"].length; pi++) {
+                                                    sum += me["13"][pi]
+                                                }
+                                                s += '<b>×' + sum + '</b>'
+                                            }
+                                        } else {
+                                            if (has_multistage) {
+                                                var phases = []
+                                                for (var pi = 0; pi < me["13"].length; pi++) {
+                                                    phases.push('P' + (pi + 1) + ':×' + me["13"][pi])
+                                                }
+                                                s += ' <span style="color:#f29e38;font-size:0.85em;">' + phases.join(' ') + '</span>'
+                                            } else if (has_hpcount) {
+                                                s += '<b>×' + me["3"] + '</b>'
+                                            }
                                         }
                                         return s + `<span class="csx"> <color style='color:#666;'>[${((stage_eg ? (stage_eg.HP ? stage_eg.HP : 1) : 1) * (me["5"] ? me["5"] : 1) * 100 * (1 + (hp_add ? hp_add : 0))).toFixed(0)}%]</color></span>`
                                     },

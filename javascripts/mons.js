@@ -700,6 +700,10 @@ $(function () {
                             div: [
                                 {
                                     div: [],
+                                    class: 'base_stat_multistage'
+                                },
+                                {
+                                    div: [],
                                     class: 'base_stat_table'
                                 },
                                 {
@@ -1543,7 +1547,6 @@ $(function () {
             if (cur_mon.Multistage_list && cur_mon.Multistage_list.length >= _stage) {
                 multistage_factor = cur_mon.Multistage_list[_stage-1]
             }
-            var _multistage_LV=cur_mon.Stats.HP * multistage_factor * _hlg.HP * _eg.HPRatio * MULT + (cur_mon.StatsExtra ? (cur_mon.StatsExtra.HP ? cur_mon.StatsExtra.HP : 0) : 0)// 阶段选择和数据显示部分（并排呈现）
             var options = []
             for (var i = 1; i <= cur_mon.Multistage; i++) {
                 options.push('阶段' + i)
@@ -1571,7 +1574,7 @@ $(function () {
                             value: '阶段' + _stage
                         },
                     {
-                        span: (lang == 'CH') ? '数值：' : 'Value: ',
+                        span: (lang == 'CH') ? '倍率：' : 'Ratio: ',
                         style: {
                             margin: '0 5px 0 0',
                             'align-self': 'center'
@@ -1579,7 +1582,7 @@ $(function () {
                     },
                     {
                         span: function () {
-                            var s = '<color style="color:#f29e38">' + _multistage_LV.toFixed(0) + '</color>'
+                            var s = '<color style="color:#f29e38">×' + multistage_factor + '</color>'
                             return s
                         },
                         class: 'phase_data',

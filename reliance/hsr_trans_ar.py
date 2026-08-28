@@ -406,6 +406,10 @@ def convert_trial_stage(api_event: Dict[str, Any], infinite_list: Dict[str, Any]
     if not all_waves:
         return None
 
+    for wave in all_waves:
+        for mon in wave:
+            mon.pop("HPCount", None)
+
     elite = get_elite_group(curves, stage_elite_group_id, use_infinite=(len(inf_entries) > 0), version=version)
 
     result = {
