@@ -426,8 +426,11 @@ def generate_avatar_entry_json(info):
 
 def merge_to_avatar_js(character_id, char_info):
     """
-    将生成的角色条目自动插入到 gi/CH/avatar.js 的 __AvatarInfoConfig 中。
-    按角色ID降序排列，插入到正确的顺序位置。
+    将生成的角色条目自动合并到 gi/CH/avatar.js 的 __AvatarInfoConfig 中。
+
+    策略：
+    - 新角色：按角色ID降序插入
+    - 已有角色 + 数据有变化：用新版本数据替换
     """
     avatar_js = AVATAR_JS_PATH
     if not os.path.exists(avatar_js):
@@ -437,67 +440,105 @@ def merge_to_avatar_js(character_id, char_info):
     with open(avatar_js, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 检查是否已存在
     avatar_id = char_info["_id"]
-    if f'"_id": {avatar_id},' in content or f'"_id": {avatar_id}\n' in content:
-        dup_path = os.path.join(OUTPUT_DIR, f"{avatar_id}_duplicate.js")
-        os.makedirs(OUTPUT_DIR, exist_ok=True)
-        new_entry = generate_avatar_entry_json(char_info)
-        with open(dup_path, 'w', encoding='utf-8') as f:
-            f.write('var __AvatarInfoConfig = {\n')
-            f.write(new_entry)
-            f.write('\n}')
-        return f"角色 {avatar_id} 条目已存在，新数据已输出到 {dup_path} 请人工比对保留哪个"
 
-    # 找到 __AvatarInfoConfig 中所有已有的ID及其行位置
-    # 格式:     "706": {
-    pattern = re.compile(r'^    "(\d+)": \{', re.MULTILINE)
-    existing_ids = []
-    for m in pattern.finditer(content):
-        existing_ids.append((int(m.group(1)), m.start(), m.group(0)))
+    # 定位 __AvatarInfoConfig 区域
+    marker = 'var __AvatarInfoConfig = {'
+    marker_pos = content.find(marker)
+    if marker_pos < 0:
+        return "错误：无法定位 __AvatarInfoConfig"
 
-    if not existing_ids:
-        return "错误：无法在 avatar.js 中找到现有角色条目"
+    json_start = marker_pos + len(marker) - 1  # 指向 '{'
+    # 找到闭合的 }; （文件末尾或下一个 var）
+    next_var = content.find('\nvar ', json_start + 1)
+    if next_var == -1:
+        next_var = len(content)
+    json_end = content.rfind('}', json_start, next_var)
+    if json_end == -1:
+        return "错误：无法定位 __AvatarInfoConfig 闭合位置"
 
-    # 按ID降序排列（和文件中顺序一致）
-    existing_ids.sort(key=lambda x: x[0], reverse=True)
+    # 解析现有 __AvatarInfoConfig JSON
+    json_str = content[json_start:json_end + 1]
+    json_str_clean = re.sub(r',\s*}', '}', json_str)
+    json_str_clean = re.sub(r',\s*]', ']', json_str_clean)
+    try:
+        existing_config = json.loads(json_str_clean)
+    except json.JSONDecodeError as e:
+        return f"错误：avatar.js JSON解析失败: {e}"
 
-    # 找到新ID应该插入的位置（降序：新ID > 当前ID时插入在前面）
-    new_id = avatar_id
-    insert_before = None  # 插入到该条目之前
-    for eid, pos, match_str in existing_ids:
-        if new_id > eid:
-            insert_before = (eid, pos, match_str)
-            break
+    avatar_id_str = str(avatar_id)
+    is_update = avatar_id_str in existing_config
 
-    # 生成新条目
+    # 生成新条目JSON
     new_entry = generate_avatar_entry_json(char_info)
 
-    if insert_before is None:
-        # 新ID比所有现有ID都小，插入到最后一个条目之后
-        # 找到最后一个条目的结束位置:     }, 后面紧跟下一个 "id": 或 }
-        last_id_str = f'"{existing_ids[-1][0]}":'
-        last_pos = content.rfind(last_id_str)
-        if last_pos < 0:
-            return "错误：无法定位最后一个角色条目"
-        # 从最后一个条目开始找闭合的 },
-        after_last = content[last_pos:]
-        # 找到该条目的结束: 先找到最后一个 },\n    (后面还有条目)
-        # 或者找到 }\n} (后面是 __AvatarInfoConfig 的闭合)
-        close_match = re.search(r'\n    },\n(?:    "|})', after_last)
-        if not close_match:
-            return "错误：无法定位最后一个角色条目的结束位置"
-        insert_pos = last_pos + close_match.start() + len('\n    },')
-        new_content = content[:insert_pos] + '\n' + new_entry + content[insert_pos:]
+    if is_update:
+        # 解析新条目JSON，对比新旧数据
+        new_entry_json = json.loads('{' + new_entry.strip().rstrip(',') + '}')
+        new_id = str(char_info["_id"])
+        # 对比新旧数据是否一致
+        old_data = json.dumps(existing_config.get(avatar_id_str, {}), ensure_ascii=False, sort_keys=True)
+        new_data = json.dumps(new_entry_json.get(new_id, {}), ensure_ascii=False, sort_keys=True)
+        if old_data == new_data:
+            return "角色条目已存在且数据一致，无需更新"
+
+        # 更新现有条目
+        existing_config[avatar_id_str] = new_entry_json[new_id]
+
+        # 按ID降序重新排列
+        sorted_items = sorted(existing_config.items(), key=lambda x: int(x[0]), reverse=True)
+        existing_config = dict(sorted_items)
+
+        # 序列化
+        new_json = json.dumps(existing_config, ensure_ascii=False, indent=4)
+        # 缩进处理：json.dumps 第一行是 { 不需要额外缩进，内部已经缩进4
+        # 但文件中的格式是 var __AvatarInfoConfig = {\n    "xxx": {...
+        # json.dumps 输出：{\n    "xxx": {...
+        # 所以直接替换即可
+        new_content = content[:json_start] + new_json + content[json_end + 1:]
+        with open(avatar_js, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+
+        return f"角色 {avatar_id} 条目已存在，已用新版本数据更新"
     else:
-        # 插入到 insert_before 之前
-        before_pos = insert_before[1]
-        new_content = content[:before_pos] + new_entry + '\n' + content[before_pos:]
+        # 新角色：按ID降序插入到正确位置
+        # 找到 __AvatarInfoConfig 中所有已有的ID及其行位置
+        pattern = re.compile(r'^    "(\d+)": \{', re.MULTILINE)
+        existing_ids = []
+        for m in pattern.finditer(content):
+            existing_ids.append((int(m.group(1)), m.start(), m.group(0)))
 
-    with open(avatar_js, 'w', encoding='utf-8') as f:
-        f.write(new_content)
+        if not existing_ids:
+            return "错误：无法在 avatar.js 中找到现有角色条目"
 
-    return f"已自动拼接角色 {avatar_id} 到 {avatar_js}（按ID降序）"
+        existing_ids.sort(key=lambda x: x[0], reverse=True)
+
+        new_id = avatar_id
+        insert_before = None
+        for eid, pos, match_str in existing_ids:
+            if new_id > eid:
+                insert_before = (eid, pos, match_str)
+                break
+
+        if insert_before is None:
+            last_id_str = f'"{existing_ids[-1][0]}":'
+            last_pos = content.rfind(last_id_str)
+            if last_pos < 0:
+                return "错误：无法定位最后一个角色条目"
+            after_last = content[last_pos:]
+            close_match = re.search(r'\n    },\n(?:    "|})', after_last)
+            if not close_match:
+                return "错误：无法定位最后一个角色条目的结束位置"
+            insert_pos = last_pos + close_match.start() + len('\n    },')
+            new_content = content[:insert_pos] + '\n' + new_entry + content[insert_pos:]
+        else:
+            before_pos = insert_before[1]
+            new_content = content[:before_pos] + new_entry + '\n' + content[before_pos:]
+
+        with open(avatar_js, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+
+        return f"已自动拼接角色 {avatar_id} 到 {avatar_js}（按ID降序）"
 
 
 # ============================================================

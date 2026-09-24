@@ -6,6 +6,7 @@
 """
 
 import os
+import re
 import json
 import requests
 from typing import Dict, Any, Optional
@@ -428,13 +429,11 @@ WEAPON_JS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 
 
 def merge_weapon_to_weapon_js(weapon_id: str) -> str:
     """
-    将生成的光锥基础数据插入到 Weapon.js 的 _weapon 对象中
-    新条目插入到对象头部 (var _weapon = { 之后)
+    将生成的光锥基础数据合并到 Weapon.js 的 _weapon 对象中
 
-    Args:
-        weapon_id: 光锥ID
-    Returns:
-        拼接结果描述
+    策略：
+    - 新光锥：插入到 _weapon 对象中
+    - 已有光锥 + 数据有变化：用新版本数据替换
     """
     basic_file = os.path.join(OUTPUT_DIR2, f"{weapon_id}basic.js")
     weapon_js = WEAPON_JS_PATH
@@ -458,24 +457,50 @@ def merge_weapon_to_weapon_js(weapon_id: str) -> str:
     with open(weapon_js, 'r', encoding='utf-8') as f:
         js_content = f.read()
 
-    if f'"{weapon_id_str}":' in js_content:
-        return "光锥条目已存在，无需拼接"
+    # 定位 _weapon 区域
+    var_start = js_content.find('var _weapon = ')
+    if var_start == -1:
+        return "错误：无法定位 _weapon 对象"
+    json_start = var_start + len('var _weapon = ')
 
-    new_json = json.dumps(weapon_entry, ensure_ascii=False, indent=4)
-    new_json = '\n'.join('    ' + line for line in new_json.split('\n'))
+    # _weapon 是整个文件的主体，找到其闭合 }
+    # 从文件末尾向前找最后一个 }（即 _weapon 的闭合）
+    json_end = js_content.rstrip().rfind('}')
+    if json_end == -1:
+        return "错误：无法定位 _weapon 对象结束位置"
 
-    new_entry = f'    "{weapon_id_str}": {new_json},\n'
+    # 解析现有 _weapon JSON
+    json_str = js_content[json_start:json_end + 1]
+    json_str_clean = re.sub(r',\s*}', '}', json_str)
+    json_str_clean = re.sub(r',\s*]', ']', json_str_clean)
+    try:
+        existing_weapon = json.loads(json_str_clean)
+    except json.JSONDecodeError as e:
+        return f"错误：Weapon.js JSON解析失败: {e}"
 
-    # 插入到对象头部
-    pattern = 'var _weapon = {\n'
-    if pattern not in js_content:
-        return "错误：无法定位 _weapon 对象起始位置"
-    js_content = js_content.replace(pattern, pattern + new_entry, 1)
+    is_update = weapon_id_str in existing_weapon
+
+    if is_update:
+        # 对比新旧数据是否一致
+        old_entry = json.dumps(existing_weapon[weapon_id_str], ensure_ascii=False, sort_keys=True)
+        new_entry_check = json.dumps(weapon_entry, ensure_ascii=False, sort_keys=True)
+        if old_entry == new_entry_check:
+            return "光锥条目已存在且数据一致，无需更新"
+
+    # 更新/新增条目
+    existing_weapon[weapon_id_str] = weapon_entry
+
+    # 序列化
+    new_weapon_json = json.dumps(existing_weapon, ensure_ascii=False, indent=4)
+    js_content = js_content[:json_start] + new_weapon_json + js_content[json_end + 1:]
 
     with open(weapon_js, 'w', encoding='utf-8') as f:
         f.write(js_content)
 
-    return f"已自动拼接光锥 {weapon_id_str} 到 Weapon.js（头部）"
+    if is_update:
+        return f"光锥 {weapon_id_str} 条目已存在，已用新版本数据更新"
+    else:
+        return f"已自动拼接光锥 {weapon_id_str} 到 Weapon.js"
 
 def generate_weapon_data(weapon_id: str, major_version: str = None, minor_versions: list = None) -> str:
     """

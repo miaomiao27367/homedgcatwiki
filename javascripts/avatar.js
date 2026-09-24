@@ -1173,10 +1173,10 @@ $(function () {
                 startAvatar_0(come_id)
                 startAvatar_0(index_avatar[come_id])
             } catch (err) {}
-            if (index_weapon[come_id] != undefined) {
+            if (typeof index_weapon !== 'undefined' && index_weapon[come_id] != undefined) {
                 renderWeaponInfo(_WeaponConfig[come_id])
             }
-            if (index_relic[come_id] != undefined) {
+            if (typeof index_relic !== 'undefined' && index_relic[come_id] != undefined) {
                 doRelic(_RelicConfig[come_id])
             }
             $('#AVID').val('')

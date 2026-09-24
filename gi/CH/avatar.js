@@ -24,33 +24,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "5.3",
         "Fetter": 7,
         "_CV": {
-                "_CH": "宴宁&多多poi",
-                "_EN": "悠木碧&古贺葵",
-                "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
-                "_KR": "李诗雅&金佳泠"
+            "_CH": "宴宁&多多poi",
+            "_EN": "悠木碧&古贺葵",
+            "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
+            "_KR": "李诗雅&金佳泠"
         }
-},
+    },
     "705": {
         "_name": "PlayerGirl_Water",
         "_id": 705,
@@ -74,33 +74,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "4.0",
         "Fetter": 7,
         "_CV": {
-                "_CH": "宴宁&多多poi",
-                "_EN": "悠木碧&古贺葵",
-                "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
-                "_KR": "李诗雅&金佳泠"
+            "_CH": "宴宁&多多poi",
+            "_EN": "悠木碧&古贺葵",
+            "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
+            "_KR": "李诗雅&金佳泠"
         }
-},
+    },
     "704": {
         "_name": "PlayerGirl_Grass",
         "_id": 704,
@@ -124,33 +124,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "3.0",
         "Fetter": 7,
         "_CV": {
-                "_CH": "宴宁&多多poi",
-                "_EN": "悠木碧&古贺葵",
-                "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
-                "_KR": "李诗雅&金佳泠"
+            "_CH": "宴宁&多多poi",
+            "_EN": "悠木碧&古贺葵",
+            "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
+            "_KR": "李诗雅&金佳泠"
         }
-},
+    },
     "703": {
         "_name": "PlayerGirl_Elec",
         "_id": 703,
@@ -174,33 +174,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "2.0",
         "Fetter": 7,
         "_CV": {
-                "_CH": "宴宁&多多poi",
-                "_EN": "悠木碧&古贺葵",
-                "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
-                "_KR": "李诗雅&金佳泠"
+            "_CH": "宴宁&多多poi",
+            "_EN": "悠木碧&古贺葵",
+            "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
+            "_KR": "李诗雅&金佳泠"
         }
-},
+    },
     "702": {
         "_name": "PlayerGirl_Rock",
         "_id": 702,
@@ -224,33 +224,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "1.0",
         "Fetter": 7,
         "_CV": {
-                "_CH": "宴宁&多多poi",
-                "_EN": "悠木碧&古贺葵",
-                "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
-                "_KR": "李诗雅&金佳泠"
+            "_CH": "宴宁&多多poi",
+            "_EN": "悠木碧&古贺葵",
+            "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
+            "_KR": "李诗雅&金佳泠"
         }
-},
+    },
     "701": {
         "_name": "PlayerGirl_Wind",
         "_id": 701,
@@ -274,33 +274,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "1.0",
         "Fetter": 7,
         "_CV": {
-                "_CH": "宴宁&多多poi",
-                "_EN": "悠木碧&古贺葵",
-                "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
-                "_KR": "李诗雅&金佳泠"
+            "_CH": "宴宁&多多poi",
+            "_EN": "悠木碧&古贺葵",
+            "_JP": "莎拉 · 米勒-克鲁斯&科琳娜 · 伯特格",
+            "_KR": "李诗雅&金佳泠"
         }
-},
+    },
     "506": {
         "_name": "PlayerBoy_Fire",
         "_id": 506,
@@ -324,33 +324,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "5.3",
         "Fetter": 5,
         "_CV": {
-                "_CH": "鹿喑&多多poi",
-                "_EN": "堀江瞬&古贺葵",
-                "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
-                "_KR": "李京泰&金佳泠"
+            "_CH": "鹿喑&多多poi",
+            "_EN": "堀江瞬&古贺葵",
+            "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
+            "_KR": "李京泰&金佳泠"
         }
-},
+    },
     "505": {
         "_name": "PlayerBoy_Water",
         "_id": 505,
@@ -374,33 +374,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "4.0",
         "Fetter": 5,
         "_CV": {
-                "_CH": "鹿喑&多多poi",
-                "_EN": "堀江瞬&古贺葵",
-                "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
-                "_KR": "李京泰&金佳泠"
+            "_CH": "鹿喑&多多poi",
+            "_EN": "堀江瞬&古贺葵",
+            "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
+            "_KR": "李京泰&金佳泠"
         }
-},
+    },
     "504": {
         "_name": "PlayerBoy_Grass",
         "_id": 504,
@@ -424,33 +424,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "3.0",
         "Fetter": 5,
         "_CV": {
-                "_CH": "鹿喑&多多poi",
-                "_EN": "堀江瞬&古贺葵",
-                "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
-                "_KR": "李京泰&金佳泠"
+            "_CH": "鹿喑&多多poi",
+            "_EN": "堀江瞬&古贺葵",
+            "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
+            "_KR": "李京泰&金佳泠"
         }
-},
+    },
     "503": {
         "_name": "PlayerBoy_Elec",
         "_id": 503,
@@ -474,33 +474,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "2.0",
         "Fetter": 5,
         "_CV": {
-                "_CH": "鹿喑&多多poi",
-                "_EN": "堀江瞬&古贺葵",
-                "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
-                "_KR": "李京泰&金佳泠"
+            "_CH": "鹿喑&多多poi",
+            "_EN": "堀江瞬&古贺葵",
+            "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
+            "_KR": "李京泰&金佳泠"
         }
-},
+    },
     "502": {
         "_name": "PlayerBoy_Rock",
         "_id": 502,
@@ -524,33 +524,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "1.0",
         "Fetter": 5,
         "_CV": {
-                "_CH": "鹿喑&多多poi",
-                "_EN": "堀江瞬&古贺葵",
-                "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
-                "_KR": "李京泰&金佳泠"
+            "_CH": "鹿喑&多多poi",
+            "_EN": "堀江瞬&古贺葵",
+            "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
+            "_KR": "李京泰&金佳泠"
         }
-},
+    },
     "501": {
         "_name": "PlayerBoy_Wind",
         "_id": 501,
@@ -574,33 +574,33 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "BaseStats": {
-                "HP": 911.79102,
-                "ATK": 17.808,
-                "DEF": 57.225
+            "HP": 911.79102,
+            "ATK": 17.808,
+            "DEF": 57.225
         },
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 266,
-                "DEF": 730,
-                "Custom": 0.24,
-                "Norm": 21098
+            "HP": 11627,
+            "ATK": 266,
+            "DEF": 730,
+            "Custom": 0.24,
+            "Norm": 21098
         },
         "Version": "1.0",
         "Fetter": 5,
         "_CV": {
-                "_CH": "鹿喑&多多poi",
-                "_EN": "堀江瞬&古贺葵",
-                "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
-                "_KR": "李京泰&金佳泠"
+            "_CH": "鹿喑&多多poi",
+            "_EN": "堀江瞬&古贺葵",
+            "_JP": "扎克 · 阿圭勒&科琳娜 · 伯特格",
+            "_KR": "李京泰&金佳泠"
         }
-},
+    },
     "150": {
         "_name": "Odette",
         "_id": 150,
@@ -693,8 +693,8 @@ var __AvatarInfoConfig = {
         "_name": "Vesna",
         "_id": 143,
         "Name": "薇斯纳",
-        "Desc": "测试角色",
-        "Title": "？？？",
+        "Desc": "「冬契军」司令官、女皇的锋刃。",
+        "Title": "雪宴之锋",
         "Constellation": "花序座",
         "Nation": "ASSOC_TYPE_SNEZHNAYA_STAR",
         "Belong": "冬契军",
@@ -702,7 +702,7 @@ var __AvatarInfoConfig = {
         "Type": "???",
         "Weapon": "Sword",
         "Element": "Wind",
-        "Birthday": "1/1",
+        "Birthday": "2/4",
         "Icon": "UI_AvatarIcon_Vesna",
         "CommonMatt": 112148,
         "TalentMat": 3,
@@ -727,18 +727,18 @@ var __AvatarInfoConfig = {
         "Version": "6.8",
         "Fetter": 143,
         "_CV": {
-            "_CH": "？？？",
-            "_EN": "？？？",
-            "_JP": "？？？",
-            "_KR": "？？？"
+            "_CH": "龟娘",
+            "_EN": "阿莉.特雷什",
+            "_JP": "平野绫",
+            "_KR": "朱艺瑨"
         }
     },
     "140": {
         "_name": "Vodyanitsa",
         "_id": 140,
         "Name": "沃雅妮莎",
-        "Desc": "测试角色",
-        "Title": "？？？",
+        "Desc": "科洛列夫茨基剧团的首席女高音，离群的水妖。",
+        "Title": "幽歌萦渊",
         "Constellation": "金鳍座",
         "Nation": "Snezhnaya",
         "Belong": "科洛列夫茨基剧团",
@@ -746,7 +746,7 @@ var __AvatarInfoConfig = {
         "Type": "???",
         "Weapon": "Catalyst",
         "Element": "Water",
-        "Birthday": "1/1",
+        "Birthday": "3/29",
         "Icon": "UI_AvatarIcon_Vodyanitsa",
         "CommonMatt": 112151,
         "TalentMat": 2,
@@ -771,10 +771,10 @@ var __AvatarInfoConfig = {
         "Version": "6.8",
         "Fetter": 140,
         "_CV": {
-            "_CH": "？？？",
-            "_EN": "？？？",
-            "_JP": "？？？",
-            "_KR": "？？？"
+            "_CH": "苏婉",
+            "_EN": "杨素汐",
+            "_JP": "伊藤加奈惠",
+            "_KR": "金艺玲"
         }
     },
     "133": {
@@ -801,26 +801,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13226,
-                "ATK": 342,
-                "DEF": 752,
-                "Custom": 0.192
+            "HP": 13226,
+            "ATK": 342,
+            "DEF": 752,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 14166,
-                "ATK": 419,
-                "DEF": 806,
-                "Custom": 0.192
+            "HP": 14166,
+            "ATK": 419,
+            "DEF": 806,
+            "Custom": 0.192
         },
         "Version": "6.7",
         "Fetter": 133,
         "_CV": {
-                "_CH": "洪海天",
-                "_EN": "迪宁·麦乐迪",
-                "_JP": "本多真梨子",
-                "_KR": "姜恩爱"
+            "_CH": "洪海天",
+            "_EN": "迪宁·麦乐迪",
+            "_JP": "本多真梨子",
+            "_KR": "姜恩爱"
         }
-},
+    },
     "132": {
         "_name": "Prune",
         "_id": 132,
@@ -845,26 +845,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9679,
-                "ATK": 221,
-                "DEF": 580,
-                "Custom": 0.24
+            "HP": 9679,
+            "ATK": 221,
+            "DEF": 580,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10348,
-                "ATK": 277,
-                "DEF": 620,
-                "Custom": 0.24
+            "HP": 10348,
+            "ATK": 277,
+            "DEF": 620,
+            "Custom": 0.24
         },
         "Version": "6.6",
         "Fetter": 132,
         "_CV": {
-                "_CH": "宴宁",
-                "_EN": "爱丽丝·希莫拉",
-                "_JP": "长月葵",
-                "_KR": "张睿娜"
+            "_CH": "宴宁",
+            "_EN": "爱丽丝·希莫拉",
+            "_JP": "长月葵",
+            "_KR": "张睿娜"
         }
-},
+    },
     "131": {
         "_name": "Nicole",
         "_id": 131,
@@ -889,26 +889,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10409,
-                "ATK": 342,
-                "DEF": 563,
-                "Custom": 0.288
+            "HP": 10409,
+            "ATK": 342,
+            "DEF": 563,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 11149,
-                "ATK": 419,
-                "DEF": 603,
-                "Custom": 0.288
+            "HP": 11149,
+            "ATK": 419,
+            "DEF": 603,
+            "Custom": 0.288
         },
         "Version": "6.6",
         "Fetter": 131,
         "_CV": {
-                "_CH": "云鹤追",
-                "_EN": "苏菲·沙德",
-                "_JP": "丰口惠美",
-                "_KR": "李所垠"
+            "_CH": "云鹤追",
+            "_EN": "苏菲·沙德",
+            "_JP": "丰口惠美",
+            "_KR": "李所垠"
         }
-},
+    },
     "130": {
         "_name": "Linnea",
         "_id": 130,
@@ -933,26 +933,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": null,
         "ShowStats": {
-                "HP": 9894,
-                "ATK": 143,
-                "DEF": 906,
-                "Custom": 0.192
+            "HP": 9894,
+            "ATK": 143,
+            "DEF": 906,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 10597,
-                "ATK": 175,
-                "DEF": 971,
-                "Custom": 0.192
+            "HP": 10597,
+            "ATK": 175,
+            "DEF": 971,
+            "Custom": 0.192
         },
         "Version": "6.5",
         "Fetter": 130,
         "_CV": {
-                "_CH": "周侗",
-                "_EN": "萨凡娜·门泽尔",
-                "_JP": "白石晴香",
-                "_KR": "金润睬"
+            "_CH": "周侗",
+            "_EN": "萨凡娜·门泽尔",
+            "_JP": "白石晴香",
+            "_KR": "金润睬"
         }
-},
+    },
     "129": {
         "_name": "Lohen",
         "_id": 129,
@@ -977,26 +977,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12858,
-                "ATK": 344,
-                "DEF": 784,
-                "Custom": 0.384
+            "HP": 12858,
+            "ATK": 344,
+            "DEF": 784,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13772,
-                "ATK": 422,
-                "DEF": 840,
-                "Custom": 0.384
+            "HP": 13772,
+            "ATK": 422,
+            "DEF": 840,
+            "Custom": 0.384
         },
         "Version": "6.5",
         "Fetter": 129,
         "_CV": {
-                "_CH": "林婧南",
-                "_EN": "尼克·伍法德",
-                "_JP": "天崎滉平",
-                "_KR": "李相昊"
+            "_CH": "林婧南",
+            "_EN": "尼克·伍法德",
+            "_JP": "天崎滉平",
+            "_KR": "李相昊"
         }
-},
+    },
     "128": {
         "_name": "Varka",
         "_id": 128,
@@ -1021,26 +1021,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": null,
         "ShowStats": {
-                "HP": 12613,
-                "ATK": 352,
-                "DEF": 795,
-                "Custom": 0.384
+            "HP": 12613,
+            "ATK": 352,
+            "DEF": 795,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13509,
-                "ATK": 432,
-                "DEF": 851,
-                "Custom": 0.384
+            "HP": 13509,
+            "ATK": 432,
+            "DEF": 851,
+            "Custom": 0.384
         },
         "Version": "6.4",
         "Fetter": 128,
         "_CV": {
-                "_CH": "郝祥海",
-                "_EN": "约瑟夫·梅",
-                "_JP": "杉田智和",
-                "_KR": "朴相薰"
+            "_CH": "郝祥海",
+            "_EN": "约瑟夫·梅",
+            "_JP": "杉田智和",
+            "_KR": "朴相薰"
         }
-},
+    },
     "127": {
         "_name": "Illuga",
         "_id": 127,
@@ -1065,26 +1065,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11962,
-                "ATK": 191,
-                "DEF": 814,
-                "Custom": 96
+            "HP": 11962,
+            "ATK": 191,
+            "DEF": 814,
+            "Custom": 96
         },
         "ShowStats2": {
-                "HP": 12790,
-                "ATK": 240,
-                "DEF": 870,
-                "Custom": 96
+            "HP": 12790,
+            "ATK": 240,
+            "DEF": 870,
+            "Custom": 96
         },
         "Version": "6.3v4",
         "Fetter": 127,
         "_CV": {
-                "_CH": "？？？",
-                "_EN": "？？？",
-                "_JP": "？？？",
-                "_KR": "？？？"
+            "_CH": "？？？",
+            "_EN": "？？？",
+            "_JP": "？？？",
+            "_KR": "？？？"
         }
-},
+    },
     "126": {
         "_name": "Zibai",
         "_id": 126,
@@ -1109,26 +1109,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12919,
-                "ATK": 225,
-                "DEF": 957,
-                "Custom": 0.384
+            "HP": 12919,
+            "ATK": 225,
+            "DEF": 957,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13838,
-                "ATK": 275,
-                "DEF": 1025,
-                "Custom": 0.384
+            "HP": 13838,
+            "ATK": 275,
+            "DEF": 1025,
+            "Custom": 0.384
         },
         "Version": "6.3v4",
         "Fetter": 126,
         "_CV": {
-                "_CH": "Mace",
-                "_EN": "劳拉·韦尔什",
-                "_JP": "福圆美里",
-                "_KR": "千花"
+            "_CH": "Mace",
+            "_EN": "劳拉·韦尔什",
+            "_JP": "福圆美里",
+            "_KR": "千花"
         }
-},
+    },
     "125": {
         "_name": "Columbina",
         "_id": 125,
@@ -1153,26 +1153,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 14695,
-                "ATK": 96,
-                "DEF": 515,
-                "Custom": 0.192
+            "HP": 14695,
+            "ATK": 96,
+            "DEF": 515,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 15740,
-                "ATK": 117,
-                "DEF": 552,
-                "Custom": 0.192
+            "HP": 15740,
+            "ATK": 117,
+            "DEF": 552,
+            "Custom": 0.192
         },
         "Version": "6.3",
         "Fetter": 125,
         "_CV": {
-                "_CH": "？？？",
-                "_EN": "？？？",
-                "_JP": "？？？",
-                "_KR": "？？？"
+            "_CH": "？？？",
+            "_EN": "？？？",
+            "_JP": "？？？",
+            "_KR": "？？？"
         }
-},
+    },
     "124": {
         "_name": "Jahoda",
         "_id": 124,
@@ -1197,26 +1197,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Heal",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9646,
-                "ATK": 223,
-                "DEF": 580,
-                "Custom": 0.1846
+            "HP": 9646,
+            "ATK": 223,
+            "DEF": 580,
+            "Custom": 0.1846
         },
         "ShowStats2": {
-                "HP": 10313,
-                "ATK": 280,
-                "DEF": 620,
-                "Custom": 0.1846
+            "HP": 10313,
+            "ATK": 280,
+            "DEF": 620,
+            "Custom": 0.1846
         },
         "Version": "6.2",
         "Fetter": 124,
         "_CV": {
-                "_CH": "韩娇娇",
-                "_EN": "稻垣好",
-                "_JP": "桑妮雅 · 克鲁格",
-                "_KR": "吴捞妸"
+            "_CH": "韩娇娇",
+            "_EN": "稻垣好",
+            "_JP": "桑妮雅 · 克鲁格",
+            "_KR": "吴捞妸"
         }
-},
+    },
     "123": {
         "_name": "Durin",
         "_id": 123,
@@ -1241,26 +1241,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12430,
-                "ATK": 347,
-                "DEF": 822,
-                "Custom": 0.384
+            "HP": 12430,
+            "ATK": 347,
+            "DEF": 822,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13313,
-                "ATK": 425,
-                "DEF": 881,
-                "Custom": 0.384
+            "HP": 13313,
+            "ATK": 425,
+            "DEF": 881,
+            "Custom": 0.384
         },
         "Version": "6.2",
         "Fetter": 123,
         "_CV": {
-                "_CH": "陶典",
-                "_EN": "小林千晃",
-                "_JP": "劳利 · 基纳斯顿",
-                "_KR": "金祉汩"
+            "_CH": "陶典",
+            "_EN": "小林千晃",
+            "_JP": "劳利 · 基纳斯顿",
+            "_KR": "金祉汩"
         }
-},
+    },
     "122": {
         "_name": "Nefer",
         "_id": 122,
@@ -1285,29 +1285,29 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12704,
-                "ATK": 344,
-                "DEF": 799,
-                "Custom": 0.384
+            "HP": 12704,
+            "ATK": 344,
+            "DEF": 799,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13607,
-                "ATK": 422,
-                "DEF": 856,
-                "Custom": 0.384
+            "HP": 13607,
+            "ATK": 422,
+            "DEF": 856,
+            "Custom": 0.384
         },
         "Version": "6.1",
         "Fetter": 122,
         "_CV": {
-                "_CH": "曾彤",
-                "_EN": "水树奈奈",
-                "_JP": "阿什莉 · 哈达德",
-                "_KR": "元以斯帖"
+            "_CH": "曾彤",
+            "_EN": "水树奈奈",
+            "_JP": "阿什莉 · 哈达德",
+            "_KR": "元以斯帖"
         },
         "CustomStat": {
-                "EM": 100
+            "EM": 100
         }
-},
+    },
     "121": {
         "_name": "Aino",
         "_id": 121,
@@ -1332,26 +1332,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11201,
-                "ATK": 242,
-                "DEF": 607,
-                "Custom": 96
+            "HP": 11201,
+            "ATK": 242,
+            "DEF": 607,
+            "Custom": 96
         },
         "ShowStats2": {
-                "HP": 11976,
-                "ATK": 304,
-                "DEF": 649,
-                "Custom": 96
+            "HP": 11976,
+            "ATK": 304,
+            "DEF": 649,
+            "Custom": 96
         },
         "Version": "6.0",
         "Fetter": 121,
         "_CV": {
-                "_CH": "葛子瑞",
-                "_EN": "高森奈津美",
-                "_JP": "安娜贝尔 · 布鲁克",
-                "_KR": "赵京洢"
+            "_CH": "葛子瑞",
+            "_EN": "高森奈津美",
+            "_JP": "安娜贝尔 · 布鲁克",
+            "_KR": "赵京洢"
         }
-},
+    },
     "120": {
         "_name": "Flins",
         "_id": 120,
@@ -1376,26 +1376,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12491,
-                "ATK": 352,
-                "DEF": 809,
-                "Custom": 0.384
+            "HP": 12491,
+            "ATK": 352,
+            "DEF": 809,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13379,
-                "ATK": 431,
-                "DEF": 866,
-                "Custom": 0.384
+            "HP": 13379,
+            "ATK": 431,
+            "DEF": 866,
+            "Custom": 0.384
         },
         "Version": "6.0",
         "Fetter": 120,
         "_CV": {
-                "_CH": "马正阳",
-                "_EN": "中村悠一",
-                "_JP": "尼克 · 奥尔森",
-                "_KR": "慎镛友"
+            "_CH": "马正阳",
+            "_EN": "中村悠一",
+            "_JP": "尼克 · 奥尔森",
+            "_KR": "慎镛友"
         }
-},
+    },
     "119": {
         "_name": "Lauma",
         "_id": 119,
@@ -1420,29 +1420,29 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10654,
-                "ATK": 255,
-                "DEF": 669,
-                "Custom": 115.2
+            "HP": 10654,
+            "ATK": 255,
+            "DEF": 669,
+            "Custom": 115.2
         },
         "ShowStats2": {
-                "HP": 11411,
-                "ATK": 312,
-                "DEF": 716,
-                "Custom": 115.2
+            "HP": 11411,
+            "ATK": 312,
+            "DEF": 716,
+            "Custom": 115.2
         },
         "Version": "6.0",
         "Fetter": 119,
         "_CV": {
-                "_CH": "张安琪",
-                "_EN": "桑岛法子",
-                "_JP": "亚历山德拉 · 格尔夫",
-                "_KR": "张䌽延"
+            "_CH": "张安琪",
+            "_EN": "桑岛法子",
+            "_JP": "亚历山德拉 · 格尔夫",
+            "_KR": "张䌽延"
         },
         "CustomStat": {
-                "EM": 200
+            "EM": 200
         }
-},
+    },
     "116": {
         "_name": "Ineffa",
         "_id": 116,
@@ -1467,26 +1467,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12613,
-                "ATK": 330,
-                "DEF": 828,
-                "Custom": 0.192
+            "HP": 12613,
+            "ATK": 330,
+            "DEF": 828,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 13510,
-                "ATK": 404,
-                "DEF": 887,
-                "Custom": 0.192
+            "HP": 13510,
+            "ATK": 404,
+            "DEF": 887,
+            "Custom": 0.192
         },
         "Version": "5.8",
         "Fetter": 116,
         "_CV": {
-                "_CH": "美加",
-                "_EN": "中岛爱",
-                "_JP": "安吉丽娜 · 丹妮尔 · 卡马",
-                "_KR": "成玴沅"
+            "_CH": "美加",
+            "_EN": "中岛爱",
+            "_JP": "安吉丽娜 · 丹妮尔 · 卡马",
+            "_KR": "成玴沅"
         }
-},
+    },
     "115": {
         "_name": "Dahlia",
         "_id": 115,
@@ -1511,26 +1511,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12506,
-                "ATK": 189,
-                "DEF": 560,
-                "Custom": 0.24
+            "HP": 12506,
+            "ATK": 189,
+            "DEF": 560,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13371,
-                "ATK": 237,
-                "DEF": 598,
-                "Custom": 0.24
+            "HP": 13371,
+            "ATK": 237,
+            "DEF": 598,
+            "Custom": 0.24
         },
         "Version": "5.7",
         "Fetter": 115,
         "_CV": {
-                "_CH": "风袖",
-                "_EN": "山本和臣",
-                "_JP": "艾琳 · 米森",
-                "_KR": "石承勋"
+            "_CH": "风袖",
+            "_EN": "山本和臣",
+            "_JP": "艾琳 · 米森",
+            "_KR": "石承勋"
         }
-},
+    },
     "114": {
         "_name": "SkirkNew",
         "_id": 114,
@@ -1555,26 +1555,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12417,
-                "ATK": 359,
-                "DEF": 806,
-                "Custom": 0.384
+            "HP": 12417,
+            "ATK": 359,
+            "DEF": 806,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13300,
-                "ATK": 439,
-                "DEF": 864,
-                "Custom": 0.384
+            "HP": 13300,
+            "ATK": 439,
+            "DEF": 864,
+            "Custom": 0.384
         },
         "Version": "5.7",
         "Fetter": 114,
         "_CV": {
-                "_CH": "谢莹",
-                "_EN": "能登麻美子",
-                "_JP": "卡特 · 普罗塔诺",
-                "_KR": "徐多慧"
+            "_CH": "谢莹",
+            "_EN": "能登麻美子",
+            "_JP": "卡特 · 普罗塔诺",
+            "_KR": "徐多慧"
         }
-},
+    },
     "113": {
         "_name": "Ifa",
         "_id": 113,
@@ -1599,26 +1599,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10081,
-                "ATK": 178,
-                "DEF": 605,
-                "Custom": 96
+            "HP": 10081,
+            "ATK": 178,
+            "DEF": 605,
+            "Custom": 96
         },
         "ShowStats2": {
-                "HP": 10778,
-                "ATK": 224,
-                "DEF": 647,
-                "Custom": 96
+            "HP": 10778,
+            "ATK": 224,
+            "DEF": 647,
+            "Custom": 96
         },
         "Version": "5.6",
         "Fetter": 113,
         "_CV": {
-                "_CH": "吕书君",
-                "_EN": "寺岛惇太&小松昌平",
-                "_JP": "乔尼 · 罗夸斯妥&多米尼克 · 卡特兰博内",
-                "_KR": "朴基旭"
+            "_CH": "吕书君",
+            "_EN": "寺岛惇太&小松昌平",
+            "_JP": "乔尼 · 罗夸斯妥&多米尼克 · 卡特兰博内",
+            "_KR": "朴基旭"
         }
-},
+    },
     "112": {
         "_name": "Escoffier",
         "_id": 112,
@@ -1643,26 +1643,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13348,
-                "ATK": 347,
-                "DEF": 732,
-                "Custom": 0.192
+            "HP": 13348,
+            "ATK": 347,
+            "DEF": 732,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 14297,
-                "ATK": 425,
-                "DEF": 784,
-                "Custom": 0.192
+            "HP": 14297,
+            "ATK": 425,
+            "DEF": 784,
+            "Custom": 0.192
         },
         "Version": "5.6",
         "Fetter": 112,
         "_CV": {
-                "_CH": "蔡海婷",
-                "_EN": "佐藤聪美",
-                "_JP": "埃米莉 · 卡斯",
-                "_KR": "孙廷旼"
+            "_CH": "蔡海婷",
+            "_EN": "佐藤聪美",
+            "_JP": "埃米莉 · 卡斯",
+            "_KR": "孙廷旼"
         }
-},
+    },
     "111": {
         "_name": "Varesa",
         "_id": 111,
@@ -1687,26 +1687,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12699,
-                "ATK": 356,
-                "DEF": 782,
-                "Custom": 0.192
+            "HP": 12699,
+            "ATK": 356,
+            "DEF": 782,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 13602,
-                "ATK": 437,
-                "DEF": 837,
-                "Custom": 0.192
+            "HP": 13602,
+            "ATK": 437,
+            "DEF": 837,
+            "Custom": 0.192
         },
         "Version": "5.5",
         "Fetter": 111,
         "_CV": {
-                "_CH": "乔苏",
-                "_EN": "M・A・O",
-                "_JP": "简 · 杰克逊",
-                "_KR": "金叡临"
+            "_CH": "乔苏",
+            "_EN": "M・A・O",
+            "_JP": "简 · 杰克逊",
+            "_KR": "金叡临"
         }
-},
+    },
     "110": {
         "_name": "Iansan",
         "_id": 110,
@@ -1731,26 +1731,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10657,
-                "ATK": 257,
-                "DEF": 638,
-                "Custom": 0.24
+            "HP": 10657,
+            "ATK": 257,
+            "DEF": 638,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 11395,
-                "ATK": 323,
-                "DEF": 682,
-                "Custom": 0.24
+            "HP": 11395,
+            "ATK": 323,
+            "DEF": 682,
+            "Custom": 0.24
         },
         "Version": "5.5",
         "Fetter": 110,
         "_CV": {
-                "_CH": "真理",
-                "_EN": "大桥彩香",
-                "_JP": "卡特里娜 · 索尔兹伯里",
-                "_KR": "李在岘"
+            "_CH": "真理",
+            "_EN": "大桥彩香",
+            "_JP": "卡特里娜 · 索尔兹伯里",
+            "_KR": "李在岘"
         }
-},
+    },
     "109": {
         "_name": "Mizuki",
         "_id": 109,
@@ -1775,26 +1775,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12736,
-                "ATK": 215,
-                "DEF": 757,
-                "Custom": 115.2
+            "HP": 12736,
+            "ATK": 215,
+            "DEF": 757,
+            "Custom": 115.2
         },
         "ShowStats2": {
-                "HP": 13641,
-                "ATK": 264,
-                "DEF": 811,
-                "Custom": 115.2
+            "HP": 13641,
+            "ATK": 264,
+            "DEF": 811,
+            "Custom": 115.2
         },
         "Version": "5.4",
         "Fetter": 109,
         "_CV": {
-                "_CH": "浮梦若薇",
-                "_EN": "会泽纱弥",
-                "_JP": "内奥米 · 麦克唐纳",
-                "_KR": "金曙现"
+            "_CH": "浮梦若薇",
+            "_EN": "会泽纱弥",
+            "_JP": "内奥米 · 麦克唐纳",
+            "_KR": "金曙现"
         }
-},
+    },
     "108": {
         "_name": "Lanyan",
         "_id": 108,
@@ -1819,26 +1819,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9244,
-                "ATK": 251,
-                "DEF": 580,
-                "Custom": 0.24
+            "HP": 9244,
+            "ATK": 251,
+            "DEF": 580,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 9883,
-                "ATK": 315,
-                "DEF": 620,
-                "Custom": 0.24
+            "HP": 9883,
+            "ATK": 315,
+            "DEF": 620,
+            "Custom": 0.24
         },
         "Version": "5.3",
         "Fetter": 108,
         "_CV": {
-                "_CH": "刘十四",
-                "_EN": "若山诗音",
-                "_JP": "安娜 · 德夫林",
-                "_KR": "金顺美"
+            "_CH": "刘十四",
+            "_EN": "若山诗音",
+            "_JP": "安娜 · 德夫林",
+            "_KR": "金顺美"
         }
-},
+    },
     "107": {
         "_name": "Citlali",
         "_id": 107,
@@ -1863,26 +1863,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 105,
         "ShowStats": {
-                "HP": 11634,
-                "ATK": 127,
-                "DEF": 763,
-                "Custom": 115.2
+            "HP": 11634,
+            "ATK": 127,
+            "DEF": 763,
+            "Custom": 115.2
         },
         "ShowStats2": {
-                "HP": 12460,
-                "ATK": 155,
-                "DEF": 817,
-                "Custom": 115.2
+            "HP": 12460,
+            "ATK": 155,
+            "DEF": 817,
+            "Custom": 115.2
         },
         "Version": "5.3",
         "Fetter": 107,
         "_CV": {
-                "_CH": "柳知萧",
-                "_EN": "田野麻美",
-                "_JP": "斯凯勒 · 达文波特",
-                "_KR": "李珢造"
+            "_CH": "柳知萧",
+            "_EN": "田野麻美",
+            "_JP": "斯凯勒 · 达文波特",
+            "_KR": "李珢造"
         }
-},
+    },
     "106": {
         "_name": "Mavuika",
         "_id": 106,
@@ -1907,26 +1907,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12552,
-                "ATK": 359,
-                "DEF": 792,
-                "Custom": 0.384
+            "HP": 12552,
+            "ATK": 359,
+            "DEF": 792,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13444,
-                "ATK": 439,
-                "DEF": 848,
-                "Custom": 0.384
+            "HP": 13444,
+            "ATK": 439,
+            "DEF": 848,
+            "Custom": 0.384
         },
         "Version": "5.3",
         "Fetter": 106,
         "_CV": {
-                "_CH": "李晔",
-                "_EN": "小松未可子",
-                "_JP": "卡蒂安娜 · 萨尔基西安",
-                "_KR": "金拏燏"
+            "_CH": "李晔",
+            "_EN": "小松未可子",
+            "_JP": "卡蒂安娜 · 萨尔基西安",
+            "_KR": "金拏燏"
         }
-},
+    },
     "105": {
         "_name": "Olorun",
         "_id": 105,
@@ -1951,26 +1951,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9244,
-                "ATK": 244,
-                "DEF": 587,
-                "Custom": 0.24
+            "HP": 9244,
+            "ATK": 244,
+            "DEF": 587,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 9883,
-                "ATK": 307,
-                "DEF": 628,
-                "Custom": 0.24
+            "HP": 9883,
+            "ATK": 307,
+            "DEF": 628,
+            "Custom": 0.24
         },
         "Version": "5.2",
         "Fetter": 105,
         "_CV": {
-                "_CH": "梁达伟",
-                "_EN": "近藤隆",
-                "_JP": "内森 · 诺克斯",
-                "_KR": "徐正益"
+            "_CH": "梁达伟",
+            "_EN": "近藤隆",
+            "_JP": "内森 · 诺克斯",
+            "_KR": "徐正益"
         }
-},
+    },
     "104": {
         "_name": "Chasca",
         "_id": 104,
@@ -1995,26 +1995,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 9797,
-                "ATK": 347,
-                "DEF": 615,
-                "Custom": 0.192
+            "HP": 9797,
+            "ATK": 347,
+            "DEF": 615,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 10493,
-                "ATK": 425,
-                "DEF": 659,
-                "Custom": 0.192
+            "HP": 10493,
+            "ATK": 425,
+            "DEF": 659,
+            "Custom": 0.192
         },
         "Version": "5.2",
         "Fetter": 104,
         "_CV": {
-                "_CH": "张若瑜",
-                "_EN": "甲斐田裕子",
-                "_JP": "劳伦 · 阿曼特",
-                "_KR": "秀晛"
+            "_CH": "张若瑜",
+            "_EN": "甲斐田裕子",
+            "_JP": "劳伦 · 阿曼特",
+            "_KR": "秀晛"
         }
-},
+    },
     "103": {
         "_name": "Xilonen",
         "_id": 103,
@@ -2039,26 +2039,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "DEF",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12405,
-                "ATK": 275,
-                "DEF": 930,
-                "Custom": 0.36
+            "HP": 12405,
+            "ATK": 275,
+            "DEF": 930,
+            "Custom": 0.36
         },
         "ShowStats2": {
-                "HP": 13287,
-                "ATK": 337,
-                "DEF": 996,
-                "Custom": 0.36
+            "HP": 13287,
+            "ATK": 337,
+            "DEF": 996,
+            "Custom": 0.36
         },
         "Version": "5.1",
         "Fetter": 103,
         "_CV": {
-                "_CH": "弭洋",
-                "_EN": "菲鲁兹 · 蓝",
-                "_JP": "伊丽莎白 · 迪恩",
-                "_KR": "金怡侒"
+            "_CH": "弭洋",
+            "_EN": "菲鲁兹 · 蓝",
+            "_JP": "伊丽莎白 · 迪恩",
+            "_KR": "金怡侒"
         }
-},
+    },
     "102": {
         "_name": "Mualani",
         "_id": 102,
@@ -2083,26 +2083,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 15185,
-                "ATK": 182,
-                "DEF": 570,
-                "Custom": 0.192
+            "HP": 15185,
+            "ATK": 182,
+            "DEF": 570,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 16264,
-                "ATK": 223,
-                "DEF": 611,
-                "Custom": 0.192
+            "HP": 16264,
+            "ATK": 223,
+            "DEF": 611,
+            "Custom": 0.192
         },
         "Version": "5.0",
         "Fetter": 102,
         "_CV": {
-                "_CH": "王晓彤",
-                "_EN": "东山奈央",
-                "_JP": "卡桑德拉 · 李 · 莫里斯",
-                "_KR": "金度希"
+            "_CH": "王晓彤",
+            "_EN": "东山奈央",
+            "_JP": "卡桑德拉 · 李 · 莫里斯",
+            "_KR": "金度希"
         }
-},
+    },
     "101": {
         "_name": "Kinich",
         "_id": 101,
@@ -2127,26 +2127,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12858,
-                "ATK": 332,
-                "DEF": 802,
-                "Custom": 0.384
+            "HP": 12858,
+            "ATK": 332,
+            "DEF": 802,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13772,
-                "ATK": 407,
-                "DEF": 859,
-                "Custom": 0.384
+            "HP": 13772,
+            "ATK": 407,
+            "DEF": 859,
+            "Custom": 0.384
         },
         "Version": "5.0",
         "Fetter": 101,
         "_CV": {
-                "_CH": "斑马&弭洋",
-                "_EN": "杉山纪彰&竹内顺子",
-                "_JP": "雅各布 · 高梨&阿比 · 埃斯皮里图",
-                "_KR": "姜声宇&朴利娜"
+            "_CH": "斑马&弭洋",
+            "_EN": "杉山纪彰&竹内顺子",
+            "_JP": "雅各布 · 高梨&阿比 · 埃斯皮里图",
+            "_KR": "姜声宇&朴利娜"
         }
-},
+    },
     "100": {
         "_name": "Kachina",
         "_id": 100,
@@ -2171,26 +2171,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Rock",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11799,
-                "ATK": 217,
-                "DEF": 792,
-                "Custom": 0.24
+            "HP": 11799,
+            "ATK": 217,
+            "DEF": 792,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 12615,
-                "ATK": 272,
-                "DEF": 847,
-                "Custom": 0.24
+            "HP": 12615,
+            "ATK": 272,
+            "DEF": 847,
+            "Custom": 0.24
         },
         "Version": "5.0",
         "Fetter": 100,
         "_CV": {
-                "_CH": "静宸",
-                "_EN": "久保百合花",
-                "_JP": "克里斯汀 · 麦奎尔",
-                "_KR": "孙仙荣"
+            "_CH": "静宸",
+            "_EN": "久保百合花",
+            "_JP": "克里斯汀 · 麦奎尔",
+            "_KR": "孙仙荣"
         }
-},
+    },
     "99": {
         "_name": "Emilie",
         "_id": 99,
@@ -2215,26 +2215,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13568,
-                "ATK": 335,
-                "DEF": 730,
-                "Custom": 0.384
+            "HP": 13568,
+            "ATK": 335,
+            "DEF": 730,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 14533,
-                "ATK": 410,
-                "DEF": 782,
-                "Custom": 0.384
+            "HP": 14533,
+            "ATK": 410,
+            "DEF": 782,
+            "Custom": 0.384
         },
         "Version": "4.8",
         "Fetter": 99,
         "_CV": {
-                "_CH": "木子橙",
-                "_EN": "日笠阳子",
-                "_JP": "安柏 · 阿维尔斯",
-                "_KR": "权觰壡"
+            "_CH": "木子橙",
+            "_EN": "日笠阳子",
+            "_JP": "安柏 · 阿维尔斯",
+            "_KR": "权觰壡"
         }
-},
+    },
     "98": {
         "_name": "Clorinde",
         "_id": 98,
@@ -2259,26 +2259,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12956,
-                "ATK": 337,
-                "DEF": 784,
-                "Custom": 0.192
+            "HP": 12956,
+            "ATK": 337,
+            "DEF": 784,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 13877,
-                "ATK": 413,
-                "DEF": 840,
-                "Custom": 0.192
+            "HP": 13877,
+            "ATK": 413,
+            "DEF": 840,
+            "Custom": 0.192
         },
         "Version": "4.7",
         "Fetter": 98,
         "_CV": {
-                "_CH": "赵涵雨",
-                "_EN": "石川由依",
-                "_JP": "克里斯特尔 · 李",
-                "_KR": "申娜利"
+            "_CH": "赵涵雨",
+            "_EN": "石川由依",
+            "_JP": "克里斯特尔 · 李",
+            "_KR": "申娜利"
         }
-},
+    },
     "97": {
         "_name": "Sethos",
         "_id": 97,
@@ -2303,26 +2303,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9787,
-                "ATK": 227,
-                "DEF": 560,
-                "Custom": 96
+            "HP": 9787,
+            "ATK": 227,
+            "DEF": 560,
+            "Custom": 96
         },
         "ShowStats2": {
-                "HP": 10464,
-                "ATK": 285,
-                "DEF": 598,
-                "Custom": 96
+            "HP": 10464,
+            "ATK": 285,
+            "DEF": 598,
+            "Custom": 96
         },
         "Version": "4.7",
         "Fetter": 97,
         "_CV": {
-                "_CH": "李兰陵",
-                "_EN": "千叶翔也",
-                "_JP": "泽诺 · 罗宾森",
-                "_KR": "金东炫"
+            "_CH": "李兰陵",
+            "_EN": "千叶翔也",
+            "_JP": "泽诺 · 罗宾森",
+            "_KR": "金东炫"
         }
-},
+    },
     "96": {
         "_name": "Arlecchino",
         "_id": 96,
@@ -2347,26 +2347,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13103,
-                "ATK": 342,
-                "DEF": 765,
-                "Custom": 0.384
+            "HP": 13103,
+            "ATK": 342,
+            "DEF": 765,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 14034,
-                "ATK": 419,
-                "DEF": 819,
-                "Custom": 0.384
+            "HP": 14034,
+            "ATK": 419,
+            "DEF": 819,
+            "Custom": 0.384
         },
         "Version": "4.6",
         "Fetter": 96,
         "_CV": {
-                "_CH": "黄莺",
-                "_EN": "森奈奈子",
-                "_JP": "艾琳 · 伊薇特",
-                "_KR": "李明禧"
+            "_CH": "黄莺",
+            "_EN": "森奈奈子",
+            "_JP": "艾琳 · 伊薇特",
+            "_KR": "李明禧"
         }
-},
+    },
     "95": {
         "_name": "Sigewinne",
         "_id": 95,
@@ -2391,26 +2391,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13348,
-                "ATK": 193,
-                "DEF": 500,
-                "Custom": 0.288
+            "HP": 13348,
+            "ATK": 193,
+            "DEF": 500,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 14297,
-                "ATK": 236,
-                "DEF": 535,
-                "Custom": 0.288
+            "HP": 14297,
+            "ATK": 236,
+            "DEF": 535,
+            "Custom": 0.288
         },
         "Version": "4.7",
         "Fetter": 95,
         "_CV": {
-                "_CH": "赵爽",
-                "_EN": "木野日菜",
-                "_JP": "莎拉 · 威廉斯",
-                "_KR": "金採璘"
+            "_CH": "赵爽",
+            "_EN": "木野日菜",
+            "_JP": "莎拉 · 威廉斯",
+            "_KR": "金採璘"
         }
-},
+    },
     "94": {
         "_name": "Chiori",
         "_id": 94,
@@ -2435,26 +2435,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 11438,
-                "ATK": 323,
-                "DEF": 953,
-                "Custom": 0.192
+            "HP": 11438,
+            "ATK": 323,
+            "DEF": 953,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 12251,
-                "ATK": 396,
-                "DEF": 1021,
-                "Custom": 0.192
+            "HP": 12251,
+            "ATK": 396,
+            "DEF": 1021,
+            "Custom": 0.192
         },
         "Version": "4.5",
         "Fetter": 94,
         "_CV": {
-                "_CH": "陈阳",
-                "_EN": "竹达彩奈",
-                "_JP": "布兰妮 · 劳达",
-                "_KR": "李多恩"
+            "_CH": "陈阳",
+            "_EN": "竹达彩奈",
+            "_JP": "布兰妮 · 劳达",
+            "_KR": "李多恩"
         }
-},
+    },
     "93": {
         "_name": "Liuyun",
         "_id": 93,
@@ -2479,26 +2479,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10409,
-                "ATK": 335,
-                "DEF": 573,
-                "Custom": 0.288
+            "HP": 10409,
+            "ATK": 335,
+            "DEF": 573,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 11149,
-                "ATK": 410,
-                "DEF": 613,
-                "Custom": 0.288
+            "HP": 11149,
+            "ATK": 410,
+            "DEF": 613,
+            "Custom": 0.288
         },
         "Version": "4.4",
         "Fetter": 93,
         "_CV": {
-                "_CH": "秦紫翼",
-                "_EN": "中臣真菜",
-                "_JP": "史蒂芬妮 · 帕尼塞洛",
-                "_KR": "姜炫瑞"
+            "_CH": "秦紫翼",
+            "_EN": "中臣真菜",
+            "_JP": "史蒂芬妮 · 帕尼塞洛",
+            "_KR": "姜炫瑞"
         }
-},
+    },
     "92": {
         "_name": "Gaming",
         "_id": 92,
@@ -2523,26 +2523,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11419,
-                "ATK": 302,
-                "DEF": 703,
-                "Custom": 0.24
+            "HP": 11419,
+            "ATK": 302,
+            "DEF": 703,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 12208,
-                "ATK": 379,
-                "DEF": 752,
-                "Custom": 0.24
+            "HP": 12208,
+            "ATK": 379,
+            "DEF": 752,
+            "Custom": 0.24
         },
         "Version": "4.4",
         "Fetter": 92,
         "_CV": {
-                "_CH": "谢莹",
-                "_EN": "小松昌平",
-                "_JP": "殷嘉乐",
-                "_KR": "金润气"
+            "_CH": "谢莹",
+            "_EN": "小松昌平",
+            "_JP": "殷嘉乐",
+            "_KR": "金润气"
         }
-},
+    },
     "91": {
         "_name": "Navia",
         "_id": 91,
@@ -2567,26 +2567,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12650,
-                "ATK": 352,
-                "DEF": 793,
-                "Custom": 0.384
+            "HP": 12650,
+            "ATK": 352,
+            "DEF": 793,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13549,
-                "ATK": 431,
-                "DEF": 850,
-                "Custom": 0.384
+            "HP": 13549,
+            "ATK": 431,
+            "DEF": 850,
+            "Custom": 0.384
         },
         "Version": "4.3",
         "Fetter": 91,
         "_CV": {
-                "_CH": "小敢",
-                "_EN": "丰崎爱生",
-                "_JP": "布伦娜 · 拉森",
-                "_KR": "丁海恩"
+            "_CH": "小敢",
+            "_EN": "丰崎爱生",
+            "_JP": "布伦娜 · 拉森",
+            "_KR": "丁海恩"
         }
-},
+    },
     "90": {
         "_name": "Chevreuse",
         "_id": 90,
@@ -2611,26 +2611,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11962,
-                "ATK": 193,
-                "DEF": 605,
-                "Custom": 0.24
+            "HP": 11962,
+            "ATK": 193,
+            "DEF": 605,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 12790,
-                "ATK": 243,
-                "DEF": 647,
-                "Custom": 0.24
+            "HP": 12790,
+            "ATK": 243,
+            "DEF": 647,
+            "Custom": 0.24
         },
         "Version": "4.3",
         "Fetter": 90,
         "_CV": {
-                "_CH": "潘丹妮",
-                "_EN": "下地紫野",
-                "_JP": "艾丽卡 · 林德贝克",
-                "_KR": "蔡敏智"
+            "_CH": "潘丹妮",
+            "_EN": "下地紫野",
+            "_JP": "艾丽卡 · 林德贝克",
+            "_KR": "蔡敏智"
         }
-},
+    },
     "89": {
         "_name": "Furina",
         "_id": 89,
@@ -2655,26 +2655,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 15307,
-                "ATK": 244,
-                "DEF": 696,
-                "Custom": 0.192
+            "HP": 15307,
+            "ATK": 244,
+            "DEF": 696,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 16395,
-                "ATK": 299,
-                "DEF": 745,
-                "Custom": 0.192
+            "HP": 16395,
+            "ATK": 299,
+            "DEF": 745,
+            "Custom": 0.192
         },
         "Version": "4.2",
         "Fetter": 89,
         "_CV": {
-                "_CH": "钱琛",
-                "_EN": "水濑祈",
-                "_JP": "安柏 · 李 · 康纳斯",
-                "_KR": "金荷英"
+            "_CH": "钱琛",
+            "_EN": "水濑祈",
+            "_JP": "安柏 · 李 · 康纳斯",
+            "_KR": "金荷英"
         }
-},
+    },
     "88": {
         "_name": "Charlotte",
         "_id": 88,
@@ -2699,26 +2699,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10766,
-                "ATK": 173,
-                "DEF": 546,
-                "Custom": 0.24
+            "HP": 10766,
+            "ATK": 173,
+            "DEF": 546,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 11511,
-                "ATK": 217,
-                "DEF": 584,
-                "Custom": 0.24
+            "HP": 11511,
+            "ATK": 217,
+            "DEF": 584,
+            "Custom": 0.24
         },
         "Version": "4.2",
         "Fetter": 88,
         "_CV": {
-                "_CH": "阮从青",
-                "_EN": "和气杏未",
-                "_JP": "玛雅 · 奥吉 · 塔图",
-                "_KR": "辛温柔"
+            "_CH": "阮从青",
+            "_EN": "和气杏未",
+            "_JP": "玛雅 · 奥吉 · 塔图",
+            "_KR": "辛温柔"
         }
-},
+    },
     "87": {
         "_name": "Neuvillette",
         "_id": 87,
@@ -2743,26 +2743,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 14695,
-                "ATK": 208,
-                "DEF": 576,
-                "Custom": 0.384
+            "HP": 14695,
+            "ATK": 208,
+            "DEF": 576,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 15740,
-                "ATK": 255,
-                "DEF": 617,
-                "Custom": 0.384
+            "HP": 15740,
+            "ATK": 255,
+            "DEF": 617,
+            "Custom": 0.384
         },
         "Version": "4.1",
         "Fetter": 87,
         "_CV": {
-                "_CH": "桑毓泽",
-                "_EN": "神谷浩史",
-                "_JP": "雷 · 查斯",
-                "_KR": "郭允相"
+            "_CH": "桑毓泽",
+            "_EN": "神谷浩史",
+            "_JP": "雷 · 查斯",
+            "_KR": "郭允相"
         }
-},
+    },
     "86": {
         "_name": "Wriothesley",
         "_id": 86,
@@ -2787,26 +2787,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13593,
-                "ATK": 311,
-                "DEF": 763,
-                "Custom": 0.384
+            "HP": 13593,
+            "ATK": 311,
+            "DEF": 763,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 14559,
-                "ATK": 381,
-                "DEF": 817,
-                "Custom": 0.384
+            "HP": 14559,
+            "ATK": 381,
+            "DEF": 817,
+            "Custom": 0.384
         },
         "Version": "4.1",
         "Fetter": 86,
         "_CV": {
-                "_CH": "刘北辰",
-                "_EN": "小野大辅",
-                "_JP": "乔 · 齐贾",
-                "_KR": "权昌旭"
+            "_CH": "刘北辰",
+            "_EN": "小野大辅",
+            "_JP": "乔 · 齐贾",
+            "_KR": "权昌旭"
         }
-},
+    },
     "85": {
         "_name": "Freminet",
         "_id": 85,
@@ -2831,26 +2831,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12071,
-                "ATK": 255,
-                "DEF": 708,
-                "Custom": 0.24
+            "HP": 12071,
+            "ATK": 255,
+            "DEF": 708,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 12906,
-                "ATK": 320,
-                "DEF": 757,
-                "Custom": 0.24
+            "HP": 12906,
+            "ATK": 320,
+            "DEF": 757,
+            "Custom": 0.24
         },
         "Version": "4.0",
         "Fetter": 85,
         "_CV": {
-                "_CH": "锦鲤",
-                "_EN": "土岐隼一",
-                "_JP": "小保罗 · 卡斯特罗",
-                "_KR": "李周承"
+            "_CH": "锦鲤",
+            "_EN": "土岐隼一",
+            "_JP": "小保罗 · 卡斯特罗",
+            "_KR": "李周承"
         }
-},
+    },
     "84": {
         "_name": "Liney",
         "_id": 84,
@@ -2875,26 +2875,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 11021,
-                "ATK": 318,
-                "DEF": 538,
-                "Custom": 0.192
+            "HP": 11021,
+            "ATK": 318,
+            "DEF": 538,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 11805,
-                "ATK": 390,
-                "DEF": 576,
-                "Custom": 0.192
+            "HP": 11805,
+            "ATK": 390,
+            "DEF": 576,
+            "Custom": 0.192
         },
         "Version": "4.0",
         "Fetter": 84,
         "_CV": {
-                "_CH": "锦鲤",
-                "_EN": "下野纮",
-                "_JP": "达曼 · 米尔斯",
-                "_KR": "朴成楹"
+            "_CH": "锦鲤",
+            "_EN": "下野纮",
+            "_JP": "达曼 · 米尔斯",
+            "_KR": "朴成楹"
         }
-},
+    },
     "83": {
         "_name": "Linette",
         "_id": 83,
@@ -2919,26 +2919,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Wind",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12397,
-                "ATK": 232,
-                "DEF": 712,
-                "Custom": 0.24
+            "HP": 12397,
+            "ATK": 232,
+            "DEF": 712,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13255,
-                "ATK": 291,
-                "DEF": 761,
-                "Custom": 0.24
+            "HP": 13255,
+            "ATK": 291,
+            "DEF": 761,
+            "Custom": 0.24
         },
         "Version": "4.0",
         "Fetter": 83,
         "_CV": {
-                "_CH": "可可味",
-                "_EN": "篠原侑",
-                "_JP": "阿奈丽丝 · 基尼奥内斯",
-                "_KR": "李瑟琳娜"
+            "_CH": "可可味",
+            "_EN": "篠原侑",
+            "_JP": "阿奈丽丝 · 基尼奥内斯",
+            "_KR": "李瑟琳娜"
         }
-},
+    },
     "82": {
         "_name": "Baizhuer",
         "_id": 82,
@@ -2963,26 +2963,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13348,
-                "ATK": 193,
-                "DEF": 500,
-                "Custom": 0.288
+            "HP": 13348,
+            "ATK": 193,
+            "DEF": 500,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 14297,
-                "ATK": 236,
-                "DEF": 535,
-                "Custom": 0.288
+            "HP": 14297,
+            "ATK": 236,
+            "DEF": 535,
+            "Custom": 0.288
         },
         "Version": "3.6",
         "Fetter": 82,
         "_CV": {
-                "_CH": "秦且歌&王晓彤",
-                "_EN": "游佐浩二&庄子裕衣",
-                "_JP": "肖恩 · 杜里&赞茜 · 黄",
-                "_KR": "李镐山&张美"
+            "_CH": "秦且歌&王晓彤",
+            "_EN": "游佐浩二&庄子裕衣",
+            "_JP": "肖恩 · 杜里&赞茜 · 黄",
+            "_KR": "李镐山&张美"
         }
-},
+    },
     "81": {
         "_name": "Kaveh",
         "_id": 81,
@@ -3007,26 +3007,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11962,
-                "ATK": 234,
-                "DEF": 751,
-                "Custom": 96
+            "HP": 11962,
+            "ATK": 234,
+            "DEF": 751,
+            "Custom": 96
         },
         "ShowStats2": {
-                "HP": 12790,
-                "ATK": 293,
-                "DEF": 803,
-                "Custom": 96
+            "HP": 12790,
+            "ATK": 293,
+            "DEF": 803,
+            "Custom": 96
         },
         "Version": "3.6",
         "Fetter": 81,
         "_CV": {
-                "_CH": "刘三木",
-                "_EN": "内田雄马",
-                "_JP": "本 · 巴尔马塞达",
-                "_KR": "李桢敏"
+            "_CH": "刘三木",
+            "_EN": "内田雄马",
+            "_JP": "本 · 巴尔马塞达",
+            "_KR": "李桢敏"
         }
-},
+    },
     "80": {
         "_name": "Mika",
         "_id": 80,
@@ -3051,26 +3051,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12506,
-                "ATK": 223,
-                "DEF": 713,
-                "Custom": 0.24
+            "HP": 12506,
+            "ATK": 223,
+            "DEF": 713,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13371,
-                "ATK": 280,
-                "DEF": 763,
-                "Custom": 0.24
+            "HP": 13371,
+            "ATK": 280,
+            "DEF": 763,
+            "Custom": 0.24
         },
         "Version": "3.5",
         "Fetter": 80,
         "_CV": {
-                "_CH": "邓宥希",
-                "_EN": "三瓶由布子",
-                "_JP": "罗布 · 莫雷拉",
-                "_KR": "尹垠舒"
+            "_CH": "邓宥希",
+            "_EN": "三瓶由布子",
+            "_JP": "罗布 · 莫雷拉",
+            "_KR": "尹垠舒"
         }
-},
+    },
     "79": {
         "_name": "Dehya",
         "_id": 79,
@@ -3095,26 +3095,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 105,
         "ShowStats": {
-                "HP": 15675,
-                "ATK": 265,
-                "DEF": 628,
-                "Custom": 0.288
+            "HP": 15675,
+            "ATK": 265,
+            "DEF": 628,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 16789,
-                "ATK": 325,
-                "DEF": 673,
-                "Custom": 0.288
+            "HP": 16789,
+            "ATK": 325,
+            "DEF": 673,
+            "Custom": 0.288
         },
         "Version": "3.5",
         "Fetter": 79,
         "_CV": {
-                "_CH": "陈雨",
-                "_EN": "福原绫香",
-                "_JP": "安柏 · 梅",
-                "_KR": "金琄心"
+            "_CH": "陈雨",
+            "_EN": "福原绫香",
+            "_JP": "安柏 · 梅",
+            "_KR": "金琄心"
         }
-},
+    },
     "78": {
         "_name": "Alhatham",
         "_id": 78,
@@ -3139,26 +3139,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Grass",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13348,
-                "ATK": 313,
-                "DEF": 782,
-                "Custom": 0.288
+            "HP": 13348,
+            "ATK": 313,
+            "DEF": 782,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 14297,
-                "ATK": 384,
-                "DEF": 837,
-                "Custom": 0.288
+            "HP": 14297,
+            "ATK": 384,
+            "DEF": 837,
+            "Custom": 0.288
         },
         "Version": "3.4",
         "Fetter": 78,
         "_CV": {
-                "_CH": "杨超然",
-                "_EN": "梅原裕一郎",
-                "_JP": "纳齐耶 · 塔尔沙",
-                "_KR": "田昇和"
+            "_CH": "杨超然",
+            "_EN": "梅原裕一郎",
+            "_JP": "纳齐耶 · 塔尔沙",
+            "_KR": "田昇和"
         }
-},
+    },
     "77": {
         "_name": "Yaoyao",
         "_id": 77,
@@ -3183,26 +3183,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12289,
-                "ATK": 212,
-                "DEF": 751,
-                "Custom": 0.24
+            "HP": 12289,
+            "ATK": 212,
+            "DEF": 751,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13139,
-                "ATK": 267,
-                "DEF": 803,
-                "Custom": 0.24
+            "HP": 13139,
+            "ATK": 267,
+            "DEF": 803,
+            "Custom": 0.24
         },
         "Version": "3.4",
         "Fetter": 77,
         "_CV": {
-                "_CH": "刘颐诺",
-                "_EN": "门胁舞以",
-                "_JP": "凯尔西 · 加法尔",
-                "_KR": "柳惠知"
+            "_CH": "刘颐诺",
+            "_EN": "门胁舞以",
+            "_JP": "凯尔西 · 加法尔",
+            "_KR": "柳惠知"
         }
-},
+    },
     "76": {
         "_name": "Faruzan",
         "_id": 76,
@@ -3227,26 +3227,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9570,
-                "ATK": 196,
-                "DEF": 628,
-                "Custom": 0.24
+            "HP": 9570,
+            "ATK": 196,
+            "DEF": 628,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10232,
-                "ATK": 247,
-                "DEF": 671,
-                "Custom": 0.24
+            "HP": 10232,
+            "ATK": 247,
+            "DEF": 671,
+            "Custom": 0.24
         },
         "Version": "3.3",
         "Fetter": 76,
         "_CV": {
-                "_CH": "阎萌萌",
-                "_EN": "堀江由衣",
-                "_JP": "婵达妮 · 帕雷克",
-                "_KR": "金愈琳"
+            "_CH": "阎萌萌",
+            "_EN": "堀江由衣",
+            "_JP": "婵达妮 · 帕雷克",
+            "_KR": "金愈琳"
         }
-},
+    },
     "75": {
         "_name": "Wanderer",
         "_id": 75,
@@ -3271,26 +3271,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10164,
-                "ATK": 328,
-                "DEF": 607,
-                "Custom": 0.192
+            "HP": 10164,
+            "ATK": 328,
+            "DEF": 607,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 10887,
-                "ATK": 401,
-                "DEF": 650,
-                "Custom": 0.192
+            "HP": 10887,
+            "ATK": 401,
+            "DEF": 650,
+            "Custom": 0.192
         },
         "Version": "3.3",
         "Fetter": 75,
         "_CV": {
-                "_CH": "鹿喑",
-                "_EN": "柿原彻也",
-                "_JP": "帕特里克 · 佩德拉萨",
-                "_KR": "闵丞釪"
+            "_CH": "鹿喑",
+            "_EN": "柿原彻也",
+            "_JP": "帕特里克 · 佩德拉萨",
+            "_KR": "闵丞釪"
         }
-},
+    },
     "74": {
         "_name": "Layla",
         "_id": 74,
@@ -3315,26 +3315,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11092,
-                "ATK": 217,
-                "DEF": 655,
-                "Custom": 0.24
+            "HP": 11092,
+            "ATK": 217,
+            "DEF": 655,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 11860,
-                "ATK": 272,
-                "DEF": 701,
-                "Custom": 0.24
+            "HP": 11860,
+            "ATK": 272,
+            "DEF": 701,
+            "Custom": 0.24
         },
         "Version": "3.2",
         "Fetter": 74,
         "_CV": {
-                "_CH": "侯小菲",
-                "_EN": "富田美忧",
-                "_JP": "阿希礼 · 比斯琪",
-                "_KR": "姜新春"
+            "_CH": "侯小菲",
+            "_EN": "富田美忧",
+            "_JP": "阿希礼 · 比斯琪",
+            "_KR": "姜新春"
         }
-},
+    },
     "73": {
         "_name": "Nahida",
         "_id": 73,
@@ -3359,26 +3359,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10360,
-                "ATK": 299,
-                "DEF": 630,
-                "Custom": 115.2
+            "HP": 10360,
+            "ATK": 299,
+            "DEF": 630,
+            "Custom": 115.2
         },
         "ShowStats2": {
-                "HP": 11096,
-                "ATK": 366,
-                "DEF": 675,
-                "Custom": 115.2
+            "HP": 11096,
+            "ATK": 366,
+            "DEF": 675,
+            "Custom": 115.2
         },
         "Version": "3.2",
         "Fetter": 73,
         "_CV": {
-                "_CH": "花玲",
-                "_EN": "田村由加莉",
-                "_JP": "金伯利 · 安妮 · 坎贝尔",
-                "_KR": "朴恃奫"
+            "_CH": "花玲",
+            "_EN": "田村由加莉",
+            "_JP": "金伯利 · 安妮 · 坎贝尔",
+            "_KR": "朴恃奫"
         }
-},
+    },
     "72": {
         "_name": "Candace",
         "_id": 72,
@@ -3403,26 +3403,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 212,
-                "DEF": 683,
-                "Custom": 0.24
+            "HP": 10875,
+            "ATK": 212,
+            "DEF": 683,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 267,
-                "DEF": 730,
-                "Custom": 0.24
+            "HP": 11627,
+            "ATK": 267,
+            "DEF": 730,
+            "Custom": 0.24
         },
         "Version": "3.1",
         "Fetter": 72,
         "_CV": {
-                "_CH": "张琦",
-                "_EN": "柚木凉香",
-                "_JP": "莎蕾 · 科尔比&匿名",
-                "_KR": "全暎洙"
+            "_CH": "张琦",
+            "_EN": "柚木凉香",
+            "_JP": "莎蕾 · 科尔比&匿名",
+            "_KR": "全暎洙"
         }
-},
+    },
     "71": {
         "_name": "Cyno",
         "_id": 71,
@@ -3447,26 +3447,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12491,
-                "ATK": 318,
-                "DEF": 859,
-                "Custom": 0.384
+            "HP": 12491,
+            "ATK": 318,
+            "DEF": 859,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13379,
-                "ATK": 390,
-                "DEF": 920,
-                "Custom": 0.384
+            "HP": 13379,
+            "ATK": 390,
+            "DEF": 920,
+            "Custom": 0.384
         },
         "Version": "3.1",
         "Fetter": 71,
         "_CV": {
-                "_CH": "李轻扬",
-                "_EN": "入野自由",
-                "_JP": "亚历杭德罗 · 萨博",
-                "_KR": "郑义陈&李宇梨"
+            "_CH": "李轻扬",
+            "_EN": "入野自由",
+            "_JP": "亚历杭德罗 · 萨博",
+            "_KR": "郑义陈&李宇梨"
         }
-},
+    },
     "70": {
         "_name": "Nilou",
         "_id": 70,
@@ -3491,26 +3491,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 105,
         "ShowStats": {
-                "HP": 15185,
-                "ATK": 230,
-                "DEF": 729,
-                "Custom": 0.288
+            "HP": 15185,
+            "ATK": 230,
+            "DEF": 729,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 16264,
-                "ATK": 281,
-                "DEF": 780,
-                "Custom": 0.288
+            "HP": 16264,
+            "ATK": 281,
+            "DEF": 780,
+            "Custom": 0.288
         },
         "Version": "3.1",
         "Fetter": 70,
         "_CV": {
-                "_CH": "紫苏九月",
-                "_EN": "金元寿子",
-                "_JP": "丹妮 · 钱伯斯",
-                "_KR": "䌽玪"
+            "_CH": "紫苏九月",
+            "_EN": "金元寿子",
+            "_JP": "丹妮 · 钱伯斯",
+            "_KR": "䌽玪"
         }
-},
+    },
     "69": {
         "_name": "Tighnari",
         "_id": 69,
@@ -3535,26 +3535,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Grass",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10850,
-                "ATK": 268,
-                "DEF": 630,
-                "Custom": 0.288
+            "HP": 10850,
+            "ATK": 268,
+            "DEF": 630,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 11621,
-                "ATK": 328,
-                "DEF": 675,
-                "Custom": 0.288
+            "HP": 11621,
+            "ATK": 328,
+            "DEF": 675,
+            "Custom": 0.288
         },
         "Version": "3.0",
         "Fetter": 69,
         "_CV": {
-                "_CH": "莫然",
-                "_EN": "小林沙苗",
-                "_JP": "扎克瑞 · 戈登",
-                "_KR": "郑义宅"
+            "_CH": "莫然",
+            "_EN": "小林沙苗",
+            "_JP": "扎克瑞 · 戈登",
+            "_KR": "郑义宅"
         }
-},
+    },
     "68": {
         "_name": "Dori",
         "_id": 68,
@@ -3579,26 +3579,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12397,
-                "ATK": 223,
-                "DEF": 723,
-                "Custom": 0.24
+            "HP": 12397,
+            "ATK": 223,
+            "DEF": 723,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13255,
-                "ATK": 280,
-                "DEF": 774,
-                "Custom": 0.24
+            "HP": 13255,
+            "ATK": 280,
+            "DEF": 774,
+            "Custom": 0.24
         },
         "Version": "3.0",
         "Fetter": 68,
         "_CV": {
-                "_CH": "王晓彤",
-                "_EN": "金田朋子",
-                "_JP": "安洁丽 · 库娜帕内妮",
-                "_KR": "李明浩"
+            "_CH": "王晓彤",
+            "_EN": "金田朋子",
+            "_JP": "安洁丽 · 库娜帕内妮",
+            "_KR": "李明浩"
         }
-},
+    },
     "67": {
         "_name": "Collei",
         "_id": 67,
@@ -3623,26 +3623,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9787,
-                "ATK": 200,
-                "DEF": 601,
-                "Custom": 0.24
+            "HP": 9787,
+            "ATK": 200,
+            "DEF": 601,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10464,
-                "ATK": 251,
-                "DEF": 642,
-                "Custom": 0.24
+            "HP": 10464,
+            "ATK": 251,
+            "DEF": 642,
+            "Custom": 0.24
         },
         "Version": "3.0",
         "Fetter": 67,
         "_CV": {
-                "_CH": "秦文静",
-                "_EN": "前川凉子",
-                "_JP": "克里斯蒂娜 · 科斯特洛",
-                "_KR": "房翅于"
+            "_CH": "秦文静",
+            "_EN": "前川凉子",
+            "_JP": "克里斯蒂娜 · 科斯特洛",
+            "_KR": "房翅于"
         }
-},
+    },
     "66": {
         "_name": "Ayato",
         "_id": 66,
@@ -3667,26 +3667,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13715,
-                "ATK": 299,
-                "DEF": 769,
-                "Custom": 0.384
+            "HP": 13715,
+            "ATK": 299,
+            "DEF": 769,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 14690,
-                "ATK": 366,
-                "DEF": 823,
-                "Custom": 0.384
+            "HP": 14690,
+            "ATK": 366,
+            "DEF": 823,
+            "Custom": 0.384
         },
         "Version": "2.6",
         "Fetter": 66,
         "_CV": {
-                "_CH": "赵路",
-                "_EN": "石田彰",
-                "_JP": "克里斯 · 哈克尼",
-                "_KR": "张民赫"
+            "_CH": "赵路",
+            "_EN": "石田彰",
+            "_JP": "克里斯 · 哈克尼",
+            "_KR": "张民赫"
         }
-},
+    },
     "65": {
         "_name": "Shinobu",
         "_id": 65,
@@ -3711,26 +3711,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12289,
-                "ATK": 212,
-                "DEF": 751,
-                "Custom": 0.24
+            "HP": 12289,
+            "ATK": 212,
+            "DEF": 751,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13139,
-                "ATK": 267,
-                "DEF": 803,
-                "Custom": 0.24
+            "HP": 13139,
+            "ATK": 267,
+            "DEF": 803,
+            "Custom": 0.24
         },
         "Version": "2.7",
         "Fetter": 65,
         "_CV": {
-                "_CH": "杨凝",
-                "_EN": "水桥香织",
-                "_JP": "基拉 · 巴克兰德",
-                "_KR": "金燏"
+            "_CH": "杨凝",
+            "_EN": "水桥香织",
+            "_JP": "基拉 · 巴克兰德",
+            "_KR": "金燏"
         }
-},
+    },
     "64": {
         "_name": "Yunjin",
         "_id": 64,
@@ -3755,26 +3755,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ER",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10657,
-                "ATK": 191,
-                "DEF": 734,
-                "Custom": 0.2667
+            "HP": 10657,
+            "ATK": 191,
+            "DEF": 734,
+            "Custom": 0.2667
         },
         "ShowStats2": {
-                "HP": 11395,
-                "ATK": 240,
-                "DEF": 785,
-                "Custom": 0.2667
+            "HP": 11395,
+            "ATK": 240,
+            "DEF": 785,
+            "Custom": 0.2667
         },
         "Version": "2.4",
         "Fetter": 64,
         "_CV": {
-                "_CH": "贺文潇&杨扬",
-                "_EN": "小岩井小鸟&杨扬",
-                "_JP": "朱蒂 · 艾丽丝 · 李&杨扬",
-                "_KR": "史文英&杨扬"
+            "_CH": "贺文潇&杨扬",
+            "_EN": "小岩井小鸟&杨扬",
+            "_JP": "朱蒂 · 艾丽丝 · 李&杨扬",
+            "_KR": "史文英&杨扬"
         }
-},
+    },
     "63": {
         "_name": "Shenhe",
         "_id": 63,
@@ -3799,26 +3799,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12993,
-                "ATK": 304,
-                "DEF": 830,
-                "Custom": 0.288
+            "HP": 12993,
+            "ATK": 304,
+            "DEF": 830,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 13916,
-                "ATK": 372,
-                "DEF": 889,
-                "Custom": 0.288
+            "HP": 13916,
+            "ATK": 372,
+            "DEF": 889,
+            "Custom": 0.288
         },
         "Version": "2.4",
         "Fetter": 63,
         "_CV": {
-                "_CH": "秦紫翼",
-                "_EN": "川澄绫子",
-                "_JP": "切尔希 · 克沃卡",
-                "_KR": "李贤真"
+            "_CH": "秦紫翼",
+            "_EN": "川澄绫子",
+            "_JP": "切尔希 · 克沃卡",
+            "_KR": "李贤真"
         }
-},
+    },
     "62": {
         "_name": "Aloy",
         "_id": 62,
@@ -3843,26 +3843,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Ice",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10899,
-                "ATK": 234,
-                "DEF": 676,
-                "Custom": 0.288
+            "HP": 10899,
+            "ATK": 234,
+            "DEF": 676,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 11673,
-                "ATK": 287,
-                "DEF": 724,
-                "Custom": 0.288
+            "HP": 11673,
+            "ATK": 287,
+            "DEF": 724,
+            "Custom": 0.288
         },
         "Version": "2.1",
         "Fetter": 62,
         "_CV": {
-                "_CH": "沐霏",
-                "_EN": "高垣彩阳",
-                "_JP": "——",
-                "_KR": "赵玄正"
+            "_CH": "沐霏",
+            "_EN": "高垣彩阳",
+            "_JP": "——",
+            "_KR": "赵玄正"
         }
-},
+    },
     "61": {
         "_name": "Momoka",
         "_id": 61,
@@ -3887,26 +3887,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12180,
-                "ATK": 223,
-                "DEF": 546,
-                "Custom": 0.24
+            "HP": 12180,
+            "ATK": 223,
+            "DEF": 546,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13022,
-                "ATK": 280,
-                "DEF": 584,
-                "Custom": 0.24
+            "HP": 13022,
+            "ATK": 280,
+            "DEF": 584,
+            "Custom": 0.24
         },
         "Version": "3.7",
         "Fetter": 61,
         "_CV": {
-                "_CH": "孙艳琦",
-                "_EN": "铃代纱弓",
-                "_JP": "谷丽雅",
-                "_KR": "姜恩爱"
+            "_CH": "孙艳琦",
+            "_EN": "铃代纱弓",
+            "_JP": "谷丽雅",
+            "_KR": "姜恩爱"
         }
-},
+    },
     "60": {
         "_name": "Yelan",
         "_id": 60,
@@ -3931,26 +3931,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 14450,
-                "ATK": 244,
-                "DEF": 548,
-                "Custom": 0.192
+            "HP": 14450,
+            "ATK": 244,
+            "DEF": 548,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 15477,
-                "ATK": 299,
-                "DEF": 587,
-                "Custom": 0.192
+            "HP": 15477,
+            "ATK": 299,
+            "DEF": 587,
+            "Custom": 0.192
         },
         "Version": "2.7",
         "Fetter": 60,
         "_CV": {
-                "_CH": "徐慧",
-                "_EN": "远藤绫",
-                "_JP": "劳拉 · 波斯特",
-                "_KR": "玟我"
+            "_CH": "徐慧",
+            "_EN": "远藤绫",
+            "_JP": "劳拉 · 波斯特",
+            "_KR": "玟我"
         }
-},
+    },
     "59": {
         "_name": "Heizo",
         "_id": 59,
@@ -3975,26 +3975,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Wind",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10657,
-                "ATK": 225,
-                "DEF": 684,
-                "Custom": 0.24
+            "HP": 10657,
+            "ATK": 225,
+            "DEF": 684,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 11395,
-                "ATK": 283,
-                "DEF": 731,
-                "Custom": 0.24
+            "HP": 11395,
+            "ATK": 283,
+            "DEF": 731,
+            "Custom": 0.24
         },
         "Version": "2.8",
         "Fetter": 59,
         "_CV": {
-                "_CH": "林景",
-                "_EN": "井口祐一",
-                "_JP": "凯伊冉 · 里根",
-                "_KR": "郑义陈"
+            "_CH": "林景",
+            "_EN": "井口祐一",
+            "_JP": "凯伊冉 · 里根",
+            "_KR": "郑义陈"
         }
-},
+    },
     "58": {
         "_name": "Yae",
         "_id": 58,
@@ -4019,26 +4019,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10372,
-                "ATK": 340,
-                "DEF": 569,
-                "Custom": 0.192
+            "HP": 10372,
+            "ATK": 340,
+            "DEF": 569,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 11109,
-                "ATK": 416,
-                "DEF": 609,
-                "Custom": 0.192
+            "HP": 11109,
+            "ATK": 416,
+            "DEF": 609,
+            "Custom": 0.192
         },
         "Version": "2.5",
         "Fetter": 58,
         "_CV": {
-                "_CH": "杜冥鸦",
-                "_EN": "佐仓绫音",
-                "_JP": "拉塔纳",
-                "_KR": "文维贞"
+            "_CH": "杜冥鸦",
+            "_EN": "佐仓绫音",
+            "_JP": "拉塔纳",
+            "_KR": "文维贞"
         }
-},
+    },
     "57": {
         "_name": "Itto",
         "_id": 57,
@@ -4063,26 +4063,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12858,
-                "ATK": 227,
-                "DEF": 959,
-                "Custom": 0.192
+            "HP": 12858,
+            "ATK": 227,
+            "DEF": 959,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 13772,
-                "ATK": 278,
-                "DEF": 1027,
-                "Custom": 0.192
+            "HP": 13772,
+            "ATK": 278,
+            "DEF": 1027,
+            "Custom": 0.192
         },
         "Version": "2.3",
         "Fetter": 57,
         "_CV": {
-                "_CH": "刘照坤",
-                "_EN": "西川贵教",
-                "_JP": "马克斯 · 迈特尔曼",
-                "_KR": "宋埈硕"
+            "_CH": "刘照坤",
+            "_EN": "西川贵教",
+            "_JP": "马克斯 · 迈特尔曼",
+            "_KR": "宋埈硕"
         }
-},
+    },
     "56": {
         "_name": "Sara",
         "_id": 56,
@@ -4107,26 +4107,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9570,
-                "ATK": 195,
-                "DEF": 628,
-                "Custom": 0.24
+            "HP": 9570,
+            "ATK": 195,
+            "DEF": 628,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10232,
-                "ATK": 245,
-                "DEF": 671,
-                "Custom": 0.24
+            "HP": 10232,
+            "ATK": 245,
+            "DEF": 671,
+            "Custom": 0.24
         },
         "Version": "2.1",
         "Fetter": 56,
         "_CV": {
-                "_CH": "杨梦露",
-                "_EN": "濑户麻沙美",
-                "_JP": "珍妮 · 迪拉多",
-                "_KR": "文支映"
+            "_CH": "杨梦露",
+            "_EN": "濑户麻沙美",
+            "_JP": "珍妮 · 迪拉多",
+            "_KR": "文支映"
         }
-},
+    },
     "55": {
         "_name": "Gorou",
         "_id": 55,
@@ -4151,26 +4151,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Rock",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9570,
-                "ATK": 183,
-                "DEF": 648,
-                "Custom": 0.24
+            "HP": 9570,
+            "ATK": 183,
+            "DEF": 648,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10232,
-                "ATK": 229,
-                "DEF": 693,
-                "Custom": 0.24
+            "HP": 10232,
+            "ATK": 229,
+            "DEF": 693,
+            "Custom": 0.24
         },
         "Version": "2.3",
         "Fetter": 55,
         "_CV": {
-                "_CH": "杨昕燃",
-                "_EN": "畠中祐",
-                "_JP": "科里 · 易",
-                "_KR": "李晓"
+            "_CH": "杨昕燃",
+            "_EN": "畠中祐",
+            "_JP": "科里 · 易",
+            "_KR": "李晓"
         }
-},
+    },
     "54": {
         "_name": "Kokomi",
         "_id": 54,
@@ -4195,26 +4195,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Water",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13471,
-                "ATK": 234,
-                "DEF": 657,
-                "Custom": 0.288
+            "HP": 13471,
+            "ATK": 234,
+            "DEF": 657,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 14428,
-                "ATK": 287,
-                "DEF": 704,
-                "Custom": 0.288
+            "HP": 14428,
+            "ATK": 287,
+            "DEF": 704,
+            "Custom": 0.288
         },
         "Version": "2.1",
         "Fetter": 54,
         "_CV": {
-                "_CH": "龟娘",
-                "_EN": "三森铃子",
-                "_JP": "林丽莎",
-                "_KR": "吕允美"
+            "_CH": "龟娘",
+            "_EN": "三森铃子",
+            "_JP": "林丽莎",
+            "_KR": "吕允美"
         }
-},
+    },
     "53": {
         "_name": "Sayu",
         "_id": 53,
@@ -4239,26 +4239,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11854,
-                "ATK": 244,
-                "DEF": 745,
-                "Custom": 96
+            "HP": 11854,
+            "ATK": 244,
+            "DEF": 745,
+            "Custom": 96
         },
         "ShowStats2": {
-                "HP": 12674,
-                "ATK": 307,
-                "DEF": 796,
-                "Custom": 96
+            "HP": 12674,
+            "ATK": 307,
+            "DEF": 796,
+            "Custom": 96
         },
         "Version": "2.0",
         "Fetter": 53,
         "_CV": {
-                "_CH": "Sakula小舞",
-                "_EN": "洲崎绫",
-                "_JP": "莉莉 · 奇",
-                "_KR": "李智贤"
+            "_CH": "Sakula小舞",
+            "_EN": "洲崎绫",
+            "_JP": "莉莉 · 奇",
+            "_KR": "李智贤"
         }
-},
+    },
     "52": {
         "_name": "Shougun",
         "_id": 52,
@@ -4283,26 +4283,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ER",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12907,
-                "ATK": 337,
-                "DEF": 789,
-                "Custom": 0.32
+            "HP": 12907,
+            "ATK": 337,
+            "DEF": 789,
+            "Custom": 0.32
         },
         "ShowStats2": {
-                "HP": 13825,
-                "ATK": 413,
-                "DEF": 845,
-                "Custom": 0.32
+            "HP": 13825,
+            "ATK": 413,
+            "DEF": 845,
+            "Custom": 0.32
         },
         "Version": "2.1",
         "Fetter": 52,
         "_CV": {
-                "_CH": "菊花花",
-                "_EN": "泽城美雪",
-                "_JP": "安妮 · 雅科",
-                "_KR": "朴志㣧"
+            "_CH": "菊花花",
+            "_EN": "泽城美雪",
+            "_JP": "安妮 · 雅科",
+            "_KR": "朴志㣧"
         }
-},
+    },
     "51": {
         "_name": "Eula",
         "_id": 51,
@@ -4327,26 +4327,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13226,
-                "ATK": 342,
-                "DEF": 751,
-                "Custom": 0.384
+            "HP": 13226,
+            "ATK": 342,
+            "DEF": 751,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 14166,
-                "ATK": 419,
-                "DEF": 804,
-                "Custom": 0.384
+            "HP": 14166,
+            "ATK": 419,
+            "DEF": 804,
+            "Custom": 0.384
         },
         "Version": "1.5",
         "Fetter": 51,
         "_CV": {
-                "_CH": "子音",
-                "_EN": "佐藤利奈",
-                "_JP": "素汐 · 杨",
-                "_KR": "金炫志"
+            "_CH": "子音",
+            "_EN": "佐藤利奈",
+            "_JP": "素汐 · 杨",
+            "_KR": "金炫志"
         }
-},
+    },
     "50": {
         "_name": "Tohma",
         "_id": 50,
@@ -4371,26 +4371,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10331,
-                "ATK": 202,
-                "DEF": 751,
-                "Custom": 0.24
+            "HP": 10331,
+            "ATK": 202,
+            "DEF": 751,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 11046,
-                "ATK": 253,
-                "DEF": 803,
-                "Custom": 0.24
+            "HP": 11046,
+            "ATK": 253,
+            "DEF": 803,
+            "Custom": 0.24
         },
         "Version": "2.2",
         "Fetter": 50,
         "_CV": {
-                "_CH": "张沛",
-                "_EN": "森田成一",
-                "_JP": "克里斯蒂安 · 巴纳斯",
-                "_KR": "柳承坤"
+            "_CH": "张沛",
+            "_EN": "森田成一",
+            "_JP": "克里斯蒂安 · 巴纳斯",
+            "_KR": "柳承坤"
         }
-},
+    },
     "49": {
         "_name": "Yoimiya",
         "_id": 49,
@@ -4415,26 +4415,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10164,
-                "ATK": 323,
-                "DEF": 615,
-                "Custom": 0.192
+            "HP": 10164,
+            "ATK": 323,
+            "DEF": 615,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 10887,
-                "ATK": 396,
-                "DEF": 659,
-                "Custom": 0.192
+            "HP": 10887,
+            "ATK": 396,
+            "DEF": 659,
+            "Custom": 0.192
         },
         "Version": "2.0",
         "Fetter": 49,
         "_CV": {
-                "_CH": "金娜",
-                "_EN": "植田佳奈",
-                "_JP": "珍妮 · 橫堀",
-                "_KR": "朴信姬"
+            "_CH": "金娜",
+            "_EN": "植田佳奈",
+            "_JP": "珍妮 · 橫堀",
+            "_KR": "朴信姬"
         }
-},
+    },
     "48": {
         "_name": "Feiyan",
         "_id": 48,
@@ -4459,26 +4459,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Fire",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9352,
-                "ATK": 240,
-                "DEF": 587,
-                "Custom": 0.24
+            "HP": 9352,
+            "ATK": 240,
+            "DEF": 587,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 9999,
-                "ATK": 301,
-                "DEF": 628,
-                "Custom": 0.24
+            "HP": 9999,
+            "ATK": 301,
+            "DEF": 628,
+            "Custom": 0.24
         },
         "Version": "1.5",
         "Fetter": 48,
         "_CV": {
-                "_CH": "苏子芜",
-                "_EN": "花守由美里",
-                "_JP": "莉琪 · 弗里曼",
-                "_KR": "赵京洢"
+            "_CH": "苏子芜",
+            "_EN": "花守由美里",
+            "_JP": "莉琪 · 弗里曼",
+            "_KR": "赵京洢"
         }
-},
+    },
     "47": {
         "_name": "Kazuha",
         "_id": 47,
@@ -4503,26 +4503,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13348,
-                "ATK": 297,
-                "DEF": 807,
-                "Custom": 115.2
+            "HP": 13348,
+            "ATK": 297,
+            "DEF": 807,
+            "Custom": 115.2
         },
         "ShowStats2": {
-                "HP": 14297,
-                "ATK": 363,
-                "DEF": 864,
-                "Custom": 115.2
+            "HP": 14297,
+            "ATK": 363,
+            "DEF": 864,
+            "Custom": 115.2
         },
         "Version": "1.6",
         "Fetter": 47,
         "_CV": {
-                "_CH": "斑马",
-                "_EN": "岛崎信长",
-                "_JP": "马克 · 威顿",
-                "_KR": "金信旴"
+            "_CH": "斑马",
+            "_EN": "岛崎信长",
+            "_JP": "马克 · 威顿",
+            "_KR": "金信旴"
         }
-},
+    },
     "46": {
         "_name": "Hutao",
         "_id": 46,
@@ -4547,26 +4547,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 15552,
-                "ATK": 106,
-                "DEF": 876,
-                "Custom": 0.384
+            "HP": 15552,
+            "ATK": 106,
+            "DEF": 876,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 16658,
-                "ATK": 130,
-                "DEF": 938,
-                "Custom": 0.384
+            "HP": 16658,
+            "ATK": 130,
+            "DEF": 938,
+            "Custom": 0.384
         },
         "Version": "1.3",
         "Fetter": 46,
         "_CV": {
-                "_CH": "陶典",
-                "_EN": "高桥李依",
-                "_JP": "布丽安娜 · 尼克博克",
-                "_KR": "金贺娄"
+            "_CH": "陶典",
+            "_EN": "高桥李依",
+            "_JP": "布丽安娜 · 尼克博克",
+            "_KR": "金贺娄"
         }
-},
+    },
     "45": {
         "_name": "Rosaria",
         "_id": 45,
@@ -4591,26 +4591,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12289,
-                "ATK": 240,
-                "DEF": 710,
-                "Custom": 0.24
+            "HP": 12289,
+            "ATK": 240,
+            "DEF": 710,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13139,
-                "ATK": 301,
-                "DEF": 759,
-                "Custom": 0.24
+            "HP": 13139,
+            "ATK": 301,
+            "DEF": 759,
+            "Custom": 0.24
         },
         "Version": "1.4",
         "Fetter": 45,
         "_CV": {
-                "_CH": "张安琪",
-                "_EN": "加隈亚衣",
-                "_JP": "伊丽莎白 · 麦克斯韦",
-                "_KR": "金洑娜"
+            "_CH": "张安琪",
+            "_EN": "加隈亚衣",
+            "_JP": "伊丽莎白 · 麦克斯韦",
+            "_KR": "金洑娜"
         }
-},
+    },
     "44": {
         "_name": "Xinyan",
         "_id": 44,
@@ -4635,26 +4635,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11201,
-                "ATK": 249,
-                "DEF": 799,
-                "Custom": 0.24
+            "HP": 11201,
+            "ATK": 249,
+            "DEF": 799,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 11976,
-                "ATK": 312,
-                "DEF": 854,
-                "Custom": 0.24
+            "HP": 11976,
+            "ATK": 312,
+            "DEF": 854,
+            "Custom": 0.24
         },
         "Version": "1.1",
         "Fetter": 44,
         "_CV": {
-                "_CH": "王雅欣",
-                "_EN": "高桥智秋",
-                "_JP": "劳拉 · 斯特尔",
-                "_KR": "金採河"
+            "_CH": "王雅欣",
+            "_EN": "高桥智秋",
+            "_JP": "劳拉 · 斯特尔",
+            "_KR": "金採河"
         }
-},
+    },
     "43": {
         "_name": "Sucrose",
         "_id": 43,
@@ -4679,27 +4679,27 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Wind",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9244,
-                "ATK": 170,
-                "DEF": 703,
-                "Custom": 0.24
+            "HP": 9244,
+            "ATK": 170,
+            "DEF": 703,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 9883,
-                "ATK": 213,
-                "DEF": 752,
-                "Custom": 0.24
+            "HP": 9883,
+            "ATK": 213,
+            "DEF": 752,
+            "Custom": 0.24
         },
         "Version": "6.2",
         "Fetter": 43,
         "_CV": {
-                "_CH": "小敢",
-                "_EN": "藤田茜",
-                "_JP": "瓦莱里娅 · 罗德里格兹&匿名",
-                "_KR": "金荷英"
+            "_CH": "小敢",
+            "_EN": "藤田茜",
+            "_JP": "瓦莱里娅 · 罗德里格兹&匿名",
+            "_KR": "金荷英"
         },
         "Buff": 1
-},
+    },
     "42": {
         "_name": "Keqing",
         "_id": 42,
@@ -4724,26 +4724,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13103,
-                "ATK": 323,
-                "DEF": 799,
-                "Custom": 0.384
+            "HP": 13103,
+            "ATK": 323,
+            "DEF": 799,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 14034,
-                "ATK": 396,
-                "DEF": 856,
-                "Custom": 0.384
+            "HP": 14034,
+            "ATK": 396,
+            "DEF": 856,
+            "Custom": 0.384
         },
         "Version": "9.0",
         "Fetter": 42,
         "_CV": {
-                "_CH": "谢莹",
-                "_EN": "喜多村英梨",
-                "_JP": "凯莉 · 米尔斯&匿名",
-                "_KR": "李甫熙"
+            "_CH": "谢莹",
+            "_EN": "喜多村英梨",
+            "_JP": "凯莉 · 米尔斯&匿名",
+            "_KR": "李甫熙"
         }
-},
+    },
     "41": {
         "_name": "Mona",
         "_id": 41,
@@ -4768,27 +4768,27 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ER",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10409,
-                "ATK": 287,
-                "DEF": 653,
-                "Custom": 0.32
+            "HP": 10409,
+            "ATK": 287,
+            "DEF": 653,
+            "Custom": 0.32
         },
         "ShowStats2": {
-                "HP": 11149,
-                "ATK": 352,
-                "DEF": 700,
-                "Custom": 0.32
+            "HP": 11149,
+            "ATK": 352,
+            "DEF": 700,
+            "Custom": 0.32
         },
         "Version": "6.2",
         "Fetter": 41,
         "_CV": {
-                "_CH": "陈婷婷",
-                "_EN": "小原好美",
-                "_JP": "费丽茜娅 · 安吉尔",
-                "_KR": "禹贞信"
+            "_CH": "陈婷婷",
+            "_EN": "小原好美",
+            "_JP": "费丽茜娅 · 安吉尔",
+            "_KR": "禹贞信"
         },
         "Buff": 1
-},
+    },
     "39": {
         "_name": "Diona",
         "_id": 39,
@@ -4813,26 +4813,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Ice",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9570,
-                "ATK": 212,
-                "DEF": 601,
-                "Custom": 0.24
+            "HP": 9570,
+            "ATK": 212,
+            "DEF": 601,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10232,
-                "ATK": 267,
-                "DEF": 642,
-                "Custom": 0.24
+            "HP": 10232,
+            "ATK": 267,
+            "DEF": 642,
+            "Custom": 0.24
         },
         "Version": "1.1",
         "Fetter": 39,
         "_CV": {
-                "_CH": "诺亚",
-                "_EN": "井泽诗织",
-                "_JP": "蒂娜 · 谢尔曼",
-                "_KR": "禹贞信"
+            "_CH": "诺亚",
+            "_EN": "井泽诗织",
+            "_JP": "蒂娜 · 谢尔曼",
+            "_KR": "禹贞信"
         }
-},
+    },
     "38": {
         "_name": "Albedo",
         "_id": 38,
@@ -4857,27 +4857,27 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Rock",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13226,
-                "ATK": 251,
-                "DEF": 876,
-                "Custom": 0.288
+            "HP": 13226,
+            "ATK": 251,
+            "DEF": 876,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 14166,
-                "ATK": 308,
-                "DEF": 938,
-                "Custom": 0.288
+            "HP": 14166,
+            "ATK": 308,
+            "DEF": 938,
+            "Custom": 0.288
         },
         "Version": "6.2",
         "Fetter": 38,
         "_CV": {
-                "_CH": "Mace",
-                "_EN": "野岛健儿",
-                "_JP": "科伊 · 道",
-                "_KR": "金明俊"
+            "_CH": "Mace",
+            "_EN": "野岛健儿",
+            "_JP": "科伊 · 道",
+            "_KR": "金明俊"
         },
         "Buff": 1
-},
+    },
     "37": {
         "_name": "Ganyu",
         "_id": 37,
@@ -4902,26 +4902,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 9797,
-                "ATK": 335,
-                "DEF": 630,
-                "Custom": 0.384
+            "HP": 9797,
+            "ATK": 335,
+            "DEF": 630,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 10493,
-                "ATK": 410,
-                "DEF": 675,
-                "Custom": 0.384
+            "HP": 10493,
+            "ATK": 410,
+            "DEF": 675,
+            "Custom": 0.384
         },
         "Version": "1.2",
         "Fetter": 37,
         "_CV": {
-                "_CH": "林簌",
-                "_EN": "上田丽奈",
-                "_JP": "珍妮佛 · 罗希",
-                "_KR": "金仙惠"
+            "_CH": "林簌",
+            "_EN": "上田丽奈",
+            "_JP": "珍妮佛 · 罗希",
+            "_KR": "金仙惠"
         }
-},
+    },
     "36": {
         "_name": "Chongyun",
         "_id": 36,
@@ -4946,26 +4946,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10984,
-                "ATK": 223,
-                "DEF": 648,
-                "Custom": 0.24
+            "HP": 10984,
+            "ATK": 223,
+            "DEF": 648,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 11743,
-                "ATK": 280,
-                "DEF": 693,
-                "Custom": 0.24
+            "HP": 11743,
+            "ATK": 280,
+            "DEF": 693,
+            "Custom": 0.24
         },
         "Version": "1.0",
         "Fetter": 36,
         "_CV": {
-                "_CH": "kinsen",
-                "_EN": "齐藤壮马",
-                "_JP": "博 · 布里奇兰德",
-                "_KR": "梁静花"
+            "_CH": "kinsen",
+            "_EN": "齐藤壮马",
+            "_JP": "博 · 布里奇兰德",
+            "_KR": "梁静花"
         }
-},
+    },
     "35": {
         "_name": "Qiqi",
         "_id": 35,
@@ -4990,26 +4990,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Heal",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12368,
-                "ATK": 287,
-                "DEF": 922,
-                "Custom": 0.2215
+            "HP": 12368,
+            "ATK": 287,
+            "DEF": 922,
+            "Custom": 0.2215
         },
         "ShowStats2": {
-                "HP": 13247,
-                "ATK": 352,
-                "DEF": 988,
-                "Custom": 0.2215
+            "HP": 13247,
+            "ATK": 352,
+            "DEF": 988,
+            "Custom": 0.2215
         },
         "Version": "1.0",
         "Fetter": 35,
         "_CV": {
-                "_CH": "宴宁",
-                "_EN": "田村由加莉",
-                "_JP": "克莉斯蒂 · 凯特",
-                "_KR": "李露"
+            "_CH": "宴宁",
+            "_EN": "田村由加莉",
+            "_JP": "克莉斯蒂 · 凯特",
+            "_KR": "李露"
         }
-},
+    },
     "34": {
         "_name": "Noel",
         "_id": 34,
@@ -5034,26 +5034,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "DEF",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12071,
-                "ATK": 191,
-                "DEF": 799,
-                "Custom": 0.3
+            "HP": 12071,
+            "ATK": 191,
+            "DEF": 799,
+            "Custom": 0.3
         },
         "ShowStats2": {
-                "HP": 12906,
-                "ATK": 240,
-                "DEF": 854,
-                "Custom": 0.3
+            "HP": 12906,
+            "ATK": 240,
+            "DEF": 854,
+            "Custom": 0.3
         },
         "Version": "1.0",
         "Fetter": 34,
         "_CV": {
-                "_CH": "宴宁",
-                "_EN": "高尾奏音",
-                "_JP": "劳拉 · 费伊 · 史密斯",
-                "_KR": "李甫熙"
+            "_CH": "宴宁",
+            "_EN": "高尾奏音",
+            "_JP": "劳拉 · 费伊 · 史密斯",
+            "_KR": "李甫熙"
         }
-},
+    },
     "33": {
         "_name": "Tartaglia",
         "_id": 33,
@@ -5078,26 +5078,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Water",
         "Curve": 105,
         "ShowStats": {
-                "HP": 13103,
-                "ATK": 301,
-                "DEF": 815,
-                "Custom": 0.288
+            "HP": 13103,
+            "ATK": 301,
+            "DEF": 815,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 14034,
-                "ATK": 369,
-                "DEF": 873,
-                "Custom": 0.288
+            "HP": 14034,
+            "ATK": 369,
+            "DEF": 873,
+            "Custom": 0.288
         },
         "Version": "1.1",
         "Fetter": 33,
         "_CV": {
-                "_CH": "鱼冻",
-                "_EN": "木村良平",
-                "_JP": "格里芬 · 伯恩斯",
-                "_KR": "南度亨"
+            "_CH": "鱼冻",
+            "_EN": "木村良平",
+            "_JP": "格里芬 · 伯恩斯",
+            "_KR": "南度亨"
         }
-},
+    },
     "32": {
         "_name": "Bennett",
         "_id": 32,
@@ -5122,26 +5122,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ER",
         "Curve": 104,
         "ShowStats": {
-                "HP": 12397,
-                "ATK": 191,
-                "DEF": 771,
-                "Custom": 0.2667
+            "HP": 12397,
+            "ATK": 191,
+            "DEF": 771,
+            "Custom": 0.2667
         },
         "ShowStats2": {
-                "HP": 13255,
-                "ATK": 240,
-                "DEF": 825,
-                "Custom": 0.2667
+            "HP": 13255,
+            "ATK": 240,
+            "DEF": 825,
+            "Custom": 0.2667
         },
         "Version": "1.0",
         "Fetter": 32,
         "_CV": {
-                "_CH": "穆雪婷",
-                "_EN": "逢坂良太",
-                "_JP": "克里斯蒂娜 · 比 · 巴伦苏埃拉",
-                "_KR": "宋河琳"
+            "_CH": "穆雪婷",
+            "_EN": "逢坂良太",
+            "_JP": "克里斯蒂娜 · 比 · 巴伦苏埃拉",
+            "_KR": "宋河琳"
         }
-},
+    },
     "31": {
         "_name": "Fischl",
         "_id": 31,
@@ -5166,27 +5166,27 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9189,
-                "ATK": 244,
-                "DEF": 594,
-                "Custom": 0.24
+            "HP": 9189,
+            "ATK": 244,
+            "DEF": 594,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 9825,
-                "ATK": 307,
-                "DEF": 635,
-                "Custom": 0.24
+            "HP": 9825,
+            "ATK": 307,
+            "DEF": 635,
+            "Custom": 0.24
         },
         "Version": "6.2",
         "Fetter": 31,
         "_CV": {
-                "_CH": "Mace&赵悦程",
-                "_EN": "内田真礼&增谷康纪",
-                "_JP": "布兰特妮 · 考克斯&本 · 普罗斯基",
-                "_KR": "朴高夽&李弦"
+            "_CH": "Mace&赵悦程",
+            "_EN": "内田真礼&增谷康纪",
+            "_JP": "布兰特妮 · 考克斯&本 · 普罗斯基",
+            "_KR": "朴高夽&李弦"
         },
         "Buff": 1
-},
+    },
     "30": {
         "_name": "Zhongli",
         "_id": 30,
@@ -5211,26 +5211,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Rock",
         "Curve": 105,
         "ShowStats": {
-                "HP": 14695,
-                "ATK": 251,
-                "DEF": 738,
-                "Custom": 0.288
+            "HP": 14695,
+            "ATK": 251,
+            "DEF": 738,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 15740,
-                "ATK": 308,
-                "DEF": 790,
-                "Custom": 0.288
+            "HP": 15740,
+            "ATK": 308,
+            "DEF": 790,
+            "Custom": 0.288
         },
         "Version": "1.1",
         "Fetter": 30,
         "_CV": {
-                "_CH": "彭博",
-                "_EN": "前野智昭",
-                "_JP": "基思 · 西尔弗斯坦",
-                "_KR": "表永宰"
+            "_CH": "彭博",
+            "_EN": "前野智昭",
+            "_JP": "基思 · 西尔弗斯坦",
+            "_KR": "表永宰"
         }
-},
+    },
     "29": {
         "_name": "Klee",
         "_id": 29,
@@ -5255,27 +5255,27 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Fire",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10287,
-                "ATK": 311,
-                "DEF": 615,
-                "Custom": 0.288
+            "HP": 10287,
+            "ATK": 311,
+            "DEF": 615,
+            "Custom": 0.288
         },
         "ShowStats2": {
-                "HP": 11018,
-                "ATK": 381,
-                "DEF": 659,
-                "Custom": 0.288
+            "HP": 11018,
+            "ATK": 381,
+            "DEF": 659,
+            "Custom": 0.288
         },
         "Version": "6.2",
         "Fetter": 29,
         "_CV": {
-                "_CH": "花玲",
-                "_EN": "久野美咲",
-                "_JP": "帕娜姆 · 巴苏",
-                "_KR": "房莲知"
+            "_CH": "花玲",
+            "_EN": "久野美咲",
+            "_JP": "帕娜姆 · 巴苏",
+            "_KR": "房莲知"
         },
         "Buff": 1
-},
+    },
     "27": {
         "_name": "Ningguang",
         "_id": 27,
@@ -5300,26 +5300,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Rock",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9787,
-                "ATK": 212,
-                "DEF": 573,
-                "Custom": 0.24
+            "HP": 9787,
+            "ATK": 212,
+            "DEF": 573,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10464,
-                "ATK": 267,
-                "DEF": 613,
-                "Custom": 0.24
+            "HP": 10464,
+            "ATK": 267,
+            "DEF": 613,
+            "Custom": 0.24
         },
         "Version": "1.0",
         "Fetter": 27,
         "_CV": {
-                "_CH": "杜冥鸦",
-                "_EN": "大原沙耶香",
-                "_JP": "伊琳 · 艾伯丝",
-                "_KR": "郭奎媄"
+            "_CH": "杜冥鸦",
+            "_EN": "大原沙耶香",
+            "_JP": "伊琳 · 艾伯丝",
+            "_KR": "郭奎媄"
         }
-},
+    },
     "26": {
         "_name": "Xiao",
         "_id": 26,
@@ -5344,26 +5344,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12736,
-                "ATK": 349,
-                "DEF": 799,
-                "Custom": 0.192
+            "HP": 12736,
+            "ATK": 349,
+            "DEF": 799,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 13641,
-                "ATK": 428,
-                "DEF": 856,
-                "Custom": 0.192
+            "HP": 13641,
+            "ATK": 428,
+            "DEF": 856,
+            "Custom": 0.192
         },
         "Version": "1.3",
         "Fetter": 26,
         "_CV": {
-                "_CH": "kinsen",
-                "_EN": "松冈祯丞",
-                "_JP": "莱拉 · 贝尔津什",
-                "_KR": "沈揆赫"
+            "_CH": "kinsen",
+            "_EN": "松冈祯丞",
+            "_JP": "莱拉 · 贝尔津什",
+            "_KR": "沈揆赫"
         }
-},
+    },
     "25": {
         "_name": "Xingqiu",
         "_id": 25,
@@ -5388,26 +5388,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10222,
-                "ATK": 202,
-                "DEF": 758,
-                "Custom": 0.24
+            "HP": 10222,
+            "ATK": 202,
+            "DEF": 758,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10930,
-                "ATK": 253,
-                "DEF": 810,
-                "Custom": 0.24
+            "HP": 10930,
+            "ATK": 253,
+            "DEF": 810,
+            "Custom": 0.24
         },
         "Version": "1.0",
         "Fetter": 25,
         "_CV": {
-                "_CH": "唐雅菁",
-                "_EN": "皆川纯子",
-                "_JP": "克里斯蒂娜 · 比 · 巴伦苏埃拉",
-                "_KR": "郭奎媄"
+            "_CH": "唐雅菁",
+            "_EN": "皆川纯子",
+            "_JP": "克里斯蒂娜 · 比 · 巴伦苏埃拉",
+            "_KR": "郭奎媄"
         }
-},
+    },
     "24": {
         "_name": "Beidou",
         "_id": 24,
@@ -5432,26 +5432,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Elec",
         "Curve": 104,
         "ShowStats": {
-                "HP": 13050,
-                "ATK": 225,
-                "DEF": 648,
-                "Custom": 0.24
+            "HP": 13050,
+            "ATK": 225,
+            "DEF": 648,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 13953,
-                "ATK": 283,
-                "DEF": 693,
-                "Custom": 0.24
+            "HP": 13953,
+            "ATK": 283,
+            "DEF": 693,
+            "Custom": 0.24
         },
         "Version": "1.0",
         "Fetter": 24,
         "_CV": {
-                "_CH": "唐雅菁",
-                "_EN": "小清水亚美",
-                "_JP": "阿莱格拉 · 克拉克",
-                "_KR": "郑柚美"
+            "_CH": "唐雅菁",
+            "_EN": "小清水亚美",
+            "_JP": "阿莱格拉 · 克拉克",
+            "_KR": "郑柚美"
         }
-},
+    },
     "23": {
         "_name": "Xiangling",
         "_id": 23,
@@ -5476,26 +5476,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 104,
         "ShowStats": {
-                "HP": 10875,
-                "ATK": 225,
-                "DEF": 669,
-                "Custom": 96
+            "HP": 10875,
+            "ATK": 225,
+            "DEF": 669,
+            "Custom": 96
         },
         "ShowStats2": {
-                "HP": 11627,
-                "ATK": 283,
-                "DEF": 715,
-                "Custom": 96
+            "HP": 11627,
+            "ATK": 283,
+            "DEF": 715,
+            "Custom": 96
         },
         "Version": "1.0",
         "Fetter": 23,
         "_CV": {
-                "_CH": "小N",
-                "_EN": "小泽亚李",
-                "_JP": "杰基 · 拉斯塔",
-                "_KR": "尹娥煐"
+            "_CH": "小N",
+            "_EN": "小泽亚李",
+            "_JP": "杰基 · 拉斯塔",
+            "_KR": "尹娥煐"
         }
-},
+    },
     "22": {
         "_name": "Venti",
         "_id": 22,
@@ -5520,27 +5520,27 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ER",
         "Curve": 105,
         "ShowStats": {
-                "HP": 10531,
-                "ATK": 263,
-                "DEF": 669,
-                "Custom": 0.32
+            "HP": 10531,
+            "ATK": 263,
+            "DEF": 669,
+            "Custom": 0.32
         },
         "ShowStats2": {
-                "HP": 11280,
-                "ATK": 322,
-                "DEF": 716,
-                "Custom": 0.32
+            "HP": 11280,
+            "ATK": 322,
+            "DEF": 716,
+            "Custom": 0.32
         },
         "Version": "6.2",
         "Fetter": 22,
         "_CV": {
-                "_CH": "喵酱",
-                "_EN": "村濑步",
-                "_JP": "艾丽卡 · 哈拉彻",
-                "_KR": "郑侑廷"
+            "_CH": "喵酱",
+            "_EN": "村濑步",
+            "_JP": "艾丽卡 · 哈拉彻",
+            "_KR": "郑侑廷"
         },
         "Buff": 1
-},
+    },
     "21": {
         "_name": "Ambor",
         "_id": 21,
@@ -5565,26 +5565,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ATK",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9461,
-                "ATK": 223,
-                "DEF": 601,
-                "Custom": 0.24
+            "HP": 9461,
+            "ATK": 223,
+            "DEF": 601,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10116,
-                "ATK": 280,
-                "DEF": 642,
-                "Custom": 0.24
+            "HP": 10116,
+            "ATK": 280,
+            "DEF": 642,
+            "Custom": 0.24
         },
         "Version": "1.0",
         "Fetter": 21,
         "_CV": {
-                "_CH": "蔡书瑾",
-                "_EN": "石见舞菜香",
-                "_JP": "凯莉 · 巴斯金",
-                "_KR": "金延佑"
+            "_CH": "蔡书瑾",
+            "_EN": "石见舞菜香",
+            "_JP": "凯莉 · 巴斯金",
+            "_KR": "金延佑"
         }
-},
+    },
     "20": {
         "_name": "Razor",
         "_id": 20,
@@ -5609,27 +5609,27 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Phys",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11962,
-                "ATK": 234,
-                "DEF": 751,
-                "Custom": 0.3
+            "HP": 11962,
+            "ATK": 234,
+            "DEF": 751,
+            "Custom": 0.3
         },
         "ShowStats2": {
-                "HP": 12790,
-                "ATK": 293,
-                "DEF": 803,
-                "Custom": 0.3
+            "HP": 12790,
+            "ATK": 293,
+            "DEF": 803,
+            "Custom": 0.3
         },
         "Version": "6.2",
         "Fetter": 20,
         "_CV": {
-                "_CH": "周帅",
-                "_EN": "内山昂辉",
-                "_JP": "托德 · 哈伯空",
-                "_KR": "金徐暎"
+            "_CH": "周帅",
+            "_EN": "内山昂辉",
+            "_JP": "托德 · 哈伯空",
+            "_KR": "金徐暎"
         },
         "Buff": 1
-},
+    },
     "16": {
         "_name": "Diluc",
         "_id": 16,
@@ -5654,26 +5654,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CR",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12981,
-                "ATK": 335,
-                "DEF": 784,
-                "Custom": 0.192
+            "HP": 12981,
+            "ATK": 335,
+            "DEF": 784,
+            "Custom": 0.192
         },
         "ShowStats2": {
-                "HP": 13903,
-                "ATK": 410,
-                "DEF": 840,
-                "Custom": 0.192
+            "HP": 13903,
+            "ATK": 410,
+            "DEF": 840,
+            "Custom": 0.192
         },
         "Version": "1.0",
         "Fetter": 16,
         "_CV": {
-                "_CH": "马洋",
-                "_EN": "小野贤章",
-                "_JP": "肖恩 · 奇普洛克",
-                "_KR": "崔乘勋"
+            "_CH": "马洋",
+            "_EN": "小野贤章",
+            "_JP": "肖恩 · 奇普洛克",
+            "_KR": "崔乘勋"
         }
-},
+    },
     "15": {
         "_name": "Kaeya",
         "_id": 15,
@@ -5698,26 +5698,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "ER",
         "Curve": 104,
         "ShowStats": {
-                "HP": 11636,
-                "ATK": 223,
-                "DEF": 792,
-                "Custom": 0.2667
+            "HP": 11636,
+            "ATK": 223,
+            "DEF": 792,
+            "Custom": 0.2667
         },
         "ShowStats2": {
-                "HP": 12441,
-                "ATK": 280,
-                "DEF": 846,
-                "Custom": 0.2667
+            "HP": 12441,
+            "ATK": 280,
+            "DEF": 846,
+            "Custom": 0.2667
         },
         "Version": "1.0",
         "Fetter": 15,
         "_CV": {
-                "_CH": "孙晔",
-                "_EN": "鸟海浩辅",
-                "_JP": "乔西 · 蒙塔纳 · 麦科伊",
-                "_KR": "郑周元"
+            "_CH": "孙晔",
+            "_EN": "鸟海浩辅",
+            "_JP": "乔西 · 蒙塔纳 · 麦科伊",
+            "_KR": "郑周元"
         }
-},
+    },
     "14": {
         "_name": "Barbara",
         "_id": 14,
@@ -5742,26 +5742,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "HP",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9787,
-                "ATK": 159,
-                "DEF": 669,
-                "Custom": 0.24
+            "HP": 9787,
+            "ATK": 159,
+            "DEF": 669,
+            "Custom": 0.24
         },
         "ShowStats2": {
-                "HP": 10464,
-                "ATK": 200,
-                "DEF": 715,
-                "Custom": 0.24
+            "HP": 10464,
+            "ATK": 200,
+            "DEF": 715,
+            "Custom": 0.24
         },
         "Version": "1.0",
         "Fetter": 14,
         "_CV": {
-                "_CH": "宋媛媛",
-                "_EN": "鬼头明里",
-                "_JP": "劳拉 · 斯特尔",
-                "_KR": "尹娥煐"
+            "_CH": "宋媛媛",
+            "_EN": "鬼头明里",
+            "_JP": "劳拉 · 斯特尔",
+            "_KR": "尹娥煐"
         }
-},
+    },
     "6": {
         "_name": "Lisa",
         "_id": 6,
@@ -5786,26 +5786,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "EM",
         "Curve": 104,
         "ShowStats": {
-                "HP": 9570,
-                "ATK": 232,
-                "DEF": 573,
-                "Custom": 96
+            "HP": 9570,
+            "ATK": 232,
+            "DEF": 573,
+            "Custom": 96
         },
         "ShowStats2": {
-                "HP": 10232,
-                "ATK": 291,
-                "DEF": 613,
-                "Custom": 96
+            "HP": 10232,
+            "ATK": 291,
+            "DEF": 613,
+            "Custom": 96
         },
         "Version": "1.0",
         "Fetter": 6,
         "_CV": {
-                "_CH": "钟可",
-                "_EN": "田中理惠",
-                "_JP": "玛拉 · 朱诺",
-                "_KR": "朴高夽"
+            "_CH": "钟可",
+            "_EN": "田中理惠",
+            "_JP": "玛拉 · 朱诺",
+            "_KR": "朴高夽"
         }
-},
+    },
     "3": {
         "_name": "Qin",
         "_id": 3,
@@ -5830,26 +5830,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "Heal",
         "Curve": 105,
         "ShowStats": {
-                "HP": 14695,
-                "ATK": 239,
-                "DEF": 769,
-                "Custom": 0.2215
+            "HP": 14695,
+            "ATK": 239,
+            "DEF": 769,
+            "Custom": 0.2215
         },
         "ShowStats2": {
-                "HP": 15740,
-                "ATK": 293,
-                "DEF": 823,
-                "Custom": 0.2215
+            "HP": 15740,
+            "ATK": 293,
+            "DEF": 823,
+            "Custom": 0.2215
         },
         "Version": "1.0",
         "Fetter": 3,
         "_CV": {
-                "_CH": "林簌",
-                "_EN": "斋藤千和",
-                "_JP": "斯蒂芬妮 · 萨瑟兰",
-                "_KR": "安荣美"
+            "_CH": "林簌",
+            "_EN": "斋藤千和",
+            "_JP": "斯蒂芬妮 · 萨瑟兰",
+            "_KR": "安荣美"
         }
-},
+    },
     "2": {
         "_name": "Ayaka",
         "_id": 2,
@@ -5874,26 +5874,26 @@ var __AvatarInfoConfig = {
         "CustomPromote": "CD",
         "Curve": 105,
         "ShowStats": {
-                "HP": 12858,
-                "ATK": 342,
-                "DEF": 784,
-                "Custom": 0.384
+            "HP": 12858,
+            "ATK": 342,
+            "DEF": 784,
+            "Custom": 0.384
         },
         "ShowStats2": {
-                "HP": 13772,
-                "ATK": 419,
-                "DEF": 840,
-                "Custom": 0.384
+            "HP": 13772,
+            "ATK": 419,
+            "DEF": 840,
+            "Custom": 0.384
         },
         "Version": "2.0",
         "Fetter": 2,
         "_CV": {
-                "_CH": "小N",
-                "_EN": "早见沙织",
-                "_JP": "艾丽卡 · 门德斯",
-                "_KR": "李侑俐"
+            "_CH": "小N",
+            "_EN": "早见沙织",
+            "_JP": "艾丽卡 · 门德斯",
+            "_KR": "李侑俐"
         }
-}
+    }
 }
 
 var _changelog = {}

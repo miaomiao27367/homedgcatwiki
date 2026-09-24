@@ -21,8 +21,11 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
+        "V": "L"
     },
+
+
+
 
 
     "390002": {
@@ -45,8 +48,11 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "3"
+        "V": "L"
     },
+
+
+
 
 
     "15437": {
@@ -69,8 +75,11 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 195437,
         "StoryCount": 1,
-        "V": "3"
+        "V": "L"
     },
+
+
+
 
 
     "14524": {
@@ -93,14 +102,17 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 194524,
         "StoryCount": 1,
-        "V": "3"
+        "V": "L"
     },
+
+
+
 
 
     "14437": {
         "_id": "14437",
         "Name": "凝雪沉心",
-        "Desc": "",
+        "Desc": "至纯的冰雪凝结而成的礼器，传说直到五百年前，都被历任雪精王公用于加冕仪式。",
         "Type": 3,
         "Rank": 4,
         "Icons": "UI_EquipIcon_Catalyst_FrostScepter",
@@ -117,8 +129,11 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 194437,
         "StoryCount": 1,
-        "V": "3"
+        "V": "L"
     },
+
+
+
 
 
     "11522": {
@@ -141,8 +156,11 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 191522,
         "StoryCount": 1,
-        "V": "3"
+        "V": "L"
     },
+
+
+
 
 
     "11438": {
@@ -165,14 +183,17 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 191438,
         "StoryCount": 1,
-        "V": "3"
+        "V": "L"
     },
+
+
+
 
 
     "11437": {
         "_id": "11437",
         "Name": "新枝",
-        "Desc": "",
+        "Desc": "以圣木所制的宝剑，据闻曾在一场战役里成为扭转胜负的关键。",
         "Type": 1,
         "Rank": 4,
         "Icons": "UI_EquipIcon_Sword_SpikedStake",
@@ -189,8 +210,11 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 191437,
         "StoryCount": 1,
-        "V": "3"
+        "V": "L"
     },
+
+
+
 
 
     "350004": {

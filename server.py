@@ -1497,14 +1497,19 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                         block_pattern = rf'"_id":\s*{cid}\s*[,}}]'
                         block_match = re.search(block_pattern, content)
                         if block_match:
-                            # 从该位置向前后搜索 Icon 和 _name
                             pos = block_match.start()
                             icon_match = re.search(r'"Icon":\s*"([^"]+)"', content[pos:pos+2000])
                             if icon_match:
                                 icons.add(icon_match.group(1))  # UI_AvatarIcon_Odette
-                            name_match = re.search(r'"_name":\s*"([^"]+)"', content[pos:pos+2000])
+                            # _name在_id之前（JSON中字段顺序），需要向前搜索
+                            name_match = re.search(r'"_name":\s*"([^"]+)"', content[max(0, pos - 500):pos])
                             if name_match:
                                 avatar_name = name_match.group(1)
+                            else:
+                                # 兜底：如果前面没找到，也尝试向后搜索（兼容不同字段顺序）
+                                name_match = re.search(r'"_name":\s*"([^"]+)"', content[pos:pos+500])
+                                if name_match:
+                                    avatar_name = name_match.group(1)
                     except Exception as e:
                         print(f"[gi_sync] 读取 avatar.js 失败: {e}")
 

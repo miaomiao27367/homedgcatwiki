@@ -362,116 +362,102 @@ def merge_basic_data_to_monster_js(basic_entries: Dict[str, Any]) -> str:
 
     策略：
     - 新本体（7位ID不存在）：完整插入（本体+Child变体）
-    - 已有本体：只追加尚不存在的Child变体到已有本体的Child下
+    - 已有本体 + basic字段有变化：更新Name/Desc/Stats/Weak/RESBase/Skills等basic字段
+    - 已有本体 + Child有新变体：追加新变体到已有本体的Child下
     """
     monster_js_path = "./sr/data/CH/Monster.js"
 
     with open(monster_js_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 定位 _monster 区域边界，避免搜索到 _status 和 _bossguide
+    # 定位 _monster 区域边界
+    var_start = content.find('var _monster = ')
+    if var_start == -1:
+        return "错误：无法定位 _monster 对象"
+
+    json_start = var_start + len('var _monster = ')
     pattern_monster = '};\n\nvar _monsterlist = ['
-    monster_end = content.find(pattern_monster)
-    if monster_end == -1:
+    json_end = content.find(pattern_monster)
+    if json_end == -1:
         return "错误：无法定位 _monster 对象结束位置"
-    monster_section = content[:monster_end]
+
+    # 提取并解析现有 _monster JSON
+    json_str = content[json_start:json_end + 1]
+    json_str_clean = re.sub(r',\s*}', '}', json_str)
+    json_str_clean = re.sub(r',\s*]', ']', json_str_clean)
+    try:
+        existing_monster = json.loads(json_str_clean)
+    except json.JSONDecodeError as e:
+        return f"错误：Monster.js JSON解析失败: {e}"
+
+    # basic字段 = _monster条目中除 "Child" 以外的所有字段
+    BASIC_FIELDS = {"_id", "Name", "Desc", "Stats", "Weak", "RESBase", "StatusRESBase",
+                    "DebuffRES", "Skills", "Camp", "Icon", "Figure", "StanceCount",
+                    "Multistage", "Multistage_list"}
 
     new_bases = []
+    updated_bases = []
     children_to_add = {}  # {base_id: {child_id: child_entry, ...}}
 
-    for base_id, entry in basic_entries.items():
-        base_id_str = str(base_id)
-        if f'"{base_id_str}":' not in monster_section:
-            # 全新本体 → 整条插入
-            new_bases.append(base_id_str)
-        elif "Child" in entry:
-            # 已有本体 → 只检查Child中是否有新变体
-            for child_id, child_entry in entry["Child"].items():
-                child_id_str = str(child_id)
-                if f'"{child_id_str}":' not in monster_section:
-                    children_to_add.setdefault(base_id_str, {})[child_id_str] = child_entry
+    for base_id_str, new_entry in basic_entries.items():
+        if base_id_str in existing_monster:
+            existing = existing_monster[base_id_str]
 
-    if not new_bases and not children_to_add:
-        return "所有条目已存在，无需拼接"
+            # --- 对比basic字段，发现差异则更新 ---
+            has_basic_change = False
+            for field in BASIC_FIELDS:
+                old_val = existing.get(field)
+                new_val = new_entry.get(field)
+                if old_val != new_val:
+                    has_basic_change = True
+                    break
+
+            if has_basic_change:
+                for field in BASIC_FIELDS:
+                    if field in new_entry:
+                        existing[field] = new_entry[field]
+                updated_bases.append(base_id_str)
+
+            # --- 检查Child中是否有新变体 ---
+            if "Child" in new_entry:
+                if "Child" not in existing:
+                    existing["Child"] = {}
+                for child_id, child_entry in new_entry["Child"].items():
+                    if child_id not in existing["Child"]:
+                        children_to_add.setdefault(base_id_str, {})[child_id] = child_entry
+                        existing["Child"][child_id] = child_entry
+        else:
+            # 全新本体
+            new_bases.append(base_id_str)
+            existing_monster[base_id_str] = new_entry
+
+    if not new_bases and not updated_bases and not children_to_add:
+        return "所有条目已存在，无需更新"
 
     result_parts = []
-
-    # 1. 插入全新本体（按ID数值排序）
     if new_bases:
-        new_bases_sorted = sorted(new_bases, key=lambda x: int(x))
-        new_entries = {cid: basic_entries[cid] for cid in new_bases_sorted}
-        new_json = json.dumps(new_entries, ensure_ascii=False, indent=4)
-        new_json = new_json[1:-1].strip()  # 去掉外层 {}
-        new_json = '\n'.join('    ' + line for line in new_json.split('\n'))  # 补一级缩进
+        result_parts.append(f"新增本体 {len(new_bases)} 个：{', '.join(sorted(new_bases, key=int))}")
+    if updated_bases:
+        result_parts.append(f"更新本体basic {len(updated_bases)} 个：{', '.join(sorted(updated_bases, key=int))}")
+    if children_to_add:
+        total_added = sum(len(c) for c in children_to_add.values())
+        result_parts.append(f"追加变体 {total_added} 个")
 
-        # 在 _monster 闭合 }; 前插入新本体，逗号紧跟上一行末尾
-        idx = content.find(pattern_monster)
-        content = content[:idx].rstrip('\n') + ',\n' + new_json + '\n' + content[idx:]
+    # 序列化更新后的 _monster
+    new_monster_json = json.dumps(existing_monster, ensure_ascii=False, indent=4)
 
+    # 替换 _monster 段
+    content = content[:json_start] + new_monster_json + content[json_end + 1:]
+
+    # _monsterlist 追加新ID
+    if new_bases:
         pattern_list = '];\n\nvar _status = {'
         if pattern_list not in content:
             return "错误：无法定位 _monsterlist 数组结束位置"
+        new_bases_sorted = sorted(new_bases, key=lambda x: int(x))
         new_id_lines = ',\n'.join(f'    {cid}' for cid in new_bases_sorted)
         idx2 = content.find(pattern_list)
         content = content[:idx2].rstrip('\n') + ',\n' + new_id_lines + '\n' + content[idx2:]
-
-        result_parts.append(f"新增本体 {len(new_bases)} 个：{', '.join(new_bases)}")
-
-    # 2. 为已有本体追加新Child变体
-    if children_to_add:
-        import re
-        total_added = 0
-        for base_id, child_dict in children_to_add.items():
-            # 定位到本体的起始位置（仅在 _monster 区域内搜索）
-            base_entry_pattern = re.compile(
-                rf'"{re.escape(base_id)}":\s*\{{',
-                re.DOTALL
-            )
-            m = base_entry_pattern.search(content, 0, monster_end)
-            if not m:
-                continue
-
-            # 构建新变体JSON（4空格缩进 + 额外12空格偏移 = 3层嵌套）
-            new_child_json = json.dumps(child_dict, ensure_ascii=False, indent=4)
-            new_child_json = new_child_json[1:-1].strip()  # 去掉外层 {}
-            new_child_json = '\n'.join('            ' + line for line in new_child_json.split('\n'))
-
-            # 先定位本体条目的闭合 }（避免 child_pattern 误匹配到其他本体的 Child）
-            brace_count = 1
-            pos = m.end()
-            while pos < len(content) and brace_count > 0:
-                if content[pos] == '{':
-                    brace_count += 1
-                elif content[pos] == '}':
-                    brace_count -= 1
-                pos += 1
-            base_close = pos - 1  # 本体条目闭合 } 的位置
-
-            # 在本体条目范围内找 Child 块
-            child_pattern = re.compile(r'"Child":\s*\{')
-            child_m = child_pattern.search(content, m.start(), base_close)
-
-            if child_m:
-                # 已有Child块 → 在闭合 } 前追加
-                child_open = child_m.end()
-                brace_count = 1
-                pos = child_open
-                while pos < len(content) and brace_count > 0:
-                    if content[pos] == '{':
-                        brace_count += 1
-                    elif content[pos] == '}':
-                        brace_count -= 1
-                    pos += 1
-                child_close = pos - 1
-                content = content[:child_close].rstrip() + ',\n' + new_child_json + '\n' + content[child_close:]
-            else:
-                # 没有Child块 → 在本体条目闭合 } 前插入Child块
-                child_block = ',\n        "Child": {\n' + new_child_json + '\n        }'
-                content = content[:base_close].rstrip() + child_block + '\n' + content[base_close:]
-
-            total_added += len(child_dict)
-
-        result_parts.append(f"追加变体 {total_added} 个")
 
     with open(monster_js_path, 'w', encoding='utf-8') as f:
         f.write(content)

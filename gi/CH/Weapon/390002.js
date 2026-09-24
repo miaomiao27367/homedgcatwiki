@@ -17,6 +17,21 @@ var _WeaponAffixPConfig_ = {
                 "Affix": [
                     ""
                 ]
+            },
+            "4": {
+                "Affix": [
+                    ""
+                ]
+            },
+            "5": {
+                "Affix": [
+                    ""
+                ]
+            },
+            "L": {
+                "Affix": [
+                    ""
+                ]
             }
         }
     }

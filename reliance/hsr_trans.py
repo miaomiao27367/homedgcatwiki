@@ -7,6 +7,7 @@
 """
 
 import os
+import re
 import json
 import requests
 from typing import Dict, Any, Optional
@@ -801,13 +802,11 @@ AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 
 
 def merge_avatar_to_avatar_js(character_id: str) -> str:
     """
-    将生成的avatar基础数据插入到 Avatar.js 的 _avatar 对象中
-    新条目插入到对象头部 (var _avatar = { 之后)
+    将生成的avatar基础数据合并到 Avatar.js 的 _avatar 对象中
 
-    Args:
-        character_id: 角色ID
-    Returns:
-        拼接结果描述
+    策略：
+    - 新角色：插入到 _avatar 对象中
+    - 已有角色 + 数据有变化：用新版本数据替换
     """
     basic_file = os.path.join(OUTPUT_DIR, f"{character_id}basic.js")
     avatar_js = AVATAR_JS_PATH
@@ -831,23 +830,52 @@ def merge_avatar_to_avatar_js(character_id: str) -> str:
     with open(avatar_js, 'r', encoding='utf-8') as f:
         js_content = f.read()
 
-    if f'"{avatar_id}":' in js_content:
-        return "角色条目已存在，无需拼接"
+    # 定位 _avatar 区域
+    var_start = js_content.find('var _avatar = ')
+    if var_start == -1:
+        return "错误：无法定位 _avatar 对象"
+    json_start = var_start + len('var _avatar = ')
 
-    new_json = json.dumps(avatar_entry, ensure_ascii=False, indent=4)
-    new_json = '\n'.join('    ' + line for line in new_json.split('\n'))
+    # 找到 _avatar 闭合 }; （后跟下一个 var 或文件末尾）
+    next_var = js_content.find('\n\nvar _', json_start)
+    if next_var == -1:
+        next_var = len(js_content)
+    json_end = js_content.rfind('}', json_start, next_var)
+    if json_end == -1:
+        return "错误：无法定位 _avatar 对象结束位置"
 
-    new_entry = f'    "{avatar_id}": {new_json},\n'
+    # 解析现有 _avatar JSON
+    json_str = js_content[json_start:json_end + 1]
+    json_str_clean = re.sub(r',\s*}', '}', json_str)
+    json_str_clean = re.sub(r',\s*]', ']', json_str_clean)
+    try:
+        existing_avatar = json.loads(json_str_clean)
+    except json.JSONDecodeError as e:
+        return f"错误：Avatar.js JSON解析失败: {e}"
 
-    pattern = 'var _avatar = {\n'
-    if pattern not in js_content:
-        return "错误：无法定位 _avatar 对象起始位置"
-    js_content = js_content.replace(pattern, pattern + new_entry, 1)
+    is_update = avatar_id in existing_avatar
+
+    if is_update:
+        # 对比新旧数据是否一致
+        old_entry = json.dumps(existing_avatar[avatar_id], ensure_ascii=False, sort_keys=True)
+        new_entry_check = json.dumps(avatar_entry, ensure_ascii=False, sort_keys=True)
+        if old_entry == new_entry_check:
+            return "角色条目已存在且数据一致，无需更新"
+
+    # 更新/新增条目
+    existing_avatar[avatar_id] = avatar_entry
+
+    # 序列化
+    new_avatar_json = json.dumps(existing_avatar, ensure_ascii=False, indent=4)
+    js_content = js_content[:json_start] + new_avatar_json + js_content[json_end + 1:]
 
     with open(avatar_js, 'w', encoding='utf-8') as f:
         f.write(js_content)
 
-    return f"已自动拼接角色 {avatar_id} 到 Avatar.js（头部）"
+    if is_update:
+        return f"角色 {avatar_id} 条目已存在，已用新版本数据更新"
+    else:
+        return f"已自动拼接角色 {avatar_id} 到 Avatar.js"
 
 
 def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any], all_versions_tree_data: Dict[str, Any],

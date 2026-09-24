@@ -1831,7 +1831,21 @@ $(function () {
                             },
                             {
                                 br: '',
-                                when: t.HP && (t.SPD || me['13'])
+                                when: t.HP && ((t.IsPolluted || t.PollutedNum || t.PollutedLevel) || t.SPD || me['13'])
+                            },
+                            {
+                                span: function () {
+                                    var polluted_icon = { 2: 'polluted_II.png', 3: 'polluted_III.png' }
+                                    var pfile = polluted_icon[t.PollutedLevel] || 'polluted_II.png'
+                                    return '<img src="' + imgpre + 'images/Debuff/' + pfile + '" style="width:20px;height:20px;vertical-align:middle;margin-right:3px;">' +
+                                        '<b><color style="color:#DC143C;">+' + t.PollutedNum + '</color></b>'
+                                },
+                                class: 'monname_2',
+                                when: t.IsPolluted || t.PollutedNum || t.PollutedLevel
+                            },
+                            {
+                                br: '',
+                                when: (t.IsPolluted || t.PollutedNum || t.PollutedLevel) && (t.SPD || me['13'])
                             },
                             {
                                 span: '<b><color style="color:#2545ba;">' + t.SPD.toString() + '</color></b>' + (me["6"] ? ` <color style='color:#666;'>[${((stage_eg ? (stage_eg.SPD ? stage_eg.SPD : 1) : 1) * me["6"] * 100).toFixed(0)}%]</color>` : ''),
