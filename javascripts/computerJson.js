@@ -1996,7 +1996,7 @@ var links = {
                 "EN": "Monsters",
                 "RU": "Противники"
             },
-            "Link": "/gi/monster"
+            "Link": "/gi/monster-v2"
         },
         {
             "Name": {
