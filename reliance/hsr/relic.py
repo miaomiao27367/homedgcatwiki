@@ -19,8 +19,8 @@ from typing import Dict, Any, Optional, List
 BASE_URL = 'https://static.nanoka.cc/hsr'
 LANGUAGE = 'zh'
 CACHE_DIR = './tempdata'
-OUTPUT_RELIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sr', 'data', 'CH', 'Relic')
-OUTPUT_IMAGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'images', 'itemfigures')
+OUTPUT_RELIC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sr', 'data', 'CH', 'Relic')
+OUTPUT_IMAGE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'images', 'itemfigures')
 IMAGE_BASE_URL = 'https://static.nanoka.cc/assets/hsr/itemfigures'
 
 os.makedirs(CACHE_DIR, exist_ok=True)
@@ -214,8 +214,8 @@ def generate_relic_js(relic_id: str, relic_items: List[Dict[str, str]]) -> str:
     return js_content
 
 
-AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sr', 'data', 'CH', 'Avatar.js')
-RELIC_JS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sr', 'data', 'CH', 'Relic.js')
+AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sr', 'data', 'CH', 'Avatar.js')
+RELIC_JS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sr', 'data', 'CH', 'Relic.js')
 
 
 def parse_relic_object() -> tuple:

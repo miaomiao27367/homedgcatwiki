@@ -593,7 +593,7 @@ def generate_item_data(item_ids: List[str], version: str = API_VERSION,
 # ============================================================
 
 IMG_URL = "https://static.nanoka.cc/assets/hsr/itemicons/{}.webp"
-IMG_SAVE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "images", "itemicon")
+IMG_SAVE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "images", "itemicon")
 
 
 def sync_item_images(item_ids: List[str]) -> str:

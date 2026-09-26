@@ -424,7 +424,7 @@ def generate_avatar_weapon_data(weapon_id: str, weapon_data: Dict[str, Any], maj
         f.write("\n")
 
 
-WEAPON_JS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sr', 'data', 'CH', 'Weapon.js')
+WEAPON_JS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sr', 'data', 'CH', 'Weapon.js')
 
 
 def merge_weapon_to_weapon_js(weapon_id: str) -> str:
