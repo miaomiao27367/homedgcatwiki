@@ -1,6 +1,72 @@
 // Auto Generated
 
 var _WeaponConfig = {
+    "224102": {
+        "_id": "224102",
+        "Name": "艾维萨缇的山狩",
+        "Desc": "(test) TPS 霰弹枪02",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Shotgun_Rock",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224102,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "1"
+    },
+    "224101": {
+        "_id": "224101",
+        "Name": "索斯卢科的灼炎",
+        "Desc": "(test) TPS 霰弹枪01",
+        "Type": 6,
+        "Rank": 4,
+        "Icons": "UI_EquipIcon_Shotgun_Vepr",
+        "Stat": 0,
+        "Custom": "",
+        "CustomStat": 0,
+        "AscMatID": 114008,
+        "MatIDs": [
+            null,
+            null
+        ],
+        "EquipAffixName": "",
+        "EquipAffixID": 1224101,
+        "Extra": [],
+        "Story": 0,
+        "StoryCount": 0,
+        "V": "1"
+    },
+    "14525": {
+        "_id": "14525",
+        "Name": "武器-法器",
+        "Desc": "",
+        "Type": 3,
+        "Rank": 5,
+        "Icons": "UI_EquipIcon_Catalyst_Chernaya",
+        "Stat": 541.829758,
+        "Custom": "CD",
+        "CustomStat": 0.882048,
+        "AscMatID": 114096,
+        "MatIDs": [
+            112160,
+            112148
+        ],
+        "EquipAffixName": "7.2UP武器",
+        "EquipAffixID": 114525,
+        "Extra": [],
+        "Story": 194525,
+        "StoryCount": 1,
+        "V": "1"
+    },
     "390003": {
         "_id": "390003",
         "Name": "星锋剑",

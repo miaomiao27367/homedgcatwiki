@@ -654,6 +654,112 @@ var ToolsApp = {
         }
     },
 
+    // 发送GI怪物V2更新请求
+    sendGIMonsterV2Update: async function() {
+        var submitBtn = document.getElementById('giMonsterV2SubmitBtn');
+        var btnText = document.getElementById('giMonsterV2BtnText');
+        var resultDiv = document.getElementById('giMonsterV2Result');
+
+        var monsterId = document.getElementById('giMonsterV2Id').value.trim();
+        var apiVersion = document.getElementById('giMonsterV2ApiVersion').value.trim();
+        var forceCache = document.getElementById('giMonsterV2ForceCache').checked;
+
+        var data = {
+            monster_id: monsterId,
+            api_version: apiVersion || null,
+            force_cache: forceCache
+        };
+
+        submitBtn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>处理中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/gi_monster_v2_update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            var result = await response.json();
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('giMonsterV2ResultTitle').textContent =
+                result.status === 'success' ? '✓ 更新成功' : '✗ 更新失败';
+            document.getElementById('giMonsterV2ResultMessage').textContent = result.message;
+
+            var outputText = result.stdout || result.stderr || '';
+            document.getElementById('giMonsterV2ResultOutput').textContent = outputText;
+            document.getElementById('giMonsterV2ResultOutput').style.display = outputText ? 'block' : 'none';
+
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giMonsterV2ResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('giMonsterV2ResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('giMonsterV2ResultOutput').textContent = error.toString();
+            document.getElementById('giMonsterV2ResultOutput').style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            btnText.textContent = '发送更新请求';
+        }
+    },
+
+    // 发送GI怪物图标缓存请求
+    sendGIMonsterV2CacheImg: async function() {
+        var btn = document.getElementById('giMonsterV2CacheImgBtn');
+        var btnText = document.getElementById('giMonsterV2CacheImgBtnText');
+        var resultDiv = document.getElementById('giMonsterV2CacheImgResult');
+
+        var monsterId = document.getElementById('giMonsterV2CacheImgId').value.trim();
+        if (!monsterId) {
+            monsterId = document.getElementById('giMonsterV2Id').value.trim();
+            if (!monsterId) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result error';
+                document.getElementById('giMonsterV2CacheImgResultTitle').textContent = '✗ 缓存失败';
+                document.getElementById('giMonsterV2CacheImgResultMessage').textContent = '请输入怪物ID';
+                return;
+            }
+        }
+
+        btn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>下载中...';
+        resultDiv.style.display = 'none';
+
+        try {
+            var response = await fetch('/gi_monster_v2_cache_icons', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ monster_id: monsterId })
+            });
+
+            var result = await response.json();
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result ' + result.status;
+            document.getElementById('giMonsterV2CacheImgResultTitle').textContent =
+                result.status === 'success' ? '✓ 缓存完成' : '✗ 缓存失败';
+            document.getElementById('giMonsterV2CacheImgResultMessage').textContent = result.message;
+
+            var outputText = result.stdout || result.stderr || '';
+            document.getElementById('giMonsterV2CacheImgResultOutput').textContent = outputText;
+            document.getElementById('giMonsterV2CacheImgResultOutput').style.display = outputText ? 'block' : 'none';
+
+        } catch (error) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giMonsterV2CacheImgResultTitle').textContent = '✗ 请求失败';
+            document.getElementById('giMonsterV2CacheImgResultMessage').textContent = '网络错误，请重试';
+            document.getElementById('giMonsterV2CacheImgResultOutput').textContent = error.toString();
+            document.getElementById('giMonsterV2CacheImgResultOutput').style.display = 'block';
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = '缓存图标';
+        }
+    },
+
     // 发送GI武器更新请求
     sendGIWeaponUpdate: async function() {
         var submitBtn = document.getElementById('giWeaponSubmitBtn');

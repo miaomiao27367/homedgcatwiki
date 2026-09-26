@@ -21,6 +21,7 @@ from reliance.hsr_fiction_v2 import generate_fiction_v2
 from reliance.hsr_chaos_v2 import generate_chaos_v2
 from reliance.gi_trans import gi_character_update
 from reliance.gi_weapon_trans import gi_weapon_update, gi_weapon_img_sync
+from reliance.update_v2_monster import update_single_monster, cache_icons_for_monster
 from reliance.hsr_trans_relic import generate_relic_data
 from reliance.item_converter import generate_item_data, sync_item_images
 from reliance.gi_item_converter import generate_gi_item_data, sync_gi_item_images
@@ -1330,6 +1331,73 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
 
             except Exception as e:
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+
+            print("-" * 50)
+            return
+
+        # 处理 /gi_monster_v2_update
+        if path == '/gi_monster_v2_update':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+
+                request_data = json.loads(post_data.decode('utf-8'))
+                monster_id = request_data.get('monster_id', '').strip()
+                api_version = request_data.get('api_version') or None
+                force_cache = request_data.get('force_cache', False)
+
+                if not monster_id:
+                    response_data = {"status": "error", "message": "请输入怪物ID", "stderr": "monster_id 为空"}
+                else:
+                    print(f"[gi_monster_v2_update] monster_id={monster_id}, api_version={api_version}, force={force_cache}")
+                    success, msg, output = update_single_monster(monster_id, api_version=api_version, force=force_cache)
+                    response_data = {"status": "success" if success else "error", "message": msg, "stdout": output}
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+
+            except Exception as e:
+                print(f"[gi_monster_v2_update] 处理失败: {str(e)}")
+                error_msg = str(e).replace('"', '\\"')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(f'{{"status": "error", "message": "{error_msg}"}}'.encode('utf-8'))
+
+            print("-" * 50)
+            return
+
+        # 处理 /gi_monster_v2_cache_icons
+        if path == '/gi_monster_v2_cache_icons':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                request_data = json.loads(post_data.decode('utf-8'))
+                monster_id = request_data.get('monster_id', '').strip()
+                api_version = request_data.get('api_version') or None
+                force_cache = request_data.get('force_cache', False)
+
+                if not monster_id:
+                    response_data = {"status": "error", "message": "请输入怪物ID", "stderr": "monster_id 为空"}
+                else:
+                    print(f"[gi_monster_v2_cache_icons] monster_id={monster_id}, force={force_cache}")
+                    success, msg, output = cache_icons_for_monster(monster_id, api_version=api_version, force=force_cache)
+                    response_data = {"status": "success" if success else "error", "message": msg, "stdout": output}
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode('utf-8'))
+
+            except Exception as e:
+                print(f"[gi_monster_v2_cache_icons] 处理失败: {str(e)}")
                 error_msg = str(e).replace('"', '\\"')
                 self.send_response(500)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')

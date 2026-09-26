@@ -724,7 +724,7 @@ var __AvatarInfoConfig = {
             "DEF": 782,
             "Custom": 0.192
         },
-        "Version": "6.8",
+        "Version": "7.1",
         "Fetter": 143,
         "_CV": {
             "_CH": "龟娘",
@@ -768,13 +768,101 @@ var __AvatarInfoConfig = {
             "DEF": 519,
             "Custom": 0.288
         },
-        "Version": "6.8",
+        "Version": "7.1",
         "Fetter": 140,
         "_CV": {
             "_CH": "苏婉",
             "_EN": "杨素汐",
             "_JP": "伊藤加奈惠",
             "_KR": "金艺玲"
+        }
+    },
+    "137": {
+        "_name": "Valeriy",
+        "_id": 137,
+        "Name": "瓦列里",
+        "Desc": "测试角色",
+        "Title": "？？？",
+        "Constellation": "熊罴座",
+        "Nation": "Snezhnaya",
+        "Belong": "？？？",
+        "Grade": 4,
+        "Type": "???",
+        "Weapon": "Sword",
+        "Element": "Elec",
+        "Birthday": "1/1",
+        "Icon": "UI_AvatarIcon_Valeriy",
+        "CommonMatt": 112148,
+        "TalentMat": 3,
+        "TalentMatt": 104373,
+        "SpecialityMat": 101273,
+        "AscMat": 113091,
+        "WeekMat": 113087,
+        "CustomPromote": "CD",
+        "Curve": 104,
+        "ShowStats": {
+            "HP": 10005,
+            "ATK": 255,
+            "DEF": 703,
+            "Custom": 0.24
+        },
+        "ShowStats2": {
+            "HP": 10697,
+            "ATK": 320,
+            "DEF": 752,
+            "Custom": 0.24
+        },
+        "Version": "7.2",
+        "Fetter": 137,
+        "_CV": {
+            "_CH": "？？？",
+            "_EN": "？？？",
+            "_JP": "？？？",
+            "_KR": "？？？"
+        }
+    },
+    "136": {
+        "_name": "Mitya",
+        "_id": 136,
+        "Name": "米提亚",
+        "Desc": "测试角色",
+        "Title": "？？？",
+        "Constellation": "纽结座",
+        "Nation": "ASSOC_TYPE_SNEZHNAYA_STAR",
+        "Belong": "？？？",
+        "Grade": 5,
+        "Type": "???",
+        "Weapon": "Catalyst",
+        "Element": "Elec",
+        "Birthday": "1/1",
+        "Icon": "UI_AvatarIcon_Mitya",
+        "CommonMatt": 112151,
+        "TalentMat": 1,
+        "TalentMatt": 104367,
+        "SpecialityMat": 101274,
+        "AscMat": 113093,
+        "WeekMat": 113081,
+        "CustomPromote": "CD",
+        "Curve": 105,
+        "ShowStats": {
+            "HP": 11634,
+            "ATK": 263,
+            "DEF": 792,
+            "Custom": 0.384
+        },
+        "ShowStats2": {
+            "HP": 12460,
+            "ATK": 322,
+            "DEF": 848,
+            "Custom": 0.384
+        },
+        "Version": "7.2",
+        "Fetter": 136,
+        "_CV": {
+            "_CH": "？？？",
+            "_EN": "？？？",
+            "_JP": "？？？",
+            "_KR": "？？？"
         }
     },
     "133": {

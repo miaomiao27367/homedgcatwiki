@@ -38,6 +38,9 @@ $(function () {
         effHpCalc: null      // { hp, resDecrease } when active
     };
 
+    var diffMonsters = [];
+    var currentVer = (typeof VER_GI !== 'undefined') ? VER_GI : '6.3';
+
     function setState(patch) {
         Object.assign(state, patch);
     }
@@ -59,6 +62,23 @@ $(function () {
         $('body').addClass(bg_name);
         $('#monster_card_area_2').hide();
 
+        fetch('/manifest.json')
+            .then(function (r) { return r.json(); })
+            .then(function (manifest) {
+                if (manifest.gi && manifest.gi.diff && manifest.gi.diff.monster) {
+                    diffMonsters = manifest.gi.diff.monster;
+                }
+                if (manifest.gi && manifest.gi.Current_Ver) {
+                    currentVer = manifest.gi.Current_Ver;
+                }
+                _beginRender();
+            })
+            .catch(function () {
+                _beginRender();
+            });
+    }
+
+    function _beginRender() {
         initSearchBar();
         renderKingdoms();
         bindDetailPanelEvents();
@@ -85,12 +105,10 @@ $(function () {
         input.type = 'text';
         input.className = 'mv2-search-input';
         input.placeholder = (lang === 'CH' ? '搜索怪物名或ID...' : 'Search name or ID...');
-        input.id = 'mv2_search_input';
 
         var clearBtn = document.createElement('button');
         clearBtn.className = 'mv2-search-clear';
         clearBtn.textContent = '\u2715';
-        clearBtn.id = 'mv2_search_clear';
 
         wrap.appendChild(input);
         wrap.appendChild(clearBtn);
@@ -169,7 +187,7 @@ $(function () {
             link.setAttribute('data-id', kd.ID);
             link.className = 'kingdom_' + kd.ID;
             link.setAttribute('data-hd', (kd.ID === 19 || kd.ID === 21) ? '1' : '0');
-            link.textContent = kd.Name;
+            link.textContent = (kd.Name === '<b>6.3</b>') ? currentVer : kd.Name;
             link.addEventListener('click', function () {
                 var kingdom = getKingdomById(kd.ID);
                 if (!kingdom) return;
@@ -194,6 +212,30 @@ $(function () {
         var area = $('#monster_card_area_1');
         area.empty();
 
+        var kingdomName = (kingdom.Name === '<b>6.3</b>') ? currentVer : kingdom.Name;
+
+        // 如果是版本占位分类，用 manifest.json diff.monster 动态渲染
+        if (kingdom.Name === '<b>6.3</b>') {
+            var diffMons = [];
+            diffMonsters.forEach(function (mid) {
+                var m = V2_DATA.List[mid];
+                if (m) diffMons.push(m);
+            });
+
+            var header = document.createElement('div');
+            header.style.cssText = 'padding:6px 0;color:#999;font-size:13px';
+            header.textContent = kingdomName + ' (' + diffMons.length + ' ' + (lang === 'CH' ? '个怪物' : ' monsters') + ')';
+            area.append(header);
+
+            if (diffMons.length > 0) {
+                var gridWrap = document.createElement('div');
+                gridWrap.className = 'mv2-grid-wrap';
+                diffMons.forEach(function (m) { gridWrap.appendChild(buildCard(m)); });
+                area.append(gridWrap);
+            }
+            return;
+        }
+
         var classes = [];
         for (var j in kingdom.Classes) { classes.push(kingdom.Classes[kingdom.Classes.length - j - 1]); }
 
@@ -202,7 +244,8 @@ $(function () {
 
         var header = document.createElement('div');
         header.style.cssText = 'padding:6px 0;color:#999;font-size:13px';
-        header.textContent = kingdom.Name + ' (' + totalCount + ' ' + (lang === 'CH' ? '个怪物' : ' monsters') + ')';
+        var kingdomName = (kingdom.Name === '<b>6.3</b>') ? currentVer : kingdom.Name;
+        header.textContent = kingdomName + ' (' + totalCount + ' ' + (lang === 'CH' ? '个怪物' : ' monsters') + ')';
         area.append(header);
 
         classes.forEach(function (cls) {
@@ -420,7 +463,8 @@ $(function () {
         var curve = data.HPCurve;
 
         var lc = V2_DATA.LevelCurves || null;
-        var a = (lc && lc[level] && curve !== undefined) ? (lc[level][curve] || 1) : 1;
+        var val = (lc && lc[level]) ? lc[level][curve] : undefined;
+        var a = (val !== undefined) ? val : 1;
 
         return a * hp * state.mul;
     }
@@ -431,18 +475,22 @@ $(function () {
         var curve = data.ATKCurve;
 
         var lc = V2_DATA.LevelCurves || null;
-        var a = (lc && lc[level] && curve !== undefined) ? (lc[level][curve] || 1) : 1;
+        var val = (lc && lc[level]) ? lc[level][curve] : undefined;
+        var a = (val !== undefined) ? val : 1;
 
         return a * atk * state.mul;
     }
 
     function calcStatValue(val, curve, level) {
+        if (val === null || val === undefined) return null;
         var lc = V2_DATA.LevelCurves || null;
-        var a = (lc && lc[level] && curve !== undefined) ? (lc[level][curve] || 1) : 1;
+        var levelVal = (lc && lc[level]) ? lc[level][curve] : undefined;
+        var a = (levelVal !== undefined) ? levelVal : 1;
         return (val || 0) * a * state.mul;
     }
 
     function formatHpAtk(v, level) {
+        if (v.HP === null || v.HP === undefined) return (lang === 'CH' ? '友善生物' : 'Docile');
         var hp = calcStatValue(v.HP, v.HPCurve, level);
         var atk = calcStatValue(v.ATK, v.ATKCurve, level);
         var hpStr = Math.round(hp) + (v.HPCount ? '\u00D7' + v.HPCount : '');
@@ -450,7 +498,7 @@ $(function () {
         return 'HP ' + hpStr + ' \u00B7 ATK ' + atkStr;
     }
 
-    function formatStatValueFull(value, curve, count) {
+    function formatStatValueFull(value, count) {
         if (value === undefined || value === null) return '-';
         var display = Math.round(value).toFixed(0);
         if (count) display += ' \u00D7' + count;
@@ -469,8 +517,8 @@ $(function () {
         var statsSection = document.getElementById('mv2_stats_section');
         if (statsSection) {
             statsSection.innerHTML = '';
-            var hpRow = createStatRow('HP', formatStatValueFull(hpVal, data.HPCurve, data.HPCount));
-            var atkRow = createStatRow('ATK', formatStatValueFull(atkVal, data.ATKCurve, data.ATKCount));
+            var hpRow = createStatRow('HP', formatStatValueFull(hpVal, data.HPCount));
+            var atkRow = createStatRow('ATK', formatStatValueFull(atkVal, data.ATKCount));
             statsSection.appendChild(hpRow);
             statsSection.appendChild(atkRow);
         }
@@ -555,10 +603,9 @@ $(function () {
     }
 
     function computeEffHp(hp, resDecrease) {
-        if (arguments.length < 2 && state.effHpCalc) {
-            resDecrease = state.effHpCalc.resDecrease;
-            hp = state.effHpCalc.hp;
-        }
+        if (!state.effHpCalc) return;
+        if (hp === undefined) hp = state.effHpCalc.hp;
+        if (resDecrease === undefined) resDecrease = state.effHpCalc.resDecrease;
         resDecrease = resDecrease || 0;
 
         var table = document.querySelector('#mv2_res_section .mv2-res-table');
@@ -637,28 +684,31 @@ $(function () {
         container.append(header);
     }
 
+    function updateVariantInfoBar(data) {
+        var infoBar = document.getElementById('mv2_variant_info_bar');
+        if (!infoBar) return;
+        infoBar.innerHTML = '';
+        var label = document.createElement('span');
+        label.className = 'mv2-variant-label';
+        label.textContent = (lang === 'CH' ? '当前变种' : 'Current Variant');
+        infoBar.appendChild(label);
+        infoBar.appendChild(document.createTextNode(': '));
+        var nameSpan = document.createElement('span');
+        var suffix = data.Suffix || '';
+        nameSpan.textContent = data.Name + (suffix ? ' \u00B7 ' + suffix : '');
+        infoBar.appendChild(nameSpan);
+        infoBar.appendChild(document.createTextNode(' \u00B7 '));
+        var idSpan = document.createElement('span');
+        idSpan.textContent = 'ID ' + data._id;
+        infoBar.appendChild(idSpan);
+    }
+
     function renderVariantInfoBar(data, container) {
         var bar = document.createElement('div');
         bar.className = 'mv2-variant-info-bar';
         bar.id = 'mv2_variant_info_bar';
-
-        var label = document.createElement('span');
-        label.className = 'mv2-variant-label';
-        label.textContent = (lang === 'CH' ? '当前变种' : 'Current Variant');
-        bar.appendChild(label);
-        bar.appendChild(document.createTextNode(': '));
-
-        var nameSpan = document.createElement('span');
-        var suffix = data.Suffix || '';
-        nameSpan.textContent = data.Name + (suffix ? ' \u00B7 ' + suffix : '');
-        bar.appendChild(nameSpan);
-        bar.appendChild(document.createTextNode(' \u00B7 '));
-
-        var idSpan = document.createElement('span');
-        idSpan.textContent = 'ID ' + data._id;
-        bar.appendChild(idSpan);
-
         container.append(bar);
+        updateVariantInfoBar(data);
     }
 
     function renderDetailStats(data, container) {
@@ -668,8 +718,8 @@ $(function () {
         var hpVal = calcHpValue(data);
         var atkVal = calcAtkValue(data);
 
-        section.appendChild(createStatRow('HP', formatStatValueFull(hpVal, data.HPCurve, data.HPCount)));
-        section.appendChild(createStatRow('ATK', formatStatValueFull(atkVal, data.ATKCurve, data.ATKCount)));
+        section.appendChild(createStatRow('HP', formatStatValueFull(hpVal, data.HPCount)));
+        section.appendChild(createStatRow('ATK', formatStatValueFull(atkVal, data.ATKCount)));
 
         container.append(section);
     }
@@ -947,24 +997,7 @@ $(function () {
         setState({ currentChildId: childId, effHpCalc: null });
         var data = getMonsterData(parentId, childId);
 
-        // 更新变种信息条
-        var infoBar = document.getElementById('mv2_variant_info_bar');
-        if (infoBar) {
-            infoBar.innerHTML = '';
-            var label = document.createElement('span');
-            label.className = 'mv2-variant-label';
-            label.textContent = (lang === 'CH' ? '当前变种' : 'Current Variant');
-            infoBar.appendChild(label);
-            infoBar.appendChild(document.createTextNode(': '));
-            var nameSpan = document.createElement('span');
-            var vs = data.Suffix || '';
-            nameSpan.textContent = data.Name + (vs ? ' \u00B7 ' + vs : '');
-            infoBar.appendChild(nameSpan);
-            infoBar.appendChild(document.createTextNode(' \u00B7 '));
-            var idSpan = document.createElement('span');
-            idSpan.textContent = 'ID ' + childId;
-            infoBar.appendChild(idSpan);
-        }
+        updateVariantInfoBar(data);
 
         // 更新数值区
         updateStatsDisplay();
@@ -1015,6 +1048,7 @@ $(function () {
     function formatHpQuick(monster) {
         var hp = monster.HP;
         var curve = monster.HPCurve;
+        if (hp === null || hp === undefined) { return lang === 'CH' ? '友善生物' : 'Docile'; }
         if (curve === 1) { return 'HP ' + hp + ' 丘丘'; }
         if (curve === 10) { return 'HP ' + rnd(hp / 13.584) + ' 丘丘'; }
         if (curve === 2) { return 'HP ' + hp + ' 野伏'; }
