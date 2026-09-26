@@ -1,0 +1,83 @@
+[
+  {
+    "id": 86048,
+    "name": "快速建造：关闭",
+    "desc": "与其他玩家一同战胜秘源机兵 · 构型械。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 86051,
+    "name": "「此处曾有龙」",
+    "desc": "与其他玩家一同战胜蚀灭的源焰之主。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 86052,
+    "name": "创造日前的黎明",
+    "desc": "与其他玩家一同战胜熔岩辉龙像。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 86053,
+    "name": "非统一秘源世界论",
+    "desc": "与其他玩家一同战胜秘源机兵 · 统御械。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 86054,
+    "name": "皇家捉双",
+    "desc": "与其他玩家一同战胜门扉前的弈局。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 86055,
+    "name": "拳力以赴！",
+    "desc": "与其他玩家一同战胜重拳出击鸭。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 86056,
+    "name": "最后的黄金之秋",
+    "desc": "与其他玩家一同战胜蕴光月幻蝶。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 86057,
+    "name": "又斩了无趣的…",
+    "desc": "与其他玩家一同战胜深邃摹结株。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 86058,
+    "name": "巫士的最终试炼",
+    "desc": "与其他玩家一同战胜灵觉隐修的迷者。",
+    "ver": "6.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  }
+]

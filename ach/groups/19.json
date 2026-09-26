@@ -1,0 +1,65 @@
+[
+  {
+    "id": 81079,
+    "name": "壶中贵客",
+    "desc": "邀请同伴入驻「尘歌壶」。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 81080,
+    "name": "围炉夜谈",
+    "desc": "解锁10段同伴互动对话。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 10
+  },
+  {
+    "id": 81081,
+    "name": "围炉夜谈",
+    "desc": "解锁20段同伴互动对话。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 20
+  },
+  {
+    "id": 81082,
+    "name": "围炉夜谈",
+    "desc": "解锁30段同伴互动对话。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 30
+  },
+  {
+    "id": 81083,
+    "name": "决胜的礼物！",
+    "desc": "获得5份同伴赠礼。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 5
+  },
+  {
+    "id": 81084,
+    "name": "决胜的礼物！",
+    "desc": "获得10份同伴赠礼。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 10
+  },
+  {
+    "id": 81085,
+    "name": "决胜的礼物！",
+    "desc": "获得20份同伴赠礼。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 20
+  }
+]

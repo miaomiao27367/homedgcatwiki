@@ -1,0 +1,128 @@
+[
+  {
+    "id": 80272,
+    "name": "大地勘探 · 百泉谐律之地 · 其二",
+    "desc": "点亮枫丹区域中，黎翡区、枫丹动能工程科学研究院区的地图。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80273,
+    "name": "行汲众水的泉源 · 其二",
+    "desc": "解锁枫丹区域中，黎翡区、枫丹动能工程科学研究院区所有传送锚点。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 22
+  },
+  {
+    "id": 80274,
+    "name": "圣龛巡礼 · 百泉谐律之地 · 其二",
+    "desc": "解除枫丹区域中，黎翡区、枫丹动能工程科学研究院区所有地灵龛的封印。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 2
+  },
+  {
+    "id": 80275,
+    "name": "汐海引路人 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区追随<color style='color:#FF0000;'><b>3</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 3
+  },
+  {
+    "id": 80276,
+    "name": "汐海引路人 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区追随<color style='color:#FF0000;'><b>6</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 6
+  },
+  {
+    "id": 80277,
+    "name": "汐海引路人 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区追随<color style='color:#FF0000;'><b>9</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 9
+  },
+  {
+    "id": 80278,
+    "name": "沧浪的寻宝者 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区开启<color style='color:#FF0000;'><b>60</b></color>个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 60
+  },
+  {
+    "id": 80279,
+    "name": "沧浪的寻宝者 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区开启<color style='color:#FF0000;'><b>120</b></color>个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 120
+  },
+  {
+    "id": 80280,
+    "name": "沧浪的寻宝者 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区开启<color style='color:#FF0000;'><b>200</b></color>个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 200
+  },
+  {
+    "id": 80281,
+    "name": "沧浪的冒险家 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区完成<color style='color:#FF0000;'><b>3</b></color>个大世界限时挑战。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 3
+  },
+  {
+    "id": 80282,
+    "name": "沧浪的冒险家 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区完成<color style='color:#FF0000;'><b>6</b></color>个大世界限时挑战。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 6
+  },
+  {
+    "id": 80283,
+    "name": "沧浪的冒险家 · 其二",
+    "desc": "在黎翡区、枫丹动能工程科学研究院区完成<color style='color:#FF0000;'><b>12</b></color>个大世界限时挑战。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 12
+  },
+  {
+    "id": 80284,
+    "name": "比海洋更宽广的是天空",
+    "desc": "带莉诺尔离开了梅洛彼得堡。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80285,
+    "name": "到此为止",
+    "desc": "见证了枫丹动能工程科学研究院的故事。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  }
+]

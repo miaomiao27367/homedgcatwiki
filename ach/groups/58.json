@@ -1,0 +1,101 @@
+[
+  {
+    "id": 80371,
+    "name": "公园、长椅与奏鸣",
+    "desc": "获得「千音雅集」，成为自由的音乐人。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80372,
+    "name": "论诗琴演奏准则",
+    "desc": "完成所有「千音雅集」的「入门练习」。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80373,
+    "name": "二十五个钱币…",
+    "desc": "在「千音藏品」中兑换<color style='color:#FF0000;'><b>1</b></color>个谱面主题。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80374,
+    "name": "二十五个钱币…",
+    "desc": "在「千音藏品」中兑换<color style='color:#FF0000;'><b>3</b></color>个谱面主题。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 10,
+    "total": 3
+  },
+  {
+    "id": 80375,
+    "name": "二十五个钱币…",
+    "desc": "在「千音藏品」中兑换<color style='color:#FF0000;'><b>5</b></color>个谱面主题。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 20,
+    "total": 5
+  },
+  {
+    "id": 80376,
+    "name": "旋律行进的方向",
+    "desc": "在官方曲谱的演奏挑战中，获得<color style='color:#FF0000;'><b>5</b></color>次不同曲谱的「高遏行云」评价。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 5,
+    "total": 5
+  },
+  {
+    "id": 80377,
+    "name": "旋律行进的方向",
+    "desc": "在官方曲谱的演奏挑战中，获得<color style='color:#FF0000;'><b>15</b></color>次不同曲谱的「高遏行云」评价。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 10,
+    "total": 15
+  },
+  {
+    "id": 80378,
+    "name": "旋律行进的方向",
+    "desc": "在官方曲谱的演奏挑战中，获得<color style='color:#FF0000;'><b>30</b></color>次不同曲谱的「高遏行云」评价。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 20,
+    "total": 30
+  },
+  {
+    "id": 80379,
+    "name": "轮唱的艺术",
+    "desc": "演奏其他玩家创作的曲谱时，获得<color style='color:#FF0000;'><b>5</b></color>次不同曲谱的「高遏行云」评价。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 5,
+    "total": 5
+  },
+  {
+    "id": 80380,
+    "name": "轮唱的艺术",
+    "desc": "演奏其他玩家创作的曲谱时，获得<color style='color:#FF0000;'><b>10</b></color>次不同曲谱的「高遏行云」评价。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 10,
+    "total": 10
+  },
+  {
+    "id": 80381,
+    "name": "轮唱的艺术",
+    "desc": "演奏其他玩家创作的曲谱时，获得<color style='color:#FF0000;'><b>20</b></color>次不同曲谱的「高遏行云」评价。",
+    "ver": "5.3",
+    "hidden": false,
+    "reward": 20,
+    "total": 20
+  }
+]

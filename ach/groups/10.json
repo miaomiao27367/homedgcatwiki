@@ -1,0 +1,20 @@
+[
+  {
+    "id": 84501,
+    "name": "…Odomu？",
+    "desc": "在「语言交流」中与丘丘人交流成功。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 84502,
+    "name": "Yo dala？",
+    "desc": "在「诗歌交流」中与丘丘人交流成功。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  }
+]

@@ -1,0 +1,119 @@
+[
+  {
+    "id": 80300,
+    "name": "大地勘探 · 碧水萦纡之乡",
+    "desc": "点亮璃月区域中，沉玉谷的地图。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80301,
+    "name": "凌沉玉以径度",
+    "desc": "解锁璃月区域中，沉玉谷所有传送锚点。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 5,
+    "total": 29
+  },
+  {
+    "id": 80302,
+    "name": "瑶庭引路人",
+    "desc": "在沉玉谷追随<color style='color:#FF0000;'><b>4</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 5,
+    "total": 4
+  },
+  {
+    "id": 80303,
+    "name": "瑶庭引路人",
+    "desc": "在沉玉谷追随<color style='color:#FF0000;'><b>8</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 10,
+    "total": 8
+  },
+  {
+    "id": 80304,
+    "name": "瑶庭引路人",
+    "desc": "在沉玉谷追随<color style='color:#FF0000;'><b>16</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 20,
+    "total": 16
+  },
+  {
+    "id": 80305,
+    "name": "翠陵的寻宝者",
+    "desc": "在沉玉谷开启<color style='color:#FF0000;'><b>60</b></color>个宝箱。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 5,
+    "total": 60
+  },
+  {
+    "id": 80306,
+    "name": "翠陵的寻宝者",
+    "desc": "在沉玉谷开启<color style='color:#FF0000;'><b>120</b></color>个宝箱。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 10,
+    "total": 120
+  },
+  {
+    "id": 80307,
+    "name": "翠陵的寻宝者",
+    "desc": "在沉玉谷开启<color style='color:#FF0000;'><b>240</b></color>个宝箱。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 20,
+    "total": 240
+  },
+  {
+    "id": 80308,
+    "name": "翠陵的冒险家",
+    "desc": "在沉玉谷完成<color style='color:#FF0000;'><b>12</b></color>个大世界限时挑战。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 5,
+    "total": 12
+  },
+  {
+    "id": 80309,
+    "name": "翠陵的冒险家",
+    "desc": "在沉玉谷完成<color style='color:#FF0000;'><b>24</b></color>个大世界限时挑战。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 10,
+    "total": 24
+  },
+  {
+    "id": 80310,
+    "name": "翠陵的冒险家",
+    "desc": "在沉玉谷完成<color style='color:#FF0000;'><b>48</b></color>个大世界限时挑战。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 20,
+    "total": 48
+  },
+  {
+    "id": 80311,
+    "name": "奉璋定极",
+    "desc": "将锦落庭的祀珑等级供奉至满级。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 20,
+    "total": 1
+  },
+  {
+    "id": 80312,
+    "name": "沉玉祝珑",
+    "desc": "完成「沉玉祝珑」。",
+    "ver": "4.4",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  }
+]

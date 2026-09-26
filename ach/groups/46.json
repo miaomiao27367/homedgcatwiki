@@ -1,0 +1,128 @@
+[
+  {
+    "id": 80286,
+    "name": "大地勘探 · 百泉谐律之地 · 其三",
+    "desc": "点亮枫丹区域中，莫尔泰区、伊黎耶林区的地图。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80287,
+    "name": "行汲众水的泉源 · 其三",
+    "desc": "解锁枫丹区域中，莫尔泰区、伊黎耶林区所有传送锚点。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 5,
+    "total": 24
+  },
+  {
+    "id": 80288,
+    "name": "圣龛巡礼 · 百泉谐律之地 · 其三",
+    "desc": "解除枫丹区域中，莫尔泰区、伊黎耶林区所有地灵龛的封印。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 10,
+    "total": 2
+  },
+  {
+    "id": 80289,
+    "name": "汐海引路人 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区追随<color style='color:#FF0000;'><b>3</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 5,
+    "total": 3
+  },
+  {
+    "id": 80290,
+    "name": "汐海引路人 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区追随<color style='color:#FF0000;'><b>6</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 10,
+    "total": 6
+  },
+  {
+    "id": 80291,
+    "name": "汐海引路人 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区追随<color style='color:#FF0000;'><b>9</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 20,
+    "total": 9
+  },
+  {
+    "id": 80292,
+    "name": "沧浪的寻宝者 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区开启<color style='color:#FF0000;'><b>40</b></color>个宝箱。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 5,
+    "total": 40
+  },
+  {
+    "id": 80293,
+    "name": "沧浪的寻宝者 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区开启<color style='color:#FF0000;'><b>80</b></color>个宝箱。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 10,
+    "total": 80
+  },
+  {
+    "id": 80294,
+    "name": "沧浪的寻宝者 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区开启<color style='color:#FF0000;'><b>160</b></color>个宝箱。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 20,
+    "total": 160
+  },
+  {
+    "id": 80295,
+    "name": "沧浪的冒险家 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区完成<color style='color:#FF0000;'><b>3</b></color>个大世界限时挑战。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 5,
+    "total": 3
+  },
+  {
+    "id": 80296,
+    "name": "沧浪的冒险家 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区完成<color style='color:#FF0000;'><b>6</b></color>个大世界限时挑战。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 10,
+    "total": 6
+  },
+  {
+    "id": 80297,
+    "name": "沧浪的冒险家 · 其三",
+    "desc": "在莫尔泰区、伊黎耶林区完成<color style='color:#FF0000;'><b>9</b></color>个大世界限时挑战。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 20,
+    "total": 9
+  },
+  {
+    "id": 80298,
+    "name": "无影的塞谟奈",
+    "desc": "结识伊黎耶岛上的一位神秘精灵。",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80299,
+    "name": "水仙十字题解",
+    "desc": "何物徒留名字？何物遍开幽谷？何物映自身于镜水？何物象征拯救世界的孤独牺牲？",
+    "ver": "4.2",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "id": 80007,
+    "name": "人铸赋形",
+    "desc": "锻造一把四星武器。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80008,
+    "name": "生存专家",
+    "desc": "掌握10种菜肴的制作方法。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 10
+  },
+  {
+    "id": 80009,
+    "name": "生存专家",
+    "desc": "掌握20种菜肴的制作方法。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 20
+  },
+  {
+    "id": 80010,
+    "name": "生存专家",
+    "desc": "掌握40种菜肴的制作方法。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 40
+  },
+  {
+    "id": 80011,
+    "name": "星级大厨",
+    "desc": "10个料理食谱达到熟练。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 10
+  },
+  {
+    "id": 80012,
+    "name": "星级大厨",
+    "desc": "20个料理食谱达到熟练。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 20
+  },
+  {
+    "id": 80013,
+    "name": "星级大厨",
+    "desc": "40个料理食谱达到熟练。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 40
+  }
+]

@@ -1,0 +1,119 @@
+[
+  {
+    "id": 80056,
+    "name": "大地勘探 · 龙脊雪山",
+    "desc": "点亮龙脊雪山的地图。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80057,
+    "name": "冰峰踏破",
+    "desc": "解锁龙脊雪山的所有传送锚点。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 11
+  },
+  {
+    "id": 80058,
+    "name": "踏雪引路人",
+    "desc": "在龙脊雪山追随5个温暖仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 5
+  },
+  {
+    "id": 80059,
+    "name": "踏雪引路人",
+    "desc": "在龙脊雪山追随10个温暖仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 10
+  },
+  {
+    "id": 80060,
+    "name": "踏雪引路人",
+    "desc": "在龙脊雪山追随20个温暖仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 20
+  },
+  {
+    "id": 80061,
+    "name": "雪山的寻宝者",
+    "desc": "在龙脊雪山开启40个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 40
+  },
+  {
+    "id": 80062,
+    "name": "雪山的寻宝者",
+    "desc": "在龙脊雪山开启80个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 80
+  },
+  {
+    "id": 80063,
+    "name": "雪山的寻宝者",
+    "desc": "在龙脊雪山开启160个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 160
+  },
+  {
+    "id": 80064,
+    "name": "赤红的新芽",
+    "desc": "将忍冬之树供奉至4级。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80065,
+    "name": "赤红的新芽",
+    "desc": "将忍冬之树供奉至8级。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80066,
+    "name": "赤红的新芽",
+    "desc": "将忍冬之树供奉至12级。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 1
+  },
+  {
+    "id": 80067,
+    "name": "寒天之钉",
+    "desc": "将「奇怪的大柱子」升起。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80068,
+    "name": "龙与枪",
+    "desc": "利用「龙」的遗骸，制造武器。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  }
+]

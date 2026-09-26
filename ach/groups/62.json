@@ -1,0 +1,110 @@
+[
+  {
+    "id": 80430,
+    "name": "双屋的呼唤",
+    "desc": "点亮纳塔区域中，悠悠度假村的地图。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80431,
+    "name": "暖浪引路人",
+    "desc": "解锁纳塔区域中，悠悠度假村所有传送锚点。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 5,
+    "total": 24
+  },
+  {
+    "id": 80432,
+    "name": "圣龛巡礼 · 水软风柔之岛",
+    "desc": "解除纳塔区域中，悠悠度假村所有地灵龛的封印。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 10,
+    "total": 2
+  },
+  {
+    "id": 80433,
+    "name": "幻写引路人 · 其三",
+    "desc": "在悠悠度假村追随<color style='color:#FF0000;'><b>6</b></color>个幻写灵，并完成涂鸦。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 10,
+    "total": 6
+  },
+  {
+    "id": 80434,
+    "name": "沧屿的寻宝者",
+    "desc": "在悠悠度假村开启<color style='color:#FF0000;'><b>30</b></color>个宝箱。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 5,
+    "total": 30
+  },
+  {
+    "id": 80435,
+    "name": "沧屿的寻宝者",
+    "desc": "在悠悠度假村开启<color style='color:#FF0000;'><b>60</b></color>个宝箱。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 10,
+    "total": 60
+  },
+  {
+    "id": 80436,
+    "name": "沧屿的寻宝者",
+    "desc": "在悠悠度假村开启<color style='color:#FF0000;'><b>120</b></color>个宝箱。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 20,
+    "total": 120
+  },
+  {
+    "id": 80437,
+    "name": "沧屿的冒险家",
+    "desc": "在悠悠度假村完成<color style='color:#FF0000;'><b>6</b></color>个大世界限时挑战。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 5,
+    "total": 6
+  },
+  {
+    "id": 80438,
+    "name": "沧屿的冒险家",
+    "desc": "在悠悠度假村完成<color style='color:#FF0000;'><b>12</b></color>个大世界限时挑战。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 10,
+    "total": 12
+  },
+  {
+    "id": 80439,
+    "name": "沧屿的冒险家",
+    "desc": "在悠悠度假村完成<color style='color:#FF0000;'><b>24</b></color>个大世界限时挑战。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 20,
+    "total": 24
+  },
+  {
+    "id": 80440,
+    "name": "阿夏引力之虹",
+    "desc": "解锁阿夏的所有颜色。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80441,
+    "name": "彩色相簿",
+    "desc": "完成悠悠纪念册中所有的留影。",
+    "ver": "5.8",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  }
+]

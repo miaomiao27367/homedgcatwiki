@@ -1,0 +1,119 @@
+[
+  {
+    "id": 80224,
+    "name": "大地勘探 · 沙海热梦 · 其二",
+    "desc": "点亮须弥区域中，千壑沙地的地图。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80225,
+    "name": "越过沙暴与蜃气楼 · 其二",
+    "desc": "解锁须弥区域中，千壑沙地所有传送锚点。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 20
+  },
+  {
+    "id": 80226,
+    "name": "圣龛巡礼 · 沙海热梦 · 其二",
+    "desc": "解除须弥区域中，千壑沙地所有地灵龛的封印。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 3
+  },
+  {
+    "id": 80227,
+    "name": "比勒琪丝的哀歌",
+    "desc": "完成「比勒琪丝的哀歌」。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80228,
+    "name": "大漠引路人 · 其二",
+    "desc": "在千壑沙地追随<color style='color:#FF0000;'><b>4</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 4
+  },
+  {
+    "id": 80229,
+    "name": "大漠引路人 · 其二",
+    "desc": "在千壑沙地追随<color style='color:#FF0000;'><b>8</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 8
+  },
+  {
+    "id": 80230,
+    "name": "大漠引路人 · 其二",
+    "desc": "在千壑沙地追随<color style='color:#FF0000;'><b>16</b></color>个仙灵，并点亮仙灵之庭。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 16
+  },
+  {
+    "id": 80231,
+    "name": "流沙的寻宝者 · 其二",
+    "desc": "在千壑沙地开启<color style='color:#FF0000;'><b>50</b></color>个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 50
+  },
+  {
+    "id": 80232,
+    "name": "流沙的寻宝者 · 其二",
+    "desc": "在千壑沙地开启<color style='color:#FF0000;'><b>100</b></color>个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 100
+  },
+  {
+    "id": 80233,
+    "name": "流沙的寻宝者 · 其二",
+    "desc": "在千壑沙地开启<color style='color:#FF0000;'><b>200</b></color>个宝箱。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 200
+  },
+  {
+    "id": 80234,
+    "name": "流沙的冒险家 · 其二",
+    "desc": "在千壑沙地完成<color style='color:#FF0000;'><b>7</b></color>个大世界机关限时挑战。",
+    "ver": "",
+    "hidden": false,
+    "reward": 5,
+    "total": 7
+  },
+  {
+    "id": 80235,
+    "name": "流沙的冒险家 · 其二",
+    "desc": "在千壑沙地完成<color style='color:#FF0000;'><b>14</b></color>个大世界机关限时挑战。",
+    "ver": "",
+    "hidden": false,
+    "reward": 10,
+    "total": 14
+  },
+  {
+    "id": 80236,
+    "name": "流沙的冒险家 · 其二",
+    "desc": "在千壑沙地完成<color style='color:#FF0000;'><b>28</b></color>个大世界机关限时挑战。",
+    "ver": "",
+    "hidden": false,
+    "reward": 20,
+    "total": 28
+  }
+]

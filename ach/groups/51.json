@@ -1,0 +1,164 @@
+[
+  {
+    "id": 80328,
+    "name": "大地勘探 · 万火燎灼之原 · 其一",
+    "desc": "点亮纳塔区域中，万火之瓯、坚岩隘谷、踞石山、涌流地的地图。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 5,
+    "total": 1
+  },
+  {
+    "id": 80329,
+    "name": "攀越炽焰的圣山 · 其一",
+    "desc": "解锁纳塔区域中，万火之瓯、坚岩隘谷、踞石山、涌流地所有传送锚点。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 5,
+    "total": 46
+  },
+  {
+    "id": 80330,
+    "name": "圣龛巡礼 · 万火燎灼之原 · 其一",
+    "desc": "解除纳塔区域中，万火之瓯、坚岩隘谷、踞石山、涌流地所有地灵龛的封印。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 4
+  },
+  {
+    "id": 80331,
+    "name": "煌耀如火",
+    "desc": "将纳塔的七天神像供奉至满级。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 20,
+    "total": 1
+  },
+  {
+    "id": 80332,
+    "name": "炎日的燧色",
+    "desc": "将万火之瓯的煅石之轮等级提升至满级。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 20,
+    "total": 1
+  },
+  {
+    "id": 80333,
+    "name": "幻写引路人 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地追随<color style='color:#FF0000;'><b>8</b></color>个幻写灵，并完成涂鸦。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 5,
+    "total": 8
+  },
+  {
+    "id": 80334,
+    "name": "幻写引路人 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地追随<color style='color:#FF0000;'><b>16</b></color>个幻写灵，并完成涂鸦。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 16
+  },
+  {
+    "id": 80335,
+    "name": "幻写引路人 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地追随<color style='color:#FF0000;'><b>32</b></color>个幻写灵，并完成涂鸦。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 20,
+    "total": 32
+  },
+  {
+    "id": 80336,
+    "name": "燔炎的寻宝者 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地开启<color style='color:#FF0000;'><b>80</b></color>个宝箱。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 5,
+    "total": 80
+  },
+  {
+    "id": 80337,
+    "name": "燔炎的寻宝者 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地开启<color style='color:#FF0000;'><b>160</b></color>个宝箱。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 160
+  },
+  {
+    "id": 80338,
+    "name": "燔炎的寻宝者 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地开启<color style='color:#FF0000;'><b>320</b></color>个宝箱。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 20,
+    "total": 320
+  },
+  {
+    "id": 80339,
+    "name": "燔炎的冒险家 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地完成<color style='color:#FF0000;'><b>3</b></color>个大世界限时挑战。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 5,
+    "total": 3
+  },
+  {
+    "id": 80342,
+    "name": "追忆先祖",
+    "desc": "帮助蒂图解放了部族先民的灵魂。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80343,
+    "name": "不是所有宝藏都是金和银",
+    "desc": "未能寻找到「治疗一切的秘药」。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80345,
+    "name": "太阳之金，以及血液…",
+    "desc": "自「盗火贤者」的遗迹中，取得前往火山朝圣的信物。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 1
+  },
+  {
+    "id": 80346,
+    "name": "夜馈寻迹 · 万火燎灼之原 · 其一",
+    "desc": "解除纳塔区域中，万火之瓯、坚岩隘谷、踞石山、涌流地所有部族秘藏之所的封印。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 3
+  },
+  {
+    "id": 80347,
+    "name": "燔炎的冒险家 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地完成<color style='color:#FF0000;'><b>6</b></color>个大世界限时挑战。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 10,
+    "total": 6
+  },
+  {
+    "id": 80348,
+    "name": "燔炎的冒险家 · 其一",
+    "desc": "在万火之瓯、坚岩隘谷、踞石山、涌流地完成<color style='color:#FF0000;'><b>12</b></color>个大世界限时挑战。",
+    "ver": "5.0",
+    "hidden": false,
+    "reward": 20,
+    "total": 12
+  }
+]
