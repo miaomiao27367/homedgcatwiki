@@ -18,9 +18,9 @@ import requests
 from typing import Dict, Any, List, Optional, Tuple
 
 # 确保项目根目录在 sys.path 中，以便 import reliance.*
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from reliance.sync_elite import (
+from reliance.hsr.endgame.sync_elite import (
     load_level_curves,
     load_elite_group_data,
     get_elite_group,

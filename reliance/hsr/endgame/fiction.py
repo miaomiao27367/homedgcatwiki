@@ -17,9 +17,9 @@ import json
 import requests
 from typing import Dict, Any, List, Optional, Tuple
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from reliance.sync_elite import (
+from reliance.hsr.endgame.sync_elite import (
     load_level_curves as load_elite_curves,
     get_elite_group,
 )
@@ -29,9 +29,9 @@ LANGUAGE = "zh"
 OUTPUT_DIR = "./tempdata"
 DEFAULT_VERSION = "4.3.52"
 
-MONSTER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "sr", "data", "CH", "Monster.js")
-FICTION_1_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "sr", "data", "CH", "Fiction_1.js")
-FICTION_STAR_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "sr", "data", "CH", "Fiction_star.js")
+MONSTER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "sr", "data", "CH", "Monster.js")
+FICTION_1_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "sr", "data", "CH", "Fiction_1.js")
+FICTION_STAR_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "sr", "data", "CH", "Fiction_star.js")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

@@ -17,15 +17,15 @@ import re
 import requests
 from typing import Dict, Any, List, Optional
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from reliance.sync_elite import (
+from reliance.hsr.endgame.sync_elite import (
     load_level_curves as load_elite_curves,
     get_elite_group,
 )
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"

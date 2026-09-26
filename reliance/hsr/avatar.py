@@ -797,7 +797,7 @@ def generate_avatar_basic_file(character_id: str, character_data: Dict[str, Any]
         f.write("\n")
 
 
-AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sr', 'data', 'CH', 'Avatar.js')
+AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sr', 'data', 'CH', 'Avatar.js')
 
 
 def merge_avatar_to_avatar_js(character_id: str) -> str:

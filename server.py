@@ -12,14 +12,14 @@ import json
 
 from urllib.parse import urlparse, unquote
 
-from reliance.hsr_trans import generate_character_data
+from reliance.hsr.avatar import generate_character_data
 from reliance.hsr.weapon import generate_weapon_data
-from reliance.hsr_trans_mons_skills import generate_monster_data, generate_monster_basic_data, merge_missing_ee_data
-from reliance.hsr_trans_ar import generate_ar_data
-from reliance.hsr_trans_as import generate_as_data
-from reliance.hsr_fiction_v2 import generate_fiction_v2
-from reliance.hsr_chaos_v2 import generate_chaos_v2
-from reliance.gi_trans import gi_character_update
+from reliance.hsr.monster import generate_monster_data, generate_monster_basic_data, merge_missing_ee_data
+from reliance.hsr.endgame.ar import generate_ar_data
+from reliance.hsr.endgame.apocalyptic_shadow import generate_as_data
+from reliance.hsr.endgame.fiction import generate_fiction_v2
+from reliance.hsr.endgame.chaos import generate_chaos_v2
+from reliance.gi.avatar import gi_character_update
 from reliance.gi.weapon import gi_weapon_update, gi_weapon_img_sync
 from reliance.gi.monster_v2.update import update_single_monster, cache_icons_for_monster
 from reliance.hsr.relic import generate_relic_data

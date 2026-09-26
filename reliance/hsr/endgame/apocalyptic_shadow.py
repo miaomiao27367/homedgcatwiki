@@ -20,9 +20,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, Any, List, Optional, Tuple
 
 # 确保项目根目录在 sys.path 中，以便 import reliance.*
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from reliance.sync_elite import load_level_curves, get_elite_group
+from reliance.hsr.endgame.sync_elite import load_level_curves, get_elite_group
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
