@@ -29,7 +29,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(_
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
-OUTPUT_DIR = os.path.join(SCRIPT_DIR, "tempdata")
+OUTPUT_DIR = "./.temp/hsr/endgame/chaos"
 MONSTER_DB_PATH = os.path.join(PROJECT_ROOT, "sr", "data", "CH", "Monster.js")
 CHAOS_JS_PATH = os.path.join(PROJECT_ROOT, "sr", "data", "CH", "Chaos_1.js")
 CHAOS_STAR_PATH = os.path.join(PROJECT_ROOT, "sr", "data", "CH", "Chaos_star.js")

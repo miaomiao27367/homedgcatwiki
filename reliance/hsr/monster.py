@@ -20,7 +20,7 @@ def download_monster_data(monster_id: str, version: str, language: str = "zh") -
         下载的JSON数据，如果下载失败则返回None
     """
     # 定义testdata目录路径
-    testdata_dir = "./tempdatamons"
+    testdata_dir = "./.temp/hsr/monster"
     os.makedirs(testdata_dir, exist_ok=True)
 
     # 构建本地文件路径
@@ -70,7 +70,7 @@ def convert_monster_skill(monster_id: str, monster_data: Dict[str, Any], output_
         monster_data: 怪物JSON数据
         output_dir: 输出目录
     """
-    testdata_dir = "./tempdatamons"
+    testdata_dir = "./.temp/hsr/monster"
     os.makedirs(testdata_dir, exist_ok=True)
     if not monster_data:
         print(f"Error: 怪物 {monster_id} 的数据为空")
@@ -481,7 +481,7 @@ def generate_monster_basic_data(monster_id: str, version: str = None) -> str:
     if not monster_data:
         return f"下载怪物 {monster_id} 的数据失败"
 
-    output_dir = "./tempdatamons"
+    output_dir = "./.temp/hsr/monster"
     convert_monster_basic_data(monster_id, monster_data, output_dir)
 
     return f"怪物 {monster_id} 基础模块数据生成完成！"
@@ -514,14 +514,14 @@ def generate_monster_data(monster_id: str, version: str = None) -> str:
     resolved_id = monster_data.get('id') or monster_id
     expected_skill_path = os.path.join(output_dir, f"{resolved_id}.js")
     if os.path.exists(expected_skill_path):
-        output_dir = "./tempdatamons"
+        output_dir = "./.temp/hsr/monster"
         warning = f"【警告】怪物 {monster_id} 的技能文件 {resolved_id}.js 已存在于 {expected_skill_path}，新数据已生成到 {output_dir}，请手动比对后决定是否替换。"
 
     # 转换数据
     convert_monster_skill(monster_id, monster_data, output_dir)
 
     # 生成基础模块数据（_monster条目）
-    basic_entries = convert_monster_basic_data(monster_id, monster_data, "./tempdatamons")
+    basic_entries = convert_monster_basic_data(monster_id, monster_data, "./.temp/hsr/monster")
 
     # 自动拼接到Monster_1.js
     merge_msg = merge_basic_data_to_monster_js(basic_entries)
@@ -541,7 +541,7 @@ def merge_missing_ee_data() -> str:
     """
     import glob, re
 
-    ee_dir = "./tempdatamons"
+    ee_dir = "./.temp/hsr/monster"
     monster_skill_file = "./sr/data/CH/MonsterSkill.js"
     output_file = os.path.join(ee_dir, "EE.js")
 

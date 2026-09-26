@@ -18,7 +18,7 @@ from typing import Dict, Any, Optional, List
 
 BASE_URL = 'https://static.nanoka.cc/hsr'
 LANGUAGE = 'zh'
-CACHE_DIR = './tempdata'
+CACHE_DIR = './.temp/hsr/relic'
 OUTPUT_RELIC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sr', 'data', 'CH', 'Relic')
 OUTPUT_IMAGE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'images', 'itemfigures')
 IMAGE_BASE_URL = 'https://static.nanoka.cc/assets/hsr/itemfigures'

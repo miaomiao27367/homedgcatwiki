@@ -33,8 +33,8 @@ $(function () {
     // 新成就页逻辑
     // ═══════════════════════════════════════════════════════════════
 
-    var ACH_DATA_PATH = '/gi/CH/ach/ach.json'
-    var GROUPS_PATH = '/gi/CH/ach/groups/'
+    var ACH_DATA_PATH = '/gi/' + lang3 + '/ach/ach.json'
+    var GROUPS_PATH = '/gi/' + lang3 + '/ach/groups/'
     var STORAGE_KEY = 'ach:done'
     var primoIcon = imgpre + 'homdgcat-res/Csxylic/Primo.png'
 

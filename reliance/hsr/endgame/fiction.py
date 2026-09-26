@@ -26,7 +26,7 @@ from reliance.hsr.endgame.sync_elite import (
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
-OUTPUT_DIR = "./tempdata"
+OUTPUT_DIR = "./.temp/hsr/endgame/fiction"
 DEFAULT_VERSION = "4.3.52"
 
 MONSTER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "sr", "data", "CH", "Monster.js")

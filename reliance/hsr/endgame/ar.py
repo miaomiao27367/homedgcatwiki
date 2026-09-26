@@ -29,7 +29,7 @@ from reliance.hsr.endgame.sync_elite import (
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
-OUTPUT_DIR = "./tempdata"
+OUTPUT_DIR = "./.temp/hsr/endgame/ar"
 DEFAULT_VERSION = "4.3.52"
 
 ELEMENT_MAP = {

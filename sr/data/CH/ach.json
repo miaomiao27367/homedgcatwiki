@@ -1,0 +1,99 @@
+{
+  "updatedAt": "",
+  "latestVersion": "3.8",
+  "totalNum": 1563,
+  "prevVersion": "3.7",
+  "prevTotalNum": 1538,
+  "totalReward": 9295,
+  "versions": [
+    "3.8",
+    "3.7",
+    "3.6",
+    "3.5",
+    "3.4",
+    "3.3",
+    "3.2",
+    "3.1",
+    "3.0",
+    "2.7",
+    "2.6",
+    "2.5",
+    "2.4",
+    "2.3",
+    "2.2",
+    "2.1",
+    "2.0",
+    "1.6",
+    "1.5",
+    "1.4",
+    "1.3",
+    "1.2",
+    "1.1",
+    "1.0"
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "我，开拓者",
+      "icon": "CultivateAchievementIcon.png",
+      "num": 24,
+      "reward": 335
+    },
+    {
+      "id": 2,
+      "name": "流光遗痕",
+      "icon": "CollectAchievementIcon.png",
+      "num": 14,
+      "reward": 100
+    },
+    {
+      "id": 3,
+      "name": "通往群星的轨道",
+      "icon": "MainLineAchievementIcon.png",
+      "num": 137,
+      "reward": 1420
+    },
+    {
+      "id": 4,
+      "name": "众秘探奇",
+      "icon": "ExploreAchievementIcon.png",
+      "num": 250,
+      "reward": 1325
+    },
+    {
+      "id": 5,
+      "name": "与你同行的回忆",
+      "icon": "ReputationAchievementIcon.png",
+      "num": 603,
+      "reward": 3130
+    },
+    {
+      "id": 6,
+      "name": "不屈者的荣光",
+      "icon": "ChallengeAchievementIcon.png",
+      "num": 12,
+      "reward": 80
+    },
+    {
+      "id": 7,
+      "name": "战意奔涌",
+      "icon": "BattleAchievementIcon.png",
+      "num": 280,
+      "reward": 1580
+    },
+    {
+      "id": 8,
+      "name": "瞬息欢愉",
+      "icon": "TrackAchievementIcon.png",
+      "num": 90,
+      "reward": 465
+    },
+    {
+      "id": 9,
+      "name": "果壳中的宇宙",
+      "icon": "RougeAchievementIcon.png",
+      "num": 153,
+      "reward": 860
+    }
+  ]
+}

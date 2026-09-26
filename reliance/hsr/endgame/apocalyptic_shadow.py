@@ -26,7 +26,7 @@ from reliance.hsr.endgame.sync_elite import load_level_curves, get_elite_group
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
-OUTPUT_DIR = "./tempdata"
+OUTPUT_DIR = "./.temp/hsr/endgame/as"
 DEFAULT_VERSION = "4.3.52"
 
 # True: 仅导出原始数据到 tempdata/，不拼接 JS。False: 正常拼接

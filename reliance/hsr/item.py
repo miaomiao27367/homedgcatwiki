@@ -51,7 +51,7 @@ from typing import Dict, Any, Optional, List, Tuple
 API_VERSION = "4.4.54"
 LANG = "zh"
 API_URL = f"https://static.nanoka.cc/hsr/{API_VERSION}/{LANG}/item_all.json"
-CACHE_DIR = "tempdata"
+CACHE_DIR = ".temp/hsr/item"
 LOCAL_ITEM_PATH = "sr/data/CH/Item.js"
 MISSING_IDS_PATH = r"missing_ids.txt"
 BACKUP_PATH = r"Item.js.bak"

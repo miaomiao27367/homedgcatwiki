@@ -8,7 +8,7 @@ import requests
 # ============================================================
 
 API_VERSION = "6.7.52"
-CACHE_DIR = "tempdata"
+CACHE_DIR = ".temp/gi/weapon"
 OUTPUT_DIR = os.path.join(CACHE_DIR, "output")
 WEAPON_DIR = "gi/CH/Weapon"
 AVATAR_JS_PATH = "gi/CH/Weapon.js"

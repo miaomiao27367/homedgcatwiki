@@ -10,7 +10,7 @@ import re
 SCRIPT_VERSION = "3.1"
 API_VERSION = "6.7.52"
 
-CACHE_DIR = "tempdata"
+CACHE_DIR = ".temp/gi/avatar"
 OUTPUT_DIR = os.path.join(CACHE_DIR, "output")
 AVATAR_DIR = "gi/CH/Avatar"
 AVATAR_JS_PATH = "gi/CH/avatar.js"

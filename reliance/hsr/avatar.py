@@ -15,9 +15,9 @@ from typing import Dict, Any, Optional
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"  # 可选: en, zh, ja, ko
-OUTPUT_DIR = "./tempdata"
+OUTPUT_DIR = "./.temp/hsr/avatar"
 OUTPUT_DIR2 = "./sr/data/CH/Avatar"
-DEBUG_OUTPUT_DIR = "./tempoutput"
+DEBUG_OUTPUT_DIR = "./.temp/hsr/avatar"
 
 # 确保输出目录存在
 os.makedirs(OUTPUT_DIR, exist_ok=True)

@@ -38,7 +38,7 @@ from PIL import Image
 API_VERSION = "6.7.52"
 LANG = "zh"
 API_URL = f"https://static.nanoka.cc/gi/{API_VERSION}/{LANG}/item_all.json"
-CACHE_DIR = "tempdata"
+CACHE_DIR = ".temp/gi/item"
 LOCAL_ITEM_PATH = "gi/CH/item.js"
 MISSING_IDS_PATH = "missing_ids.txt"
 BACKUP_PATH = "gi/CH/item.js.bak"

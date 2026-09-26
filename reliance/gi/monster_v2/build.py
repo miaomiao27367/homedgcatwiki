@@ -48,8 +48,8 @@ from reliance.gi.monster_v2.utils import (
 API_VERSION = "7.1.50"
 BASE_URL = f"https://static.nanoka.cc/gi/{API_VERSION}"
 PROJECT_ROOT = _PROJECT_ROOT
-API_CACHE_DIR = os.path.join(PROJECT_ROOT, "reliance", "output", "api_cache")
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "reliance", "output")
+API_CACHE_DIR = os.path.join(PROJECT_ROOT, ".temp", "gi", "v2", "api_cache")
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, ".temp", "gi", "v2")
 
 os.makedirs(API_CACHE_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
