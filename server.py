@@ -21,7 +21,7 @@ from reliance.hsr_fiction_v2 import generate_fiction_v2
 from reliance.hsr_chaos_v2 import generate_chaos_v2
 from reliance.gi_trans import gi_character_update
 from reliance.gi.weapon import gi_weapon_update, gi_weapon_img_sync
-from reliance.update_v2_monster import update_single_monster, cache_icons_for_monster
+from reliance.gi.monster_v2.update import update_single_monster, cache_icons_for_monster
 from reliance.hsr.relic import generate_relic_data
 from reliance.hsr.item import generate_item_data, sync_item_images
 from reliance.gi.item import generate_gi_item_data, sync_gi_item_images

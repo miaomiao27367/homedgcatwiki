@@ -18,11 +18,11 @@ from io import BytesIO
 from PIL import Image
 
 # Ensure project root is on sys.path for shared module import
-_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
-from reliance.v2_build_utils import (
+from reliance.gi.monster_v2.utils import (
     GROW_CURVE_HP_MAP, GROW_CURVE_HP_MAP_AUTOMATRON,
     GROW_CURVE_ATK_MAP, GROW_CURVE_ATK_MAP_AUTOMATRON,
     HP_COEFFICIENTS, ATK_COEFFICIENTS,
