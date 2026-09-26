@@ -20,11 +20,11 @@ from reliance.hsr_trans_as import generate_as_data
 from reliance.hsr_fiction_v2 import generate_fiction_v2
 from reliance.hsr_chaos_v2 import generate_chaos_v2
 from reliance.gi_trans import gi_character_update
-from reliance.gi_weapon_trans import gi_weapon_update, gi_weapon_img_sync
+from reliance.gi.weapon import gi_weapon_update, gi_weapon_img_sync
 from reliance.update_v2_monster import update_single_monster, cache_icons_for_monster
 from reliance.hsr_trans_relic import generate_relic_data
 from reliance.item_converter import generate_item_data, sync_item_images
-from reliance.gi_item_converter import generate_gi_item_data, sync_gi_item_images
+from reliance.gi.item import generate_gi_item_data, sync_gi_item_images
 
 data_url2="26.192.21.124:9080"
 data_url1="26.118.195.109:8080"

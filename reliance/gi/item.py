@@ -402,7 +402,7 @@ def generate_gi_item_data(item_ids: List[str], version: str = API_VERSION,
 # ============================================================
 
 GI_IMG_URL = "https://static.nanoka.cc/assets/gi/UI_ItemIcon_{}.webp"
-GI_IMG_SAVE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "homdgcat-res", "Mat")
+GI_IMG_SAVE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "homdgcat-res", "Mat")
 
 
 def sync_gi_item_images(item_ids: List[str]) -> str:
