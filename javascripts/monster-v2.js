@@ -137,12 +137,17 @@ $(function () {
         clearBtn.className = 'mv2-search-clear';
         clearBtn.textContent = '\u2715';
 
+        var searchBtn = document.createElement('button');
+        searchBtn.className = 'mv2-search-btn';
+        searchBtn.textContent = (lang === 'CH' ? '搜索' : 'Search');
+
         wrap.appendChild(input);
         wrap.appendChild(clearBtn);
+        wrap.appendChild(searchBtn);
 
         var kingdomEl = $('.kingdom')[0];
         if (kingdomEl && kingdomEl.parentNode) {
-            kingdomEl.parentNode.insertBefore(toolbar, kingdomEl.nextSibling);
+            kingdomEl.parentNode.insertBefore(toolbar, kingdomEl);
         }
         toolbar.appendChild(wrap);
 
@@ -160,6 +165,10 @@ $(function () {
             doSearch('');
             var idx = state.kingdomId ? kingdomIndexById(state.kingdomId) : 0;
             selectKingdom(idx >= 0 ? idx : 0);
+        });
+
+        searchBtn.addEventListener('click', function () {
+            doSearch(input.value.trim());
         });
     }
 
