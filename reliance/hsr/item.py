@@ -51,10 +51,13 @@ from typing import Dict, Any, Optional, List, Tuple
 API_VERSION = "4.4.54"
 LANG = "zh"
 API_URL = f"https://static.nanoka.cc/hsr/{API_VERSION}/{LANG}/item_all.json"
-CACHE_DIR = ".temp/hsr/item"
-LOCAL_ITEM_PATH = "sr/data/CH/Item.js"
-MISSING_IDS_PATH = r"missing_ids.txt"
-BACKUP_PATH = r"Item.js.bak"
+
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CACHE_DIR = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "item")
+LOCAL_ITEM_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Item.js")
+MISSING_IDS_PATH = os.path.join(_PROJECT_ROOT, "missing_ids.txt")
+BACKUP_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Item.js.bak")
 
 # ----------------------------------------------------------
 #  Rarity映射: API -> 本地Rarity数值

@@ -8,10 +8,13 @@ import requests
 # ============================================================
 
 API_VERSION = "6.7.52"
-CACHE_DIR = ".temp/gi/weapon"
+
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CACHE_DIR = os.path.join(_PROJECT_ROOT, ".temp", "gi", "weapon")
 OUTPUT_DIR = os.path.join(CACHE_DIR, "output")
-WEAPON_DIR = "gi/CH/Weapon"
-AVATAR_JS_PATH = "gi/CH/Weapon.js"
+WEAPON_DIR = os.path.join(_PROJECT_ROOT, "gi", "CH", "Weapon")
+AVATAR_JS_PATH = os.path.join(_PROJECT_ROOT, "gi", "CH", "Weapon.js")
 
 # ----------------------------------------------------------
 #  武器类型映射: API -> 本地数字
@@ -649,7 +652,7 @@ def get_weapon_icon_from_avatar(weapon_id):
         return None
 
     # 优先从 Weapon.js 查找（武器数据已独立到 Weapon.js）
-    weapon_js_path = os.path.join(os.getcwd(), WEAPON_DIR + ".js")
+    weapon_js_path = os.path.join(_PROJECT_ROOT, "gi", "CH", "Weapon.js")
     if os.path.exists(weapon_js_path):
         try:
             with open(weapon_js_path, 'r', encoding='utf-8') as f:
@@ -661,7 +664,7 @@ def get_weapon_icon_from_avatar(weapon_id):
             print(f"  [警告] 读取 Weapon.js 失败: {e}")
 
     # 回退到 avatar.js 查找
-    avatar_js_path = os.path.join(os.getcwd(), AVATAR_JS_PATH)
+    avatar_js_path = os.path.join(_PROJECT_ROOT, "gi", "CH", "avatar.js")
     if os.path.exists(avatar_js_path):
         try:
             with open(avatar_js_path, 'r', encoding='utf-8') as f:

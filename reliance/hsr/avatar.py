@@ -15,9 +15,12 @@ from typing import Dict, Any, Optional
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"  # 可选: en, zh, ja, ko
-OUTPUT_DIR = "./.temp/hsr/avatar"
-OUTPUT_DIR2 = "./sr/data/CH/Avatar"
-DEBUG_OUTPUT_DIR = "./.temp/hsr/avatar"
+
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+OUTPUT_DIR = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "avatar")
+OUTPUT_DIR2 = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Avatar")
+DEBUG_OUTPUT_DIR = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "avatar")
 
 # 确保输出目录存在
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -800,15 +803,16 @@ def generate_avatar_basic_file(character_id: str, character_data: Dict[str, Any]
         f.write("\n")
 
 
-AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'sr', 'data', 'CH', 'Avatar.js')
+AVATAR_JS_PATH = os.path.join(_PROJECT_ROOT, 'sr', 'data', 'CH', 'Avatar.js')
 
 
-def merge_avatar_to_avatar_js(character_id: str) -> str:
+def merge_avatar_to_avatar_js(character_id: str, force_update: bool = False) -> str:
     """
     将生成的avatar基础数据合并到 Avatar.js 的 _avatar 对象中
 
     策略：
     - 新角色：插入到 _avatar 对象中
+    - 已有角色 + force_update=True：直接覆盖更新
     - 已有角色 + 数据有变化：用新版本数据替换
     """
     basic_file = os.path.join(OUTPUT_DIR, f"{character_id}basic.js")
@@ -858,7 +862,7 @@ def merge_avatar_to_avatar_js(character_id: str) -> str:
 
     is_update = avatar_id in existing_avatar
 
-    if is_update:
+    if is_update and not force_update:
         # 对比新旧数据是否一致
         old_entry = json.dumps(existing_avatar[avatar_id], ensure_ascii=False, sort_keys=True)
         new_entry_check = json.dumps(avatar_entry, ensure_ascii=False, sort_keys=True)
@@ -884,6 +888,7 @@ def merge_avatar_to_avatar_js(character_id: str) -> str:
 def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any], all_versions_tree_data: Dict[str, Any],
                      all_versions_rank_data: Dict[str, Any], versions: Dict[str, str],
                      mtc_data: Dict[str, Any] = None, recommend_data: Dict[str, Any] = None,
+                     stories: Dict[str, str] = None, voicelines: list = None,
                      output_dir: str = None) -> None:
     """
     生成角色详情JS文件（支持多版本）
@@ -972,20 +977,46 @@ def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any],
         f.write("}\n\n")
 
 
-        # 其他固定数据（保持不变）
-        f.write("var _story_ = [\n")
-        f.write("    {\n")
-        f.write('        "Name": "",\n')
-        f.write('        "Desc": ""\n')
-        f.write("    }\n")
-        f.write("]\n\n")
+        # 生成故事数据（从API提取）
+        f.write("var _story_ = {\n")
+        f.write(f'    "{character_id}": [\n')
+        if stories and len(stories) > 0:
+            sorted_keys = sorted(stories.keys(), key=lambda k: int(k))
+            for idx, key in enumerate(sorted_keys):
+                text = (stories[key] or "").replace('\n', '<br>')
+                f.write("        {\n")
+                f.write(f'            "_id": {11 + idx},\n')
+                f.write(f'            "Story": {json.dumps(text, ensure_ascii=False)}\n')
+                f.write("        },\n")
+        else:
+            f.write("        {\n")
+            f.write('            "_id": 0,\n')
+            f.write('            "Story": ""\n')
+            f.write("        }\n")
+        f.write("    ]\n")
+        f.write("}\n\n")
 
-        f.write("var _voice_ = [\n")
-        f.write("    {\n")
-        f.write('        "Name": "",\n')
-        f.write('        "Desc": ""\n')
-        f.write("    }\n")
-        f.write("]\n\n")
+        # 生成语音数据（从API提取）
+        f.write("var _voice_ = {\n")
+        f.write(f'    "{character_id}": [\n')
+        if voicelines and len(voicelines) > 0:
+            for vl in voicelines:
+                voice_id = str(vl.get("voice_id", ""))
+                title = vl.get("voice_title", "")
+                voice_text = vl.get("voice_m", "").replace('\n', '<br>')
+                f.write("        {\n")
+                f.write(f'            "_id": {json.dumps(voice_id, ensure_ascii=False)},\n')
+                f.write(f'            "Title": {json.dumps(title, ensure_ascii=False)},\n')
+                f.write(f'            "Voice": {json.dumps(voice_text, ensure_ascii=False)}\n')
+                f.write("        },\n")
+        else:
+            f.write("        {\n")
+            f.write('            "_id": "",\n')
+            f.write('            "Title": "",\n')
+            f.write('            "Voice": ""\n')
+            f.write("        }\n")
+        f.write("    ]\n")
+        f.write("}\n\n")
 
         f.write("var _notes_ = [\n")
         f.write("    {\n")
@@ -1040,6 +1071,8 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
                       并从该版本 API 下载数据作为正式服数据
         debug: 调试模式，输出到tempoutput而不走合并流程
     """
+
+    print(f"[generate_character_data] live_version={live_version!r}")
 
     # 参数检查：必须传入所有参数
     if character_id is None or major_version is None or minor_versions is None:
@@ -1106,9 +1139,22 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
                     "teams": char_data.get("teams", [])
                 }
             }
+    # 从最新版本的原始API数据中提取故事和语音
+    stories = None
+    voicelines = None
+    if all_versions_data:
+        latest_raw_key = list(all_versions_data.keys())[-1]
+        latest_raw_data = all_versions_data[latest_raw_key]
+        chara_info = latest_raw_data.get("chara_info") or {}
+        if "stories" in chara_info:
+            stories = chara_info["stories"]
+        if "voicelines" in chara_info:
+            voicelines = chara_info["voicelines"]
+
     output_dir = DEBUG_OUTPUT_DIR if debug else OUTPUT_DIR2
     generate_js_file(character_id, all_versions_skill_data, all_versions_tree_data, all_versions_rank_data,
-                     versions, mtc_data, recommend_data, output_dir=output_dir)
+                     versions, mtc_data, recommend_data, stories=stories, voicelines=voicelines,
+                     output_dir=output_dir)
 
     if debug:
         return f"角色 {character_id} 调试数据已生成至 {output_dir}/{character_id}.js"
@@ -1123,7 +1169,7 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
                                        major_version, live_version=live_version)
 
     # 自动拼接到Avatar.js
-    merge_msg = merge_avatar_to_avatar_js(character_id)
+    merge_msg = merge_avatar_to_avatar_js(character_id, force_update=bool(live_version))
     result = f"角色 {character_id} 数据生成完成！"
     if merge_msg:
         result += "\n" + merge_msg

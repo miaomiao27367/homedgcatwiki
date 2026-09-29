@@ -13,8 +13,11 @@ from typing import Dict, Any, Optional
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"  # 可选: en, zh, ja, ko
-OUTPUT_DIR = "./sr/data/CH/Weapon"
-OUTPUT_DIR2 = "./.temp/hsr/weapon"
+
+# 项目根目录（reliance/hsr/weapon.py → 项目根目录）
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+OUTPUT_DIR = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Weapon")
+OUTPUT_DIR2 = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "weapon")
 
 # 确保输出目录存在
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -424,7 +427,7 @@ def generate_avatar_weapon_data(weapon_id: str, weapon_data: Dict[str, Any], maj
         f.write("\n")
 
 
-WEAPON_JS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sr', 'data', 'CH', 'Weapon.js')
+WEAPON_JS_PATH = os.path.join(_PROJECT_ROOT, 'sr', 'data', 'CH', 'Weapon.js')
 
 
 def merge_weapon_to_weapon_js(weapon_id: str) -> str:

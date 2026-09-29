@@ -709,10 +709,12 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     response_data = {"status": "success", "message": f"成功处理 {len(character_ids)} 个角色", "stdout": final_output}
                     
                 except Exception as e:
-
+                    import traceback
                     error_msg = str(e)
+                    tb_str = traceback.format_exc()
                     print(f"[hsr_update] 执行失败: {error_msg}")
-                    response_data = {"status": "error", "message": "数据更新失败", "stderr": f"抛出异常: {error_msg}"}
+                    print(f"[hsr_update] 详细追踪:\n{tb_str}")
+                    response_data = {"status": "error", "message": "数据更新失败", "stderr": f"抛出异常: {error_msg}\n{tb_str}"}
                 
                 # 发送响应
                 self.send_response(200)

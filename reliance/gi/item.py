@@ -38,10 +38,13 @@ from PIL import Image
 API_VERSION = "6.7.52"
 LANG = "zh"
 API_URL = f"https://static.nanoka.cc/gi/{API_VERSION}/{LANG}/item_all.json"
-CACHE_DIR = ".temp/gi/item"
-LOCAL_ITEM_PATH = "gi/CH/item.js"
-MISSING_IDS_PATH = "missing_ids.txt"
-BACKUP_PATH = "gi/CH/item.js.bak"
+
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CACHE_DIR = os.path.join(_PROJECT_ROOT, ".temp", "gi", "item")
+LOCAL_ITEM_PATH = os.path.join(_PROJECT_ROOT, "gi", "CH", "item.js")
+MISSING_IDS_PATH = os.path.join(_PROJECT_ROOT, "missing_ids.txt")
+BACKUP_PATH = os.path.join(_PROJECT_ROOT, "gi", "CH", "item.js.bak")
 
 # SortType映射表 (API Type字符串 -> SortType整数)
 API_TYPE_TO_SORTTYPE = {

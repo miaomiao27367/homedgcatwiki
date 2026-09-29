@@ -24,15 +24,15 @@ from reliance.hsr.endgame.sync_elite import (
     get_elite_group,
 )
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
-OUTPUT_DIR = "./.temp/hsr/endgame/chaos"
-MONSTER_DB_PATH = os.path.join(PROJECT_ROOT, "sr", "data", "CH", "Monster.js")
-CHAOS_JS_PATH = os.path.join(PROJECT_ROOT, "sr", "data", "CH", "Chaos_1.js")
-CHAOS_STAR_PATH = os.path.join(PROJECT_ROOT, "sr", "data", "CH", "Chaos_star.js")
+OUTPUT_DIR = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "endgame", "chaos")
+MONSTER_DB_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Monster.js")
+CHAOS_JS_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Chaos_1.js")
+CHAOS_STAR_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Chaos_star.js")
 DEFAULT_VERSION = "4.3.52"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)

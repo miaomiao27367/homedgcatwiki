@@ -19,6 +19,9 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, Any, List, Optional, Tuple
 
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 # 确保项目根目录在 sys.path 中，以便 import reliance.*
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
@@ -26,7 +29,7 @@ from reliance.hsr.endgame.sync_elite import load_level_curves, get_elite_group
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
-OUTPUT_DIR = "./.temp/hsr/endgame/as"
+OUTPUT_DIR = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "endgame", "as")
 DEFAULT_VERSION = "4.3.52"
 
 # True: 仅导出原始数据到 tempdata/，不拼接 JS。False: 正常拼接
@@ -202,7 +205,7 @@ def load_monster_base_stats() -> Dict[str, Dict[str, float]]:
     """从Monster.js加载怪物基础属性（含嵌套Child变体）"""
     result = {}
 
-    js_path = "./sr/data/CH/Monster.js"
+    js_path = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Monster.js")
     if not os.path.exists(js_path):
         return result
 
@@ -632,7 +635,7 @@ def format_chaos_entry(entry: Dict[str, Any]) -> str:
 def merge_chaos_to_as_js(boss_id: str, entry: Dict[str, Any], name: str,
                           begin_time: str = "", end_time: str = "") -> str:
     """将_chaos条目、_chaosschedule条目、_chaosdict条目拼接到AS.js"""
-    as_js_path = "./sr/data/CH/AS.js"
+    as_js_path = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "AS.js")
 
     with open(as_js_path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -901,7 +904,7 @@ def merge_star_to_as_star_js(boss_id: str, star_data: Dict[str, Any]) -> str:
         boss_id: Boss ID
         star_data: 包含 ElemStar 和 Star 字段的字典
     """
-    as_star_path = "./sr/data/CH/AS_star.js"
+    as_star_path = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "AS_star.js")
 
     if not os.path.exists(as_star_path):
         return f"文件不存在: {as_star_path}"

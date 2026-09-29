@@ -13,6 +13,9 @@
 import os
 import sys
 import json
+
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 import re
 import requests
 from typing import Dict, Any, List, Optional, Tuple
@@ -29,7 +32,7 @@ from reliance.hsr.endgame.sync_elite import (
 
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
-OUTPUT_DIR = "./.temp/hsr/endgame/ar"
+OUTPUT_DIR = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "endgame", "ar")
 DEFAULT_VERSION = "4.3.52"
 
 ELEMENT_MAP = {
@@ -133,7 +136,7 @@ def load_monster_base_stats() -> Dict[str, Dict[str, float]]:
 
     result = {}
 
-    js_path = "./sr/data/CH/Monster.js"
+    js_path = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Monster.js")
     with open(js_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
@@ -513,7 +516,7 @@ def format_maze_entry(maze_id: str, maze_data: Dict[str, Any]) -> str:
 
 def merge_maze_to_ar_js(maze_id: str, maze_data: Dict[str, Any], name: str = "") -> str:
     """将_maze条目和_schedule条目拼接到AR.js最前面"""
-    ar_js_path = "./sr/data/CH/AR.js"
+    ar_js_path = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "AR.js")
 
     with open(ar_js_path, 'r', encoding='utf-8') as f:
         content = f.read()

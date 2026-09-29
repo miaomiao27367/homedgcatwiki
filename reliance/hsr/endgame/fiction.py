@@ -24,14 +24,17 @@ from reliance.hsr.endgame.sync_elite import (
     get_elite_group,
 )
 
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 BASE_URL = "https://static.nanoka.cc/hsr"
 LANGUAGE = "zh"
-OUTPUT_DIR = "./.temp/hsr/endgame/fiction"
+OUTPUT_DIR = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "endgame", "fiction")
 DEFAULT_VERSION = "4.3.52"
 
-MONSTER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "sr", "data", "CH", "Monster.js")
-FICTION_1_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "sr", "data", "CH", "Fiction_1.js")
-FICTION_STAR_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "sr", "data", "CH", "Fiction_star.js")
+MONSTER_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Monster.js")
+FICTION_1_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Fiction_1.js")
+FICTION_STAR_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "CH", "Fiction_star.js")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

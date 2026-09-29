@@ -13,8 +13,11 @@ import requests
 from typing import Any, Dict, Tuple
 
 BASE_URL = "https://static.nanoka.cc/hsr"
-OUTPUT_DIR = "./.temp/hsr/endgame"
-LEVEL_CURVES_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "sr", "data", "LevelCurves.js")
+
+# 项目根目录
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+OUTPUT_DIR = os.path.join(_PROJECT_ROOT, ".temp", "hsr", "endgame")
+LEVEL_CURVES_PATH = os.path.join(_PROJECT_ROOT, "sr", "data", "LevelCurves.js")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
