@@ -14,15 +14,42 @@ $(function () {
         { img: imgpre + 'images/translate.png', class: '_translate_' }
     ]);
 
-    // ============ 3. 加载数据 ============
-    var script1 = document.createElement('script');
-    script1.src = '/gi/' + lang3 + '/monster-v2-data.js';
-    document.head.append(script1);
-    script1.onload = begin;
-    script1.onerror = function () {
-        window.V2_DATA = { List: {}, Variants: {}, Kingdoms: [], LevelCurves: {}, Tuts: {}, Tutorials: {} };
-        begin();
+    // ============ 3. 加载数据 (JSON fetch) ============
+    window.V2_DATA = {
+        List: {}, Variants: {}, Kingdoms: [],
+        LevelCurves: {}, Tuts: {}, Tutorials: {}
     };
+
+    var V2_BASE = '/gi/' + lang3 + '/monster/';
+
+    function v2LoadJSON(url) {
+        return fetch(url).then(function (r) {
+            if (!r.ok) throw new Error(r.status + ' ' + url);
+            return r.json();
+        }).catch(function (e) {
+            console.warn('[monster-v2] load failed:', url, e);
+            return null;
+        });
+    }
+
+    Promise.all([
+        v2LoadJSON(V2_BASE + 'monster-v2-base.json'),
+        v2LoadJSON('/gi/' + lang3 + '/Levelcurve.json'),
+        v2LoadJSON(V2_BASE + 'monster.json'),
+        v2LoadJSON(V2_BASE + 'monsterfull.json')
+    ]).then(function (res) {
+        var base = res[0] || {};
+        V2_DATA.Generated = base.Generated;
+        V2_DATA.Kingdoms = base.Kingdoms || [];
+        V2_DATA.Tuts = base.Tuts || {};
+        V2_DATA.Tutorials = base.Tutorials || {};
+        V2_DATA.Source = base.Source || {};
+        V2_DATA.Version = base.Version || '1.0';
+        V2_DATA.LevelCurves = res[1] || {};
+        V2_DATA.List = res[2] || {};
+        V2_DATA.Variants = res[3] || {};
+        begin();
+    });
 
     // ============ 4. 状态管理 ============
     var state = {
