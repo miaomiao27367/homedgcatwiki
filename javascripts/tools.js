@@ -36,6 +36,13 @@ var ToolsApp = {
                         container.appendChild(div);
                     }
                 }
+                if (data.live_enabled) {
+                    document.getElementById('hsrLiveEnabled').checked = true;
+                    document.getElementById('hsrLiveVersionGroup').style.display = 'block';
+                    if (data.live_version) {
+                        document.getElementById('hsrLiveVersion').value = data.live_version;
+                    }
+                }
             }
         } catch (e) {
             console.log('加载角色缓存失败:', e);
@@ -140,7 +147,7 @@ var ToolsApp = {
         var container = document.getElementById('characterMinorVersionsContainer');
         var newGroup = document.createElement('div');
         newGroup.className = 'minor-versions';
-        newGroup.innerHTML = ' <input type="text" class="minorVersion" placeholder=".53"> <input type="text" class="minorVersion" placeholder=".53"> <button type="button" class="btn-remove" onclick="ToolsApp.removeMinorVersion(this)">×</button>';
+        newGroup.innerHTML = ' <input type="text" class="minorVersion" placeholder=".53"> <button type="button" class="btn-remove" onclick="ToolsApp.removeMinorVersion(this)">×</button>';
         container.appendChild(newGroup);
     },
 
@@ -149,7 +156,7 @@ var ToolsApp = {
         var container = document.getElementById('weaponMinorVersionsContainer');
         var newGroup = document.createElement('div');
         newGroup.className = 'minor-versions';
-        newGroup.innerHTML = ' <input type="text" class="minorVersion" placeholder=".53"> <input type="text" class="minorVersion" placeholder=".53"> <button type="button" class="btn-remove" onclick="ToolsApp.removeMinorVersion(this)">×</button>';
+        newGroup.innerHTML = ' <input type="text" class="minorVersion" placeholder=".53"> <button type="button" class="btn-remove" onclick="ToolsApp.removeMinorVersion(this)">×</button>';
         container.appendChild(newGroup);
     },
 
@@ -183,7 +190,9 @@ var ToolsApp = {
         var data = {
             character_ids: characterIds,
             major_version: document.getElementById('hsrMajorVersion').value.trim(),
-            minor_versions: minorVersions
+            minor_versions: minorVersions,
+            live_enabled: document.getElementById('hsrLiveEnabled').checked,
+            live_version: document.getElementById('hsrLiveVersion').value.trim()
         };
 
         submitBtn.disabled = true;

@@ -702,9 +702,12 @@ def calculate_final_stats(character_data: Dict[str, Any], level: int = 80) -> Di
 
 
 def generate_avatar_basic_file(character_id: str, character_data: Dict[str, Any], skill_data: Dict[str, Any],
-                               rank_data: Dict[str, Any], major_version: str) -> None:
+                               rank_data: Dict[str, Any], major_version: str, live_version: Optional[str] = None) -> None:
     """
     生成avatar基本数据文件（id+basic.js）
+    
+    Args:
+        live_version: Live版本号，如果提供则直接用作Ver字段
     """
     output_file = os.path.join(OUTPUT_DIR, f"{character_id}basic.js")
 
@@ -750,7 +753,7 @@ def generate_avatar_basic_file(character_id: str, character_data: Dict[str, Any]
     # 构建avatar数据结构（根据Avatar.js的实际结构）
     avatar_data: Dict[str, Any] = {
         "_id": int(character_id),
-        "Ver": f"{float(major_version) + 0.1:.1f}",  # 版本号，major_version + 0.1
+        "Ver": live_version if live_version else f"{float(major_version) + 0.1:.1f}",
         "Name": avatar_info.get("name", "null but why?"),
         "Desc": avatar_info.get("desc","null but why?").replace('\\n', '\n'),
         "Rarity": rarity,
@@ -797,7 +800,7 @@ def generate_avatar_basic_file(character_id: str, character_data: Dict[str, Any]
         f.write("\n")
 
 
-AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sr', 'data', 'CH', 'Avatar.js')
+AVATAR_JS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'sr', 'data', 'CH', 'Avatar.js')
 
 
 def merge_avatar_to_avatar_js(character_id: str) -> str:
@@ -1025,7 +1028,7 @@ def generate_js_file(character_id: str, all_versions_skill_data: Dict[str, Any],
 
 
 def generate_character_data(character_id: str, major_version: str = None, minor_versions: list = None,
-                            debug: bool = False) -> str:
+                            live_version: str = None, debug: bool = False) -> str:
     """
     封装的生成角色数据的函数，供其他程序调用
 
@@ -1033,6 +1036,8 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
         character_id: 角色ID
         major_version: 大版本号，例如 "4.3"
         minor_versions: 小版本号列表，例如 [".51", ".52"]
+        live_version: 正式服版本号，例如 "4.6"。传入后会在 _versions_ 中追加 "Live" 字段，
+                      并从该版本 API 下载数据作为正式服数据
         debug: 调试模式，输出到tempoutput而不走合并流程
     """
 
@@ -1050,6 +1055,21 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
 
     if not all_versions_data:
         return "无法下载任何版本的角色数据，退出程序"
+
+    # 如果提供了 Live 版本号，下载正式服数据并注入到版本列表
+    if live_version:
+        live_data = download_character_data(character_id, live_version)
+        if live_data:
+            all_versions_data["Live"] = live_data
+            versions["Live"] = live_version
+            print(f"Live 版本({live_version})数据已下载")
+        else:
+            # Live 下载失败时，用最后一个测试版本的数据作为 Live 版本
+            print(f"警告: 无法下载 Live 版本({live_version})数据，将复用最后一个测试版本数据")
+            if all_versions_data:
+                last_key = list(all_versions_data.keys())[-1]
+                all_versions_data["Live"] = all_versions_data[last_key]
+            versions["Live"] = live_version
 
     # 初始化所有版本的数据容器
     all_versions_skill_data = {}
@@ -1100,7 +1120,7 @@ def generate_character_data(character_id: str, major_version: str = None, minor_
             generate_avatar_basic_file(character_id, all_versions_data[latest_version],
                                        all_versions_skill_data[latest_version],
                                        all_versions_rank_data[latest_version],
-                                       major_version)
+                                       major_version, live_version=live_version)
 
     # 自动拼接到Avatar.js
     merge_msg = merge_avatar_to_avatar_js(character_id)

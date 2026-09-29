@@ -84,6 +84,18 @@
                         </div>
                     </div>
 
+                    <div class="form-group live-section">
+                        <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; font-weight: bold;">
+                            <input type="checkbox" id="hsrLiveEnabled" style="width: 18px; height: 18px; cursor: pointer;">
+                            <span>启用 Live 版本</span>
+                        </label>
+                        <div id="hsrLiveVersionGroup" style="margin-top: 8px;">
+                            <label for="hsrLiveVersion">Live 版本号</label>
+                            <input type="text" id="hsrLiveVersion" value="" placeholder="例如：4.6" style="max-width: 200px;">
+                            <span style="color: #888; font-size: 13px; margin-left: 10px;">对应 API 路径中的版本号，如 <code>static.nanoka.cc/hsr/<b>4.6</b>/zh/character/</code></span>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-primary" id="hsrSubmitBtn">
                         <span id="hsrBtnText">发送更新请求</span>
                     </button>

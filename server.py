@@ -29,7 +29,7 @@ from reliance.gi.item import generate_gi_item_data, sync_gi_item_images
 data_url2="26.192.21.124:9080"
 data_url1="26.118.195.109:8080"
 
-def save_hsr_cache(character_ids, major_version, minor_versions):
+def save_hsr_cache(character_ids, major_version, minor_versions, live_enabled=False, live_version=''):
     """保存用户选择的HSR更新参数到缓存文件"""
     log_dir = './logs'
     os.makedirs(log_dir, exist_ok=True)
@@ -39,7 +39,9 @@ def save_hsr_cache(character_ids, major_version, minor_versions):
         cache_data = {
             'character_ids': character_ids,
             'major_version': major_version,
-            'minor_versions': minor_versions
+            'minor_versions': minor_versions,
+            'live_enabled': live_enabled,
+            'live_version': live_version
         }
         with open(cache_file, 'w', encoding='utf-8') as f:
             json.dump(cache_data, f, ensure_ascii=False, indent=4)
@@ -681,8 +683,10 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     character_ids = request_data.get('character_ids', [])
                     major_version = request_data.get('major_version')
                     minor_versions = request_data.get('minor_versions')
+                    live_enabled = request_data.get('live_enabled', False)
+                    live_version = request_data.get('live_version', '')
                     
-                    print(f"[hsr_update] 收到参数: character_ids={character_ids}, major_version={major_version}, minor_versions={minor_versions}")
+                    print(f"[hsr_update] 收到参数: character_ids={character_ids}, major_version={major_version}, minor_versions={minor_versions}, live_enabled={live_enabled}, live_version={live_version}")
                 except:
                     # 如果解析失败，用默认值
                     character_ids = ["1510"]
@@ -692,12 +696,13 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
                 try:
                     # 保存用户选择到缓存
-                    save_hsr_cache(character_ids, major_version, minor_versions)
+                    save_hsr_cache(character_ids, major_version, minor_versions, live_enabled, live_version)
                     
                     results = []
                     for character_id in character_ids:
                         print(f"[hsr_update] 开始处理角色 {character_id}...")
-                        str_return = generate_character_data(character_id, major_version, minor_versions)
+                        live_ver = live_version if live_enabled and live_version else None
+                        str_return = generate_character_data(character_id, major_version, minor_versions, live_version=live_ver)
                         results.append(f"角色 {character_id}: {str_return}")
                     
                     final_output = "\n".join(results)
