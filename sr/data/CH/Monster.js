@@ -3032,8 +3032,41 @@ var _monster = {
                 "Camp": 1,
                 "Icon": "mostericon/Monster_1002030.png",
                 "Figure": "monsterfigure/Monster_1002030.png"
-            }
-        }
+            },
+            "100203026": {
+                    "_id": 100203026,
+                    "Name": "银鬃炮手",
+                    "Desc": "银鬃铁卫中的炮手，使用便携的手炮进行战斗。\n 在战斗中，银鬃炮手会和其它目标发动猛烈的连携攻击。",
+                    "Stats": {
+                        "HP": 3.226,
+                        "ATK": 40.0089,
+                        "DEF": 1.0,
+                        "SPD": 100.0,
+                        "Stance": 3.0
+                    },
+                    "Weak": [
+                        "Phys",
+                        "Ice",
+                        "Imaginary"
+                    ],
+                    "RESBase": {
+                        "Fire": 0.2,
+                        "Elec": 0.2,
+                        "Wind": 0.2,
+                        "Quantum": 0.2
+                    },
+                    "StatusRESBase": 0.1,
+                    "DebuffRES": {},
+                    "Skills": [
+                        100203001,
+                        100203002,
+                        100203003
+                    ],
+                    "Camp": 1,
+                    "Icon": "mostericon/Monster_1002030.png",
+                    "Figure": "monsterfigure/Monster_1002030.png"
+                }
+}
     },
     "1002040": {
         "_id": 1002040,
@@ -64722,8 +64755,48 @@ var _monster = {
         "Figure": "monsterfigure/Monster_4064010.png",
         "Su": [
             4062010
-        ]
-    },
+        ],
+        "Child": {
+            "406401001": {
+                    "_id": 406401001,
+                    "Name": "金血忆灵•裁定忘却之形",
+                    "Desc": "那众多金血忆灵的残躯中一丝尚存的疯狂，被长夜月抽取提炼，融合成了更为扭曲怪异的怪物。\n它将遵守造物主的指示，裁定何物应被记起，何物应被忘却，它会吞噬掉徒劳无功的冗余记忆，使它们在岁月中沉默。\n「新的生命若要萌芽，它的种子须是死的。」",
+                    "Stats": {
+                        "HP": 12.5,
+                        "ATK": 18.0,
+                        "DEF": 1.0,
+                        "SPD": 150.0,
+                        "Stance": 12.0
+                    },
+                    "Weak": [
+                        "Phys",
+                        "Ice",
+                        "Imaginary"
+                    ],
+                    "RESBase": {
+                        "Fire": 0.2,
+                        "Elec": 0.2,
+                        "Wind": 0.2,
+                        "Quantum": 0.2
+                    },
+                    "StatusRESBase": 0.3,
+                    "DebuffRES": {},
+                    "Skills": [
+                        406401001,
+                        406401002,
+                        406401003,
+                        406401004,
+                        406401005,
+                        406401006,
+                        406401007,
+                        406401008
+                    ],
+                    "Camp": 18,
+                    "Icon": "mostericon/Monster_4064010.png",
+                    "Figure": "monsterfigure/Monster_4064010.png"
+                }
+        }
+},
     "4064011": {
         "_id": 4064011,
         "Name": "金血忆灵 · 裁定忘却之形（完整）",
@@ -67132,6 +67205,196 @@ var _monster = {
         "Camp": 0,
         "Icon": "mostericon/Monster_5014020.png",
         "Figure": "monsterfigure/Monster_5014020.png"
+    },
+    "5014024": {
+        "_id": 5014024,
+        "Name": "含辛茹苦的列车长",
+        "Desc": "谁能驾驭星穹列车的洪荒之力？！失控的帕姆变成了「合金机铠•帕姆王」。 帕姆王是一台对干净整洁极为执着的强大机铠，按照它的标准，这里不干净了，必须进行全！面！打！扫！帕！",
+        "Stats": {
+            "HP": 350,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 134.0,
+            "Stance": 40.0
+        },
+        "Weak": [
+            "Fire",
+            "Imaginary",
+            "Elec"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Ice": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "HPCount": 2,
+        "Skills": [
+            501402401,
+            501402402,
+            501402403,
+            501402404,
+            501402405,
+            501402406,
+            501402408
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_5014020.png",
+        "Figure": "monsterfigure/Monster_5014020.png"
+    },
+    "501402401": {
+        "_id": 501402401,
+        "Name": "含辛茹苦的列车长",
+        "Desc": "谁能驾驭星穹列车的洪荒之力？！失控的帕姆变成了「合金机铠•帕姆王」。 帕姆王是一台对干净整洁极为执着的强大机铠，按照它的标准，这里不干净了，必须进行全！面！打！扫！帕！",
+        "Stats": {
+            "HP": 350,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 134.0,
+            "Stance": 40.0
+        },
+        "Weak": [
+            "Fire",
+            "Imaginary",
+            "Elec"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Ice": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "HPCount": 2,
+        "Skills": [
+            501402401,
+            501402402,
+            501402403,
+            501402404,
+            501402405,
+            501402406,
+            501402408
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_5014020.png",
+        "Figure": "monsterfigure/Monster_5014020.png"
+    },
+    "501402402": {
+        "_id": 501402402,
+        "Name": "含辛茹苦的列车长",
+        "Desc": "谁能驾驭星穹列车的洪荒之力？！失控的帕姆变成了「合金机铠•帕姆王」。 帕姆王是一台对干净整洁极为执着的强大机铠，按照它的标准，这里不干净了，必须进行全！面！打！扫！帕！",
+        "Stats": {
+            "HP": 350,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 134.0,
+            "Stance": 40.0
+        },
+        "Weak": [
+            "Fire",
+            "Imaginary",
+            "Elec"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Ice": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "HPCount": 2,
+        "Skills": [
+            501402401,
+            501402402,
+            501402403,
+            501402404,
+            501402405,
+            501402406,
+            501402408
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_5014020.png",
+        "Figure": "monsterfigure/Monster_5014020.png"
+    },
+    "501402403": {
+        "_id": 501402403,
+        "Name": "含辛茹苦的列车长",
+        "Desc": "谁能驾驭星穹列车的洪荒之力？！失控的帕姆变成了「合金机铠•帕姆王」。 帕姆王是一台对干净整洁极为执着的强大机铠，按照它的标准，这里不干净了，必须进行全！面！打！扫！帕！",
+        "Stats": {
+            "HP": 350,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 134.0,
+            "Stance": 40.0
+        },
+        "Weak": [
+            "Fire",
+            "Imaginary",
+            "Elec"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Ice": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "HPCount": 2,
+        "Skills": [
+            501402401,
+            501402402,
+            501402403,
+            501402404,
+            501402405,
+            501402406,
+            501402408
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_5014020.png",
+        "Figure": "monsterfigure/Monster_5014020.png"
+    },
+    "501402404": {
+        "_id": 501402404,
+        "Name": "含辛茹苦的列车长",
+        "Desc": "谁能驾驭星穹列车的洪荒之力？！失控的帕姆变成了「合金机铠•帕姆王」。 帕姆王是一台对干净整洁极为执着的强大机铠，按照它的标准，这里不干净了，必须进行全！面！打！扫！帕！",
+        "Stats": {
+            "HP": 400.0,
+            "ATK": 18.0,
+            "DEF": 1.0,
+            "SPD": 134.0,
+            "Stance": 40.0
+        },
+        "Weak": [
+            "Fire",
+            "Imaginary",
+            "Elec"
+        ],
+        "RESBase": {
+            "Phys": 0.2,
+            "Ice": 0.2,
+            "Wind": 0.2,
+            "Quantum": 0.2
+        },
+        "StatusRESBase": 0.2,
+        "HPCount": 2.2,
+        "Skills": [
+            501402401,
+            501402402,
+            501402403,
+            501402404,
+            501402405,
+            501402406,
+            501402408
+        ],
+        "Camp": 0,
+        "Icon": "mostericon/Monster_5014020.png",
+        "Figure": "monsterfigure/Monster_5014020.png",
+        "Su": [
+            5023021
+        ],
+        "Multistage": 2,
+        "Multistage_list": [1,1.2]
     },
     "5014030": {
         "_id": 5014030,
@@ -83731,8 +83994,105 @@ var _monster = {
             1,
             1,
             1.9
-        ]
-    },
+        ],
+        "Child": {
+            "801503003": {
+                    "_id": 801503003,
+                    "Name": "万色返空主，归寂",
+                    "Desc": "三面他化自在之相，此为执掌可能性的绝灭大君的本体面貌。\n万法万色，历「成」、「住」、「坏」，终至成「空」——欢愉与时间乃是死敌，在漫长光阴的蹉跎之下，一切都将归返空寂。\n执行「毁灭」的天旨，而令世间一切有情熄灭心智的大业。",
+                    "Stats": {
+                        "HP": 60.0,
+                        "ATK": 18.0,
+                        "DEF": 1.0,
+                        "SPD": 140.0,
+                        "Stance": 40.0
+                    },
+                    "Weak": [
+                        "Fire",
+                        "Wind",
+                        "Imaginary"
+                    ],
+                    "RESBase": {
+                        "Phys": 0.2,
+                        "Ice": 0.2,
+                        "Elec": 0.2,
+                        "Quantum": 0.2
+                    },
+                    "StatusRESBase": 0,
+                    "DebuffRES": {},
+                    "Skills": [
+                        801503001,
+                        801503002,
+                        801503003,
+                        801503004,
+                        801503005,
+                        801503006,
+                        801503007,
+                        801503008,
+                        801503009,
+                        801503010,
+                        801503011,
+                        801503012,
+                        801503013,
+                        801503014
+                    ],
+                    "Camp": 6,
+                    "Icon": "mostericon/Monster_8015030.png",
+                    "Figure": "monsterfigure/Monster_8015030.png"
+                },
+                "801503006": {
+                    "_id": 801503006,
+                    "Name": "万色返空主，归寂",
+                    "Desc": "三面他化自在之相，此为执掌可能性的绝灭大君的本体面貌。\n万法万色，历「成」、「住」、「坏」，终至成「空」——欢愉与时间乃是死敌，在漫长光阴的蹉跎之下，一切都将归返空寂。\n执行「毁灭」的天旨，而令世间一切有情熄灭心智的大业。",
+                    "Stats": {
+                        "HP": 52.5,
+                        "ATK": 18.0,
+                        "DEF": 1.0,
+                        "SPD": 140.0,
+                        "Stance": 40.0
+                    },
+                    "Weak": [
+                        "Fire",
+                        "Wind",
+                        "Imaginary"
+                    ],
+                    "RESBase": {
+                        "Phys": 0.2,
+                        "Ice": 0.2,
+                        "Elec": 0.2,
+                        "Quantum": 0.2
+                    },
+                    "StatusRESBase": 0,
+                    "DebuffRES": {},
+        	    "HPCount": 4.75,
+                    "Skills": [
+                        801503001,
+                        801503002,
+                        801503003,
+                        801503004,
+                        801503005,
+                        801503006,
+                        801503007,
+                        801503008,
+                        801503009,
+                        801503010,
+                        801503011,
+                        801503012,
+                        801503013,
+                        801503014
+                    ],
+                    "Camp": 6,
+                    "Icon": "mostericon/Monster_8015030.png",
+                    "Figure": "monsterfigure/Monster_8015030.png",
+                    "Multistage": 3,
+                    "Multistage_list": [
+                        1,
+                        1.15,
+                        2.6
+                    ]
+                }
+        }
+},
     "8015040": {
         "_id": 8015040,
         "Name": "万色归空主，归寂•住",
@@ -91912,15 +92272,15 @@ var _monster = {
             }
         }
     },
-    "5034011": {
-            "_id": 5034011,
-            "Name": "BOSS",
+    "5034010": {
+            "_id": 5034010,
+            "Name": "堕神之血·亚婆离",
             "Desc": "...",
             "Stats": {
-                "HP": 25.0,
+                "HP": 22.5,
                 "ATK": 18.0,
                 "DEF": 1.0,
-                "SPD": 150.0,
+                "SPD": 180.0,
                 "Stance": 36.0
             },
             "Weak": [
@@ -91936,19 +92296,25 @@ var _monster = {
             },
             "StatusRESBase": 0.3,
             "DebuffRES": {},
+            "HPCount": 3,
             "Skills": [
-                503401101,
-                503401102,
-                503401103,
-                503401104,
-                503401105,
-                503401106,
-                503401107,
-                503401108
+                503401001,
+                503401002,
+                503401003,
+                503401004,
+                503401005,
+                503401006,
+                503401007,
+                503401008
             ],
             "Camp": 19,
             "Icon": "mostericon/Monster_5034010.png",
-            "Figure": "monsterfigure/Monster_5034010.png"
+            "Figure": "monsterfigure/Monster_5034010.png",
+       	    "Multistage": 2,
+            "Multistage_list": [
+            1,
+	    2
+        ]
         },
     "5032010": {
             "_id": 5032010,
@@ -92048,63 +92414,40 @@ var _monster = {
                 }
             }
         },
-    "8001032": {
-            "_id": 8001032,
-            "Name": "借力球",
-            "Desc": "黑塔召唤的法球，可以被攻击。",
-            "Stats": {
-                "HP": 1.0,
-                "ATK": 18.0,
-                "DEF": 1.0,
-                "SPD": 100.0,
-                "Stance": 0.0
-            },
-            "Weak": [],
-            "RESBase": {},
-            "StatusRESBase": 0,
-            "DebuffRES": {},
-            "Skills": [],
-            "Camp": 0,
-            "Icon": "mostericon/Monster_8001030.png",
-            "Figure": "monsterfigure/Monster_8001030.png"
-        },
-    "5034010": {
-            "_id": 5034010,
-            "Name": "BOSS",
+    "5035021": {
+            "_id": 5035021,
+            "Name": "二相乐园BOSS",
             "Desc": "...",
             "Stats": {
-                "HP": 22.5,
+                "HP": 400.0,
                 "ATK": 18.0,
                 "DEF": 1.0,
-                "SPD": 180.0,
-                "Stance": 36.0
+                "SPD": 200.0,
+                "Stance": 32.0
             },
             "Weak": [
-                "Ice",
+                "Phys",
                 "Quantum",
                 "Imaginary"
             ],
             "RESBase": {
-                "Phys": 0.2,
                 "Fire": 0.2,
+                "Ice": 0.2,
                 "Elec": 0.2,
                 "Wind": 0.2
             },
             "StatusRESBase": 0.3,
             "DebuffRES": {},
             "Skills": [
-                503401001,
-                503401002,
-                503401003,
-                503401004,
-                503401005,
-                503401006,
-                503401007,
-                503401008
+                503502101,
+                503502102,
+                503502103,
+                503502104,
+                503502105
             ],
             "Camp": 19,
-            "Icon": "mostericon/Monster_5034010.png",
-            "Figure": "monsterfigure/Monster_5034010.png"
+            "Icon": "mostericon/Monster_5035020.png",
+            "Figure": "monsterfigure/Monster_5035020.png"
         }
 };
 
@@ -92684,9 +93027,9 @@ var _monsterlist = [
     8034010,
     8034011,
     8034012,
-    5034011,
+    5034010,
     5032010,
-    8001032
+    5035021
 ];
 
 var _status = {
@@ -93637,4 +93980,4 @@ var _bossguide = {
             }
         ]
     }
-}
+} 

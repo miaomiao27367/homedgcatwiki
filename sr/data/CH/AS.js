@@ -218,8 +218,8 @@ var _chaos = [
                                     "PollutedLevel": 3,
                                     "PollutedNum": 0,
                                     "SPD": 177,
-                                    "Stance": 40,
-                                    "HPCount": 2.0
+                                    "Stance": "440,770",
+                                    "HPCount": 2.2,
                                 }
                             ]
                         ]
@@ -7233,7 +7233,8 @@ var _chaoshp = {
             41817680,
             108008850,
             126068984,
-            69622808
+            69622808,
+            117027914
         ],
         "Index": {
             "3001": 1,

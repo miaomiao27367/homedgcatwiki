@@ -1542,11 +1542,11 @@ $(function () {
         var _stance = 10 * cur_mon.Stats.Stance * _hlg.Stance * _eg.StanceRatio + (cur_mon.StatsExtra ? (cur_mon.StatsExtra.Stance ? (cur_mon.StatsExtra.Stance * 10) : 0) : 0)
         var _res = _hlg.StatusRES + cur_mon.StatusRESBase
         var _prob = _hlg.StatusProb
+        var multistage_factor = 1
+        if (cur_mon.Multistage && cur_mon.Multistage > 1 && cur_mon.Multistage_list && cur_mon.Multistage_list.length >= _stage) {
+            multistage_factor = cur_mon.Multistage_list[_stage-1]
+        }
         if (cur_mon.Multistage && cur_mon.Multistage > 1) {
-            var multistage_factor = 1
-            if (cur_mon.Multistage_list && cur_mon.Multistage_list.length >= _stage) {
-                multistage_factor = cur_mon.Multistage_list[_stage-1]
-            }
             var options = []
             for (var i = 1; i <= cur_mon.Multistage; i++) {
                 options.push('阶段' + i)
@@ -1629,9 +1629,16 @@ $(function () {
                         },
                         {
                             span: function () {
-                                var s = '<color style="color:#f29e38">' + _hp.toFixed(0) + '</color>'
-                                if (cur_mon.HPCount && cur_mon.HPCount > 1) {
-                                    s += ' ×' + cur_mon.HPCount
+                                var s
+                                if (cur_mon.Multistage && cur_mon.Multistage > 1) {
+                                    // 多阶段怪物：显示基础血量并拼接倍率说明
+                                    s = '<color style="color:#f29e38">' + _hp.toFixed(0) + '</color>'
+                                    s += '<b> ×' + multistage_factor + '</b>'
+                                } else {
+                                    s = '<color style="color:#f29e38">' + _hp.toFixed(0) + '</color>'
+                                    if (cur_mon.HPCount && cur_mon.HPCount > 1) {
+                                        s += ' ×' + cur_mon.HPCount
+                                    }
                                 }
                                 return s
                             },

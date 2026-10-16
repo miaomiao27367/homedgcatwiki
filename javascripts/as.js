@@ -1714,7 +1714,7 @@ $(function () {
                 }
             }
         }
-        var mdata = parent_data || monster_data || {}
+        var mdata = monster_data || parent_data || {}
         return {
             "1": as_data["1"] || (monster_data ? monster_data.Figure || ("monsterfigure/Monster_" + id + ".png") : "monsterfigure/None.png"),
             "2": as_data["2"] || (monster_data ? monster_data.Weak || [] : []),

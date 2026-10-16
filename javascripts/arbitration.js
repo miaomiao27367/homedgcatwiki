@@ -185,11 +185,7 @@ $(function () {
                                     div: [
                                         {
                                             span: ((lang == 'CH') ? '多阶段血量' : 'Multistage HP'),
-                                            style: {
-                                                'margin-right': '8px',
-                                                'font-size': '0.85em',
-                                                'align-self': 'center'
-                                            }
+                                            class: 'slider_label'
                                         },
                                         {
                                             div: [
@@ -202,21 +198,12 @@ $(function () {
                                             event: {
                                                 click: function () {
                                                     multistage_mode = 1 - multistage_mode
-                                                    if (multistage_mode) {
-                                                        $(this).addClass('slider_on')
-                                                    } else {
-                                                        $(this).removeClass('slider_on')
-                                                    }
                                                     writeData()
                                                 }
                                             }
                                         },
                                     ],
-                                    class: 'level_ hover-shadow',
-                                    style: {
-                                        'display': 'flex',
-                                        'align-items': 'center'
-                                    }
+                                    class: 'star_button hover-shadow'
                                 },
                             ],
                             class: 'button_w'
@@ -571,6 +558,11 @@ $(function () {
 
     function writeData() {
         
+        if (multistage_mode) {
+            $('.ms_switch').addClass('slider_on')
+        } else {
+            $('.ms_switch').removeClass('slider_on')
+        }
         $('.target_c_1').html(_Cycle_Trial[lang] + '7')
         $('.target_c_2').html(_Cycle_Final[lang] + `7 / <color style='color:#FF8877'> 3 </color>`)
         $('.target_t_1').empty().render({
@@ -949,14 +941,18 @@ $(function () {
                     if (_monster_full[bid]) { p = _monster_full[bid]; break }
                 }
             }
-            return {
+            var has_self = (m.HPCount != null && m.HPCount !== 0) || (m.Multistage != null && m.Multistage !== 0)
+            var src = has_self ? m : p
+            var ret = {
                 "1": m.Name || "",
                 "2": m.Figure || ("monsterfigure/Monster_" + id + ".png"),
                 "3": m.Weak || [],
-                "4": p.HPCount || 0,
-                "12": p.Multistage || 0,
-                "13": p.Multistage_list || []
+                "4": src.HPCount || 0,
+                "12": src.Multistage || 0,
+                "13": src.Multistage_list || []
             }
+            console.log('[getMonsterData]', 'id=', String(id), 'has_self=', has_self, 'useVariant=', has_self, 'ret=', JSON.stringify(ret), '| m.HPCount=', m.HPCount, 'm.Multistage=', m.Multistage, 'm.list=', m.Multistage_list, '| p.HPCount=', p.HPCount, 'p.Multistage=', p.Multistage, 'p.list=', p.Multistage_list)
+            return ret
         }
         var strId = String(id)
         for (var trim = 1; trim <= 3; trim++) {
