@@ -1,5 +1,13 @@
 # 成就页重构 — 阶段 1：勘查报告
 
+> ⚠️ **本文件已过时（STALE）**
+>
+> 此文档为阶段 1 的勘查/规划报告，仅作历史参考，**不再代表当前实现**。
+> 当前实际实现已偏离本文档内容：
+> - 新脚本实际存放于 `javascripts/ach_gi.js` 与 `javascripts/ach_sr.js`（而非文中建议的 `gi/ach/page.ach.js`）。
+> - 新数据格式为 `/gi/{lang3}/ach/ach.json` + `/gi/{lang3}/ach/groups/{id}.json`（GI）、`/sr/data/{lang3}/ach.json` + `/sr/data/{lang3}/ach/{id}.json`（SR），而非文中 `1.8` 描述的旧 `.ach.js`。
+> - 实现细节与待办事项以 `docs/ach-todo.md`（TODO 文档）为准。
+
 ## 1. 公共框架接入点
 
 ### 1.1 页面入口 `gi/ach/index.html`
