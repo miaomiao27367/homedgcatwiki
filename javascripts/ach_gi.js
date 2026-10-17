@@ -146,6 +146,15 @@ $(function () {
         if (state.currentItems) renderList(state.currentItems)
     }
 
+    // 搜索防抖：停止输入 250ms 后才触发重渲染，避免连续输入时高频重建列表
+    var _searchTimer = null
+    function debouncedSearch() {
+        clearTimeout(_searchTimer)
+        _searchTimer = setTimeout(function () {
+            reRenderFromCache()
+        }, 250)
+    }
+
     function loadCurrentGroup() {
         var $list = $('#ach-list')
         $list.html('<div class="ach-loading">' + (lang == 'CH' ? '加载中...' : 'Loading...') + '</div>')
@@ -172,27 +181,39 @@ $(function () {
     }
 
     function loadAllGroups() {
-        var allItems = []
         var pending = state.meta.groups.length
         if (pending === 0) {
             renderList([])
             return
         }
 
+        // 按 meta.groups 顺序预留槽位，全部完成后再按固定顺序拼接，避免并发完成顺序不一致
+        var resultMap = {}
+        var done = 0
+
+        function collectAndRender() {
+            if (done < pending) return
+            var allItems = []
+            state.meta.groups.forEach(function (g) {
+                if (resultMap[g.id]) allItems = allItems.concat(resultMap[g.id])
+            })
+            renderList(allItems)
+        }
+
         state.meta.groups.forEach(function (g) {
             if (state.groups[g.id]) {
-                allItems = allItems.concat(state.groups[g.id])
-                pending--
-                if (pending === 0) renderList(allItems)
+                resultMap[g.id] = state.groups[g.id]
+                done++
+                collectAndRender()
             } else {
                 $.getJSON(GROUPS_PATH + g.id + '.json', function (data) {
                     state.groups[g.id] = data
-                    allItems = allItems.concat(data)
-                    pending--
-                    if (pending === 0) renderList(allItems)
+                    resultMap[g.id] = data
+                    done++
+                    collectAndRender()
                 }).fail(function () {
-                    pending--
-                    if (pending === 0) renderList(allItems)
+                    done++
+                    collectAndRender()
                 })
             }
         })
@@ -235,7 +256,9 @@ $(function () {
 
             // 描述
             if (ach.desc) {
-                $('<div class="ach-desc">').html(ach.desc).appendTo($info)
+                // 数据为本地受控 JSON，仅允许 <color>/<b> 富文本标签，其余一律转义以防注入
+                var safeDesc = sanitizeRichText(ach.desc)
+                $('<div class="ach-desc">').html(safeDesc).appendTo($info)
             }
 
             // 标签行
@@ -260,6 +283,19 @@ $(function () {
             if (ach.hidden) {
                 $('<span class="ach-hidden-tag">').text(lang == 'CH' ? '隐藏' : 'Hidden').appendTo($tags)
             }
+        })
+    }
+
+    // ─── 富文本安全清洗：仅放行 <color>/<b> 白名单标签，其余标签以文本输出 ──
+    function sanitizeRichText(str) {
+        if (!str) return str
+        return String(str).replace(/<(\/?)\s*([a-zA-Z0-9]+)((?:\s+[^<>]*?)?)(\s*\/?)>/g, function (whole, close, name, attrs, self) {
+            name = (name || '').toLowerCase()
+            if (name === 'color' || name === 'b') {
+                return whole
+            }
+            // 非白名单标签：整体转义为文本
+            return whole.replace(/</g, '&lt;').replace(/>/g, '&gt;')
         })
     }
 
@@ -297,7 +333,7 @@ $(function () {
             .on('input', function () {
                 state.searchText = $(this).val()
                 updateHash()
-                reRenderFromCache()
+                debouncedSearch()
             })
 
         // 版本下拉

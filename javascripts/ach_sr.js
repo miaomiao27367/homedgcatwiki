@@ -64,14 +64,26 @@ $(function () {
         return params
     }
 
+    var _skipHashChange = false   // 自身写入 hash 时跳过浏览器回退监听的回显，避免重复渲染
+
     function updateHash(groupId, ver) {
         var params = []
         if (groupId !== null && groupId !== undefined) params.push('group=' + encodeURIComponent(groupId))
         if (ver) params.push('ver=' + encodeURIComponent(ver))
         var newHash = params.join('&')
         if (window.location.hash !== '#' + newHash) {
+            _skipHashChange = true
             window.location.hash = newHash
         }
+    }
+
+    // 从 URL hash 恢复显示状态（供前进/后退同步用）
+    function applyHash() {
+        var params = parseHash()
+        var groupId = params.group !== undefined ? parseInt(params.group) : null
+        if (isNaN(groupId)) groupId = null
+        state.currentGroup = groupId
+        state.currentVer = params.ver || ''
     }
 
     // ===== Load manifest =====
@@ -93,21 +105,20 @@ $(function () {
 
         // Load initial group data and render
         loadAndRender(initialGroup, state.currentVer, '')
-
-        $('body').addClass(bg_name)
+    }).fail(function () {
+        // 清单加载失败：给出提示，避免静默空白
+        $('container').render({
+            p: (lang == 'CH') ? '数据加载失败，请刷新重试' : 'Failed to load data, please refresh',
+            style: { 'text-align': 'center', 'padding': '40px', 'color': '#999' }
+        })
     })
+
+    $('body').addClass(bg_name)
 
     // ===== Render: summary + layout =====
     function renderAll(manifest, selectedGroup) {
         $('container').render({
             div: [
-                // Summary row
-                {
-                    h2: txt.AchNum[lang].replace("#", manifest.latestVersion) + "<color style='color:#ff0000;'>" + manifest.totalNum + "</color>"
-                },
-                {
-                    h2: txt.AchNum[lang].replace("#", manifest.prevVersion) + "<color style='color:#ff0000;'>" + manifest.prevTotalNum + "</color>"
-                },
                 // Layout row
                 {
                     class: 'ach-layout',
@@ -140,6 +151,16 @@ $(function () {
     function buildSidebarItems(manifest, selectedGroup) {
         var newNum = manifest.totalNum - manifest.prevTotalNum
         var items = []
+
+        // 顶部摘要：最新 / 上一版本总成就数
+        items.push({
+            h2: txt.AchNum[lang].replace("#", manifest.latestVersion) + "<color style='color:#ff0000;'>" + manifest.totalNum + "</color>",
+            style: { 'font-size': '14px', 'line-height': '1.6', 'padding': '0 14px 4px', 'margin': '0 0 8px', 'border-bottom': '1px solid #2a3a42', 'white-space': 'nowrap', 'overflow': 'hidden', 'text-overflow': 'ellipsis' }
+        })
+        items.push({
+            h2: txt.AchNum[lang].replace("#", manifest.prevVersion) + "<color style='color:#ff0000;'>" + manifest.prevTotalNum + "</color>",
+            style: { 'font-size': '14px', 'line-height': '1.6', 'padding': '0 14px 8px', 'margin': '0 0 4px' }
+        })
 
         // "New achievements" entry — active only when selectedGroup === 'new'
         var newActive = (selectedGroup === 'new')
@@ -227,9 +248,6 @@ $(function () {
 
     // ===== Load group data and render =====
     function loadAndRender(groupId, ver, searchText) {
-        var self = this
-        if (!self._loading) self._loading = {}
-
         if (groupId === null || groupId === 'all' || groupId === 'new') {
             // Load all groups
             var allPromises = []
@@ -261,6 +279,14 @@ $(function () {
         return $.getJSON(url).done(function (data) {
             allData[groupId] = data
             loadedGroups[groupId] = true
+        }).fail(function () {
+            // 加载失败：若列表当前为空则给出提示，避免静默空白
+            if ($('.ach-list').children().length === 0) {
+                $('.ach-list').render({
+                    p: (lang == 'CH') ? '数据加载失败，请重试' : 'Failed to load data, please retry',
+                    style: { 'text-align': 'center', 'padding': '40px', 'color': '#999' }
+                })
+            }
         })
     }
 
@@ -369,6 +395,15 @@ $(function () {
 
     // ===== Event handlers =====
 
+    // 搜索防抖：停止输入 250ms 后才触发展开重渲染，避免连续输入时高频重建列表
+    var _searchTimer = null
+    function debouncedSearch() {
+        clearTimeout(_searchTimer)
+        _searchTimer = setTimeout(function () {
+            loadAndRender(state.currentGroup, state.currentVer, state.searchText)
+        }, 250)
+    }
+
     // Sidebar click
     $('body').on('click', '.ach-sidebar-item', function () {
         var groupId = $(this).attr('data-group')
@@ -398,7 +433,7 @@ $(function () {
     // Search input
     $('body').on('input', '.ach-search', function () {
         state.searchText = $(this).val()
-        loadAndRender(state.currentGroup, state.currentVer, state.searchText)
+        debouncedSearch()
     })
 
     // Checkbox toggle
@@ -424,6 +459,26 @@ $(function () {
         } else {
             $(this).closest('.ach-item').removeClass('done')
         }
+    })
+
+    // ===== 浏览器前进/后退同步 =====
+    $(window).on('hashchange', function () {
+        if (_skipHashChange) {
+            _skipHashChange = false
+            return
+        }
+        applyHash()
+
+        // 同步侧栏高亮
+        var targetGroup = state.currentGroup === null ? 'all' : state.currentGroup
+        $('.ach-sidebar-item').removeClass('active')
+        $('.ach-sidebar-item[data-group="' + targetGroup + '"]').addClass('active')
+
+        // 同步版本下拉
+        $('.ach-ver-select').val(state.currentVer || (lang == 'CH' ? '全部' : 'All'))
+
+        // 重新加载列表
+        loadAndRender(state.currentGroup, state.currentVer, state.searchText)
     })
 
 })

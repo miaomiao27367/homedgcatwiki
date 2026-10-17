@@ -54,10 +54,10 @@ A 的具体约束：
 
 - `docs/README.md`：入口，指向各文档。
 - 本文档（project-vision）：**方向与决策**，改动前必读。
+- `docs/th-maintenance.md`：**thin.js 引擎维护手册**（能力、语法、已知问题、修复原则、模块化方向）。
 - `docs/ach-todo.md`：ach 页面遗留问题清单，须与本方向一致。
-- `docs/renderer-contract.md`：渲染层契约（**待建立**），规定 DOM/class/转义/加载等，落实"视觉可复原"。
 
 ## 7. 决策记录
 
 - **Dec-1（当前）**：技术方向定为 **A（渐进、不全面重构）**，保住数据与样式。
-- 待定：是否自研渲染引擎 / 是否统一两页渲染范式 —— 在 renderer-contract 中决定，不擅自铺开。
+- **Dec-2（当前）**：**不采用自研渲染引擎**。曾评估自建 `renderer.js`（模板对象 → DOM）替代 thin，后复盘确认其相对 thin 在现有页面价值有限（ach_gi 为 jQuery 手拼、ach_sr 模板对象迁移产生 `清空 vs 追加` 语义冲突），**决定放弃引擎替换**，回到 thin 基础上**按需修复 bug**。页面渲染保持 thin / jQuery 既有方式，不强行统一引擎。
