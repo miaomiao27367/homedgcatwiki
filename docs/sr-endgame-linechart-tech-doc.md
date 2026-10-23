@@ -160,3 +160,24 @@
 - `arbitration.js`：系列 IIFE 内追加循环；`renderHpChart()` 内按 `_arbitrationhp.Counter` 是否非空计算 `.ctr_button` 显隐；视觉插在 `ms_switch` 之后。
 - `as.js` / `chaos.js` / `fiction.js`：`writeData()` 末尾 chart 段追加开关显隐逻辑；系列改为 IIFE 组装并 `push` 对策系列；视觉插在各自 `ms_switch` 之后。
 - 注意：fiction 的 `visualMap` 已加 `seriesIndex: 0`，使分段着色仅作用于主线（下标 0），对策折线保持自身颜色，不受分段染色影响。
+
+### 5.5 「空位」与显示样式
+
+对策血量不是贯穿所有期的普通第二曲线，而是**只存在于有对策概念的若干期**的分支。为了呈现「从基础线分出、又落回基础线」的分支效果，`counterSeries(data, base, label)` 对数据做如下处理：
+
+- **真对策点**（非 0 非 null）：正常画线，并显示标记（默认 `symbol:'circle'`、`symbolSize: 8`）。
+- **紧邻对策点前后的空位**（`null`/`0`）：用 `base` 基础线对应期的值补齐，作为**分支连接段**——让对策点向左/向右连回基础线，形成分支而非孤立点。连接段不带标记。
+- **其余较远的空位**：保持隐藏（`null`），不与基础线重叠绘制。
+
+各模式的 `base`（分支落点基准线）：
+- 末日 as.js → `_chaoshp[floor].HP`
+- 混沌 chaos.js → `_chaoshp[floor].Multi`
+- 虚构 fiction.js → `_fictionhp[floor].HP`
+- 仲裁 arbitration.js → 对应系列 `_arbitrationhp[key]`
+
+数据写法：填数字 → 出现对策分支折线与圆点；留空/`0` → 仅在该点前后提供分支连接或隐藏。
+
+**逐层可自定义（对象写法 `{ data, name, color, symbol, symbolSize, connectNulls }`）**：
+- `name` 折线名；`color` 折线/点颜色（默认 `#ff7f50`）。
+- `symbol` 对策点标记（默认 `circle`）；`symbolSize` 标记大小（默认 `8`）。
+- `connectNulls` 是否跨空位连线（默认 `false`）。

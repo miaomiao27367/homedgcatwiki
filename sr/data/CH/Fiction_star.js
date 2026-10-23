@@ -394,23 +394,136 @@ var _fiction_star = {
                             {
                                 "ID": 3021020,
                                 "Num": 20,
-                                "HP": 2600014,
+                                "HP": 2696311,
                                 "SPD": 120,
                                 "Stance": 3
                             },
                             {
                                 "ID": 3021040,
                                 "Num": 20,
-                                "HP": 1796374,
+                                "HP": 1862906,
                                 "SPD": 120,
                                 "Stance": 3
                             },
                             {
                                 "ID": 302401204,
                                 "Num": 1,
-                                "HP": 78000431,
+                                "HP": 80889341,
                                 "SPD": 173,
                                 "Stance": 16
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "2028": {
+        "ElemStar": [
+            "Phys",
+            "Imaginary"
+        ],
+        "Star": [
+            {
+                "_id": 30326043,
+                "Level": 85,
+                "Waves": [
+                    {
+                        "KeepNum": 5,
+                        "HPAdd": 4.5,
+                        "EliteGroup": {
+                            "ID": 57,
+                            "ATK": 0.7
+                        },
+                        "Monsters": [
+                            {
+                                "ID": 5012010,
+                                "Num": 14,
+                                "HP": 306399,
+                                "SPD": 173,
+                                "Stance": 3
+                            },
+                            {
+                                "ID": 5012020,
+                                "Num": 13,
+                                "HP": 275759,
+                        	"IsPolluted": true,
+                        	"PollutedLevel": 3,
+                        	"PollutedNum": 165455,
+                                "SPD": 173,
+                                "Stance": 3
+                            },
+                            {
+                                "ID": 501211002,
+                                "Num": 2,
+                                "HP": 735358,
+                                "SPD": 120,
+                                "Stance": 3
+                            }
+                        ]
+                    },
+                    {
+                        "KeepNum": 5,
+                        "HPAdd": 12,
+                        "EliteGroup": {
+                            "ID": 57,
+                            "ATK": 0.7
+                        },
+                        "Monsters": [
+                            {
+                                "ID": 5012030,
+                                "Num": 20,
+                                "HP": 569027,
+                                "SPD": 158,
+                                "Stance": 3
+                            },
+                            {
+                                "ID": 202205004,
+                                "Num": 20,
+                                "HP": 455221,
+                                "SPD": 120,
+                                "Stance": 3
+                            },
+                            {
+                                "ID": 402301002,
+                                "Num": 1,
+                                "HP": 18777882,
+                                "SPD": 144,
+                                "Stance": 16
+                            }
+                        ]
+                    },
+                    {
+                        "KeepNum": 5,
+                        "HPAdd": 52,
+                        "EliteGroup": {
+                            "ID": 57,
+                            "ATK": 0.7
+                        },
+                        "Monsters": [
+                            {
+                                "ID": 5022010,
+                                "Num": 20,
+                                "HP": 3655578,
+                                "SPD": 180,
+                                "Stance": 3
+                            },
+                            {
+                                "ID": 8012040,
+                                "Num": 20,
+                                "HP": 3046481,
+                        	"IsPolluted": true,
+                        	"PollutedLevel": 3,
+                        	"PollutedNum": 1827888,
+                                "SPD": 200,
+                                "Stance": 3
+                            },
+                            {
+                                "ID": 5024014,
+                                "Num": 1,
+                                "HP": 83778241,
+                                "SPD": 173,
+                                "Stance": 60
                             }
                         ]
                     }

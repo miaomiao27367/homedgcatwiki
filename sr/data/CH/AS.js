@@ -207,13 +207,13 @@ var _chaos = [
                         "EliteGroup": {
                             "ID": 89,
                             "ATK": 1.0,
-                            "HP": 1.9
+                            "HP": 2.2
                         },
                         "Monsters": [
                             [
                                 {
                                     "ID": 501402404,
-                                    "HP": 16718272,
+                                    "HP": 19357999,
                                     "IsPolluted": true,
                                     "PollutedLevel": 3,
                                     "PollutedNum": 0,
@@ -593,6 +593,7 @@ var _chaos = [
                                     "HP": 10888876,
                                     "SPD": 190,
                                     "Stance": 12,
+                                    "StanceCount": 8,
                                     "HPCount": 2.0
                                 }
                             ]
@@ -7234,7 +7235,7 @@ var _chaoshp = {
             108008850,
             126068984,
             69622808,
-            117027914
+            124507140
         ],
         "Index": {
             "3001": 1,

@@ -11,10 +11,10 @@ var _AS_star = {
             "Level": 90,
             "EliteGroup": {
                 "ID": 171,
-                "HP": 8.8
+                "HP": 9.6
             },
             "Monsters": [
-                [{"ID": 302401304, "HP": 12098751, "SPD": 139, "Stance": 27}]
+                [{"ID": 302401304, "HP": 13198637, "SPD": 139, "Stance": 27}]
             ]
         }
         ],

@@ -4,7 +4,6 @@ $(function () {
     var lazy = $('#NOLAZY').val() ? '' : 'lazy'
     var dev_only = 0
     var multistage_mode = 0
-    var counter_mode = 1
 
     _NAME = {
         CH: '异相仲裁',
@@ -205,35 +204,6 @@ $(function () {
                                         },
                                     ],
                                     class: 'star_button hover-shadow'
-                                },
-                                {
-                                    div: [
-                                        {
-                                            span: (lang == 'CH') ? '对策血量' : 'Counter HP',
-                                            class: 'slider_label'
-                                        },
-                                        {
-                                            div: [
-                                                {
-                                                    div: '',
-                                                    class: 'slider_thumb'
-                                                }
-                                            ],
-                                            class: 'slider_switch ctr_switch',
-                                            event: {
-                                                click: function () {
-                                                    counter_mode = 1 - counter_mode
-                                                    if (counter_mode) {
-                                                        $(this).addClass('slider_on')
-                                                    } else {
-                                                        $(this).removeClass('slider_on')
-                                                    }
-                                                    writeData()
-                                                }
-                                            }
-                                        },
-                                    ],
-                                    class: 'star_button ctr_button hover-shadow'
                                 },
                             ],
                             class: 'button_w'
@@ -800,13 +770,28 @@ $(function () {
                 trigger: 'axis',
             },
             legend: {
-                data: [
-                    (lang == 'CH') ? '普通总血量' : 'Knight I',
-                    (lang == 'CH') ? '骑士二' : 'Knight II',
-                    (lang == 'CH') ? '骑士三' : 'Knight III',
-                    (lang == 'CH') ? '将杀王棋' : 'Checkmate',
-                    (lang == 'CH') ? '将杀王棋·绝境' : 'Checkmate: Zugzwang'
-                ],
+                data: (function () {
+                    var defs = [
+                        { key: 'TrialA', n: (lang == 'CH') ? '普通总血量' : 'Knight I' },
+                        { key: 'TrialB', n: (lang == 'CH') ? '骑士二' : 'Knight II' },
+                        { key: 'TrialC', n: (lang == 'CH') ? '骑士三' : 'Knight III' },
+                        { key: 'FinalEasy', n: (lang == 'CH') ? '将杀王棋' : 'Checkmate' },
+                        { key: 'FinalHard', n: (lang == 'CH') ? '将杀王棋·绝境' : 'Checkmate: Zugzwang' }
+                    ];
+                    var ld = [];
+                    for (var k = 0; k < defs.length; k++) ld.push(defs[k].n);
+                    var ctrMap = _arbitrationhp.Counter;
+                    if (ctrMap) {
+                        for (var k2 = 0; k2 < defs.length; k2++) {
+                            var cData = ctrMap[defs[k2].key];
+                            if (!counterHas(cData)) continue;
+                            var base = _arbitrationhp[defs[k2].key];
+                            if (!base || !base.some(function (v) { return v > 0; })) continue;
+                            ld.push(defs[k2].n + ((lang == 'CH') ? '·对策' : ' (Counter)'));
+                        }
+                    }
+                    return ld;
+                })(),
                 top: '20%'
             },
             grid: {
@@ -896,32 +881,18 @@ $(function () {
                 if (ctrMap) {
                     for (var j = 0; j < allSeries.length; j++) {
                         var cData = ctrMap[allSeries[j].key];
-                        if (!cData || !cData.length || !cData.some(function(val) { return val > 0; })) continue;
+                        if (!counterHas(cData)) continue;
                         var base = _arbitrationhp[allSeries[j].key];
                         if (!base || !base.some(function(val) { return val > 0; })) continue;
                         var cName = (lang == 'CH') ? (allSeries[j].name + '·对策') : (allSeries[j].name + ' (Counter)');
-                        var cLine = counterSeries(cData, cName);
-                        if (counter_mode && cLine) validSeries.push(cLine);
+                        var cLine = counterSeries(cData, _arbitrationhp[allSeries[j].key], cName);
+                        if (cLine) validSeries.push(cLine);
                     }
                 }
                 return validSeries;
             })()
         }
 
-        var ctrData = _arbitrationhp.Counter
-        var ctr_any = false
-        if (ctrData) {
-            for (var k in ctrData) {
-                var cd = ctrData[k]
-                if (cd && cd.length && cd.some(function(v) { return v > 0; })) { ctr_any = true; break }
-            }
-        }
-        $('.ctr_button').toggle(ctr_any)
-        if (counter_mode && ctr_any) {
-            $('.ctr_switch').addClass('slider_on')
-        } else {
-            $('.ctr_switch').removeClass('slider_on')
-        }
         if ($("#NOLAZY").val()) option.tooltip.show = false
         myChart.setOption(option)
 

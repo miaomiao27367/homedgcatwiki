@@ -700,7 +700,12 @@ $(function () {
                     trigger: 'axis',
                 },
                 legend: {
-                    data: [txt.DPC_S[lang], txt.DPC_M[lang]],
+                    data: (function () {
+                        var ld = [txt.DPC_S[lang], txt.DPC_M[lang]];
+                        var ch = _chaoshp[floor_name] && _chaoshp[floor_name].CounterHP;
+                        if (counterHas(ch)) ld.push(txt.CounterHP[lang]);
+                        return ld;
+                    })(),
                     top: '20%'
                 },
                 grid: {
@@ -728,30 +733,35 @@ $(function () {
                 yAxis: {
                     type: 'value'
                 },
-                series: [
-                    {
-                        name: txt.DPC_S[lang],
-                        type: 'line',
-                        data: _chaoshp[floor_name].Single,
-                        lineStyle: {
-                            color: '#cc0000'
+                series: (function () {
+                    var cSeries = [
+                        {
+                            name: txt.DPC_S[lang],
+                            type: 'line',
+                            data: _chaoshp[floor_name].Single,
+                            lineStyle: {
+                                color: '#cc0000'
+                            },
+                            itemStyle: {
+                                color: '#cc0000'
+                            },
                         },
-                        itemStyle: {
-                            color: '#cc0000'
-                        },
-                    },
-                    {
-                        name: txt.DPC_M[lang],
-                        type: 'line',
-                        data: _chaoshp[floor_name].Multi,
-                        lineStyle: {
-                            color: '#2545ba'
-                        },
-                        itemStyle: {
-                            color: '#2545ba'
-                        },
-                    }
-                ]
+                        {
+                            name: txt.DPC_M[lang],
+                            type: 'line',
+                            data: _chaoshp[floor_name].Multi,
+                            lineStyle: {
+                                color: '#2545ba'
+                            },
+                            itemStyle: {
+                                color: '#2545ba'
+                            },
+                        }
+                    ];
+                    var cCounter = counterSeries(_chaoshp[floor_name] && _chaoshp[floor_name].CounterHP, _chaoshp[floor_name].Multi, txt.CounterHP[lang]);
+                    if (cCounter) cSeries.push(cCounter);
+                    return cSeries;
+                })()
             }
             if ($("#NOLAZY").val()) option.tooltip.show = false
             myChart.setOption(option)

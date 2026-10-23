@@ -38,7 +38,6 @@ $(function () {
     var starButton = null
     var showStar = false
     var multistage_mode = 0
-    var counter_mode = 1
 
     var has_2 = 1 // Secondary loading not implemented yet
 
@@ -243,30 +242,6 @@ $(function () {
                             },
                         ],
                         class: 'star_button hover-shadow'
-                    },
-                    {
-                        div: [
-                            {
-                                span: (lang == 'CH') ? '对策血量' : 'Counter HP',
-                                class: 'slider_label'
-                            },
-                            {
-                                div: [
-                                    {
-                                        div: '',
-                                        class: 'slider_thumb'
-                                    }
-                                ],
-                                class: 'slider_switch ctr_switch',
-                                event: {
-                                    click: function () {
-                                        counter_mode = 1 - counter_mode
-                                        writeData()
-                                    }
-                                }
-                            },
-                        ],
-                        class: 'star_button ctr_button hover-shadow'
                     },
                     {
                         div: [
@@ -1273,15 +1248,6 @@ $(function () {
         rotate()
         var floor_name = $('.f_text').html()
 
-        var counter_data = _chaoshp[floor_name] && _chaoshp[floor_name].CounterHP
-        var counter_has = !!(counter_data && counter_data.some(function (v) { return v != null; }))
-        $('.ctr_button').toggle(counter_has)
-        if (counter_mode && counter_has) {
-            $('.ctr_switch').addClass('slider_on')
-        } else {
-            $('.ctr_switch').removeClass('slider_on')
-        }
-
         $('.u_h').empty().render([
             {
                 p: txt.HDGNotes[lang3],
@@ -1410,8 +1376,8 @@ $(function () {
                         },
                     }
                 ];
-                var aCounter = counterSeries(_chaoshp[floor_name] && _chaoshp[floor_name].CounterHP, txt.CounterHP[lang]);
-                if (counter_mode && aCounter) aSeries.push(aCounter);
+                var aCounter = counterSeries(_chaoshp[floor_name] && _chaoshp[floor_name].CounterHP, _chaoshp[floor_name].HP, txt.CounterHP[lang]);
+                if (aCounter) aSeries.push(aCounter);
                 return aSeries;
             })()
         }
