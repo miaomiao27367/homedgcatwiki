@@ -134,13 +134,13 @@ def fetch_json(url, cache_path=None, no_cache=False):
 
 
 def download_monster_index(version, no_cache=False):
-    url = f"{BASE_URL}/monster.json"
+    url = f"https://static.nanoka.cc/gi/{version}/monster.json"
     cache = os.path.join(API_CACHE_DIR, f"monster_index_{version}.json")
     return fetch_json(url, cache, no_cache) or {}
 
 
 def download_monster_detail(api_id, version, no_cache=False):
-    url = f"{BASE_URL}/zh/monster/{api_id}.json"
+    url = f"https://static.nanoka.cc/gi/{version}/zh/monster/{api_id}.json"
     cache = os.path.join(API_CACHE_DIR, f"detail_{api_id}_{version}.json")
     return fetch_json(url, cache, no_cache)
 
@@ -553,11 +553,7 @@ def update_single_monster(target_id, api_version=None, force=False):
     返回:
         (success: bool, message: str, output: str)
     """
-    global API_VERSION, BASE_URL
-
-    if api_version:
-        API_VERSION = api_version
-        BASE_URL = f"https://static.nanoka.cc/gi/{API_VERSION}"
+    api_ver = api_version or API_VERSION
 
     output_lines = []
     def log(msg):
@@ -568,13 +564,13 @@ def update_single_monster(target_id, api_version=None, force=False):
     if target.isdigit() and len(target) == 8:
         api_child_id = target
         local_key = api_child_id[1:-2].lstrip('0') or '0'
-        log(f"  Child ID {api_child_id} -> local key {local_key}")
+        log(f"  API ID {api_child_id} -> local key {local_key}")
     else:
-        local_key = target
-        api_child_id = None
+        log("  Error: 仅支持 8 位 API key 输入（本地 key 输入方式已移除）")
+        return False, "仅支持 8 位 API key 输入（本地 key 输入方式已移除）", "\n".join(output_lines)
 
     log(f"=== Updating monster {local_key} ===")
-    log(f"API Version: {API_VERSION}")
+    log(f"API Version: {api_ver}")
 
     log("Reading existing V2_DATA ...")
     v2_data = read_v2_data()
@@ -592,24 +588,45 @@ def update_single_monster(target_id, api_version=None, force=False):
         log(f"  Warning: local key '{local_key}' not in _Monsters, using API-only data")
 
     log("Downloading API index ...")
-    api_index = download_monster_index(API_VERSION, force)
+    api_index = download_monster_index(api_ver, force)
     log(f"  {len(api_index)} entries")
 
-    api_parent_id = local_key_to_api_parent(local_key, api_index)
+    # 一律按用户传入的 8 位 API ID 拉取目标（小动物/独立条目以其自身为拉取目标，
+    # 有变体的怪物则以该父级 ID 拉取并重建其全部变体）。
+    api_parent_id = api_child_id
+
     if not api_parent_id:
         log("  Warning: No API parent found. Variants will be empty.")
         api_detail = {}
     else:
-        log(f"  API parent: {api_parent_id}")
-        api_detail = download_monster_detail(api_parent_id, API_VERSION, force)
+        log(f"  API target: {api_parent_id}")
+        api_detail = download_monster_detail(api_parent_id, api_ver, force)
         if api_detail:
-            log(f"  API children: {len(api_detail.get('child', {}))}")
+            n_children = len(api_detail.get('child', {}))
+            log(f"  API children: {n_children}")
+            if n_children == 0:
+                # 小动物/独立怪：无 child 分组，将其自身作为唯一形态构建
+                api_detail['child'] = {
+                    str(api_parent_id): {
+                        "monster_name": api_detail.get("name", ""),
+                        "type": "MONSTER_ORDINARY",
+                        "prop": [],
+                        "base": {},
+                        "sub_hurt": {},
+                    }
+                }
+                log("  Standalone monster: treating itself as a single variant")
         else:
             log("  Warning: API detail download failed.")
             api_detail = {}
 
     suffix_map = load_suffix_map()
     list_entry, variants = build_one_monster(local_key, local_mon, api_detail, suffix_map, api_index)
+
+    # ---- 空数据保护：仅当完全未获取到有效 API 数据时才中止，避免覆盖导致数据丢失 ----
+    if not api_detail:
+        log("  [中止] 未获取到有效的 API 数据，跳过写入以免覆盖现有数据")
+        return False, f"怪物 {local_key} 未获取到有效 API 数据，已跳过写入以避免数据丢失", "\n".join(output_lines)
 
     # ---- Enrich List entry from API (for API-only monsters lacking local _Monsters data) ----
     if local_mon is None and api_detail:
@@ -683,11 +700,7 @@ def cache_icons_for_monster(target_id, api_version=None, force=False):
     返回:
         (success: bool, message: str, output: str)
     """
-    global API_VERSION, BASE_URL
-
-    if api_version:
-        API_VERSION = api_version
-        BASE_URL = f"https://static.nanoka.cc/gi/{API_VERSION}"
+    api_ver = api_version or API_VERSION
 
     output_lines = []
     def log(msg):
@@ -699,8 +712,8 @@ def cache_icons_for_monster(target_id, api_version=None, force=False):
         api_child_id = target
         local_key = api_child_id[1:-2].lstrip('0') or '0'
     else:
-        local_key = target
-        api_child_id = None
+        log("  Error: 仅支持 8 位 API key 输入（本地 key 输入方式已移除）")
+        return False, "仅支持 8 位 API key 输入（本地 key 输入方式已移除）", "\n".join(output_lines)
 
     log(f"=== Caching icons for {local_key} ===")
 
@@ -722,10 +735,10 @@ def cache_icons_for_monster(target_id, api_version=None, force=False):
 
     # V2_DATA 中没有，查询 API
     log("  Icon not in V2_DATA, querying API ...")
-    api_index = download_monster_index(API_VERSION, force)
+    api_index = download_monster_index(api_ver, force)
     api_parent_id = local_key_to_api_parent(local_key, api_index)
     if api_parent_id:
-        api_detail = download_monster_detail(api_parent_id, API_VERSION, force)
+        api_detail = download_monster_detail(api_parent_id, api_ver, force)
         if api_detail:
             api_icon = api_detail.get("icon", "")
             if api_icon:

@@ -546,7 +546,7 @@ var ToolsApp = {
         var versionMapText = document.getElementById('giVersionMap').value.trim();
         var versionMap = {};
         if (versionMapText) {
-            var pairs = versionMapText.split(',');
+            var pairs = versionMapText.split(/[;,]/);
             for (var i = 0; i < pairs.length; i++) {
                 var parts = pairs[i].split(':');
                 if (parts.length === 2) {
@@ -669,36 +669,63 @@ var ToolsApp = {
         var btnText = document.getElementById('giMonsterV2BtnText');
         var resultDiv = document.getElementById('giMonsterV2Result');
 
-        var monsterId = document.getElementById('giMonsterV2Id').value.trim();
+        var idsText = document.getElementById('giMonsterV2Id').value.trim();
+        var monsterIds = idsText
+            .split(/[\s,]+/)
+            .map(function(id) { return id.trim(); })
+            .filter(function(id) { return id; });
+
         var apiVersion = document.getElementById('giMonsterV2ApiVersion').value.trim();
         var forceCache = document.getElementById('giMonsterV2ForceCache').checked;
 
-        var data = {
-            monster_id: monsterId,
-            api_version: apiVersion || null,
-            force_cache: forceCache
-        };
+        if (monsterIds.length === 0) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result error';
+            document.getElementById('giMonsterV2ResultTitle').textContent = '✗ 更新失败';
+            document.getElementById('giMonsterV2ResultMessage').textContent = '请输入怪物ID';
+            return;
+        }
 
         submitBtn.disabled = true;
         btnText.innerHTML = '<span class="loading"></span>处理中...';
         resultDiv.style.display = 'none';
 
         try {
-            var response = await fetch('/gi_monster_v2_update', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
+            var outputs = [];
+            var allSuccess = true;
+            for (var i = 0; i < monsterIds.length; i++) {
+                var id = monsterIds[i];
+                var data = {
+                    monster_id: id,
+                    api_version: apiVersion || null,
+                    force_cache: forceCache
+                };
 
-            var result = await response.json();
+                var response = await fetch('/gi_monster_v2_update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                var result = await response.json();
+                var outText = result.stdout || result.stderr || result.message || '';
+                outputs.push('[' + id + '] ' + (result.status === 'success' ? result.message : '失败: ' + outText));
+                if (result.status !== 'success') {
+                    allSuccess = false;
+                }
+                if (outText) {
+                    outputs.push(outText);
+                }
+            }
 
             resultDiv.style.display = 'block';
-            resultDiv.className = 'result ' + result.status;
+            resultDiv.className = 'result ' + (allSuccess ? 'success' : 'error');
             document.getElementById('giMonsterV2ResultTitle').textContent =
-                result.status === 'success' ? '✓ 更新成功' : '✗ 更新失败';
-            document.getElementById('giMonsterV2ResultMessage').textContent = result.message;
+                allSuccess ? '✓ 更新成功' : '✗ 部分/全部失败';
+            document.getElementById('giMonsterV2ResultMessage').textContent =
+                '共处理 ' + monsterIds.length + ' 个怪物';
 
-            var outputText = result.stdout || result.stderr || '';
+            var outputText = outputs.join('\n');
             document.getElementById('giMonsterV2ResultOutput').textContent = outputText;
             document.getElementById('giMonsterV2ResultOutput').style.display = outputText ? 'block' : 'none';
 
@@ -721,10 +748,10 @@ var ToolsApp = {
         var btnText = document.getElementById('giMonsterV2CacheImgBtnText');
         var resultDiv = document.getElementById('giMonsterV2CacheImgResult');
 
-        var monsterId = document.getElementById('giMonsterV2CacheImgId').value.trim();
-        if (!monsterId) {
-            monsterId = document.getElementById('giMonsterV2Id').value.trim();
-            if (!monsterId) {
+        var idsText = document.getElementById('giMonsterV2CacheImgId').value.trim();
+        if (!idsText) {
+            idsText = document.getElementById('giMonsterV2Id').value.trim();
+            if (!idsText) {
                 resultDiv.style.display = 'block';
                 resultDiv.className = 'result error';
                 document.getElementById('giMonsterV2CacheImgResultTitle').textContent = '✗ 缓存失败';
@@ -732,27 +759,44 @@ var ToolsApp = {
                 return;
             }
         }
+        var monsterIds = idsText
+            .split(/[\s,]+/)
+            .map(function(id) { return id.trim(); })
+            .filter(function(id) { return id; });
 
         btn.disabled = true;
         btnText.innerHTML = '<span class="loading"></span>下载中...';
         resultDiv.style.display = 'none';
 
         try {
-            var response = await fetch('/gi_monster_v2_cache_icons', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ monster_id: monsterId })
-            });
+            var outputs = [];
+            var allSuccess = true;
+            for (var i = 0; i < monsterIds.length; i++) {
+                var response = await fetch('/gi_monster_v2_cache_icons', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ monster_id: monsterIds[i] })
+                });
 
-            var result = await response.json();
+                var result = await response.json();
+                var outText = result.stdout || result.stderr || result.message || '';
+                outputs.push('[' + monsterIds[i] + '] ' + (result.status === 'success' ? result.message : '失败: ' + outText));
+                if (result.status !== 'success') {
+                    allSuccess = false;
+                }
+                if (outText) {
+                    outputs.push(outText);
+                }
+            }
 
             resultDiv.style.display = 'block';
-            resultDiv.className = 'result ' + result.status;
+            resultDiv.className = 'result ' + (allSuccess ? 'success' : 'error');
             document.getElementById('giMonsterV2CacheImgResultTitle').textContent =
-                result.status === 'success' ? '✓ 缓存完成' : '✗ 缓存失败';
-            document.getElementById('giMonsterV2CacheImgResultMessage').textContent = result.message;
+                allSuccess ? '✓ 缓存完成' : '✗ 部分/全部失败';
+            document.getElementById('giMonsterV2CacheImgResultMessage').textContent =
+                '共处理 ' + monsterIds.length + ' 个怪物';
 
-            var outputText = result.stdout || result.stderr || '';
+            var outputText = outputs.join('\n');
             document.getElementById('giMonsterV2CacheImgResultOutput').textContent = outputText;
             document.getElementById('giMonsterV2CacheImgResultOutput').style.display = outputText ? 'block' : 'none';
 

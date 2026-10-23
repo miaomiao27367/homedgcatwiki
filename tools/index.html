@@ -222,7 +222,7 @@
                 <form id="giMonsterV2UpdateForm" onsubmit="event.preventDefault(); ToolsApp.sendGIMonsterV2Update();">
                     <div class="form-group">
                         <label for="giMonsterV2Id">怪物ID</label>
-                        <input type="text" id="giMonsterV2Id" placeholder="本地key（如101）或API child ID（8位如20010101）">
+                        <input type="text" id="giMonsterV2Id" placeholder="API key（8位），多个用逗号或空格分隔，例如: 20090101, 28021004">
                     </div>
 
                     <div class="form-group">
@@ -252,7 +252,7 @@
                     <h3 class="img-sync-title">怪物图标缓存</h3>
                     <div class="form-group">
                         <label for="giMonsterV2CacheImgId">怪物ID（可复用上方ID）</label>
-                        <input type="text" id="giMonsterV2CacheImgId" placeholder="本地key（如101）或API child ID（8位）">
+                        <input type="text" id="giMonsterV2CacheImgId" placeholder="API key（8位），多个用逗号或空格分隔">
                     </div>
                     <button type="button" class="btn btn-primary" id="giMonsterV2CacheImgBtn" onclick="ToolsApp.sendGIMonsterV2CacheImg()">
                         <span id="giMonsterV2CacheImgBtnText">缓存图标</span>

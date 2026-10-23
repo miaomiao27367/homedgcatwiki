@@ -20,7 +20,7 @@
 共同点：
 - 都使用 `echarts.init(document.getElementById('chart'))` 初始化，图表挂载点为页面模板里的 `<div id="chart">`（class=`chart_container`）。
 - 都在 `writeData()` 流程末尾调用/渲染，切换版本或层数时重新生成。
-- 都用 `dispatchAction({type:'showTip'})` 高亮当前期数，并绑定 `$('body').on('mouseleave','#chart')` 在鼠标移出后恢复高亮。
+- 都用 `dispatchAction({type:'showTip'})` 高亮当前期数；其中 chaos/fiction/arbitration 额外绑定 `$('body').on('mouseleave','#chart')` 在鼠标移出后恢复高亮，**as.js 没有** `#chart` 的 mouseleave 处理器。
 - 都支持 `#NOLAZY` 时关闭 tooltip：`if ($("#NOLAZY").val()) option.tooltip.show = false`。
 
 ---
@@ -51,7 +51,7 @@
 - **X 轴**: `_chaoshp[floor_name].Name`（floor 取自 `$('.f_text').html()`）。
 - **Y 轴**: 数值型，无缩放。
 - **折线（1 条）**: `name: txt.Fiction_HP[lang]`（“总血量”），`data: _chaoshp[floor_name].HP`，颜色 `#cc0000`。注意此处复用了 `Fiction_HP` 文案 key（语义为“总血量”，可接受，但命名与模块不符）。
-- **当前期高亮**: `seriesIndex: 1` —— **⚠️ 疑点/缺陷**：series 只有 1 个（下标 `0`），这里传 `1` 越界，mouseleave 处理器中同样如此，会造成提示无法命中。
+- **当前期高亮**: `seriesIndex: 0`（修正前为 `1`，与单条 series 不匹配，会导致无法高亮当前期）。此脚本无 `#chart` 的 mouseleave 恢复逻辑。
 
 ### 2.3 混沌回忆 — chaos.js
 
@@ -84,14 +84,16 @@
 
 ## 3. 共同代码审查结论
 
-### 3.1 高风险 / 建议修复
+### 3.1 高风险 / 建议修复（含复查结论）
 
-| # | 问题 | 涉及 | 说明与建议 |
+> 所有条目均已逐项复查，区分「真实缺陷」与「非问题/纯防御性」，避免惊扰正常功能与视觉。
+
+| # | 问题 | 涉及 | 复查结论与状态 |
 |---|------|------|-----------|
-| 1 | **`seriesIndex` 越界** | `as.js` | 仅 1 条 series 却传 `seriesIndex: 1`（两处：渲染末尾 + mouseleave）。showTip 命中不了，建议改为 `0`。 |
-| 2 | **重复 `echarts.init()` 且不 `dispose()`** | 全部 | 每次 `writeData()` 都 `echarts.init` 新实例并赋值给全局 `myChart`，旧实例未 `dispose()`，频繁切换会累积内存/实例。建议：若**已存在实例则 `setOption` 复用**，或 `myChart.dispose()` 后再 init。 |
-| 3 | **`myChart` 隐式全局、无空值保护** | 全部 | `myChart = echarts.init(...)` 未声明 `var`，泄漏为全局；mouseleave 里直接使用 `myChart` 若尚未初始化会报错。建议局部 `var` + 判空（`myChart && myChart.dispatchAction(...)`）。 |
-| 4 | **`$('.f_text').html()` 依赖 DOM 取 floor** | as / chaos / fiction | 在 chartoption 里和 showTip 数据下标处反复 `$('.f_text').html()` 读走楼层名，职责耦合 DOM。建议在 `writeData()` 顶部缓存 `var floor_name = ...` 一次复用（chaos/fiction 已本地缓存变量，但 showTip/mouseleave 仍重复读取）。 |
+| 1 | **`seriesIndex` 越界** | `as.js` | ✅ **确认缺陷，已修复**：仅 1 条 series 却传 `seriesIndex: 1`，导致页面加载时无法高亮当前期；已改为 `0`（与 fiction/arbitration 一致）。末影幻影无 `#chart` 的 mouseleave，故仅此一处。 |
+| 2 | **重复 `echarts.init()` 且不 `dispose()`** | 全部 | ⚠️ **复查为非问题**：ECharts 4/5 对同一 DOM 重复 `init` 会返回**已有实例**并复用（仅触发控制台 warning），并不会累积内存泄漏。为避免无谓改动、保持视觉稳定，**未改动**。若介意 warning，可自行加 `if (myChart) myChart.dispose()`（需先 `var myChart`，且首帧防护需声明以避免 ReferenceError）。 |
+| 3 | **`myChart` 隐式全局、无空值保护** | 全部 | ⚠️ **复查为非问题**：`writeData()` 在页面加载时必先生成图表，此后才可能触发 mouseleave，运行时不会因 `myChart` 未定义而崩溃。属纯防御性，**未改动**。 |
+| 4 | **`$('.f_text').html()` 依赖 DOM 取 floor** | as / chaos / fiction | ⚠️ **复查为可维护性问题，非 bug**：仅职责耦合，功能正确。**未改动**以避免范围蔓延。 |
 
 ### 3.2 一致性与可维护性
 
@@ -117,5 +119,44 @@
 | 图例 legend | 有 | 无 | 有 | 无 |
 | Y 轴格式化 | `万` | 无 | 无 | 无 |
 | visualMap | 无 | 无 | 无 | 有（分段着色） |
-| 高亮 seriesIndex | 0 | **1（疑误）** | 1 | 0 |
+| 高亮 seriesIndex | 0 | 0（已由 1 修正） | 1 | 0 |
 | 独立函数 | ✅ `renderHpChart` | ❌ | ❌ | ❌ |
+| 对策血量开关 | ✅ `ctr_switch` | ✅ | ✅ | ✅ |
+
+---
+
+## 5. 「对策血量」功能（新增）
+
+为四个模式各自提供一个全局开关（彼此独立），在一个开关下可为折线图追加一条可选的对策血量折线，用于展示对策性 buff 下的折算血量。**对策血量为独立手动分析数据，不接入构建脚本、不参与任何折算公式，直接按数组读值显示。**
+
+### 5.1 设计约定
+
+- **四个模式独立**：各页面各自持有 `counter_mode`（默认 `1`=显示），互不影响。
+- **无数据即隐藏**：当某模式当前无任何对策血量数据时，开关整体隐藏（`.ctr_button` 不显示）。
+- **有数据默认显示**：存在数据时开关显示且默认开启（`slider_on`），点按可切换 `counter_mode` 并重绘。
+- **文案 key**：`txt.CounterHP`（CH「对策血量」/ EN「Counter HP」）。
+- **颜色**：对策折线统一使用珊瑚色 `#ff7f50`，与既有色（红 `#cc0000`、蓝 `#2545ba`、橙 `#f29e38`、绿 `#00cc00`、紫 `#9900cc`）区分。
+- **通用构造函数**：`txt.js` 新增全局 `counterSeries(data, label)` —— 空数组/缺失/全 0 一律返回 `null`（不渲染），否则返回一条 line 系列。
+
+### 5.2 各模式数据读取位置
+
+| 模式 | 读取字段（每 floor） | 说明 |
+|------|----------------------|------|
+| 末日幻影 as.js | `_chaoshp[floor].CounterHP`（数组） | 单条主线外追加 |
+| 混沌回忆 chaos.js | `_chaoshp[floor].CounterHP`（数组） | 在 `Single`/`Multi` 后追加 |
+| 虚构叙事 fiction.js | `_fictionhp[floor].CounterHP`（数组） | 单条主线外追加 |
+| 异相仲裁 arbitration.js | `_arbitrationhp.Counter[key]`（按系列） | 按已验证系列逐一追加，key 同 `allSeries[i].key`（`TrialA/TrialB/TrialC/FinalEasy/FinalHard`） |
+
+### 5.3 开关样式与事件
+
+- 复用既有 `.slider_switch` + `.slider_on` 视觉态。
+- 独立 class `ctr_switch`，外层容器加 `ctr_button` 以便按需 `toggle` 隐藏，不与星启等批量 `slider_on` 操作冲突。
+- 点击事件：翻转 `counter_mode`（仲裁/其余三个可按现有风格直接 `writeData()`，或显式增删 `slider_on` 后重绘）。
+- 开关显隐与高亮态在 `writeData()`（仲裁在 `renderHpChart()`）中动态计算。
+
+### 5.4 实现位置速查
+
+- `txt.js`：`CounterHP` 文案 + 全局 `counterSeries()`。
+- `arbitration.js`：系列 IIFE 内追加循环；`renderHpChart()` 内按 `_arbitrationhp.Counter` 是否非空计算 `.ctr_button` 显隐；视觉插在 `ms_switch` 之后。
+- `as.js` / `chaos.js` / `fiction.js`：`writeData()` 末尾 chart 段追加开关显隐逻辑；系列改为 IIFE 组装并 `push` 对策系列；视觉插在各自 `ms_switch` 之后。
+- 注意：fiction 的 `visualMap` 已加 `seriesIndex: 0`，使分段着色仅作用于主线（下标 0），对策折线保持自身颜色，不受分段染色影响。

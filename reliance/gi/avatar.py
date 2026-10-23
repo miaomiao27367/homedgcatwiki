@@ -1164,7 +1164,7 @@ def gi_character_update(character_id, versions_dict):
         print(f"角色ID: {character_id} (短ID: {short_id})")
 
         if not versions_dict:
-            versions_dict = {"L": API_VERSION}
+            return (False, f"角色 {character_id} 未指定版本配置，取消下载")
 
         if "L" in versions_dict:
             first_ver_key = "L"

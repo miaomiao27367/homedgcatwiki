@@ -781,16 +781,16 @@ var __AvatarInfoConfig = {
         "_name": "Valeriy",
         "_id": 137,
         "Name": "瓦列里",
-        "Desc": "测试角色",
-        "Title": "？？？",
+        "Desc": "「特殊任务营」领队，善于保护要员和推进计划的军人。",
+        "Title": "霆骇军垒",
         "Constellation": "熊罴座",
         "Nation": "Snezhnaya",
-        "Belong": "？？？",
+        "Belong": "愚人众第一近卫掷弹兵团",
         "Grade": 4,
         "Type": "???",
         "Weapon": "Sword",
         "Element": "Elec",
-        "Birthday": "1/1",
+        "Birthday": "3/24",
         "Icon": "UI_AvatarIcon_Valeriy",
         "CommonMatt": 112148,
         "TalentMat": 3,
@@ -804,13 +804,13 @@ var __AvatarInfoConfig = {
             "HP": 10005,
             "ATK": 255,
             "DEF": 703,
-            "Custom": 0.24
+            "Custom": 0.23999999463558197
         },
         "ShowStats2": {
             "HP": 10697,
             "ATK": 320,
             "DEF": 752,
-            "Custom": 0.24
+            "Custom": 0.23999999463558197
         },
         "Version": "7.2",
         "Fetter": 137,
@@ -825,16 +825,16 @@ var __AvatarInfoConfig = {
         "_name": "Mitya",
         "_id": 136,
         "Name": "米提亚",
-        "Desc": "测试角色",
-        "Title": "？？？",
+        "Desc": "极富水平的能源专家，独具匠心的「日程逃脱」大师。",
+        "Title": "列律名虚",
         "Constellation": "纽结座",
         "Nation": "ASSOC_TYPE_SNEZHNAYA_STAR",
-        "Belong": "？？？",
+        "Belong": "至冬皇家能源协会",
         "Grade": 5,
         "Type": "???",
         "Weapon": "Catalyst",
         "Element": "Elec",
-        "Birthday": "1/1",
+        "Birthday": "2/8",
         "Icon": "UI_AvatarIcon_Mitya",
         "CommonMatt": 112151,
         "TalentMat": 1,
@@ -848,13 +848,13 @@ var __AvatarInfoConfig = {
             "HP": 11634,
             "ATK": 263,
             "DEF": 792,
-            "Custom": 0.384
+            "Custom": 0.3840000033378601
         },
         "ShowStats2": {
             "HP": 12460,
             "ATK": 322,
             "DEF": 848,
-            "Custom": 0.384
+            "Custom": 0.3840000033378601
         },
         "Version": "7.2",
         "Fetter": 136,

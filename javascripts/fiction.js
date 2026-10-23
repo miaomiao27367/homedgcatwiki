@@ -38,6 +38,7 @@ $(function () {
     var multistage_mode = 0
     var starButton = null
     var showStar = false
+    var counter_mode = 1
 
     var has_2 = 0
 
@@ -364,6 +365,39 @@ $(function () {
                             }
                         },
                         {
+                            div: [
+                                {
+                                    span: (lang == 'CH') ? '对策血量' : 'Counter HP',
+                                    class: 'slider_label'
+                                },
+                                {
+                                    div: [
+                                        {
+                                            div: '',
+                                            class: 'slider_thumb'
+                                        }
+                                    ],
+                                    class: 'slider_switch ctr_switch',
+                                    event: {
+                                        click: function () {
+                                            counter_mode = 1 - counter_mode
+                                            if (counter_mode) {
+                                                $(this).addClass('slider_on')
+                                            } else {
+                                                $(this).removeClass('slider_on')
+                                            }
+                                            writeData()
+                                        }
+                                    }
+                                },
+                            ],
+                            class: 'star_button ctr_button hover-shadow',
+                            style: {
+                                'display': 'flex',
+                                'align-items': 'center'
+                            }
+                        },
+                        {
                             p: HP_Calculation[lang],
                             style: {
                                 'text-align': 'center',
@@ -683,6 +717,15 @@ $(function () {
             rotate()
             var floor_name = $('.f_text').html()
 
+            var counter_data = _fictionhp[floor_name] && _fictionhp[floor_name].CounterHP
+            var counter_has = !!(counter_data && counter_data.some(function (v) { return v != null; }))
+            $('.ctr_button').toggle(counter_has)
+            if (counter_mode && counter_has) {
+                $('.ctr_switch').addClass('slider_on')
+            } else {
+                $('.ctr_switch').removeClass('slider_on')
+            }
+
             myChart = echarts.init(document.getElementById('chart'))
             var option = {
                 title: {
@@ -729,6 +772,7 @@ $(function () {
                     type: 'piecewise',
                     show: false,
                     dimension: 0,
+                    seriesIndex: 0,
                     pieces: [
                         {
                             lte: 9,
@@ -745,13 +789,18 @@ $(function () {
                         }
                     ]
                 },
-                series: [
-                    {
-                        name: txt.Fiction_HP[lang],
-                        type: 'line',
-                        data: _fictionhp[floor_name].HP
-                    }
-                ],
+                series: (function () {
+                    var cSeries = [
+                        {
+                            name: txt.Fiction_HP[lang],
+                            type: 'line',
+                            data: _fictionhp[floor_name].HP
+                        }
+                    ];
+                    var cCounter = counterSeries(_fictionhp[floor_name] && _fictionhp[floor_name].CounterHP, txt.CounterHP[lang]);
+                    if (counter_mode && cCounter) cSeries.push(cCounter);
+                    return cSeries;
+                })(),
             }
             if ($("#NOLAZY").val()) option.tooltip.show = false
             myChart.setOption(option)

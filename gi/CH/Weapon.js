@@ -4,7 +4,7 @@ var _WeaponConfig = {
     "224102": {
         "_id": "224102",
         "Name": "艾维萨缇的山狩",
-        "Desc": "(test) TPS 霰弹枪02",
+        "Desc": "可蓄力进行更精准的射击，并通过切换技能在前方制造阻挡子弹的法墙的霰弹枪。",
         "Type": 6,
         "Rank": 4,
         "Icons": "UI_EquipIcon_Shotgun_Rock",
@@ -21,12 +21,13 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "1"
+        "V": "4"
     },
+
     "224101": {
         "_id": "224101",
         "Name": "索斯卢科的灼炎",
-        "Desc": "(test) TPS 霰弹枪01",
+        "Desc": "对敌人造成伤害时，可以为装备者回复生命值的霰弹枪。",
         "Type": 6,
         "Rank": 4,
         "Icons": "UI_EquipIcon_Shotgun_Vepr",
@@ -43,16 +44,17 @@ var _WeaponConfig = {
         "Extra": [],
         "Story": 0,
         "StoryCount": 0,
-        "V": "1"
+        "V": "4"
     },
+
     "14525": {
         "_id": "14525",
-        "Name": "武器-法器",
-        "Desc": "",
+        "Name": "秘星典谕",
+        "Desc": "记载皇家能源协会内部工作法则的厚重书籍，条目繁多，历史悠久。",
         "Type": 3,
         "Rank": 5,
         "Icons": "UI_EquipIcon_Catalyst_Chernaya",
-        "Stat": 541.829758,
+        "Stat": 541.829767,
         "Custom": "CD",
         "CustomStat": 0.882048,
         "AscMatID": 114096,
@@ -60,13 +62,14 @@ var _WeaponConfig = {
             112160,
             112148
         ],
-        "EquipAffixName": "7.2UP武器",
+        "EquipAffixName": "辰星的流迹",
         "EquipAffixID": 114525,
         "Extra": [],
         "Story": 194525,
         "StoryCount": 1,
-        "V": "1"
+        "V": "4"
     },
+
     "390003": {
         "_id": "390003",
         "Name": "星锋剑",

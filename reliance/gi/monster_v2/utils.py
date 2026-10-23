@@ -343,16 +343,7 @@ def build_one_monster(pid, local_monster, api_detail, suffix_map, api_index):
 
         v_entry["ATKCount"] = get_local_val(local_monster, "ATKCount")
 
-        # P0-2: 01 variant (base variant) uses local parent HP/ATK directly
-        if child_id_str.endswith("01"):
-            local_hp_val = get_local_val(local_monster, "HP")
-            if local_hp_val is not None:
-                v_entry["HP"] = local_hp_val
-            local_atk_val = get_local_val(local_monster, "ATK")
-            if local_atk_val is not None:
-                v_entry["ATK"] = local_atk_val
-
-        # ---- RESBase: union of local parent RESBase + API sub_hurt ----
+        # RESBase: union of local parent RESBase + API sub_hurt ----
         local_resbase = get_local_val(local_monster, "RESBase", {})
         api_sub_hurt = child_data.get("sub_hurt", {})
         api_res_expanded = expand_sub_hurt(api_sub_hurt)
@@ -381,53 +372,41 @@ def build_one_monster(pid, local_monster, api_detail, suffix_map, api_index):
     for fld in PURELY_LOCAL_FIELDS:
         list_entry[fld] = get_local_val(local_monster, fld)
 
-    # HP / HPCurve / HPCount / ATK / ATKCurve / ATKCount: local first, API fallback
+    # HP / HPCurve / HPCount / ATK / ATKCurve / ATKCount: API first, local fallback
     local_hp = get_local_val(local_monster, "HP")
-    if local_hp is not None:
-        list_entry["HP"] = local_hp
-    elif base_child and base_child_id:
-        api_base = base_child.get("base", {})
-        api_hp = api_base.get("hp")
-        if api_hp is not None and api_hp > 0:
-            api_hpc = map_hp_curve(base_child.get("prop", []), codex)
-            list_entry["HP"] = normalize_hp(api_hp, api_hpc)
-        else:
-            list_entry["HP"] = None
+    api_hp = None
+    if base_child and base_child_id:
+        api_hp = base_child.get("base", {}).get("hp")
+    if api_hp is not None and api_hp > 0:
+        api_hpc = map_hp_curve(base_child.get("prop", []), codex)
+        list_entry["HP"] = normalize_hp(api_hp, api_hpc)
     else:
-        list_entry["HP"] = None
+        list_entry["HP"] = local_hp
 
     local_hpc = get_local_val(local_monster, "HPCurve")
-    if local_hpc is not None:
-        list_entry["HPCurve"] = local_hpc
-    elif base_child:
+    if base_child:
         list_entry["HPCurve"] = map_hp_curve(base_child.get("prop", []), codex)
     else:
-        list_entry["HPCurve"] = None
+        list_entry["HPCurve"] = local_hpc
 
     local_hpcnt = get_local_val(local_monster, "HPCount")
     list_entry["HPCount"] = local_hpcnt
 
     local_atk = get_local_val(local_monster, "ATK")
-    if local_atk is not None:
-        list_entry["ATK"] = local_atk
-    elif base_child and base_child_id:
-        api_base = base_child.get("base", {})
-        api_atk = api_base.get("atk")
-        if api_atk is not None and api_atk > 0:
-            api_atc = map_atk_curve(base_child.get("prop", []), codex)
-            list_entry["ATK"] = normalize_atk(api_atk, api_atc)
-        else:
-            list_entry["ATK"] = None
+    api_atk = None
+    if base_child and base_child_id:
+        api_atk = base_child.get("base", {}).get("atk")
+    if api_atk is not None and api_atk > 0:
+        api_atc = map_atk_curve(base_child.get("prop", []), codex)
+        list_entry["ATK"] = normalize_atk(api_atk, api_atc)
     else:
-        list_entry["ATK"] = None
+        list_entry["ATK"] = local_atk
 
     local_atc = get_local_val(local_monster, "ATKCurve")
-    if local_atc is not None:
-        list_entry["ATKCurve"] = local_atc
-    elif base_child:
+    if base_child:
         list_entry["ATKCurve"] = map_atk_curve(base_child.get("prop", []), codex)
     else:
-        list_entry["ATKCurve"] = None
+        list_entry["ATKCurve"] = local_atc
 
     local_atkcnt = get_local_val(local_monster, "ATKCount")
     list_entry["ATKCount"] = local_atkcnt
